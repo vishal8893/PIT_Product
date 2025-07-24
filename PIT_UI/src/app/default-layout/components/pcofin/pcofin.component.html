@@ -1,0 +1,299 @@
+<p-toast></p-toast>
+<div *ngIf="activeQuarter==false">
+	<h6> Please active Quarter and link send on email</h6>
+</div>
+<div class="card p-3">
+	<ng-container *ngIf="activeQuarter">
+
+
+		<ng-container *ngIf="userandQuarter">
+
+			<form autocomplete="off" [formGroup]="Form">
+				<div class="grid">
+					<div class="col-12 text-primary">
+						<!-- <h6 class="mb-0">Personal Conflict Of Interest </h6> -->
+					</div>
+
+					<div class="col-12 md:col-6 lg:col-6">
+						<!-- <div class="">
+							<b for="ingredient2" style="font-size: small;"> Declaration For</b><br />
+							<p-radioButton name="Self" (click)="setgetvalue()" value="Self" [(ngModel)]="ingredient"
+								inputId="ingredient1"></p-radioButton>
+							<label for="ingredient1" class="ml-2" style="font-size: small;">Self</label>
+							<p-radioButton name="IR" (click)="setgetvalue1()" value="IR" [(ngModel)]="ingredient"
+								inputId="ingredient2"></p-radioButton>
+							<label for="ingredient2" class="ml-2" style="font-size: small;">Immediate
+								Relative(IR)</label>
+							<p-radioButton name="Cp" (click)="setgetvalue2()" value="Cp" [(ngModel)]="ingredient"
+								inputId="ingredient3"></p-radioButton>
+							<label for="ingredient3" class="ml-2" style="font-size: small;">Connected Person(CP)</label>
+						</div> -->
+						<div class="">
+							<b for="ingredient2" style="font-size: small;"> Declaration For</b><br />							
+							<p-radioButton name="selectedUserCatSVP" [value]="true" [(ngModel)]="selectedUserCatSVP"
+							 (ngModelChange)="handleSelectionChangeSVP()" formControlName="selectedUserCatSVP"></p-radioButton>
+							<label for="ingredient1" class="ml-2" style="font-size: small;">Self</label>							
+							<p-radioButton name="selectedUserCatCEO" [value]="true" [(ngModel)]="selectedUserCatCEO"
+								 (ngModelChange)="handleSelectionChangeCEO()" formControlName="selectedUserCatCEO"></p-radioButton>
+							<label for="ingredient2" class="ml-2" style="font-size: small;">Immediate
+								Relative(IR)</label>							
+								<p-radioButton name="selectedUserCatEmpAll" [value]="true" [(ngModel)]="selectedUserCatEmpAll"
+                                (ngModelChange)="handleSelectionChangeEmpALL()" formControlName="selectedUserCatEmpAll" ></p-radioButton>
+							<label for="ingredient3" class="ml-2" style="font-size: small;">Connected Person(CP)</label>
+						</div>
+						
+						
+
+					</div>										
+					<div class="col-12 md:col-6 lg:col-3">
+						<div class="form-floating form-floating-outline">
+							<input type="text" class="form-control" placeholder="" formControlName="tcob" pInputText>
+							<label for="inputText1">Transaction carried out
+								by<span class="required-asterisk">*</span></label>
+							<small style="color: red;"
+								*ngIf="Form.get('tcob').hasError('required') && (Form.get('tcob').touched || Form.get('tcob').dirty)">
+								Transaction carried out by Required.
+							</small>
+						</div>
+					</div>
+					<div class="col-12 md:col-6 lg:col-3">
+						<div class="form-floating form-floating-outline">
+							<input type="text" class="form-control" placeholder="" pInputText formControlName="rwe"
+								required>
+							<label for="inputText1">Relationship with
+								Employee<span class="required-asterisk">*</span></label>
+							<small style="color: red;"
+								*ngIf="Form.get('rwe').hasError('required') && (Form.get('rwe').touched || Form.get('rwe').dirty)">
+								Relationship with Employee Required.
+							</small>
+						</div>
+					</div>
+					<div class="col-12 md:col-6 lg:col-3">
+						<div class="form-floating form-floating-outline">
+							<input type="text" class="form-control" placeholder="" pInputText formControlName="entity"
+								required>
+							<label for="inputText1">Name Of Entity<span class="required-asterisk">*</span></label>
+							<small style="color: red;"
+								*ngIf="Form.get('entity').hasError('required') && (Form.get('entity').touched || Form.get('entity').dirty)">
+								Name Of Entity Required.
+							</small>
+						</div>
+					</div>
+					<div class="col-12 md:col-6 lg:col-3">
+						<div class="form-floating form-floating-outline">
+							<input type="text" class="form-control" placeholder="" pInputText formControlName="holding"
+								required>
+							<label for="inputText1">% Holding<span class="required-asterisk">*</span></label>
+							<small style="color: red;"
+								*ngIf="Form.get('holding').hasError('required') && (Form.get('holding').touched || Form.get('holding').dirty)">
+								Holding Required.
+							</small>
+						</div>
+					</div>
+					<div class="col-12 md:col-6 lg:col-3">
+						<div class="form-floating form-floating-outline">
+							<p-calendar formControlName="transactiondate" placeholder="Date Transaction"
+								[showIcon]="true" class="form-control calendar p-0" styleClass="w-100"
+								inputId="icon"></p-calendar>
+							<label for="inputText1">Date Transaction<span class="required-asterisk">*</span></label>
+							<small style="color: red;"
+								*ngIf="Form.get('transactiondate').hasError('required') && (Form.get('transactiondate').touched || Form.get('transactiondate').dirty)">
+								Date Transaction Required.
+							</small>
+						</div>
+					</div>
+					<div class="col-12 md:col-6 lg:col-3">
+						<div class="form-floating form-floating-outline">
+							<input type="text" class="form-control" placeholder="" pInputText formControlName="not"
+								required>
+							<label for="inputText1">Nature Of
+								Transaction<span class="required-asterisk">*</span></label>
+							<small style="color: red;"
+								*ngIf="Form.get('not').hasError('required') && (Form.get('not').touched || Form.get('not').dirty)">
+								Nature Of Transaction Required.
+							</small>
+						</div>
+					</div>
+					<div class="col-12 md:col-6 lg:col-3">
+						<div class="form-floating form-floating-outline">
+							<input type="text" class="form-control" placeholder="" pInputText formControlName="vpt"
+								required>
+							<label for="inputText1">Value / Price
+								Transaction<span class="required-asterisk">*</span></label>
+							<small style="color: red;"
+								*ngIf="Form.get('vpt').hasError('required') && (Form.get('vpt').touched || Form.get('vpt').dirty)">
+								Value / Price Transaction Required.
+							</small>
+						</div>
+					</div>
+					<div class="col-12 md:col-6 lg:col-3">
+						<div class="form-floating form-floating-outline">
+							<input type="text" class="form-control" placeholder="" pInputText formControlName="mcp"
+								required>
+							<label for="inputText1">Market Value /
+								Price<span class="required-asterisk">*</span></label>
+							<small style="color: red;"
+								*ngIf="Form.get('mcp').hasError('required') && (Form.get('mcp').touched || Form.get('mcp').dirty)">
+								Market Value / Price Required.
+							</small>
+						</div>
+					</div>
+					<div class="col-12 md:col-6 lg:col-3">
+						<div class="form-floating form-floating-outline">
+							<input type="text" class="form-control" placeholder="" pInputText formControlName="sdca"
+								required>
+							<label for="inputText1">Special Discount Or
+								Concession
+								Availed<span class="required-asterisk">*</span></label>
+							<small style="color: red;"
+								*ngIf="Form.get('sdca').hasError('required') && (Form.get('sdca').touched || Form.get('sdca').dirty)">
+								Special Discount Or Concession AvailedRequired.
+							</small>
+						</div>
+					</div>
+					<div class="col-12 md:col-6 lg:col-3">
+						<div class="form-floating form-floating-outline">
+							<textarea rows="1" cols="20" pInputTextarea formControlName="doca" class="form-control"
+								placeholder=""></textarea>
+							<label for="inputText1">Details Of Conflict
+								Arising<span class="required-asterisk">*</span></label>
+							<!-- <input type="text" class="form-control"
+							placeholder="Details Of Conflict Arising" pInputText formControlName="doca"
+							required> -->
+							<small style="color: red;"
+								*ngIf="Form.get('doca').hasError('required') && (Form.get('doca').touched || Form.get('doca').dirty)">
+								Details Of Conflict Arising Required.
+							</small>
+						</div>
+					</div>
+					<div class="col-12 md:col-6 lg:col-3">
+						<div class="form-floating form-floating-outline">
+							<textarea rows="1" cols="20" pInputTextarea formControlName="remark" class="form-control"
+								placeholder=""></textarea>
+							<label for="inputText1" class="col-md-4 col-lg-3 col-xl-2 col-form-label">Remark<span
+									class="required-asterisk">*</span></label>
+							<small style="color: red;"
+								*ngIf="Form.get('remark').hasError('required') && (Form.get('remark').touched || Form.get('remark').dirty)">
+								Remark Required.
+							</small>
+						</div>
+					</div>
+					<div class="col-12 md:col-12 lg:col-12 text-center">
+						<div class="form-floating form-floating-outline">
+							<button pButton pRipple type="submit" *ngIf="onadd" (click)="creategreylist()" label="Save"
+								class="btn btn-primary p-button-info p-button-sm mx-1"></button>
+							<button pButton pRipple type="button" *ngIf="oneditbtn" (click)="updategreylist()"
+								label="Update" class="btn btn-primary p-button-info p-button-sm mx-1"></button>
+							<button pButton pRipple type="button" *ngIf="oncancel" (click)="cancel()" label="Reset"
+								class="p-button-secondary p-button-sm mx-2"></button>
+						</div>
+					</div>				
+				</div>
+			</form>
+
+		</ng-container>
+
+
+		<div class="col-12">
+			<div class="table-responsive">
+				<p-table #dt [value]="products" dataKey="id"
+					styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines" [rowHover]="true" [rows]="5"
+					[showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+					currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+					[globalFilterFields]="['TransDetails','Relation','Entity','PerHolding','Date','Nature','ValuePrice','MarketValPrice','SpDiscount','ConflictDetails','Remark']">
+					<ng-template pTemplate="caption">
+						<div class="table-header">
+							<span class="globalSearch p-input-icon-left">
+								<i class="pi pi-search"></i>
+								<input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+									class="p-inputtext-sm" placeholder="Global Search" />
+							</span>
+						</div>
+					</ng-template>
+					<ng-template pTemplate="header">
+						<tr>
+							<th pSortableColumn="TransDetails">Transaction<p-sortIcon field="TransDetails"></p-sortIcon>
+							</th>
+							<th pSortableColumn="Relation">Relationship <p-sortIcon field="Relation"></p-sortIcon></th>
+							<th pSortableColumn="Entity">Entity <p-sortIcon field="Entity"></p-sortIcon></th>
+							<th pSortableColumn="PerHolding">% Holding <p-sortIcon field="PerHolding"></p-sortIcon></th>
+							<th pSortableColumn="Date">Date Transaction<p-sortIcon field="Date"></p-sortIcon></th>
+							<th pSortableColumn="Nature">Nature Transaction<p-sortIcon field="Nature"></p-sortIcon></th>
+							<th pSortableColumn="ValuePrice"> Value / Price Transaction<p-sortIcon
+									field="ValuePrice"></p-sortIcon>
+							</th>
+							<th pSortableColumn="MarketValPrice"> Market Value / Price<p-sortIcon
+									field="MarketValPrice"></p-sortIcon>
+							</th>
+							<th pSortableColumn="SpDiscount"> Special Discount<p-sortIcon
+									field="SpDiscount"></p-sortIcon>
+							</th>
+							<th pSortableColumn="ConflictDetails"> Details Of Conflict<p-sortIcon
+									field="ConflictDetails"></p-sortIcon>
+							</th>
+							<th pSortableColumn="Remark"> Remark<p-sortIcon field="Remark"></p-sortIcon></th>
+							<th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
+
+						</tr>
+					</ng-template>
+					<ng-template pTemplate="body" let-product>
+						<tr class="p-selectable-row">
+							<td>
+								{{product.TransDetails}}
+							</td>
+							<td>
+
+								<span class="image-text">{{product.Relation
+									}}</span>
+							</td>
+							<td>
+								<span class="image-text">{{product.Entity}}</span>
+							</td>
+							<td>
+								{{product.PerHolding}}
+							</td>
+							<td>
+								<span class="image-text">{{product.Date | date}}</span>
+							</td>
+							<td>
+								<span class="image-text">{{product.Nature}}</span>
+							</td>
+							<td>
+								<span class="image-text">{{product.ValuePrice}}</span>
+							</td>
+
+							<td>
+								<span class="image-text">{{product.MarketValPrice}}</span>
+							</td>
+							<td>
+								<span class="image-text">{{product.SpDiscount}}</span>
+							</td>
+							<td>
+								<span class="image-text">{{product.ConflictDetails}}</span>
+							</td>
+							<td>
+								<span class="image-text">{{product.Remark}}</span>
+							</td>
+							<td>
+								<!-- <button pButton type="button" icon="pi pi-pencil" (click)="onEditgreylist(product)"
+									iconPos="left"
+									class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary mr-2"></button>
+
+								<button pButton type="button" icon="pi pi-trash" (click)="deletegreylist(product)"
+									iconPos="left"
+									class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"></button> -->
+								<i class="pi pi-pencil" (click)="onEditgreylist(product)"></i>&nbsp;&nbsp;
+								<i class="pi pi-trash" (click)="deletegreylist(product)"></i>
+							</td>
+						</tr>
+					</ng-template>
+					<ng-template pTemplate="emptymessage">
+						<tr>
+							<td colspan="8">No products found.</td>
+						</tr>
+					</ng-template>
+				</p-table>
+			</div>
+		</div>
+	</ng-container>
+</div>

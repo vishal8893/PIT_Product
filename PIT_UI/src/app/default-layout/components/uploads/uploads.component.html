@@ -1,0 +1,48 @@
+<p-toast></p-toast>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+    <div class="col-12 mb-2 text-primary">
+        <!-- <h6 class="mb-0">Upload</h6> -->
+    </div>
+    <form autocomplete="off" [formGroup]="uploadform">
+
+        <div class="row">
+            <div class="col-md-7 col-lg-4 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-dropdown [options]="accessid" optionLabel="NAME" [filter]="true" filterBy="NAME"
+                        [showClear]="true" placeholder="--Select--" class="form-control px-0"
+                        formControlName="uploadtypecontroller" optionValue="NAME" required></p-dropdown>
+                    <label for="">Upload Type<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="uploadform.get('uploadtypecontroller').hasError('required') && (uploadform.get('uploadtypecontroller').touched || uploadform.get('uploadtypecontroller').dirty)">
+                        Upload Type Required.
+                    </small>
+                </div>
+            </div>
+        </div>
+    </form>
+
+        <div class="row">
+            <div class="col-12 md:col-6 lg:col-3">
+                <!-- <input class="form-control" type="file" id="formFile" [value]="selectedFileName" readonly
+                (click)="fileInput.click()">
+                <input type="file" #fileInput (change)="fileSelected($event)" style="display: none"> -->
+                <input class="form-control" accept=".xlsx, .xls" type="file" id="formFile" [value]="selectedFileName" (change)="fileSelected($event)">
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-8 fv-plugins-icon-container">
+                <button type="button" maxFileSize="5242880" class="btn btn-info waves-effect waves-light mx-1"
+                    (click)="uploadFile()" [disabled]="loading"><i class="bx bx-upload me-2"></i>{{loading ? 'Processing...'  : 'Upload'}}</button>
+                <button type="button" class="btn btn-secondary waves-effect waves-light mx-1"
+                    (click)="downloadSample()"><i class="bx bx-file me-2"></i>Sample Data</button>
+                <button type="button" class="btn btn-danger waves-effect waves-light mx-1" 
+                    (click)="latestdataDownload()"><i class="bx bx-arrow-to-right me-2"></i>Latest Data</button>
+            </div>
+        </div>
+        <br>
+    
+
+</div>

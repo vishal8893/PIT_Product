@@ -1,0 +1,148 @@
+<p-toast></p-toast>
+<div class="row">
+  <div class="mx-0">
+
+    <div class="col-12 px-1 mb-2 text-primary">
+      <!-- <h6 class="mb-0">UI Role Configuration</h6> -->
+    </div>
+
+    <!-- <p-breadcrumb class="" [style]="{'padding': '0rem 1rem 0.5rem 0.3rem'}" [model]="items" [home]="home"></p-breadcrumb> -->
+    <p-card>
+      <form #form="ngForm" autocomplete="off" [formGroup]="UIRoleConfigForm">
+        <div class="grid">
+          <div class="col-12 md:col-6 lg:col-4">
+
+            <div class="form-floating form-floating-outline">
+              <p-dropdown [options]="roleList" optionLabel="CODE" [filter]="true" filterBy="CODE"
+                (onChange)="selectedRole($event)" formControlName="Role" [showClear]="true" placeholder="Role List"
+                class="form-control px-0">
+              </p-dropdown>
+              <label for="inputText4" class="">Role List <span class="required-asterisk">*</span></label>
+            </div>
+          </div>
+
+          <div class="col-12">
+
+            <div class="card">
+              <div class="table-responsive">
+                <table class="table table-bordered table-sm">
+                  <thead>
+                    <tr>
+                      <th><span class="ps-2">UI Menus</span></th>
+                      <th class="text-center">Viewer</th>
+                      <th class="text-center">Maker</th>
+                      <th class="text-center">Checker</th>
+                      <th class="text-center">Approver</th>
+                      <th class="text-center">Edit</th>
+                      <th class="text-center">Export</th>
+                      <th class="text-center">Upload</th>
+                    </tr>
+                  </thead>
+                  <tbody formArrayName="UIRoleMap">
+                    <tr *ngFor="let obj of dataSource.value; let i = index; let l = last" [formGroupName]="i">
+                      <th scope="row"> <input type="textarea" readonly class="form-control" id="Section"
+                          formControlName="UI" />
+                      </th>
+                      <td class="text-center pt-3 pb-0"> <p-inputSwitch [checked]="viewer"
+                          formControlName="viewer"></p-inputSwitch>
+                      </td>
+                      <td class="text-center pt-3 pb-0"> <p-inputSwitch [checked]="maker"
+                          formControlName="maker"></p-inputSwitch>
+                      </td>
+                      <td class="text-center pt-3 pb-0"> <p-inputSwitch [checked]="checker"
+                          formControlName="checker"></p-inputSwitch> </td>
+                      <td class="text-center pt-3 pb-0"> <p-inputSwitch [checked]="approver"
+                          formControlName="approver"></p-inputSwitch> </td>
+                      <td class="text-center pt-3 pb-0"> <p-inputSwitch [checked]="edit"
+                          formControlName="edit"></p-inputSwitch>
+                      </td>
+                      <td class="text-center pt-3 pb-0"> <p-inputSwitch [checked]="export"
+                          formControlName="export"></p-inputSwitch>
+                      </td>
+                      <td class="text-center pt-3 pb-0"> <p-inputSwitch [checked]="upload"
+                          formControlName="upload"></p-inputSwitch>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="flex justify-content-end mx-2 mb-2">
+                <button pButton type="button" label="Save" (click)="saveUIRoleConfig()" icon="pi pi-plus"
+                  iconPos="right" class="btn btn-primary p-button-info p-button-sm mx-1 text-end"></button>
+              </div>
+              <!-- <p-table [value]="dataSource.value"  styleClass="p-datatable-sm" [tableStyle]="{'min-width': '50rem'}">
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th>UI Menus</th>
+                    <th>Viewer</th>
+                    <th>Maker</th>
+                    <th>Checker</th>
+                    <th>Approver</th>
+                    <th>Edit</th>
+                    <th>Export</th>
+                    <th>Upload</th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-product ; let-index="index">
+  
+                  <tr>
+                    <td>
+                      <div [formGroupName]="index">
+                        <p formControlName="UI">{{product.UI}}</p>
+                      </div>
+                    </td>
+                    <td>
+                      <div [formGroupName]="index">
+                        <p-inputSwitch [checked]="product.viewer" formControlName="viewer"></p-inputSwitch>
+                      </div>
+                    </td>
+                    <td>
+                      <div>
+                        <p-inputSwitch [checked]="product.maker" formControlName="maker"></p-inputSwitch>
+                      </div>
+                    </td>
+                    <td>
+                      <div [formGroupName]="index">
+                        <p-inputSwitch [checked]="product.checker" formControlName="checker"></p-inputSwitch>
+                      </div>
+                    </td>
+                    <td>
+                      <div [formGroupName]="index">
+                        <p-inputSwitch [checked]="product.approver" formControlName="approver"></p-inputSwitch>
+                      </div>
+                    </td>
+                    <td>
+                      <div [formGroupName]="index">
+                        <p-inputSwitch [checked]="product.edit" formControlName="edit"></p-inputSwitch>
+                      </div>
+                    </td>
+                    <td>
+                      <div [formGroupName]="index">
+                        <p-inputSwitch [checked]="product.export" formControlName="export"></p-inputSwitch>
+                      </div>
+                    </td>
+                    <td>
+                      <div [formGroupName]="index">
+                        <p-inputSwitch [checked]="product.upload" formControlName="upload"></p-inputSwitch>
+                      </div>
+                    </td>
+  
+                  </tr>
+                </ng-template>
+  
+              </p-table> -->
+
+            </div>
+
+
+
+          </div>
+
+
+
+        </div>
+      </form>
+    </p-card>
+  </div>
+</div>

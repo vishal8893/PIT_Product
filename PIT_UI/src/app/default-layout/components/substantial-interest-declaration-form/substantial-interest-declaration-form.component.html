@@ -1,0 +1,179 @@
+<div class="row card bg-white px-3 mx-0 mb-3">
+    <div class="col-12 mb-2 text-primary">
+        <!-- <h6 class="mb-0">Substantial Interest Declaration Form</h6> -->
+    </div>
+
+    <div class="popup-overlay" [ngClass]="{'show-popup': showPopup}">
+        <div class="popup">
+            <div class="popup-header">
+                <h3>Disclosure</h3>
+                <hr class="header-line">
+            </div>
+
+            <div class="popup-content">
+                <p><span style="font-weight: bold;">1.</span>In order to avoid any actual or perceived conflict of
+                    interest,all Newel employees are required to provide
+                    the information as per the prescribed format (Click on Continue to see the fromat).The information
+                    is required
+                    to be provided by the Employees about self,their immediate relatives and connected persons.
+                </p>
+                <p><span style="font-weight: bold;font-display: left;">*Immediate Relative</span> means<br>
+                    1.Members of a Hindu Undivided Family.<br>
+                    2.Husband and Wife<br>
+                    3.Father and Mother<br>
+                    4.Son and Son's Wife<br>
+                    5.Daughter and Daughter's husband<br>
+                    6.Brother and Sister<br>
+
+                <p><span style="font-weight: bold;">**Connected person</span> means any Proprietorship
+                    Firm,Company,Partnership Firm,
+                    LLP or Association etc. where employee of any of their immediate relative(s) hold substantial
+                    interset.
+
+                <p><span style="font-weight: bold;">***Substantial Interest</span> means any interest of employee or any
+                    of it's immeduate
+                    relative in any Proprietorship Firm,Company,Partnership Firm,LLP or Association etc. equivalent to
+                    10% or more.Additionally, being
+                    a Director oe active partner in any organization is also considered Substantial Interest.
+                </p>                
+            </div>
+
+            <div class="popup-footer">
+                <div class="footer-content">
+                    <button class="btn btn-primary p-button-info p-button-sm mx-1"
+                        (click)="continue()">Continue</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="main-content" *ngIf="showMainContent">
+        <div class="grid">
+            <div class="col">
+                <p>I, <span style="font-weight: bold;">{{firstName}} {{lastName}}</span> bearing PAN <span
+                        style="font-weight: bold;">{{pan}}</span>
+                    APPOINTED AS <span style="font-weight: bold;">{{DeptName}}</span> AT BRANCH(HEREIN AFTER REFERRED AS
+                    <span style="font-weight: bold;">"THE COMPANY"</span>),
+                    DO HEREBY SOLEMNLY DECLARE AND UNDERTAKE THAT:
+                </p>
+            </div>
+        </div>
+        <div class="alert alert-warning" role="alert">
+            <p style="font-weight: bold;"><u>Instructions:</u></p>
+            &#9679; '*' indicates mandatory fields.<br>
+            &#9679; Please insert 'NA' in case of Minor relative(s) or if the PAN is not available.<br>
+            &#9679; Please select 'NA' in case nature of substantial interest is not applicable.<br>
+            &#9679; Director Identification Number [DIN] is mandatory in case of nature of substantial interest is
+            'Directorship'.
+        </div>
+        <div class="col ">
+            <table class="table table-striped p-datatable-sm p-datatable-gridlines">
+                <thead class="">
+                    <tr>
+                        <th style="width: 5%;"><button (click)="addRow()"
+                                class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><i
+                                    class="bx bx-plus"></i></button></th>
+                        <th style="width: 19%;">Name of Self and <br> Immediate Relative<span
+                                class="required-asterisk">*</span></th>
+                        <th style="width: 19%;">Relation with Immediate Relative<span class="required-asterisk">*</span>
+                        </th>
+                        <th style="width: 19%;">Nature of Substantial<br> interest<span
+                                class="required-asterisk">*</span></th>
+                        <th style="width: 19%;">Director Identification<br> Number if any<span
+                                class="required-asterisk">*</span></th>
+                        <th style="width: 19%;">PAN <br> ('NA' in case of minor)<span class="required-asterisk">*</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let row of rows; let i = index">
+                        <td style="width: 5%;">
+                            <!-- <button (click)="deleteRow(i)" class="p-button p-button-text p-button-rounded"
+                                    *ngIf="!row.isAdding">Delete</button> -->
+                            <button type="button" (click)="deleteRow(i)"
+                                class="btn btn-danger waves-effect waves-light p-1"><i class="bx bx-trash"></i></button>
+                            <!-- <button (click)="addData(i)" class="p-button p-button-text p-button-rounded" *ngIf="row.isAddbtn">ADD</button> -->
+                        </td>
+                        <td style="width: 19%;">
+                            <div class="">
+                                <div class="form-floating form-floating-outline">
+                                    <input *ngIf="!row.isAdding" type="text" class="form-control" placeholder=""
+                                        [(ngModel)]="row.name" pInputText>
+                                    <label>Name</label>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="width: 19%;">
+                            <!-- <input *ngIf="!row.isAdding" type="text" class="p-inputtext-sm w-100" placeholder="Relation" [(ngModel)]="row.relation"> -->
+                            <div class="">
+                                <div class="form-floating form-floating-outline">
+                                    <p-dropdown [options]="contid" [(ngModel)]="row.relation" optionLabel="NAME"
+                                        [filter]="true" filterBy="NAME" [showClear]="true" placeholder="Select Relation"
+                                        class="form-control px-0" *ngIf="!row.isAdding" required>
+                                    </p-dropdown>
+                                    <label>Relation</label>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="width: 19%;">
+                            <!-- <input *ngIf="!row.isAdding" type="text" class="p-inputtext-sm w-100" placeholder="Interest" [(ngModel)]="row.interest"> -->
+                            <div class="">
+                                <div class="form-floating form-floating-outline">
+                                    <p-dropdown [options]="nsiid" [(ngModel)]="row.interest" optionLabel="NAME"
+                                        [filter]="true" filterBy="NAME" [showClear]="true" placeholder="Select NSI"
+                                        class="form-control px-0" *ngIf="!row.isAdding" required>
+                                    </p-dropdown>
+                                    <label>NSI</label>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="width: 19%;">
+                            <div class="">
+                                <div class="form-floating form-floating-outline">
+                                    <input *ngIf="!row.isAdding" type="text" class="form-control" placeholder=""
+                                        minlength="8" maxlength="8" [(ngModel)]="row.directorId" pInputText>
+                                    <label>Director ID</label>
+                                    <span *ngIf="!dataSaved && row.directorId && row.directorId.length !== 8"
+                                        class="text-red-500 text-xs">
+                                        Please enter a valid 8-digit number.
+                                    </span>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="width: 19%;">
+                            <div class="">
+                                <div class="form-floating form-floating-outline">
+                                    <input *ngIf="!row.isAdding" type="text" class="form-control"
+                                        pattern="[A-Za-z]{5}[0-9]{4}[A-Za-z]" placeholder="" [(ngModel)]="row.pan"
+                                        minlength="10" maxlength="10" pInputText>
+                                    <label>PAN</label>
+                                    <span *ngIf="!dataSaved1 && row.pan && (row.pan.length !== 10 || !isValidPanFormat(row.pan))"
+                                        class="text-red-500 text-xs">
+                                        Please enter a valid PAN.
+                                    </span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="alert alert-secondary" role="alert">
+            <p><span style="font-weight: bold;">NB:</span><br>
+                <span style="font-weight: bold;">Substantial Interest</span> means any interest of employee or any
+                of its immediate
+                relative in any Company,Partnership Firm,LLp or Association etc. equivalent to 10% or
+                more.Additionally,being
+                a Director or active partner in any organization is also considered Substantial Interest.
+            </p>
+        </div>
+        <div class="col-12 text-center">
+            <button pButton pRipple type="submit" *ngIf="onadd" [disabled]="!isAllDataFilled()" (click)="submit()"
+                label="Submit" class="btn btn-primary p-button-info p-button-sm mx-1"></button>
+            <button pButton pRipple type="button" *ngIf="oncancel" (click)="cancel()" label="Cancel"
+                class="p-button-secondary p-button-sm mx-2"></button>
+        </div>
+    </div>
+</div>

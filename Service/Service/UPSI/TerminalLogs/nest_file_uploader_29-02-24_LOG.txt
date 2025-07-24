@@ -1,0 +1,38 @@
+28-02-2024 14:05:05: Uploading the files 28-02-2024 14:05:05 
+28-02-2024 14:05:05: No files to Upload
+28-02-2024 14:05:10: Uploading the files 28-02-2024 14:05:10 
+28-02-2024 14:05:10: No files to Upload
+28-02-2024 14:08:15: Uploading the files 28-02-2024 14:08:15
+28-02-2024 14:08:15: No files to Upload
+28-02-2024 14:10:05: Uploading the files 28-02-2024 14:10:05
+28-02-2024 14:10:05: No files to Upload
+28-02-2024 14:12:22: Uploading the files 28-02-2024 14:12:22 
+28-02-2024 14:12:22: No files to Upload
+28-02-2024 14:13:05: Uploading the files 28-02-2024 14:13:05
+28-02-2024 14:13:05: No files to Upload
+28-02-2024 14:45:20: Uploading the files 28-02-2024 14:45:20 
+28-02-2024 14:45:20: No files to Upload
+28-02-2024 14:58:05: Uploading the files 28-02-2024 14:58:05 
+28-02-2024 14:58:05: No files to Upload
+28-02-2024 15:05:05: Uploading the files 28-02-2024 15:05:05 
+28-02-2024 15:05:05: File name: C:\Users\DELL\Desktop\Schedule\ASPWAIS\EWM_BlockingUnBlocking_20240228233424141_ASP_EBL_WAIS.txt
+28-02-2024 15:05:05: RMS LIMITS-USERID, 2 rows uploaded 
+28-02-2024 15:05:05: RMS LIMITS-USERID Upload Complete
+28-02-2024 15:06:15: Uploading the files 28-02-2024 15:06:15
+28-02-2024 15:06:15: No files to Upload
+28-02-2024 15:06:17: Uploading the files 28-02-2024 15:06:17
+28-02-2024 15:06:17: No files to Upload
+28-02-2024 15:06:19: Uploading the files 28-02-2024 15:06:19
+28-02-2024 15:06:19: No files to Upload
+28-02-2024 15:06:45: Uploading the files 28-02-2024 15:06:45 
+28-02-2024 15:06:45: No files to Upload
+28-02-2024 15:10:15: Uploading the files 28-02-2024 15:10:15
+28-02-2024 15:10:15: No files to Upload
+28-02-2024 15:10:16: Uploading the files 28-02-2024 15:10:16
+28-02-2024 15:10:16: No files to Upload
+28-02-2024 15:10:18: Uploading the files 28-02-2024 15:10:18 
+28-02-2024 15:10:18: No files to Upload
+28-02-2024 15:10:22: Uploading the files 28-02-2024 15:10:22 
+28-02-2024 15:10:22: File name: \\10.32.0.53\SecureTOps\ASPWAIS\EWM_BlockingUnBlocking_20240228233424141_ASP_EBL_WAIS.txt
+28-02-2024 15:10:22: RMS LIMITS-USERID, 3 rows uploaded  
+28-02-2024 15:10:22: RMS LIMITS-USERID Upload Complete

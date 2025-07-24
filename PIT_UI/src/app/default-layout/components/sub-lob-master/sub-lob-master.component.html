@@ -1,0 +1,240 @@
+<p-toast></p-toast>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+    <div class="col-12 mb-2 text-primary">
+        <!-- <h6 class="mb-0">SUBLOB List Master</h6> -->
+    </div>
+    <form autocomplete="off" [formGroup]="sublobForm">
+
+        <!-- <div class="row"> 
+
+            <label for="inputText1" class="col-md-4 col-lg-2 col-xl-auto col-form-label">SUB LOB Name<span class="required-asterisk">*</span></label>
+            <div class="inputText col-md-4 col-lg-4 col-xl-2 mb-2">
+                <input type="text" class="p-inputtext-sm w-100" placeholder="SUB LOB Name"
+                    formControlName="sublobnamecontroller" pInputText required>
+                <small style="color: red;"
+                    *ngIf="sublobForm.get('sublobnamecontroller').hasError('required') && (sublobForm.get('sublobnamecontroller').touched || sublobForm.get('sublobnamecontroller').dirty)">
+                    Sub Lob name Required.
+                </small>
+            </div>
+
+            <label for="inputText1" class="col-md-4 col-lg-2 col-xl-auto col-form-label">SUB LOB Code<span class="required-asterisk">*</span></label>
+            
+            <div class="inputText col-md-4 col-lg-4 col-xl-2 mb-2">
+                <input type="text" class="p-inputtext-sm w-100" placeholder="SUB LOB Code"
+                    formControlName="sublobcodecontroller" pInputText required>
+                <small style="color: red;"
+                    *ngIf="sublobForm.get('sublobcodecontroller').hasError('required') && (sublobForm.get('sublobcodecontroller').touched || sublobForm.get('sublobcodecontroller').dirty)">
+                    Sub Lob code Required.
+                </small>
+            </div>
+
+
+            <label for="inputText1" class="col-md-4 col-lg-2 col-xl-auto col-form-label">BG Name<span class="required-asterisk">*</span></label>
+            <div class="inputText col-md-4 col-lg-4 col-xl-2 mb-2">
+                <p-dropdown [options]="businessids" formControlName="bgnamecontroller" [(ngModel)]="buisnessidNgmodel"
+                    optionLabel="BG_NAME" [filter]="true" (onChange)="onchangeevent(buisnessidNgmodel)"
+                    filterBy="BG_NAME" optionValue="ID" [showClear]="true" placeholder="Select BG Name"
+                    class="p-inputtext-sm w-100" required></p-dropdown>
+                <small style="color: red;"
+                    *ngIf="sublobForm.get('bgnamecontroller').hasError('required') && (sublobForm.get('bgnamecontroller').touched || sublobForm.get('bgnamecontroller').dirty)">
+                    BG name Required.
+                </small>
+            </div>
+
+        
+       
+
+
+            <label for="inputText1" class="col-md-8 col-lg-8 col-xl-1 col-form-label">SBU Name<span class="required-asterisk">*</span></label>
+            <div class="col-md-4 col-lg-4 col-xl-2 mb-2">
+                <p-dropdown [options]="finalItems" formControlName="sbunamecontroller" [(ngModel)]="sbunameNgmodel"
+                    optionLabel="SBU_NAME" [filter]="true" (onChange)="onchangeeventsub(sbunameNgmodel)"
+                    filterBy="SBU_NAME" [showClear]="true" placeholder="Select LOB Name" optionValue="ID"
+                    class="p-inputtext-sm w-100" required></p-dropdown>
+                <small style="color: red;"
+                    *ngIf="sublobForm.get('sbunamecontroller').hasError('required') && (sublobForm.get('sbunamecontroller').touched || sublobForm.get('sbunamecontroller').dirty)">
+                    sbu name Required.
+                </small>
+            </div>
+           
+
+
+            <label for="inputText1" class="col-md-4 col-lg-2 col-xl-auto col-form-label">LOB Name<span class="required-asterisk">*</span></label>
+            
+            <div class="inputText col-md-4 col-lg-4 col-xl-2 mb-2">
+                <p-dropdown [options]="finallobitem" formControlName="lobnamecontroller" optionLabel="LOB_NAME"
+                    [filter]="true" filterBy="LOB_NAME" [showClear]="true" placeholder="Select LOB Name"
+                    optionValue="ID" class="p-inputtext-sm w-100" required></p-dropdown>
+                <small style="color: red;"
+                    *ngIf="sublobForm.get('lobnamecontroller').hasError('required') && (sublobForm.get('lobnamecontroller').touched || sublobForm.get('lobnamecontroller').dirty)">
+                    Lob name Required.
+                </small>
+            </div>
+
+            
+        </div> -->
+        <div class="row mt-2">
+            <!-- <label for="inputText1" class="col-md-4 col-lg-1 col-xl-2 col-form-label">SUB LOB Name<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="inputText col-md-7 col-lg-2 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control w-100" placeholder="" formControlName="sublobnamecontroller"
+                        pInputText required>
+                    <label for="inputText4" class="">SUBLOB Name<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="sublobForm.get('sublobnamecontroller').hasError('required') && (sublobForm.get('sublobnamecontroller').touched || sublobForm.get('sublobnamecontroller').dirty)">
+                        SUBLOB Name Required.
+                    </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-1 col-xl-2 col-form-label">SUB LOB Code<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="inputText col-md-7 col-lg-2 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control w-100" placeholder="" formControlName="sublobcodecontroller"
+                        pInputText required>
+                    <label for="inputText4" class="">SUBLOB Code<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="sublobForm.get('sublobcodecontroller').hasError('required') && (sublobForm.get('sublobcodecontroller').touched || sublobForm.get('sublobcodecontroller').dirty)">
+                        SUBLOB Code Required.
+                    </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-1 col-xl-2 col-form-label">BG Name<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="col-md-7 col-lg-2 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-dropdown [options]="businessids" formControlName="bgnamecontroller"
+                        [(ngModel)]="buisnessidNgmodel" optionLabel="BG_NAME" [filter]="true"
+                        (onChange)="onchangeevent(buisnessidNgmodel)" filterBy="BG_NAME" optionValue="ID"
+                        [showClear]="true" placeholder="Select BG Name" class="form-control px-0"
+                        required></p-dropdown>
+                    <label for="inputText4" class="">BG Name<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="sublobForm.get('bgnamecontroller').hasError('required') && (sublobForm.get('bgnamecontroller').touched || sublobForm.get('bgnamecontroller').dirty)">
+                        BG Name Required.
+                    </small>
+                </div>
+            </div>
+            <!-- </div>
+        <div class="row"> -->
+            <!-- <label for="inputText1" class="col-md-4 col-lg-1 col-xl-2 col-form-label">SBU Name<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="col-md-7 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-dropdown [options]="finalItems" formControlName="sbunamecontroller" [(ngModel)]="sbunameNgmodel"
+                        optionLabel="SBU_NAME" [filter]="true" (onChange)="onchangeeventsub(sbunameNgmodel)"
+                        filterBy="SBU_NAME" [showClear]="true" placeholder="Select SBU Name" optionValue="ID"
+                        class="form-control px-0" required></p-dropdown>
+                    <label for="inputText4" class="">SBU Name<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="sublobForm.get('sbunamecontroller').hasError('required') && (sublobForm.get('sbunamecontroller').touched || sublobForm.get('sbunamecontroller').dirty)">
+                        SBU Name Required.
+                    </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-1 col-xl-2 col-form-label">LOB Name<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="col-md-7 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-dropdown [options]="finallobitem" formControlName="lobnamecontroller" optionLabel="LOB_NAME"
+                        [filter]="true" filterBy="LOB_NAME" [showClear]="true" placeholder="Select LOB Name"
+                        optionValue="ID" class="form-control px-0" required></p-dropdown>
+                    <label for="inputText4" class="">LOB Name<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="sublobForm.get('lobnamecontroller').hasError('required') && (sublobForm.get('lobnamecontroller').touched || sublobForm.get('lobnamecontroller').dirty)">
+                        LOB Name Required.
+                    </small>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-12 text-center">
+            <button pButton pRipple type="button" *ngIf="onadd" (click)="createBtn()" label=""
+                class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><i class="bx bx-plus"></i></button>
+            <button pButton pRipple type="button" *ngIf="oneditbtn" (click)="updateBtn()" label=""
+                class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><span
+                    class="fadeIn animated bx bx-reset"></span></button>
+            <button pButton pRipple type="button" *ngIf="oncancel" (click)="cancel()" label=""
+                class="p-button-secondary button-sm mx-1 py-2"><span
+                    class="fadeIn animated bx bx-reset"></span></button>
+        </div>
+
+
+    </form>
+
+    <div class="col-12">
+        <p-table #dt [value]="products" dataKey="id"
+            styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines" [rowHover]="true" [rows]="5"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+            [globalFilterFields]="['SUBLOB_NAME','SUBLOB_CODE','TBL_BUSINESSGROUP_MST.BG_NAME','TBL_SBU_MST.SBU_NAME','TBL_LOB_MST.LOB_NAME']">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    <span class="globalSearch p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                            placeholder="Global Search" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="SUBLOB_NAME">SUBLOB Name<p-sortIcon field="country"></p-sortIcon></th>
+                    <th pSortableColumn="SUBLOB_CODE">SUBLOB Code <p-sortIcon field="name"></p-sortIcon></th>
+                    <th pSortableColumn="TBL_BUSINESSGROUP_MST.BG_NAME">BG Name <p-sortIcon
+                            field="TBL_BUSINESSGROUP_MST.BG_NAME"></p-sortIcon></th>
+                    <th pSortableColumn="TBL_SBU_MST.SBU_NAME">SBU Name<p-sortIcon
+                            field="TBL_SBU_MST.SBU_NAME"></p-sortIcon></th>
+                    <th pSortableColumn="TBL_LOB_MST.LOB_NAME">LOB Name<p-sortIcon
+                            field="TBL_LOB_MST.LOB_NAME"></p-sortIcon></th>
+                    <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr class="p-selectable-row">
+                    <td>
+                        <span class="p-column-title">SUB LOB NAME</span>
+                        <span class="image-text">{{product.SUBLOB_NAME
+                            }}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">SUB LOB CODE</span>
+                        {{product.SUBLOB_CODE}}
+                    </td>
+
+                    <td>
+                        <span class="p-column-title">BG NAME</span>
+                        {{product.TBL_BUSINESSGROUP_MST?.BG_NAME}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">SBU NAME</span>
+                        {{product.TBL_SBU_MST?.SBU_NAME}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">LOB NAME</span>
+                        {{product.TBL_LOB_MST?.LOB_NAME}}
+                    </td>
+                    <td>
+                        <!-- <button pButton type="button" icon="pi pi-pencil" (click)="oneditView(product)" iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary mr-2"></button>
+
+                        <button pButton type=" button" icon="pi pi-trash" (click)="deleteBtn(product)" iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"></button> -->
+                        <i class="pi pi-pencil" (click)="oneditView(product)"></i>&nbsp;&nbsp;
+                        <i class="pi pi-trash" (click)="deleteBtn(product)"></i>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No products found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

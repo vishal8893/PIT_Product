@@ -1,0 +1,110 @@
+<p-toast></p-toast>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+    <div class="col-12 mb-2 text-primary">
+        <!-- <h6 class="mb-0">Materialsubsidiary Master</h6> -->
+    </div>
+    <form autocomplete="off" [formGroup]="m3andmaterailsubdairyform">
+
+        <div class="row">
+            <!-- <label for="inputText1" class="col-md-5 col-lg-4 col-xl-auto col-xxl-auto col-form-label">Materialsubsidiary
+                Code<span class="required-asterisk">*</span></label> -->
+            <!-- <input type="text" class="p-inputtext-sm w-100" placeholder="Materialsubsidiary Code" pInputText
+                formControlName="Materialsubsidiarycode" [(ngModel)]="materialcodeNgModel" required> -->
+            <div class="inputText col-md-6 col-lg-5 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control w-100" placeholder="" pInputText
+                        formControlName="Materialsubsidiarycode" required>
+                    <label for="inputText4" class="">Material Subsidiary Code<span
+                            class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="m3andmaterailsubdairyform.get('Materialsubsidiarycode').hasError('required') && (m3andmaterailsubdairyform.get('Materialsubsidiarycode').touched || m3andmaterailsubdairyform.get('Materialsubsidiarycode').dirty)">
+                        Material Subsidiary Code Required.
+                    </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-5 col-lg-4 col-xl-auto col-xxl-auto col-form-label">Materialsubsidiary
+                Name<span class="required-asterisk">*</span></label> -->
+            <!-- <input type="text" class="p-inputtext-sm w-100" placeholder="Materialsubsidiary Name" pInputText
+                formControlName="Materialsubsidiaryname" [(ngModel)]="materialnameNgModel" required> -->
+            <div class="inputText col-md-6 col-lg-5 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control w-100" placeholder="" pInputText
+                        formControlName="Materialsubsidiaryname" required>
+                    <label for="inputText4" class="">Material Subsidiary Name<span
+                            class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="m3andmaterailsubdairyform.get('Materialsubsidiaryname').hasError('required') && (m3andmaterailsubdairyform.get('Materialsubsidiaryname').touched || m3andmaterailsubdairyform.get('Materialsubsidiaryname').dirty)">
+                        Material Subsidiary Name Required.
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 text-center">
+            <button pButton pRipple type="button" *ngIf="onadd" (click)="creatematerial()" label=""
+                class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><i class="bx bx-plus"></i></button>
+            <button pButton pRipple type="button" *ngIf="oneditbtn" (click)="updatematerial()" label=""
+                class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><span
+                    class="fadeIn animated bx bx-reset"></span></button>
+            <button pButton pRipple type="button" *ngIf="oncancel" (click)="cancel()" label=""
+                class="p-button-secondary button-sm mx-1 py-2"><span
+                    class="fadeIn animated bx bx-reset"></span></button>
+        </div>
+
+    </form>
+
+    <div class="col-12">
+        <p-table #dt [value]="products" dataKey="id"
+            styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines" [rowHover]="true" [rows]="5"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+            [globalFilterFields]="['MATERIALSUBSIDIARY_CODE','MATERIALSUBSIDIARY_NAME']">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    <span class="globalSearch p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                            class="p-inputtext-sm" placeholder="Global Search" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="MATERIALSUBSIDIARY_CODE">Material Subsidiary Code <p-sortIcon
+                            field="date"></p-sortIcon></th>
+                    <th pSortableColumn="MATERIALSUBSIDIARY_NAME">Material Subsidiary Name <p-sortIcon
+                            field="name"></p-sortIcon></th>
+                    <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr class="p-selectable-row">
+                    <td>
+                        <span class="p-column-title">MATERIALSUBSIDIARY CODE</span>
+                        {{product.MATERIALSUBSIDIARY_CODE}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">MATERIALSUBSIDIARY NAME</span>
+                        {{product.MATERIALSUBSIDIARY_NAME}}
+                    </td>
+                    <td>
+                        <!-- <button pButton type="button" icon="pi pi-pencil" (click)="oneditmaterial(product)"
+                            iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary mr-2"></button>
+
+                        <button pButton pRipple icon="pi pi-trash" (click)="deletematerial(product)" iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"></button> -->
+                        <i class="pi pi-pencil" (click)="oneditmaterial(product)"></i>&nbsp;&nbsp;
+                        <i class="pi pi-trash" (click)="deletematerial(product)"></i>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No products found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

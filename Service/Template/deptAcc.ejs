@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <style>
+        .container {
+            margin: 0 auto;
+            /* This centers the container horizontally */
+            max-width: 800px;
+            /* Adjust this width as needed */
+            padding: 20px;
+            /* Add padding to create space on the sides */
+        }
+
+        header {
+            background-color: #007BFF;
+            /* Set the background color for the header */
+            color: #FFFFFF;
+            /* Set the text color for the header */
+            text-align: center;
+            padding: 10px 0;
+            /* Add padding to the header */
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #007BFF;
+            /* Set the background color for the footer */
+            color: #FFFFFF;
+            /* Set the text color for the footer */
+            text-align: center;
+            padding: 10px 0;
+            /* Add padding to the footer */
+        }
+
+        table {
+            width: 100%;
+        }
+
+        table th,
+        table td {
+            word-wrap: break-word;
+            max-width: 150px; /* Adjust the max-width as needed */
+        }
+    </style>
+    <!-- Add your CSS and other meta tags as needed -->
+</head>
+
+<body>
+    <header>
+        <span class="title" style="text-align: center; display: block; width: 100%;">Dependent Account Details</span>
+        <br />
+    </header>
+    <div class="container">
+        <div>
+            <div>
+                <h2>Dependent Account Details:</h2>
+                <table border="1" style="margin-top: 20px;">
+                    <tr>
+                        <th>DEPENDENT NAME</th>
+                        <th>RELATIONSHIP</th>
+                        <th>PAN</th>
+                        <th>ENTITY TRADE DETAILS</th>
+                        <th>OTHER TRADE DETAILS</th>
+                        <th>DP ACCOUNT DETAILS</th>
+                        <th>MINOR</th>
+                    </tr>
+                    <% FinishData.Dept.forEach(function(data) { %>
+                        <tr>
+                            <td>
+                                <%= data.RELATIVE_NAME %>
+                            </td>
+                            <td>
+                                <!-- <%= data.RELATIONSHIP_NAME %> -->
+                                <% if (data.RELATIONSHIP_NAME === 'Other') { %>
+                                    <%= data.REL_OTHER_NAME %>
+                                <% } else { %>
+                                    <%= data.RELATIONSHIP_NAME %>
+                                <% } %>
+                            </td>
+                            <td>
+                                <%= data.PAN_NO %>
+                            </td>
+                            <td>
+                                <%= data.ENTITY_ACCOUNT_NUMBERS %>
+                            </td>
+                            <td>
+                                <%= data.TRADING_ACCOUNT_NUMBERS %>
+                            </td>
+                            <td>
+                                <%= data.DP_ACCOUNT_NUMBERS %>
+                            </td>
+                            <td>
+                                <% if (data.IS_MINOR) { %>
+                                    <% if (data.MOBILE && data.PHONE) { %>
+                                        MOBILE=<%= data.MOBILE %><br>PHONE=<%= data.PHONE %>
+                                    <% } else if (data.MOBILE) { %>
+                                        MOBILE=<%= data.MOBILE %>
+                                    <% } else if (data.PHONE) { %>
+                                        PHONE=<%= data.PHONE %>
+                                    <% } %>
+                                <% } else { %>
+                                    <%= data.IS_MINOR %>
+                                <% } %>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Newel Technologies Pvt</p>
+        <!-- You can add any content you want in the footer section -->
+    </footer>
+</body>
+
+</html>

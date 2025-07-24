@@ -1,0 +1,186 @@
+<p-toast></p-toast>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+    <div class="col-12 mb-2 text-primary">
+
+    </div>
+    <form autocomplete="off" [formGroup]="lobForm">
+
+        <div class="row">
+
+            <div class="inputText col-md-4 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-dropdown [options]="TradeArray" formControlName="Trade" [(ngModel)]="buisnessidNgmodel"
+                        optionLabel="Name" [filter]="true" filterBy="Name" optionValue="Name" [showClear]="true"
+                        placeholder="Select Trade" class="form-control px-0" required></p-dropdown>
+                    <label for="inputText4" class="">Trade<span class="required-asterisk">*</span></label>
+
+                </div>
+            </div>
+
+            <div class="inputText col-md-4 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-dropdown [options]="UserArray" formControlName="Username" optionLabel="FIRSTNAME" [filter]="true"
+                        filterBy="FIRSTNAME" placeholder="Select User Name" [showClear]="true" optionValue="ID"
+                        class="form-control px-0" required></p-dropdown>
+                    <label for="inputText4" class="">User Name<span class="required-asterisk">*</span></label>
+
+                </div>
+            </div>
+
+            <div class="inputText col-md-4 col-lg-4 col-xl-2 mb-2">
+                <button pButton pRipple type="button" [disabled]="lobForm.invalid" (click)="Search()" label=""
+                    class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><i
+                        class="bx bx-search"></i></button>
+            </div>
+
+
+        </div>
+
+    </form>
+
+    <div class="col-12 text-center">
+        <button pButton pRipple type="button" *ngIf="onadd" label="All Approve" (click)="AllSelected()"
+            class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"></button>
+
+        <button pButton pRipple type="button" *ngIf="oncancel" (click)="cancel()" label="Reset"
+            class="p-button-secondary button-sm mx-1 py-2"></button>
+    </div>
+
+    <div class="col-12">
+
+        <p-table #dt [value]="SearchArray" dataKey="id" [(selection)]="selectedProducts" [paginator]="true" [rows]="10"
+            [rowsPerPageOptions]="[5,10,15,20]" [rowHover]="true" [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" dataKey="ID"
+            styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines" [filterDelay]="0"
+            [globalFilterFields]="['CRE_USER','CRE_DATE','NatureofTrade','DependentName','Security',
+            'Transaction','Month','OptionType','QuantityLot','EqQuantity','FutOpQuantityLot','StrikePrice','Position','EmployeeNumber','ISIN','Reason']">
+
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    <span class="globalSearch p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                            class="p-inputtext-sm" placeholder="Global Search" />
+                    </span>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 4rem">
+                        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                    </th>
+
+                    <th pSortableColumn="CRE_USER">CRE USER <p-sortIcon field="CRE_USER"></p-sortIcon></th>
+                    <th pSortableColumn="CRE_DATE">CRE DATE <p-sortIcon field="CRE_DATE"></p-sortIcon></th>
+                    <th pSortableColumn="NatureofTrade">Natureof Trade<p-sortIcon field="NatureofTrade"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="Requestfor">Request for<p-sortIcon field="Requestfor"></p-sortIcon></th>
+                    <th pSortableColumn="DependentName">Dependent Name<p-sortIcon field="DependentName"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="Security">Security<p-sortIcon field="Security"></p-sortIcon></th>
+                    <th pSortableColumn="Transaction">Transaction<p-sortIcon field="Transaction"></p-sortIcon></th>
+                    <th pSortableColumn="Month">Month<p-sortIcon field="Month"></p-sortIcon></th>
+                    <th pSortableColumn="OptionType">Option Type<p-sortIcon field="OptionType"></p-sortIcon></th>
+                    <th pSortableColumn="QuantityLot">Quantity Lot<p-sortIcon field="QuantityLot"></p-sortIcon></th>
+                    <th pSortableColumn="EqQuantity">Eq Quantity<p-sortIcon field="EqQuantity"></p-sortIcon></th>
+                    <th pSortableColumn="FutOpQuantityLot">FutOp Quantity Lot<p-sortIcon
+                            field="FutOpQuantityLot"></p-sortIcon></th>
+                    <th pSortableColumn="StrikePrice">Strike Price<p-sortIcon field="StrikePrice"></p-sortIcon></th>
+                    <th pSortableColumn="Position">Position<p-sortIcon field="Position"></p-sortIcon></th>
+                    <th pSortableColumn="EmployeeNumber">EmployeeNumber<p-sortIcon field="EmployeeNumber"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="ISIN">ISIN<p-sortIcon field="ISIN"></p-sortIcon></th>
+                    <th pSortableColumn="ApprovalStatus">Status<p-sortIcon field="ApprovalStatus"></p-sortIcon></th>
+
+                    <th pSortableColumn="activity">Activity<p-sortIcon field="activity"></p-sortIcon></th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-product>
+                <tr [pSelectableRow]="product">
+                    <td>
+                        <p-tableCheckbox [value]="product"></p-tableCheckbox>
+                    </td>
+
+                    <td>{{product.CRE_USER}}</td>
+                    <td>{{product.CRE_DATE | date:'dd/MM/yyyy'}}</td>
+                    <td>{{product.NatureofTrade}}</td>
+                    <td>{{product.Requestfor}}</td>
+                    <td>{{product.DependentName}}</td>
+                    <td>{{product.Security}}</td>
+                    <td>{{product.Transaction}}</td>
+                    <td>{{product.Month}}</td>
+                    <td>{{product.OptionType}}</td>
+                    <td>{{product.QuantityLot}}</td>
+                    <td>{{product.EqQuantity}}</td>
+                    <td>{{product.FutOpQuantityLot}}</td>
+                    <td>{{product.StrikePrice}}</td>
+                    <td>{{product.Position}}</td>
+                    <td>{{product.EmployeeNumber}}</td>
+                    <td>{{product.ISIN}}</td>
+                    <td>{{product.ApprovalStatus}}</td>
+
+                    <td>
+                        <div style="display: flex; gap: 5px; align-items: center;">
+                            <button pButton pRipple type="button"
+                                class="btn-light btn-primary p-button-info p-button-sm py-2"
+                                (click)="SingleCreate(product)">Approve
+
+                            </button>
+                            <button pButton pRipple type="button" class="p-button-sm py-2"
+                                style="background-color: rgb(222, 42, 22); border: none; color: white;"
+                                (click)="SingleReject(product)">Reject
+
+                            </button>
+                        </div>
+                    </td>
+
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="100%">No records found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+    </div>
+</div>
+
+
+
+<p-dialog header="Rejection Reason" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }"><br>
+    <div class="p-fluid">
+        <div class="flex items-center gap-4 mb-4">
+            <input placeholder="Enter Remark" pInputText id="username" class="flex-1" autocomplete="off"
+                [(ngModel)]="remark" />
+        </div>
+
+
+        <div class="flex justify-end gap-2">
+            <!-- <p-button label="Cancel" (click)="visible = false" styleClass="p-button-sm button-black">
+            </p-button> -->
+
+            <button pButton pRipple type="button" class="btn-light btn-primary p-button-info p-button-sm py-2"
+                (click)="visible = false">Cancel
+
+            </button>
+
+            <!-- <p-button label="Save" (click)="Reject()" (click)="visible = false"
+                [disabled]="!remark || remark.trim() === ''" styleClass="p-button-sm button-red">
+            </p-button> -->
+
+
+            
+            <button pButton pRipple type="button" class="p-button-sm py-2" (click)="visible = false"
+                style="background-color: rgb(222, 42, 22); border: none; color: white;"
+                 [disabled]="!remark || remark.trim() === ''" (click)="Reject()">Reject
+
+            </button>
+
+        </div>
+
+    </div>
+</p-dialog>

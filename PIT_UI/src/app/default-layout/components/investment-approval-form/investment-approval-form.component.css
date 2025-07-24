@@ -1,0 +1,15 @@
+.center-content {
+    display: flex;
+    flex-direction: column; /* Center content vertically */
+    align-items: center;     /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+    height: 20vh;           /* Ensure the container takes up the full viewport height */
+  }
+  p-checkbox, label {
+    display: inline-block;
+    vertical-align: middle;
+    /* Add more CSS styles as needed for spacing, color, or other visual effects */
+  }
+
+ 
+  

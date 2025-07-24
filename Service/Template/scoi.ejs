@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <style>
+        .container {
+            margin: 0 auto;
+            /* This centers the container horizontally */
+            max-width: 800px;
+            /* Adjust this width as needed */
+            padding: 20px;
+            /* Add padding to create space on the sides */
+        }
+
+        header {
+            background-color: #007BFF;
+            /* Set the background color for the header */
+            color: #FFFFFF;
+            /* Set the text color for the header */
+            text-align: center;
+            padding: 10px 0;
+            /* Add padding to the header */
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #007BFF;
+            /* Set the background color for the footer */
+            color: #FFFFFF;
+            /* Set the text color for the footer */
+            text-align: center;
+            padding: 10px 0;
+            /* Add padding to the footer */
+        }
+    </style>
+    <!-- Add your CSS and other meta tags as needed -->
+</head>
+
+<body>
+    <header>
+        <span class="title" style="text-align: center; display: block; width: 100%;">Substantial Interest Declaration Form Data</span>
+        <br />
+    </header>
+    <div class="container">
+
+        <div>
+            <div>
+                <h2>Substantial Interest Declaration Form Data :</h2>
+                <!-- Add a table below -->
+                <table border="1" style="margin-top: 20px;">
+                    <tr>
+                        <th>Name of Self and Immediate Relative</th>
+                        <th>Relation with Immediate Relative</th>                                                
+                        <th>Nature of Substantial interest</th>                                                
+                        <th>Director Identification Number</th>
+                        <th>PAN</th>                                                
+                    </tr>
+                    <% FinishData.contactDetails.forEach(function(data) { %>
+                    <tr>
+                        <td>
+                            <%= data.NAME %>
+                        </td>
+                        <td>
+                            <%= data.Rel?.NAME %>
+                        </td>
+                        <td>
+                            <%= data.Interest?.NAME %>
+                        </td>
+                        <td>
+                            <%= data.DIN %>
+                        </td>
+                        <td>
+                            <%= data.PAN %>
+                        </td>                                                                        
+                    </tr>
+                    <% }); %>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <footer>
+        <p>Newel Technoloigies Pvt</p>
+        <!-- You can add any content you want in the footer section -->
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+RMS Blocking/UnBlocking
+||||12555|||ALL|nse_cm|SHANTI|null||||N|||Unblocked as per mail from EWM 20240513
+||||12555|||ALL|bse_cm|543499|M||||N|||Unblocked as per mail from EWM 20240513
+||||12555|||ALL|nse_cm|PRITI|null||||N|||Unblocked as per mail from EWM 20240513

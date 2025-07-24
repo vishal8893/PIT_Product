@@ -1,0 +1,18 @@
+::ng-deep .p-inputswitch {
+  width: 2.2rem;
+  height: 1.2rem;
+}
+
+::ng-deep .form-control:focus {
+  border-color: #ffffff;
+  box-shadow: none;
+}
+
+::ng-deep .form-control {
+  border: var(--bs-border-width) solid #ffffff;
+}
+
+
+::ng-deep .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+  background: #2e2c41;
+}

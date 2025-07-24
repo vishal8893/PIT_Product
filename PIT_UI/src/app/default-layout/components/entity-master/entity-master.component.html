@@ -1,0 +1,106 @@
+<p-toast></p-toast>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+    <div class="col-12 mb-2 text-primary">
+        <!-- <h6 class="mb-0">Entity Master</h6> -->
+    </div>
+    <form autocomplete="off" [formGroup]="Entityform">
+
+        <div class="row">
+            <!-- <label for="inputText1" class="col-md-3 col-lg-auto col-form-label">Entity Code<span
+                    class="required-asterisk">*</span></label> -->
+            <!-- <input type="text" class="p-inputtext-sm w-100" placeholder="Entity Code" pInputText
+        formControlName="enititycodecontroller"   [(ngModel)]="entitycodeNgModel" required> -->
+            <div class="inputText col-md-7 col-lg-3 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control w-100" placeholder="" pInputText
+                        formControlName="enititycodecontroller" required>
+                    <label for="inputText4" class="">Entity Code<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="Entityform.get('enititycodecontroller').hasError('required') && (Entityform.get('enititycodecontroller').touched || Entityform.get('enititycodecontroller').dirty)">
+                        Entity Code Required.
+                    </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-3 col-lg-auto col-form-label">Entity Name<span
+                    class="required-asterisk">*</span></label> -->
+            <!-- <input type="text" class="p-inputtext-sm w-100" placeholder="Entity Name" pInputText
+        formControlName="enititynamecontroller"  [(ngModel)]="entitynameNgModel" required> -->
+            <div class="inputText col-md-7 col-lg-3 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control w-100" placeholder="" pInputText
+                        formControlName="enititynamecontroller" required>
+                    <label for="inputText4" class="">Entity Name<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="Entityform.get('enititynamecontroller').hasError('required') && (Entityform.get('enititynamecontroller').touched || Entityform.get('enititynamecontroller').dirty)">
+                        Entity Name Required.
+                    </small>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+    <div class="col-12 text-center">
+        <button pButton pRipple type="button" *ngIf="onadd" (click)="createentity()" label=""
+            class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><i class="bx bx-plus"></i></button>
+        <button pButton pRipple type="button" *ngIf="oneditbtn" (click)="updateentity()" label=""
+            class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><span
+                class="fadeIn animated bx bx-reset"></span></button>
+        <button pButton pRipple type="button" *ngIf="oncancel" (click)="cancel()" label=""
+            class="p-button-secondary button-sm mx-1 py-2"><span class="fadeIn animated bx bx-reset"></span></button>
+    </div>
+
+    <div class="col-12">
+        <p-table #dt [value]="products" dataKey="id"
+            styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines" [rowHover]="true" [rows]="5"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+            [globalFilterFields]="['ENTITY_CODE','ENTITY_NAME']">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    <span class="globalSearch p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                            class="p-inputtext-sm" placeholder="Global Search" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>                    
+                    <th pSortableColumn="ENTITY_CODE">Entity Code <p-sortIcon field="name"></p-sortIcon></th>
+                    <th pSortableColumn="ENTITY_NAME">Entity Name <p-sortIcon field="country.name"></p-sortIcon></th>                    
+                    <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr class="p-selectable-row">
+                    <td>
+                        <span class="p-column-title">ENTITY CODE</span>
+                        {{product.ENTITY_CODE}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">ENTITY NAME</span>
+                        <span class="image-text">{{product.ENTITY_NAME
+                            }}</span>
+                    </td>
+
+                    <td>
+                        <!-- <button pButton type="button" icon="pi pi-pencil" (click)="oneditentity(product)" iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary mr-2"></button>
+                        
+                        <button pButton type=" button" icon="pi pi-trash" (click)="deleteentity(product)" iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"></button> -->
+                        <i class="pi pi-pencil" (click)="oneditentity(product)"></i>&nbsp;&nbsp;
+                        <i class="pi pi-trash" (click)="deleteentity(product)"></i>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No products found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

@@ -1,0 +1,381 @@
+<p-toast></p-toast>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+    <div class="col-12 mb-2 text-primary">
+        <!-- <h6 class="mb-0">Scrip Master</h6> -->
+    </div>
+
+    <form autocomplete="off" [formGroup]="scriptmstform">
+        <div class="row">
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">BSE Code</label> -->
+            <div class="col-md-7 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control" placeholder="" pInputText [(ngModel)]="bsecodeNgModel"
+                        formControlName="bsecodecontroller" [required]="!isValidBseOrNseCode()">
+                    <label for="inputText4" class="">BSE Code</label>
+                    <small style="color: red;"
+                    *ngIf="scriptmstform.get('bsecodecontroller').hasError('required') && (scriptmstform.get('bsecodecontroller').touched || scriptmstform.get('bsecodecontroller').dirty)">
+                    Either BSE or NSE code is required
+                </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">NSE BSE Code</label> -->
+            <div class="inputText col-md-7 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control" placeholder="" pInputText [(ngModel)]="nsebsecodeNgModel"
+                        formControlName="nsebseccodecontroller" required>
+                    <label for="inputText4" class="">NSE BSE Code</label>
+                    <!-- <small style="color: red;" 
+                    *ngIf="scriptmstform.get('nsebseccodecontroller').hasError('required') && (scriptmstform.get('nsebseccodecontroller').touched || scriptmstform.get('nsebseccodecontroller').dirty)">
+                    NSEBSE Code is required
+                </small> -->
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">NSE Code</label> -->
+            <div class="inputText col-md-7 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control" placeholder="" pInputText [(ngModel)]="nsecodeNgModel"
+                        formControlName="nsecodecontroller" [required]="!isValidBseOrNseCode()">
+                    <label for="inputText4" class="">NSE Code</label>
+                    <small style="color: red;" 
+                    *ngIf="scriptmstform.get('nsecodecontroller').hasError('required') && (scriptmstform.get('nsecodecontroller').touched || scriptmstform.get('nsecodecontroller').dirty)">
+                    Either BSE or NSE code is required
+                </small>
+                </div>
+            </div>
+            <!-- </div>
+
+        <div class="row"> -->
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Lot Size</label> -->
+            <div class="inputText col-md-7 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control" placeholder="" pInputText [(ngModel)]="lotsizeNgModel"
+                        formControlName="lotsizecontroller" title="enter numbers" pattern="^\d+(\.\d+)?$" required>
+                    <label for="inputText4" class="">Lot Size</label>
+                    <!-- <small style="color: red;" 
+                    *ngIf="scriptmstform.get('lotsizecontroller').hasError('required') && (scriptmstform.get('lotsizecontroller').touched || scriptmstform.get('lotsizecontroller').dirty)">
+                    Lot Size is required
+                </small> -->
+                    <span *ngIf="lotsizeNgModel && !isValidLotSize()" class="text-red-500">
+                        <h6>Invalid Lot Size</h6>
+                    </span>
+                    <!-- <span *ngIf="lotsizeNgModel && !isValidLotSize()" class="text-red-500">
+                    <h6>Invalid Lot Size</h6>
+                  </span> -->
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">ISIN Code<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="inputText col-md-7 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control" placeholder="" pInputText [(ngModel)]="isincodeNgModel"
+                        formControlName="isisncontroller" required>
+                    <label for="inputText4" class="">ISIN Code<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="scriptmstform.get('isisncontroller').hasError('required') && (scriptmstform.get('isisncontroller').touched || scriptmstform.get('isisncontroller').dirty)">
+                        ISIN Code is required
+                    </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Bloomberg Code</label> -->
+            <div class="inputText col-md-7 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control" placeholder="" pInputText [(ngModel)]="blmrgcodeNgModel"
+                        formControlName="blmrgcontroller" required>
+                    <label for="inputText4" class="">Bloomberg Code</label>
+                    <!-- <small style="color: red;" 
+                    *ngIf="scriptmstform.get('blmrgcontroller').hasError('required') && (scriptmstform.get('blmrgcontroller').touched || scriptmstform.get('blmrgcontroller').dirty)">
+                    Bloomberg Code is required
+                </small> -->
+                </div>
+            </div>
+
+            <!-- </div>
+
+        <div class="row"> -->
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Reuters Code</label> -->
+            <div class="inputText col-md-7 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control" placeholder="" pInputText [(ngModel)]="retuerscodeNgModel"
+                        formControlName="retutercontroller" required>
+                    <label for="inputText4" class="">Reuters Code</label>
+                    <!-- <small style="color: red;" 
+                    *ngIf="scriptmstform.get('retutercontroller').hasError('required') && (scriptmstform.get('retutercontroller').touched || scriptmstform.get('retutercontroller').dirty)">
+                    Retuers Code is required
+                </small> -->
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Sedol Code</label> -->
+            <div class="inputText col-md-7 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control" placeholder="" pInputText [(ngModel)]="sedolcodeNgModel"
+                        formControlName="sedolcontroller" required>
+                    <label for="inputText4" class="">Sedol Code</label>
+                    <!-- <small style="color: red;" 
+                    *ngIf="scriptmstform.get('sedolcontroller').hasError('required') && (scriptmstform.get('sedolcontroller').touched || scriptmstform.get('sedolcontroller').dirty)">
+                    Sedol Code is required
+                </small> -->
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Dividend Date</label> -->
+            <div class="col-md-7 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-calendar class="ui-timepicker ui-widget-header ui-corner-all ng-tns-c9-1 ng-star-inserted"
+                        [showIcon]="true" inputId="icon" class="border-0 form-control p-0 calendarIcon"
+                        [(ngModel)]="divdateNgModel" styleClass="w-100" placeholder="select Dividend Date" formControlName="divcontroller"
+                        required></p-calendar>
+                    <label for="inputText4" class="">Dividend Date</label>
+                    <!-- <small style="color: red;" 
+                    *ngIf="scriptmstform.get('divcontroller').hasError('required') && (scriptmstform.get('divcontroller').touched || scriptmstform.get('divcontroller').dirty)">
+                    Dividend Date is required
+                </small> -->
+                </div>
+            </div>
+
+            <!-- </div>
+
+        <div class="row"> -->
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Restricted Reset</label> -->
+            <div class="inputText col-md-7 col-lg-4 col-xl-2 mb-2 ">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control" placeholder="" pInputText [(ngModel)]="restrictNgModel"
+                        [maxLength]="1" formControlName="rescontroller" required>
+                    <label for="inputText4" class="">Restricted Reset</label>
+                    <!-- <small style="color: red;" 
+                    *ngIf="scriptmstform.get('rescontroller').hasError('required') && (scriptmstform.get('rescontroller').touched || scriptmstform.get('rescontroller').dirty)">
+                    Restricted Reset is required
+                </small> -->
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Script Desc<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="inputText col-md-7 col-lg-4 col-xl-2 mb-2 ">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control" placeholder="" pInputText [(ngModel)]="scdescNgModel"
+                        formControlName="scdescontroller" required>
+                    <label for="inputText4" class="">Scrip Desc<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="scriptmstform.get('scdescontroller').hasError('required') && (scriptmstform.get('scdescontroller').touched || scriptmstform.get('scdescontroller').dirty)">
+                        Scrip Desc is required
+                    </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Holding Period<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="inputText col-md-7 col-lg-4 col-xl-2 mb-2 ">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control" formControlName="holdcontroller" placeholder="" pInputText
+                        [(ngModel)]="holdperiodNgModel">
+                    <label for="inputText4" class="">Holding Period</label>
+                </div>
+            </div>
+            <!-- </div>
+
+        <div class="row"> -->
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">IRF Formats<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="inputText col-md-7 col-lg-4 col-xl-2 mb-2 ">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control" placeholder="" [maxLength]="2" pInputText
+                        [(ngModel)]="irfNgModel" formControlName="irfcontroller">
+                    <label for="inputText4" class="">IRF Formats</label>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">BSE Group Name</label> -->
+            <div class="inputText col-md-7 col-lg-4 col-xl-2 mb-2 ">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control" placeholder="" pInputText [(ngModel)]="bsegroupnameNgModel"
+                        formControlName="bsegroupcontroller" required>
+                    <label for="inputText4" class="">BSE Group Name</label>
+                    <!-- <small style="color: red;" 
+                    *ngIf="scriptmstform.get('bsegroupcontroller').hasError('required') && (scriptmstform.get('bsegroupcontroller').touched || scriptmstform.get('bsegroupcontroller').dirty)">
+                    BSE Group Name is required
+                </small> -->
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Exchange</label> -->
+            <div class="col-md-7 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-dropdown [options]="exid" [(ngModel)]="excNgmodel" formControlName="excontroller"
+                        optionLabel="NAME" [filter]="true" filterBy="NAME" [showClear]="true" optionValue="ID"
+                        placeholder="Select Exchange" class="form-control px-0"></p-dropdown>
+                    <label for="inputText4" class="">Exchange</label>
+                    <!-- <small style="color: red;"
+                    *ngIf="scriptmstform.get('excontroller').hasError('required') && (scriptmstform.get('excontroller').touched || scriptmstform.get('excontroller').dirty)">
+                    Exchange is required
+                </small> -->
+                </div>
+            </div>
+            <!-- </div>
+
+        <div class="row"> -->
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Nature of Trade</label> -->
+            <div class="col-md-7 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-dropdown [options]="tradeid" [(ngModel)]="tradeNgmodel" formControlName="tradecontroller"
+                        optionLabel="NAME" [filter]="true" filterBy="NAME" [showClear]="true" optionValue="ID"
+                        placeholder="Select Nature of Trade" class="form-control px-0"></p-dropdown>
+                    <label for="inputText4" class="">Nature of Trade</label>
+                    <!-- <small style="color: red;"
+                    *ngIf="scriptmstform.get('tradecontroller').hasError('required') && (scriptmstform.get('tradecontroller').touched || scriptmstform.get('tradecontroller').dirty)">
+                    Nature of Trade is required
+                </small> -->
+                </div>
+            </div>
+
+            <label for="inputText1" class="col-md-4 col-lg-auto col-form-label">Is Government Security</label>
+            <div class="col-md-6 col-xl-2 mt-2 pt-1">
+                <p-checkbox name="is_gov_sec" [binary]="true" label={{activemodel}} formControlName="activecontroller"
+                    [(ngModel)]="activemodel"></p-checkbox>
+            </div>
+        </div>
+
+
+    </form>
+
+    <div class="col-12 text-center">
+        <button pButton pRipple type="button" *ngIf="onadd" (click)="createScriptmst()" label=""
+            class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><i class="bx bx-plus"></i></button>
+        <button pButton pRipple type="button" *ngIf="oneditbtn" (click)="updateScriptmst()" label=""
+            class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><span
+                class="fadeIn animated bx bx-reset"></span></button>
+        <button pButton pRipple type="button" *ngIf="oncancel" (click)="cancel()" label=""
+            class="p-button-secondary button-sm mx-1 py-2"><span class="fadeIn animated bx bx-reset"></span></button>
+    </div>
+
+    <div class="col-12">
+        <p-table #dt [value]="products" dataKey="id"
+            styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines" [rowHover]="true" [rows]="5"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+            [globalFilterFields]="['BSE_CODE','NSE_CODE','LOT_SIZE','ISIN_CODE','DIVIDEND_DATE','SCRIP_DESC','HOLDING_PERIOD','IRF_FORMATS','BSE_GROUP_Name','Exchange.NAME','NatureOfTrade.NAME']">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    <span class="globalSearch p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                            class="p-inputtext-sm" placeholder="Global Search" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="BSE_CODE">BSE Code <p-sortIcon field="bse"></p-sortIcon></th>
+                    <th pSortableColumn="NSE_BSE_CODE">NSE BSE Code <p-sortIcon field="nsebse"></p-sortIcon></th>
+                    <th pSortableColumn="NSE_CODE">NSE Code <p-sortIcon field="nse"></p-sortIcon></th>
+                    <th pSortableColumn="LOT_SIZE">Lot Size <p-sortIcon field="lotsize"></p-sortIcon></th>
+                    <th pSortableColumn="ISIN_CODE">ISIN Code <p-sortIcon field="isin"></p-sortIcon></th>
+                    <th pSortableColumn="BLOOMBERG_CODE">Bloomberg Code <p-sortIcon field="bloombrg"></p-sortIcon></th>
+                    <th pSortableColumn="REUTERS_CODE">Reuters Code <p-sortIcon field="reuters"></p-sortIcon></th>
+                    <th pSortableColumn="SEDOL_CODE">Sedol Code <p-sortIcon field="sedol"></p-sortIcon></th>
+                    <th pSortableColumn="DIVIDEND_DATE">Dividend Date <p-sortIcon field="date"></p-sortIcon></th>
+                    <th pSortableColumn="RESTRICTED_RESET">Restricted Reset <p-sortIcon field="reset"></p-sortIcon></th>
+                    <th pSortableColumn="SCRIP_DESC">Scrip Desc <p-sortIcon field="script"></p-sortIcon></th>
+                    <th pSortableColumn="HOLDING_PERIOD">Holding Period <p-sortIcon field="hold"></p-sortIcon></th>
+                    <th pSortableColumn="IRF_FORMATS">IRF Formats <p-sortIcon field="irf"></p-sortIcon></th>
+                    <th pSortableColumn="BSE_GROUP_Name">BSE Group Name <p-sortIcon field="bsegroup"></p-sortIcon>
+                    </th>
+                    <!-- <th pSortableColumn="Exchange.NAME">Exchange <p-sortIcon field="Exchange.NAME"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="NatureOfTrade.NAME">Nature of trade <p-sortIcon
+                            field="NatureOfTrade.NAME"></p-sortIcon></th> -->
+                    <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr class="p-selectable-row">
+                    <td>
+                        <span class="p-column-title">BSE Code</span>
+                        {{product.BSE_CODE}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">NSE BSE Code</span>
+                        <span class="image-text">{{product.NSE_BSE_CODE}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">NSE Code</span>
+                        <span class="image-text">{{product.NSE_CODE}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Lot Size</span>
+                        <span class="image-text">{{product.LOT_SIZE}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">ISIN Code</span>
+                        <span class="image-text">{{product.ISIN_CODE}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Bloomberg Code</span>
+                        <span class="image-text">{{product.BLOOMBERG_CODE}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Retuers Code</span>
+                        <span class="image-text">{{product.REUTERS_CODE}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Sedol Code</span>
+                        <span class="image-text">{{product.SEDOL_CODE}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Dividend Date</span>
+                        <span class="image-text">{{product.DIVIDEND_DATE}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Restricted Reset</span>
+                        <span class="image-text">{{product.RESTRICTED_RESET}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Script Desc</span>
+                        <span class="image-text">{{product.SCRIP_DESC}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Holding Period</span>
+                        <span class="image-text">{{product.HOLDING_PERIOD}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">IRF Formats</span>
+                        <span class="image-text">{{product.IRF_FORMATS}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">BSE Group Name</span>
+                        <span class="image-text">{{product.BSE_GROUP_Name}}</span>
+                    </td>
+                    <!-- <td>
+                        <span class="p-column-title">Exchange</span>
+                        <span class="image-text">{{product.Exchange?.NAME}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Nature of trade</span>
+                        <span class="image-text">{{ product.NatureOfTrade?.NAME}}</span>
+                    </td> -->
+                    <td>
+                        <!-- <button pButton type="button" icon="pi pi-pencil" (click)="onEditScriptmst(product)"
+                            iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"></button>
+                        
+                        <button pButton type=" button" icon="pi pi-trash" (click)="scriptmstDelete(product)"
+                            iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"></button> -->
+                        <i class="pi pi-pencil" (click)="onEditScriptmst(product)"></i>&nbsp;&nbsp;
+                        <i class="pi pi-trash" (click)="scriptmstDelete(product)"></i>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No products found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

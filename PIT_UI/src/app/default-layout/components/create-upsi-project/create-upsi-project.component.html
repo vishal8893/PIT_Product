@@ -1,0 +1,928 @@
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+    <div class="col-12 mb-2 text-primary">
+        <!-- <h6 class="mb-0">Create UPSI Project</h6> -->
+    </div>
+    <!-- <form autocomplete="off" [formGroup]="upsiprojectform"> -->
+
+        <!-- <div class="row">,-->
+            
+    <div class="row" *ngIf="showaddProjectbutton">
+        <div class="col-12 text-end"> 
+            <button type="button" class="btn btn-primary waves-effect waves-light mx-1" (click)="handleshowMenu()"><i class="bx bx-plus me-2"></i></button>
+        </div>
+    </div>
+            
+            
+    <div *ngIf="showMainPage">  
+        <form autocomplete="off" [formGroup]="upsiprojectform">
+            <div class="row">
+            <div class="col-12 md:col-6 lg:col-3">
+                <div class="form-floating form-floating-outline">
+
+                    <input type="text" class="form-control" placeholder="" formControlName="projectNamecontroller"
+                        pInputText required>
+                    <label for="inputText1" class="">Project Name<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="upsiprojectform.get('projectNamecontroller').hasError('required') && (upsiprojectform.get('projectNamecontroller').touched || upsiprojectform.get('projectNamecontroller').dirty)">
+                        Project Name Required.
+                    </small>
+                </div>
+            </div>
+            <div class="col-12 md:col-6 lg:col-3">
+                <div class="form-floating form-floating-outline">
+                    <p-calendar inputId="basic" class="form-control p-0" styleClass="w-100"
+                        placeholder="Select Start Date" formControlName="startdatecontroller"></p-calendar>
+                    <label for="inputText1">Start Date<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="upsiprojectform.get('startdatecontroller').hasError('required') && (upsiprojectform.get('startdatecontroller').touched || upsiprojectform.get('startdatecontroller').dirty)">
+                        Start Date Required.
+                    </small>
+                </div>
+            </div>
+            <div class="col-12 md:col-6 lg:col-3">
+                <div class="form-floating form-floating-outline">
+                    <p-calendar inputId="basic" class="form-control p-0" styleClass="w-100"
+                        placeholder="Select End Date" formControlName="enddatecontroller" [minDate]="minDatenew"></p-calendar>
+                    <label for="inputText1">End Date</label>
+                    <!-- <span class="required-asterisk">*</span> -->
+                    <small style="color: red;"
+                        *ngIf="upsiprojectform.get('enddatecontroller').hasError('required') && (upsiprojectform.get('enddatecontroller').touched || upsiprojectform.get('enddatecontroller').dirty)">
+                        End Date Required.
+                    </small>
+                </div>
+            </div>
+            <div class="col-12 md:col-6 lg:col-3">
+                <div class="form-floating form-floating-outline">                                       
+                    <p-multiSelect [options]="applid" optionLabel="NAME" [filter]="true" [showClear]="true" optionValue="ID" placeholder="Select Team" class="form-control px-0"
+                    formControlName="applcontroller" defaultLabel ="'Select Team'" styleClass="w-100 border-0" display="chip" showCheckbox="true" required></p-multiSelect>    
+                    <label for="inputText1">Team<span class="required-asterisk">*</span></label>                     
+                    <small style="color: red;"
+                        *ngIf="upsiprojectform.get('applcontroller').hasError('required') && (upsiprojectform.get('applcontroller').touched || upsiprojectform.get('applcontroller').dirty)">
+                        Team Required.
+                    </small>                  
+                </div>   
+                
+                    <!-- <div class="d-flex align-items-center gap-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="IB" id="IB">
+                            <label class="form-check-label" for="IB">
+                                IB
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="CFI" id="CFI">
+                            <label class="form-check-label" for="CFI">
+                                CFI
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="EAAA" id="EAAA">
+                            <label class="form-check-label" for="EAAA">
+                                EAAA
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="EARC" id="EARC">
+                            <label class="form-check-label" for="EARC">
+                                EARC
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="IE" id="IE">
+                            <label class="form-check-label" for="IE">
+                                IE
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="EGI" id="EGI">
+                            <label class="form-check-label" for="EGI">
+                                EGI
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ETLI" id="ETLI">
+                            <label class="form-check-label" for="ETLI">
+                                ETLI
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="AMC" id="AMC">
+                            <label class="form-check-label" for="AMC">
+                                AMC
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="GM" id="GM">
+                            <label class="form-check-label" for="GM">
+                                GM
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="DRR" id="DRR">
+                            <label class="form-check-label" for="DRR">
+                                DRR
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="EWM-IM" id="EWM-IM">
+                            <label class="form-check-label" for="EWM-IM">
+                                EWM-IM
+                            </label>
+                        </div>
+                    </div> -->
+                               
+            </div>
+            <div class="col-12 md:col-6 lg:col-3">
+                <div class="form-floating form-floating-outline">
+                    <p-multiSelect [options]="protypeid" optionLabel="NAME" [filter]="true" [showClear]="true" optionValue="ID" placeholder="Select Type" class="form-control px-0"
+                    formControlName="protypecontroller" [defaultLabel]="'Select Type'" styleClass="w-100 border-0" display="chip" showCheckbox="true" required></p-multiSelect>    
+                    <label for="inputText1">Project Type<span class="required-asterisk">*</span></label><br />
+                    <!-- <p-checkbox name="IsActive" [binary]="true" inputId="checkbox1" formControlName="activecontroller1"
+                        [(ngModel)]="activemodel1">
+                    </p-checkbox>
+                    <label for="city1" class="pl-2 pr-4 pt-2" style="font-size: small;">Equity/FO</label>
+                    <p-checkbox name="IsActive" [binary]="true" inputId="checkbox1" formControlName="activecontroller2"
+                        [(ngModel)]="activemodel2">
+                    </p-checkbox>
+                    <label for="city1" class="pl-2 pr-4 pt-2" style="font-size: small;">Debt</label> -->
+
+                    <small style="color: red;"
+                        *ngIf="(upsiprojectform.get('protypecontroller').hasError('required') && (upsiprojectform.get('protypecontroller').touched || upsiprojectform.get('protypecontroller').dirty))">
+                        Project Type Required.
+                    </small>
+                </div>
+            </div>      
+            <!-- <div class="col-12 md:col-6 lg:col-3">
+                <div class="form-floating form-floating-outline">
+                    <button pButton pRipple type="submit" *ngIf="onadd" (click)="createUPSIProject()" label=""
+                        class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><i
+                            class="bx bx-plus"></i>ADD Project</button>
+                    <button pButton pRipple type="button" *ngIf="oneditbtn" (click)="updateUPSIProject()" label=""
+                        class="btn btn-warning btn-sm mx-1 py-2"><span
+                            class="fadeIn animated bx bx-upload"></span></button>
+                    <button pButton pRipple type="button" *ngIf="oncancel" (click)="cancel()" label=""
+                        class="p-button-secondary button-sm mx-1 py-2"><span
+                            class="fadeIn animated bx bx-reset"></span></button>
+                </div>
+            </div>  -->
+            </div>
+        </form>  
+        <form autocomplete="off" [formGroup]="Scriptform">
+            <div class="row">
+            <div class="col-12 md:col-6 lg:col-3">
+                <div class="form-floating form-floating-outline">
+                    <p-autoComplete [showClear]="true" class="form-control p-inputtext-sm px-0" placeholder="--Write--"
+                        field="SCRIP_DESC" [suggestions]="SearchSecurityData" formControlName="scriptNamecontroller"
+                        (completeMethod)="getallirfdata($event)" (onSelect)="setisin($event)" (paste)="onPaste($event)">
+                    </p-autoComplete>
+                    <label for="inputText1">Scrip Name<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="Scriptform.get('scriptNamecontroller').hasError('required') && (Scriptform.get('scriptNamecontroller').touched || Scriptform.get('scriptNamecontroller').dirty)">
+                        Scrip Name Required.
+                    </small>
+                </div>
+            </div>
+            <div class="col-12 md:col-6 lg:col-3">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control" placeholder="" formControlName="isincomtroller"
+                     pInputText required>                     
+                    <label for="inputText1">ISIN Number</label>
+                </div>
+            </div>
+            <div class="col-5">
+                <button type="button" class="btn btn-primary waves-effect waves-light p-2"  (click)="addscriptdata()">
+                    <i class="bx bx-plus"></i>
+                </button>                
+                <button type="button" class="btn btn-primary waves-effect waves-light p-2" style="margin-left: 10px;" (click)="toggleGrid()">
+                    <i class="bx bx-file me-2"></i>Show Scrip Details</button>            
+            </div>            
+        </div>
+        </form>
+        <div class="col-12  text-center">
+            <div class="form-floating form-floating-outline">
+                <button pButton pRipple type="submit" *ngIf="onadd" (click)="createUPSIProject()" label=""
+                    class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><i
+                        class="bx bx-plus"></i>ADD Project</button>
+                <!-- <button pButton pRipple type="button" *ngIf="oneditbtn" (click)="updateUPSIProject()" label=""
+                    class="btn btn-warning btn-sm mx-1 py-2"><span
+                        class="fadeIn animated bx bx-upload"></span></button> -->
+                <button pButton pRipple type="button" *ngIf="oneditbtn" (click)="updateUPSIProject()" label=""
+                    class="btn btn-warning btn-sm mx-1 py-2">Update</button>
+                <button pButton pRipple type="button" *ngIf="oncancel" (click)="cancel()" label=""
+                    class="p-button-secondary button-sm mx-1 py-2"><span
+                        class="fadeIn animated bx bx-reset"></span></button>
+            </div>
+        </div>
+        <div *ngIf="showGrid">
+            <p-table #dt [value]="Scripts" dataKey="id"
+            styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines" [rowHover]="true" [rows]="5"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+            [globalFilterFields]="['SCRIPT_NAME','ISIN']">
+            <ng-template pTemplate="caption">
+                <div class="table-header" style="height: fit-content;width: fit-content;font-size: smaller;">
+                    <span class="globalSearch p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText class="p-inputtext-sm" type="text"
+                            (input)="dt.filterGlobal($event.target.value, 'contains')"
+                            placeholder="Global Search" />
+                    </span>
+                    <!-- <button type="button" class="btn btn-primary waves-effect waves-light p-2" (click)="toggleGrid()">Close</button> -->
+                </div>                
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="SCRIPT_NAME">Scrip Name<p-sortIcon field="status"></p-sortIcon></th>                        
+                    <th pSortableColumn="ISIN">ISIN<p-sortIcon field="date"></p-sortIcon></th>                    
+                    <th pSortableColumn="activity">Action <p-sortIcon field="activity"></p-sortIcon></th>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-Script>
+                <tr class="p-selectable-row">
+                    <td>
+                        <span class="p-column-title">Scrip Name</span>
+                        {{Script.SCRIPT_NAME}}
+                    </td>                        
+                    <td>
+                        <span class="p-column-title">ISIN</span>
+                        <span class="image-text">{{Script.ISIN}}</span>
+                    </td>                    
+                    <td>                        
+                        <i class="pi pi-trash" (click)="deleteScript(Script)" style="margin-right: 5px;"></i>                                                                                                       
+                    </td>
+                </tr>
+            </ng-template>
+            <!-- <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No products found.</td>
+                </tr>
+            </ng-template> -->
+        </p-table>        
+        </div>         
+        <!-- </div> -->
+    <!-- </form> -->
+        <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2" *ngIf="showupload">
+        <div class="col">
+
+            <div class="card">
+                <div class="card-body">
+                    <ul class="nav nav-tabs nav-primary UPSItab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#EmployeeDetails" role="tab"
+                                aria-selected="true">
+                                <div class="d-flex align-items-center">
+                                    <div class="tab-icon"><i class='bx bx-user font-18 me-1'></i>
+                                    </div>
+                                    <div class="tab-title">Employee Details</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" data-bs-toggle="tab" href="#AuditorFiduciariesDetails"
+                                role="tab" aria-selected="false">
+                                <div class="d-flex align-items-center">
+                                    <div class="tab-icon"><i class='bx bx-user-pin font-18 me-1'></i>
+                                    </div>
+                                    <div class="tab-title">Auditor/Fiduciaries Details</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content py-3">
+                        <div class="tab-pane fade show active" id="EmployeeDetails" role="tabpanel">
+
+                            <!-- <form autocomplete="off" [formGroup]="upsientityform" *ngIf="showEntityPart"> -->
+                                <div class="row">
+                                    <div class="col-12 border-bottom mb-3 text-primary">
+                                        <h6 class="mb-0">Employee category Criteria</h6>
+                                    </div>
+                                    <div class="col-12 md:col-6 lg:col-3">
+                                        <div class="form-floating form-floating-outline">
+                                            <p-dropdown [(ngModel)]="entityNgmodel"
+                                                (ngModelChange)="onEntityChange()" [options]="entityid"
+                                                optionLabel="ENTITY_NAME" [filter]="true" filterBy="ENTITY_NAME"
+                                                [showClear]="true" placeholder="Select Entity" optionValue="ID"
+                                                class="form-control px-0"
+                                                [disabled]="isEntityDisabled"                                                
+                                                 required></p-dropdown>
+                                                <!-- [disabled]="upsientityform.get('entitycontroller')?.disabled";formControlName="entitycontroller" -->
+                                            <label for="inputText1" class="">Entity</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 md:col-6 lg:col-3">
+                                        <div class="form-floating form-floating-outline">
+
+                                            <p-dropdown [options]="sbuid" [(ngModel)]="sbuNgmodel"
+                                                (ngModelChange)="onSbuChange()" optionLabel="SBU_NAME"
+                                                [filter]="true" (onChange)="onchangeeventsub(sbuNgmodel)" (onChange)="onSelectionChange1($event)"
+                                                filterBy="SBU_NAME" [showClear]="true" placeholder="Select SBU"
+                                                optionValue="ID" class="form-control px-0"
+                                                [disabled]="isSbuDisabled"                                               
+                                                 required></p-dropdown>  
+                                                <!-- [disabled]="upsientityform.get('sbucontroller')?.disabled" ;formControlName="sbucontroller"                                                      -->
+                                            <label for="inputText1" class="">SBU</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 md:col-6 lg:col-3">
+                                        <div class="form-floating form-floating-outline">
+                                            <p-dropdown [options]="finallobitem" [(ngModel)]="lobNgmodel"
+                                                optionLabel="LOB_NAME" [filter]="true"
+                                                (onChange)="onchangeeventlob(lobNgmodel)" filterBy="LOB_NAME"
+                                                [showClear]="true" placeholder="Select LOB" optionValue="ID"
+                                                class="form-control px-0"
+                                                [disabled]="isLobDisabled"                                              
+                                                 required></p-dropdown> 
+                                                <!-- [disabled]="upsientityform.get('lobcontroller')?.disabled" ;formControlName="lobcontroller"                                                       -->
+                                            <label for="inputText1" class="">LOB</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 md:col-6 lg:col-3">
+                                        <div class="form-floating form-floating-outline">
+
+                                            <p-dropdown [options]="finalsublobitems" [(ngModel)]="sublobNgmodel"
+                                                optionLabel="SUBLOB_NAME" [filter]="true" filterBy="SUBLOB_NAME"
+                                                [showClear]="true" placeholder="Select SUBLOB" optionValue="ID"
+                                                class="form-control px-0"
+                                                [disabled]="isSublobDisabled"                                             
+                                                 required></p-dropdown>
+                                                <!-- [disabled]="upsientityform.get('sublobcontroller')?.disabled" ;formControlName="sublobcontroller"-->
+                                            <label for="inputText1" class="">SUBLOB</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">
+                                        <p-radioButton name="selectedUserCatSVP" [value]="true"
+                                            [(ngModel)]="selectedUserCatSVP"
+                                            (ngModelChange)="handleSelectionChangeSVP()"
+                                            [disabled]="isSVPDisabled"
+                                            ></p-radioButton>
+                                        <label for="svp" style="margin-left: 10px;font-size: smaller;">SVP and
+                                            Above</label>
+                                    </div>
+                                    <!-- formControlName="selectedUserCatSVP" ;formControlName="selectedUserCatSVP"-->
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">
+                                        <p-radioButton name="selectedUserCatCEO" [value]="true"
+                                            [(ngModel)]="selectedUserCatCEO"
+                                            (ngModelChange)="handleSelectionChangeCEO()"
+                                            [disabled]="isAllCEODisabled"
+                                            ></p-radioButton>
+                                        <label for="ceo" style="margin-left: 10px;font-size: smaller;">CEO & 2
+                                            LevelDown</label>
+                                    </div>
+                                    <!-- formControlName="selectedUserCatCEO";formControlName="selectedUserCatCEO" -->
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">
+                                        <p-radioButton name="selectedUserCatEmpAll" [value]="true"
+                                            [(ngModel)]="selectedUserCatEmpAll"
+                                            (ngModelChange)="handleSelectionChangeEmpALL()"
+                                            [disabled]="isAllEmployeesDisabled"
+                                            ></p-radioButton>
+                                        <label for="all" style="margin-left: 10px;font-size: smaller;">All
+                                            Employees</label>
+                                    </div>
+                                    <!-- formControlName="selectedUserCatEmpAll";formControlName="selectedUserCatEmpAll" -->  
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">                                        
+                                    </div>
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">                                        
+                                    </div>
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">                                        
+                                    </div>
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">                                        
+                                    </div>
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">                                        
+                                    </div>
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">                                        
+                                    </div>
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">                                        
+                                    </div>
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">                                        
+                                    </div>
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">                                        
+                                    </div>
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">                                        
+                                    </div>
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">                                        
+                                    </div>
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">                                        
+                                    </div> 
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">                                        
+                                    </div>
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">                                        
+                                    </div>
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">                                        
+                                    </div>
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">                                        
+                                    </div>
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">                                        
+                                    </div>
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">                                        
+                                    </div>
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">                                        
+                                    </div>
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">                                        
+                                    </div>
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">                                        
+                                    </div>
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">                                        
+                                    </div>                                 
+                                    <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">
+                                        <label for="" class="fw-bold">Enable Mail Sending</label>
+                                        <p-radioButton name="selectedSendMailYes" [value]="true"
+                                           [(ngModel)]="selectedSendMailYes" (ngModelChange)="handleChangeSendMailYes()"></p-radioButton>
+                                        <label for="Yes">Yes</label>
+                                        <!-- formControlName="selectedSendMailYes" -->
+                                        <p-radioButton name="selectedSendMailNo" [value]="true"
+                                          [(ngModel)]="selectedSendMailNo" (ngModelChange)="handleChangeSendMailNo()"></p-radioButton>
+                                        <label for="No">No</label>
+                                        <!-- formControlName="selectedSendMailNo"  -->
+                                      </div>
+                                      
+                                    <!-- <div class="inputText col-md-7 col-lg-4 col-xl-auto mb-2">
+                                        <button pButton pRipple type="button"
+                                            class="btn btn-primary waves-effect waves-light p-2 py-3"> <i
+                                                class="bx bx-plus"></i>
+                                        </button>
+                                    </div> -->
+                                    <!-- <div class="col-12">
+                                        <div class="table-responsive">
+                                            <table class="table align-middle mb-0 table-sm mb-4">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th>Sr. No.</th>
+                                                        <th>Entity</th>
+                                                        <th>SBU</th>
+                                                        <th>Lob</th>
+                                                        <th>Sub Lob</th>
+                                                        <th>SVP and Above</th>
+                                                        <th>CEO & 2 LevelDown</th>
+                                                        <th>All Employees</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>-</td>
+                                                        <td>Corporate Office</td>
+                                                        <td>Corporate Office</td>
+                                                        <td>Corporate Office (Non Alloc)</td>
+                                                        <td>No</td>
+                                                        <td>Yes</td>
+                                                        <td>No</td>
+                                                        <td><a href="#"><i class="pi pi-trash"></i></a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>-</td>
+                                                        <td>Corporate Office</td>
+                                                        <td>Corporate Office</td>
+                                                        <td>Corporate Office (Non Alloc)</td>
+                                                        <td>No</td>
+                                                        <td>Yes</td>
+                                                        <td>No</td>
+                                                        <td><a href="#"><i class="pi pi-trash"></i></a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td>-</td>
+                                                        <td>Corporate Office</td>
+                                                        <td>Corporate Office</td>
+                                                        <td>Corporate Office (Non Alloc)</td>
+                                                        <td>No</td>
+                                                        <td>Yes</td>
+                                                        <td>No</td>
+                                                        <td><a href="#"><i class="pi pi-trash"></i></a></td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div> -->
+                                </div>
+                            <!-- </form> -->
+
+
+                            <div class="grid">
+                                <div class="col-12 border-bottom mb-3 text-primary">
+                                    <h6 class="mb-0">Employee Details</h6>
+                                </div>
+                                
+                                
+                                <div class="col-12 md:col-6 lg:col-3">
+                                    <div class="form-floating form-floating-outline">
+
+                                        <p-autoComplete #autoCompleteRef [showClear]="true" class="form-control p-inputtext-sm px-0" placeholder="--Write--"
+                                         field="FIRSTNAME" [suggestions]="SearchEmpData" (onSelect)="setemp($event)"
+                                          (completeMethod)="getallempdata($event)" (paste)="onPaste($event)">
+                                        </p-autoComplete>
+                                        <label for="inputText1" class="">Employee Name<span
+                                                class="required-asterisk">*</span></label>
+
+                                    </div>
+                                </div>
+                                <div class="col-12 md:col-6 lg:col-3">
+                                    <div class="form-floating form-floating-outline">
+                                          <p-dropdown [options]="accessid" optionLabel="NAME" [filter]="true" filterBy="NAME" [showClear]="true"
+                                         placeholder="Select Access Type" class="form-control px-0" [(ngModel)]="acctypeModel" optionValue="ID" 
+                                         (onChange)="onSelectionChange($event)" required></p-dropdown>                                                 
+                                         <label for="">Access Type <span
+                                                class="required-asterisk">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="col-12 md:col-6 lg:col-1">
+                                    <div class="form-floating form-floating-outline">
+                                        <button pButton pRipple type="button" (click)="addEmployee()"
+                                            class="btn btn-primary waves-effect waves-light p-2 py-3"> <i
+                                                class="bx bx-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                                                                                       
+                                <div class="col-12 md:col-6 lg:col-2">
+                                    <label class="form-check-label" for=""> Enable Mail Sending</label>
+                                    <div class="">                                        
+                                        <div class="form-check form-check-inline">
+                                            <input name="selectedSendMailYes1" class="form-check-input" type="radio" value="Yes" 
+                                                [(ngModel)]="selectedSendMail" (ngModelChange)="handleSelection('Yes')">
+                                            <label class="form-check-label">Yes</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input name="selectedSendMailNo1" class="form-check-input" type="radio" value="No" 
+                                                [(ngModel)]="selectedSendMail" (ngModelChange)="handleSelection('No')">
+                                            <label class="form-check-label">No</label>
+                                        </div>
+                                    </div>                                                                                                            
+                                </div>
+                                <!-- <div class="col-12 md:col-6 lg:col-1">
+                                    <div class="form-floating form-floating-outline">
+                                        <button pButton pRipple type="button" (click)="addEmployee()"
+                                            class="btn btn-primary waves-effect waves-light p-2 py-3"> <i
+                                                class="bx bx-plus"></i>
+                                        </button>
+                                    </div>
+                                </div> -->
+                                <div class="col-12 md:col-6 lg:col-3">
+                                </div>
+                            
+                            
+                            
+                                <div class="col-12 md:col-6 lg:col-3">
+
+                                    <div class="">
+                                        <label for="inputText1">Upload Employees<span
+                                                class="required-asterisk">*</span>
+                                        </label>
+                                        <button type="button"
+                                            class="btn btn-secondary waves-effect waves-light mx-1"
+                                            (click)="downloadSample()"><i class="bx bx-file me-2"></i>Sample
+                                            Format</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 md:col-6 lg:col-3">                                            
+                                    <input class="form-control" type="file" id="formFile"
+                                        [value]="selectedFileName" readonly (click)="fileInput.click()">
+                                    <input type="file" #fileInput (change)="fileSelected($event)"
+                                        style="display: none">
+                                </div>                                        
+                    
+                                <div class="col-12 md:col-6 lg:col-3">
+                                    <div class="form-floating form-floating-outline">                                                
+                                        <button type="button" maxFileSize="5242880"
+                                            class="btn btn-info waves-effect waves-light mx-1"
+                                            (click)="uploadFile()"><i
+                                                class="bx bx-upload me-2"></i>Upload</button>
+                                        <button type="button"
+                                            class="btn btn-success waves-effect waves-light mx-1"
+                                            (click)="downloadFile(selectedFileName)"><i
+                                                class="bx bx-download me-2"></i>Download</button>
+                                    </div>
+                                </div>
+                            
+                                <div class="col-12 md:col-12 lg:col-12">
+                                    <div class="table-responsive" *ngIf="empSelected">
+                                        <table class="table align-middle mb-0 table-sm mb-4">
+                                            <thead class="table-light">
+                                                <tr>                                                            
+                                                    <th>Employee ID</th>
+                                                    <th>Employee Name</th>
+                                                    <th>PAN</th>
+                                                    <th>Access Type</th>                                                            
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let SelfDP of employeeDatas">                                                            
+                                                    <td>{{SelfDP.EMPNO}}</td>
+                                                    <td>{{SelfDP.EMPLOYEE_NAME}}</td>
+                                                    <td>{{SelfDP.PAN}}</td>
+                                                    <td>{{SelfDP.TBL_GENERIC_MST?.NAME}}</td>                                                            
+                                                    <td><i class="pi pi-trash" (click)="deleteEmp(SelfDP)"></i></td>
+                                                </tr>                                                        
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="showBtnGroup">
+                                <div class="col-12 text-center">
+                                    <button pRipple type="submit" (click)="addblockUnblock()"
+                                        [disabled]="loading" *ngIf="showBlockBtn"
+                                        class="btn btn-success waves-effect waves-light mx-1"><i
+                                            class="bx bx-download me-2"></i>{{ loading ?
+                                        'Processing...' : 'Generate
+                                        Blocking' }}</button>
+                                        <button pRipple type="submit" (click)="addblockUnblockAuditor()"
+                                        [disabled]="loading2" *ngIf="showAuditBlockBlockBtn"
+                                        class="btn btn-success waves-effect waves-light mx-1"><i
+                                            class="bx bx-download me-2"></i>{{ loading2 ?
+                                        'Processing...' : 'Generate
+                                        Blocking' }}</button>
+                                    <button pRipple type="submit" *ngIf="showEndProjectButton"
+                                        (click)="deleteUPSIProject()" [disabled]="loading1"
+                                        class="btn btn-danger waves-effect waves-light mx-1"><i
+                                            class="bx bx-list-check me-2"></i>{{ loading1 ? 'Processing...' :
+                                        'End Project' }}</button>
+                                    <button pRipple type="button" (click)="cancel1()" label="Reset"
+                                        *ngIf="oncancel1"
+                                        class="btn btn-warning waves-effect waves-light mx-1"><i
+                                            class="bx bx-reset me-2"></i> Reset</button>
+                                </div>
+                            </div>
+                        </div>                                
+                        <div class="tab-pane fade" id="AuditorFiduciariesDetails" role="tabpanel">                                    
+                             <div class="row gy-3">
+                                
+                                <div class="col-md-3 fv-plugins-icon-container">
+                                    <div class="form-floating form-floating-outline">
+                                        <input type="text" class="form-control" placeholder=""  [(ngModel)] = "nameNgModel"
+                                          pInputText required>
+                                        <label for="inputText1" class="">Name<span class="required-asterisk">*</span></label>                                                
+                                    </div>
+                                </div>
+                                <div class="col-md-3 fv-plugins-icon-container">
+                                    <div class="form-floating form-floating-outline">
+                                        <input type="text" class="form-control" placeholder="" [(ngModel)] = "pan1NgModel" pInputText required>
+                                        <label for="inputText1" class="">PAN/PAN equivalent<span class="required-asterisk">*</span></label>                                                
+                                    </div>
+                                </div>
+                                <div class="col-md-3 fv-plugins-icon-container">
+                                    <div class="form-floating form-floating-outline">
+                                        <input type="text" class="form-control" placeholder="" [(ngModel)] = "companyNgModel" pInputText required>
+                                        <label for="inputText1" class="">Company Name<span class="required-asterisk">*</span></label>                                                
+                                    </div>
+                                </div>                                
+                                <div class="col-md-3 fv-plugins-icon-container">
+                                    <div class="form-floating form-floating-outline">
+                                        <input type="text" class="form-control" placeholder="" [(ngModel)] = "pan2NgModel"  pInputText required>
+                                        <label for="inputText1" class="">PAN/PAN equivalent<span class="required-asterisk">*</span></label>                                                
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-3 fv-plugins-icon-container">
+                                    <div class="form-floating form-floating-outline">
+                                        <p-autoComplete #autoCompleteRef1 [showClear]="true" class="form-control p-inputtext-sm px-0" placeholder="--Write--"
+                                         field="FIRSTNAME" [suggestions]="SearchSharedBYData" (onSelect)="setpan($event)"
+                                          (completeMethod)="getallsharedbydata($event)" (paste)="onPaste($event)">
+                                    </p-autoComplete>
+                                    <label for="inputText1" class="">Shared By<span class="required-asterisk">*</span></label>                                                
+                                    </div>
+                                </div>
+                                <div class="col-md-3 fv-plugins-icon-container">
+                                    <div class="form-floating form-floating-outline">
+                                        <input type="text" class="form-control" placeholder="" pInputText [(ngModel)] = "panNgModel"
+                                        required>
+                                        <label for="">PAN<span
+                                                class="required-asterisk">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 fv-plugins-icon-container">
+                                    <div class="form-floating form-floating-outline">
+                                        <p-calendar inputId="basic" class="form-control p-0" styleClass="w-100" [(ngModel)] = "dateNgModel"
+                                            placeholder="Select Date" ></p-calendar>
+                                        <label for="">Shared Date<span
+                                                class="required-asterisk">*</span></label>                                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-3 fv-plugins-icon-container">
+                                    <div class="form-floating form-floating-outline">
+                                        <input type="text" class="form-control" placeholder="" [(ngModel)] = "relNgModel" pInputText 
+                                        required>
+                                        <label for="">Relationship<span
+                                                class="required-asterisk">*</span></label>                                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-3 fv-plugins-icon-container">
+                                    <div class="form-floating form-floating-outline">
+                                        <p-dropdown [options]="natureid" optionLabel="NAME" [filter]="true" filterBy="NAME" [showClear]="true" optionValue="ID"
+                                         placeholder="Select Nature" class="form-control px-0" [(ngModel)] = "natureNgModel" required></p-dropdown>
+                                         <label for="inputText1">Nature of UPSI<span class="required-asterisk">*</span></label>                                                
+                                    </div>
+                                </div>
+                                <div class="col-md-3 fv-plugins-icon-container">
+                                    <div class="form-floating form-floating-outline">
+                                        <input type="text" class="form-control" [(ngModel)] = "docNgModel" placeholder="" pInputText 
+                                        required>
+                                        <label for="inputText1">Document Source/Reference<span class="required-asterisk">*</span></label>                                                
+                                    </div>
+                                </div>
+                                <div class="col-md-3 fv-plugins-icon-container">
+                                    <div class="form-floating form-floating-outline">
+                                        <input type="text" class="form-control" [(ngModel)] = "accountNgModel" placeholder="" pInputText 
+                                        required>
+                                        <label for="inputText1">Acc Code<span class="required-asterisk">*</span></label>                                                
+                                    </div>
+                                </div>
+                                <div class="col-md-3 fv-plugins-icon-container">
+                                   <!-- <div class="form-floating form-floating-outline">
+                                        <input type="text" class="form-control" placeholder="" [(ngModel)] = "emailNgModel" pInputText 
+                                        required>
+                                        <label for="inputText1">Email Id<span class="required-asterisk">*</span></label>                                                
+                                    </div>-->
+                                    <div class="form-floating form-floating-outline">
+                                    <p-dropdown [(ngModel)]="entityNgmodel"
+                                                [options]="entityid"
+                                                optionLabel="ENTITY_NAME" [filter]="true" filterBy="ENTITY_NAME"
+                                                [showClear]="true" placeholder="Select Entity" optionValue="ENTITY_NAME"
+                                                class="form-control px-0"                                                
+                                                required></p-dropdown>
+                                    <label for="inputText1">Entity<span class="required-asterisk">*</span></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="button" class="btn btn-primary waves-effect waves-light p-2" (click)="addaduditdata()">
+                                        <i class="bx bx-plus"></i>
+                                    </button>
+                                </div>
+                            
+                             <div class="row">
+                                <div class="col-md-3 fv-plugins-icon-container">
+                                    <div class="form-floating form-floating-outline">
+                                        <input class="form-control" type="file" id="formFile" [value]="selectedFileName1" 
+                                        readonly (click)="fileInput.click()">
+                                        <input type="file" #fileInput (change)="fileSelected1($event)"
+                                        style="display: none">
+                                        <!-- <label for="">Upload</label> -->
+                                    </div>
+                                </div>
+                                <div class="col-md-8 fv-plugins-icon-container">
+                                    <button type="button"
+                                            class="btn btn-secondary waves-effect waves-light mx-1"
+                                            (click)="downloadSample1()"><i class="bx bx-file me-2"></i>Sample
+                                            Format</button>
+                                    <button type="button"
+                                        class="btn btn-danger waves-effect waves-light mx-1"><i
+                                            class="bx bx-arrow-to-right me-2"></i>Extract All</button>
+                                    <button type="button" maxFileSize="5242880"
+                                            class="btn btn-info waves-effect waves-light mx-1"
+                                            (click)="uploadFile1()"><i
+                                                class="bx bx-upload me-2"></i>Upload</button>
+                                </div>  
+                            </div>                                                                                         
+
+                           </div>                               
+                        <div class="col-12 md:col-12 lg:col-12">
+                                    <div class="table-responsive">
+                                        <table class="table align-middle mb-0 table-sm mb-4">
+                                            <thead class="table-light">
+                                                <tr>                                                            
+                                                    <th>Name</th>
+                                                    <!--<th>PAN</th>-->
+                                                    <th>Comapny Name</th>
+                                                    <!--<th>PAN</th>-->
+                                                    <th>Shared By</th>
+                                                    <!--<th>PAN</th>-->
+                                                    <!--<th>Shared Date</th>-->
+                                                    <th>Relation</th>
+                                                    <th>Nature Of UPSI</th>
+                                                    <!--<th>Document</th>--> 
+                                                    <!--<th>Acc Code</th>--> 
+                                                    <!--<th>Email ID</th>-->                                                            
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let auditDP of auditDatas">                                                            
+                                                    <td>{{auditDP.NAME}}</td>
+                                                    <!--<td>{{auditDP.EMP_PAN}}</td>-->
+                                                    <td>{{auditDP.COMPANY_NAME}}</td>
+                                                    <!--<td>{{auditDP.COMPANY_PAN}}</td>-->
+                                                    <td>{{auditDP.SHARED_BT}}</td>
+                                                    <!--<td>{{auditDP.SHARED_BY_PAN}}</td>-->
+                                                    <!--<td>{{auditDP.SHARED_DATE}}</td>-->
+                                                    <td>{{auditDP.RELATIONSHIP}}</td>
+                                                    <td>{{getNatureNameById(auditDP.NATURE_OF_UPSI)}}</td>
+                                                    <!--<td>{{auditDP.DOCUMNET_SOURCE}}</td>-->
+                                                    <!--<td>{{auditDP.ACC_CODE}}</td>-->
+                                                    <!--<td>{{auditDP.EMAILID}}</td>-->                                                            
+                                                    <td><i class="pi pi-trash" (click)="deleteAudit(auditDP)" style="margin-right: 5px;"></i> 
+                                                        <ng-container *ngIf="auditDP.UPLOADFILE !== null ">                                                       
+                                                        <i class="pi pi-download" (click)="downloadFile5(auditDP)"></i>
+                                                    </ng-container></td>
+                                                </tr>                                                        
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                        </div>                                  
+                        </div>                                
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div *ngIf="showGridPage">
+    <div class="row">
+        <div class="col-12">
+            <p-table #dt [value]="products" dataKey="id"
+                styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines" [rowHover]="true" [rows]="5"
+                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+                [globalFilterFields]="['TEAMS','PTYPES','STARTDATE','ENDDATE','PROJECT_NAME']">
+                <ng-template pTemplate="caption">
+                    <div class="table-header" style="height: fit-content;width: fit-content;font-size: smaller;">
+                        <span class="globalSearch p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText class="p-inputtext-sm" type="text"
+                                (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                placeholder="Global Search" />
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="PROJECT_NAME">Project Name<p-sortIcon field="status"></p-sortIcon></th>                        
+                        <th pSortableColumn="STARTDATE">Start Date<p-sortIcon field="date"></p-sortIcon></th>
+                        <th pSortableColumn="ENDDATE">End Date<p-sortIcon field="date"></p-sortIcon></th>
+                        <th pSortableColumn="TEAMS">Team<p-sortIcon field="date"></p-sortIcon></th>
+                        <th pSortableColumn="PTYPES">Project Type<p-sortIcon field="date"></p-sortIcon></th>
+                        <th pSortableColumn="activity">Action <p-sortIcon field="activity"></p-sortIcon></th>
+
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-product>
+                    <tr class="p-selectable-row">
+                        <td>
+                            <span class="p-column-title">Project Name</span>
+                            {{product.PROJECT_NAME}}
+                        </td>                        
+                        <td>
+                            <span class="p-column-title">Start Date</span>
+                            <span class="image-text">{{product.STARTDATE}}</span>
+                        </td>
+                        <td>
+                            <span class="p-column-title">End Date</span>
+                            {{product.ENDDATE}}
+                        </td>
+                        <td>
+                            <span class="p-column-title">Team</span>
+                            <!--<span class="image-text">{{product.TEAMS}}</span> -->
+                            <span class="">{{getTeamNamesByIds(product.TEAMS)}}</span>
+                        </td>
+                        <td>
+                            <span class="p-column-title">Project Type</span>
+                            <span class="image-text">{{getTypeNameByIds(product.PTYPES)}}</span> 
+                        </td>
+                        <td>
+                            <ng-container *ngIf="product.IS_ACTIVE === true ">
+                                <button type="button" icon="pi pi-pencil" (click)="onEditUPSIProject(product)"
+                                    iconPos="left" class="btn btn-warning waves-effect waves-light p-1"><i
+                                        class="bx bx-edit"></i></button>
+
+                            </ng-container>
+                            <ng-container *ngIf="product.IS_ACTIVE === false ">
+                                <button type="button" class="btn btn-success waves-effect waves-light p-1"
+                                    (click)="downloadFile1(product)"><i class="bx bx-download"></i></button>
+                            </ng-container>
+
+                            <!-- <button pButton pRipple icon="pi pi-trash" (click)="deleteUPSIProject(product)" iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"></button> -->
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="8">No products found.</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+
+        </div>
+    </div>
+    </div>
+   <!-- <div class="row">
+        <div class="col-12">
+            <button type="button" class="btn btn-primary waves-effect waves-light mx-1"><i
+                    class="bx bx-save me-2"></i>Save</button>
+            <button type="button" class="btn btn-danger waves-effect waves-light mx-1"><i
+                    class="bx bx-file me-2"></i>Generate Block / Unblock File </button>
+            <button type="button" class="btn btn-info waves-effect waves-light mx-1"><i
+                    class="bx bx-arrow-to-right me-2"></i>Extract Employee</button>
+        </div>
+    </div>-->
+
+</div>

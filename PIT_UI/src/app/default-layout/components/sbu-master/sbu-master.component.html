@@ -1,0 +1,134 @@
+<p-toast></p-toast>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+    <div class="col-12 mb-2 text-primary">
+        <!-- <h6 class="mb-0">Sbu Master</h6> -->
+    </div>
+    <form autocomplete="off" [formGroup]="sbuForm">
+
+        <div class="row">
+
+            <!-- <label for="inputText1" class="col-md-3 col-lg-2 col-xl-auto col-xxl-auto col-form-label">SBU Code<span
+                    class="required-asterisk">*</span></label> -->
+            <!-- <input type="text" class="p-inputtext-sm w-100" placeholder="Sbu Code" pInputText
+                formControlName="sbucodecontroller" [(ngModel)]="sbucodeNgModel" required> -->
+            <div class="inputText col-md-6 col-lg-4 col-xl-2 col-xxl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control w-100" placeholder="" pInputText
+                        formControlName="sbucodecontroller" required>
+                    <label for="inputText4" class="">SBU Code<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="sbuForm.get('sbucodecontroller').hasError('required') && (sbuForm.get('sbucodecontroller').touched || sbuForm.get('sbucodecontroller').dirty)">
+                        SBU Code Required.
+                    </small>
+                </div>
+            </div>
+
+
+            <!-- <label for="inputText1" class="col-md-3 col-lg-2 col-xl-auto col-xxl-auto col-form-label">SBU Name<span
+                    class="required-asterisk">*</span></label> -->
+            <!-- <input type="text" class="p-inputtext-sm w-100" placeholder="Sbu Name" pInputText
+                formControlName="sbunamecontroller" [(ngModel)]="sbunameNgModel" required> -->
+            <div class="inputText col-md-6 col-lg-4 col-xl-2 col-xxl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control w-100" placeholder="" pInputText
+                        formControlName="sbunamecontroller" required>
+                    <label for="inputText4" class="">SBU Name<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="sbuForm.get('sbunamecontroller').hasError('required') && (sbuForm.get('sbunamecontroller').touched || sbuForm.get('sbunamecontroller').dirty)">
+                        SBU Name Required.
+                    </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-3 col-lg-2 col-xl-auto col-xxl-auto col-form-label">BG Name<span
+                    class="required-asterisk">*</span></label> -->
+            <!-- <p-dropdown [options]="businessids" formControlName="bgnamecontroller" [(ngModel)]="buisnessidNgmodel"
+                optionLabel="BG_NAME" [filter]="true" filterBy="BG_NAME" [showClear]="true" placeholder="Select BG Name"
+                class="p-inputtext-sm" required></p-dropdown> -->
+            <div class="inputText col-md-6 col-lg-4 col-xl-2 col-xxl-2 mb-2">
+                <div class="form-floating form-floating-outline ">
+                    <p-dropdown [options]="businessids" formControlName="bgnamecontroller" optionLabel="BG_NAME"
+                        [filter]="true" filterBy="BG_NAME" [showClear]="true" placeholder="Select BG Name"
+                        class="form-control px-0" required></p-dropdown>
+                    <label for="inputText4" class="">BG Name<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="sbuForm.get('bgnamecontroller').hasError('required') && (sbuForm.get('bgnamecontroller').touched || sbuForm.get('bgnamecontroller').dirty)">
+                        BG Name Required.
+                    </small>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-12 text-center">
+            <button pButton pRipple type="button" *ngIf="onadd" (click)="createBtn()" label=""
+                class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><i class="bx bx-plus"></i></button>
+            <button pButton pRipple type="button" *ngIf="oneditbtn" (click)="updateBtn()" label=""
+                class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><span
+                    class="fadeIn animated bx bx-reset"></span></button>
+            <button pButton pRipple type="button" *ngIf="oncancel" (click)="cancel()" label=""
+                class="p-button-secondary button-sm mx-1 py-2"><span
+                    class="fadeIn animated bx bx-reset"></span></button>
+        </div>
+    </form>
+
+    <div class="col-12">
+        <p-table #dt [value]="products" dataKey="id"
+            styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines" [rowHover]="true" [rows]="5"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+            [globalFilterFields]="['SBU_CODE','SBU_NAME','TBL_BUSINESSGROUP_MST.BG_NAME']">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    <span class="globalSearch p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                            class="p-inputtext-sm" placeholder="Global Search" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="SBU_CODE">SBU Code <p-sortIcon field="date"></p-sortIcon></th>
+                    <th pSortableColumn="SBU_NAME">SBU Name <p-sortIcon field="name"></p-sortIcon></th>
+                    <th pSortableColumn="TBL_BUSINESSGROUP_MST.BG_NAME">BG Name <p-sortIcon
+                            field="TBL_BUSINESSGROUP_MST.BG_NAME"></p-sortIcon></th>
+                    <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr class="p-selectable-row">
+                    <td>
+                        <span class="p-column-title">SBU CODE</span>
+                        {{product.SBU_CODE}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">SBU NAME</span>
+                        {{product.SBU_NAME}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">BG NAME</span>
+                        {{product.TBL_BUSINESSGROUP_MST?.BG_NAME}}
+                    </td>
+
+
+                    <td>
+                        <!-- <button pButton type="button" icon="pi pi-pencil" (click)="oneditViewBtn(product)"
+                            iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary mr-2"></button>
+
+                        <button pButton pRipple icon="pi pi-trash" (click)="deleteBtn(product)" iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"></button> -->
+                        <i class="pi pi-pencil" (click)="oneditViewBtn(product)"></i>&nbsp;&nbsp;
+                        <i class="pi pi-trash" (click)="deleteBtn(product)"></i>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No products found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

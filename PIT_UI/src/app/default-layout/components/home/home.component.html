@@ -1,0 +1,2557 @@
+<p-toast></p-toast>
+<div class="grid">
+    <div class="col-7 live-feeds">
+        <div
+            class="card bg-white alert border-0 border-start border-5 border-primary alert-dismissible fade show py-2 px-1">
+            <div class="align-items-center">
+                <div class="ms-3">
+                    <h6 class="mb-0 text-primary">NSE/BSE Live Feed</h6>
+                    <div>
+                        <marquee direction="left" scrolldelay="85" behavior="loop">Adani Enterpris 2,176.70, Adani Ports
+                            792.25, Apollo Hospital 5,490.05 Adani Enterpris 2,176.70, Adani Ports 792.25</marquee>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-end">
+    <div class="help-desk-link help-desk-button">
+        <!-- <div class="btn btn-warning px-6 mt-5">
+            <a class="" (click)="onclickdesk()">Help Desk</a>
+            <a class="" (click)="showRequestData('HelpDesk')">{{TotalHelpRequest}}</a>
+        </div> -->
+        <div class="btn btn-warning px-2 mt-5">
+            <a class="btn-link" (click)="onclickdesk()"><i class="bx bx-support mr-2"></i>Help Desk</a>-
+            <a class="btn-link" (click)="showRequestData('HelpDesk')">{{TotalHelpRequest}}</a>
+        </div>
+
+    </div>
+    <div class="card flex justify-content-center custom-color">
+        <p-dialog header="Status Update" [(visible)]="visible2" [style]="{width: '50vw'}">
+            <!-- <b>
+                <hr>
+            </b> -->
+            <br>
+            <form autocomplete="off" [formGroup]="helpdeskUpdateform">
+                <div class="row">
+                    <div class="inputText col-md-6 col-lg-6 col-xl-6 mb-2">
+                        <div class="form-floating form-floating-outline">
+                            <p-dropdown [options]="statusOptions" formControlName="selectedstatus" optionLabel="NAME"
+                                [filter]="true" filterBy="NAME" [showClear]="true" optionValue="NAME"
+                                placeholder="Select Status" class="form-control px-0" required appendTo="body">
+                            </p-dropdown>
+                            <label for="inputText4" class="">Status<span class="required-asterisk">*</span></label>
+                            <small style="color: red;"
+                                *ngIf="helpdeskUpdateform.get('selectedstatus').hasError('required') && (helpdeskUpdateform.get('selectedstatus').touched || helpdeskUpdateform.get('selectedstatus').dirty)">
+                                Status Required.
+                            </small>
+                        </div>
+                    </div>
+                    <div class="inputText col-md-12 col-lg-12 col-xl-12 mb-2">
+                        <div class="form-floating form-floating-outline">
+                            <input rows="1" cols="20" pInputTextarea formControlName="Updatequery" class="form-control"
+                                placeholder="">
+                            <label for="inputText1">Query<span class="required-asterisk">*</span></label>
+
+                            <small style="color: red;"
+                                *ngIf="helpdeskUpdateform.get('Updatequery').hasError('required') && (helpdeskUpdateform.get('Updatequery').touched || helpdeskUpdateform.get('Updatequery').dirty)">
+                                Query Required.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <button (click)="DeskUpdateStatusSave()" [disabled]="helpdeskUpdateform.invalid" pButton pRipple
+                type="button" class="btn-light btn-primary p-button-info p-button-sm mx-1 py-1" label="Submit">
+            </button>
+            <button (click)="ResetUpdateStatus()" pButton pRipple type="button"
+                class="p-button-secondary button-sm mx-1 py-1" label="Reset">
+            </button>
+            <div class="card radius-10 mb-2" *ngIf="showQueryDataTable">
+                <!-- <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="mb-0">EAH Completed Details</h6>
+                        </div>
+                        <div class="dropdown ms-auto">
+                            <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i
+                                    class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="javascript:;">Export to Excel</a>
+                                </li>
+                                <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                                </li>
+                            </ul>
+                            <span class="close-icon small-icon" (click)="closeFunction()">
+                                <i class='bx bx-x'></i>
+                            </span>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <p-table #dt [value]="querysallData" [rows]="5" [paginator]="true" styleClass="p-datatable-sm"
+                            [globalFilterFields]="['LASTNAME','FIRSTNAME','EMPNO']"
+                            [tableStyle]="{'min-width': '50rem'}" [(selection)]="selectedProducts" [rowHover]="true"
+                            dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                            [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                            <!-- <ng-template pTemplate="caption">
+                                <div class="flex align-items-center justify-content-between">
+                                    <h5 class="m-0"></h5>
+                                    <span class="p-input-icon-left">
+                                        <i class="pi pi-search"></i>
+                                        <input pInputText type="text" class="p-inputtext-sm"
+                                            (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                            placeholder="Search..." />
+                                    </span>
+                                </div>
+                            </ng-template> -->
+                            <ng-template pTemplate="header">
+                                <tr class="text-center">
+                                    <th pSortableColumn="NAME">Name<p-sortIcon field="price"></p-sortIcon></th>
+                                    <th pSortableColumn="CREATED_ON">Created Date<p-sortIcon
+                                            field="category"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="QUERY">Query<p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                    </th>
+                                    <!-- <th pSortableColumn="LASTNAME" style="min-width:10rem">LastName
+                                        <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                    </th> -->
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-product>
+                                <tr>
+                                    <td>{{product.NAME}}</td>
+                                    <td>{{product.CREATED_ON | date}}</td>
+                                    <td>{{product.QUERY}}</td>
+                                </tr>
+                            </ng-template>
+                            <!-- <ng-template pTemplate="summary">
+                                <div class="flex align-items-center justify-content-between">
+                                    In total there are {{querysallData ? querysallData.length : 0 }}
+                                    products.
+                                </div>
+                            </ng-template> -->
+                        </p-table>
+                    </div>
+                </div>
+            </div>
+        </p-dialog>
+    </div>
+    <div class="card flex justify-content-center custom-color">
+        <p-dialog header="Help Desk" [(visible)]="visible1" [style]="{width: '50vw'}">
+            <!-- <b>
+                <hr>
+            </b> -->
+            <br>
+            <form autocomplete="off" [formGroup]="helpdeskform">
+                <div class="row">
+                    <!-- <div class="inputText col-md-6 col-lg-6 col-xl-6 mb-2">
+                        <div class="form-floating form-floating-outline">
+                            <p-dropdown [options]="voilationOptions" formControlName="selectedVoilation"
+                                optionLabel="NAME" [filter]="true" filterBy="NAME" [showClear]="true"
+                                optionValue="NAME" placeholder="Select Team" class="form-control px-0" required
+                                appendTo="body">
+                            </p-dropdown>
+                            <label for="inputText4" class="">Team<span class="required-asterisk">*</span></label>
+                            <small style="color: red;"
+                                *ngIf="helpdeskform.get('selectedVoilation').hasError('required') && (helpdeskform.get('selectedVoilation').touched || helpdeskform.get('selectedVoilation').dirty)">
+                                Team Required.
+                            </small>
+                        </div>
+                    </div> -->
+                    <div class="inputText col-md-6 col-lg-6 col-xl-6 mb-2">
+                        <div class="form-floating form-floating-outline">
+                            <p-dropdown [options]="requestOptions" formControlName="selectedRequestType"
+                                optionLabel="NAME" [filter]="true" filterBy="NAME" [showClear]="true" optionValue="NAME"
+                                placeholder="Select Request Type" class="form-control px-0" required appendTo="body"
+                                (onChange)="onRequestTypeChange($event)">
+                            </p-dropdown>
+                            <label for="inputText4" class="">Request Type<span
+                                    class="required-asterisk">*</span></label>
+                            <small style="color: red;"
+                                *ngIf="helpdeskform.get('selectedRequestType').hasError('required') && (helpdeskform.get('selectedRequestType').touched || helpdeskform.get('selectedRequestType').dirty)">
+                                Request Type Required.
+                            </small>
+                            <div *ngIf="showOtherInput">
+                                <input type="text" class="form-control" placeholder=""
+                                    formControlName="otherRequestType">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inputText col-md-12 col-lg-12 col-xl-12 mb-2">
+                        <div class="form-floating form-floating-outline">
+                            <!-- <textarea rows="1" cols="20" pInputTextarea formControlName="query" class="form-control"
+                                placeholder=""></textarea> -->
+                            <input rows="1" cols="20" pInputTextarea formControlName="query" class="form-control"
+                                placeholder="">
+                            <label for="inputText1">Query<span class="required-asterisk">*</span></label>
+
+                            <small style="color: red;"
+                                *ngIf="helpdeskform.get('query').hasError('required') && (helpdeskform.get('query').touched || helpdeskform.get('query').dirty)">
+                                Query Required.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <button (click)="DeskquerySave()" [disabled]="helpdeskform.invalid" pButton pRipple type="button"
+                class="btn-light btn-primary p-button-info p-button-sm mx-1 py-1" label="Submit">
+            </button>
+            <button (click)="ResetHelpDesk()" pButton pRipple type="button"
+                class="p-button-secondary button-sm mx-1 py-1" label="Reset"></button>
+        </p-dialog>
+    </div>
+    <div class="card flex justify-content-center custom-color">
+        <p-dialog header="Status Details" [(visible)]="visible3" [style]="{width: '50vw'}">
+            <!-- <b>
+                <hr>
+            </b> -->
+            <br>
+            <div class="card radius-10 mb-2" *ngIf="showQueryDataTable">
+                <!-- <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="mb-0">EAH Completed Details</h6>
+                        </div>
+                        <div class="dropdown ms-auto">
+                            <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i
+                                    class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="javascript:;">Export to Excel</a>
+                                </li>
+                                <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                                </li>
+                            </ul>
+                            <span class="close-icon small-icon" (click)="closeFunction()">
+                                <i class='bx bx-x'></i>
+                            </span>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <p-table #dt [value]="querysallData" [rows]="5" [paginator]="true" styleClass="p-datatable-sm"
+                            [globalFilterFields]="['LASTNAME','FIRSTNAME','EMPNO']"
+                            [tableStyle]="{'min-width': '50rem'}" [(selection)]="selectedProducts" [rowHover]="true"
+                            dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                            [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                            <!-- <ng-template pTemplate="caption">
+                                <div class="flex align-items-center justify-content-between">
+                                    <h5 class="m-0"></h5>
+                                    <span class="p-input-icon-left">
+                                        <i class="pi pi-search"></i>
+                                        <input pInputText type="text" class="p-inputtext-sm"
+                                            (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                            placeholder="Search..." />
+                                    </span>
+                                </div>
+                            </ng-template> -->
+                            <ng-template pTemplate="header">
+                                <tr class="text-center">
+                                    <th pSortableColumn="NAME">Name<p-sortIcon field="price"></p-sortIcon></th>
+                                    <th pSortableColumn="CREATED_ON">Created Date<p-sortIcon
+                                            field="category"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="QUERY">Query<p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                    </th>
+                                    <!-- <th pSortableColumn="LASTNAME" style="min-width:10rem">LastName
+                                        <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                    </th> -->
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-product>
+                                <tr>
+                                    <td>{{product.NAME}}</td>
+                                    <td>{{product.CREATED_ON | date}}</td>
+                                    <td>{{product.QUERY}}</td>
+                                </tr>
+                            </ng-template>
+                            <!-- <ng-template pTemplate="summary">
+                                <div class="flex align-items-center justify-content-between">
+                                    In total there are {{querysallData ? querysallData.length : 0 }}
+                                    products.
+                                </div>
+                            </ng-template> -->
+                        </p-table>
+                    </div>
+                </div>
+            </div>
+        </p-dialog>
+    </div>
+</div>
+<p-tabView class="dashboard-tabView">
+    <p-tabPanel header="User">
+        <div class="row">
+            <div class="col-12">
+                <div class="card radius-10 mb-2" *ngIf="showRequestDataTable">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">Request Details</h6>
+                            </div>
+                            <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i
+                                        class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Export to Excel</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                                    </li>
+                                </ul>
+                                <span class="close-icon small-icon" (click)="closeFunction()">
+                                    <i class='bx bx-x'></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <p-table #dt [value]="requestdetailsdata" [rows]="5" [paginator]="true"
+                                styleClass="p-datatable-sm" [globalFilterFields]="['STATUS','REQUEST_TYPE','EMPNO']"
+                                [tableStyle]="{'min-width': '75rem'}" [(selection)]="selectedProducts" [rowHover]="true"
+                                dataKey="id"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                                <ng-template pTemplate="caption">
+                                    <div class="flex align-items-center justify-content-between">
+                                        <h5 class="m-0"></h5>
+                                        <span class="p-input-icon-left">
+                                            <i class="pi pi-search"></i>
+                                            <input pInputText type="text" class="p-inputtext-sm"
+                                                (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                                placeholder="Search..." />
+                                        </span>
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header">
+                                    <tr class="text-center">
+                                        <th pSortableColumn="price">Sr. No<p-sortIcon field="price"></p-sortIcon></th>
+                                        <th pSortableColumn="REQID" style="min-width:10rem">REQ ID<p-sortIcon
+                                                field="category"></p-sortIcon></th>
+                                        <th pSortableColumn="EMPNO" style="min-width:10rem">EMPNO<p-sortIcon
+                                                field="category"></p-sortIcon>
+                                        </th>
+                                        <!-- <th pSortableColumn="NAME" style="min-width:10rem">NAME<p-sortIcon
+                                                field="inventoryStatus"></p-sortIcon></th> -->
+                                        <th pSortableColumn="REQUEST_TYPE" style="min-width:10rem">REQUEST TYPE
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="QUERY" style="min-width:10rem">QUERY<p-sortIcon
+                                                field="inventoryStatus"></p-sortIcon></th>
+                                        <th pSortableColumn="STATUS" style="min-width:10rem">STATUS<p-sortIcon
+                                                field="inventoryStatus"></p-sortIcon></th>
+                                        <th pSortableColumn="STATUS" style="min-width:10rem">Action<p-sortIcon
+                                                field="inventoryStatus"></p-sortIcon></th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-product>
+                                    <tr>
+                                        <td>{{product.Srno}}</td>
+                                        <td>{{product.REQID}}</td>
+                                        <td>{{product.EMPNO}}</td>
+                                        <!-- <td>{{product.NAME}}</td> -->
+                                        <td>{{product.REQUEST_TYPE}}</td>
+                                        <td>{{product.QUERY}}</td>
+                                        <td>{{product.STATUS}}</td>
+                                        <td><ng-container *ngIf="product.STATUS !== 'Completed' ">
+                                                <i class="pi pi-pencil" (click)="oneditStatus(product)"></i>
+                                            </ng-container>
+                                            <ng-container *ngIf="product.STATUS === 'Completed' ">
+                                                <i class="pi pi-pencil" (click)="oneditStatusComp(product)"></i>
+                                            </ng-container>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="summary">
+                                    <div class="flex align-items-center justify-content-between">
+                                        In total there are {{requestdetailsdata ? requestdetailsdata.length : 0 }}
+                                        products.
+                                    </div>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 md:col-8 lg:col-8 d-flex">
+                <div class="card radius-10 mb-2 w-100">
+                    <div class="card-header bg-transparent">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">Holding Details</h6>
+                            </div>
+                            <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"
+                                    aria-expanded="false"><i
+                                        class="bx bx-dots-horizontal-rounded font-22 text-option"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- <li><a class="dropdown-item" href="exportToExcel()">Export to Excel</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                                    </li> -->
+                                    <button class="dropdown-item" onclick="exportToExcel()">Export to Excel</button>
+                                    <button class="dropdown-item" onclick="exportToPDF()">Export to PDF</button>
+                                    <!-- <li>                                        
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="javascript:;">Something else here</a>
+                        </li> -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive" style="max-height: 200px; overflow-y: auto;">
+                            <table #table class="table align-middle table-bordered  mb-0 table-sm">
+                                <thead class="table-light">
+                                    <tr class="text-center">
+                                        <th>Scrip Name</th>
+                                        <th>DP Holding</th>
+                                        <th>LTP</th>
+                                        <th>Avg. Buy Price</th>
+                                        <th>Last Trans. Value</th>
+                                        <th>Late Trade Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of holdingdata">
+                                        <td><a routerLink="/pit/InvestmentApprovalForm"
+                                                routerLinkActive="active">{{item.SCRIP_DESC}}</a></td>
+                                        <td>{{item.DP_QTY}}</td>
+                                        <td class="text-right">9087</td>
+                                        <td class="text-right">10</td>
+                                        <td class="text-right">{{item.DP_QTY}}</td>
+                                        <td>{{item.TRX_DATE | date}}</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 md:col-4 lg:col-4 d-flex">
+                <div class="card w-100 mb-2 radius-10">
+                    <div class="card-header bg-transparent">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">DP Holding</h6>
+                            </div>
+                            <!-- <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"
+                                    aria-expanded="false"><i
+                                        class="bx bx-dots-horizontal-rounded font-22 text-option"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Export to Excel</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                                    </li>                                    
+                                </ul>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="flex justify-content-center chart-legend">
+                            <p-chart type="pie" [data]="data" [options]="options"></p-chart>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="card radius-10 mb-2 w-100">
+            <div class="card-header">
+                <div class="d-flex align-items-center">
+                    <div>
+
+                        <h6 class="mb-0">
+                            <a [routerLink]="['/pit/InvestmentApprovalForm']" class="custom-link">
+                                Today's Trade Approvals
+                            </a>
+                        </h6>
+
+
+                    </div>
+                    <div class="dropdown ms-auto">
+                        <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i
+                                class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- <li><a class="dropdown-item" href="javascript:;">Export to Excel</a>
+                            </li>
+                            <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                            </li> -->
+                            <button class="dropdown-item" onclick="exportToExcel1()">Export to Excel</button>
+                            <button class="dropdown-item" onclick="exportToPDF1()">Export to PDF</button>
+                            <!-- <li>                                   
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="javascript:;">Something else here</a>
+                    </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body" style="max-height: 200px; overflow-y: auto;">
+                <div class="table-responsive">
+                    <table #table1 class="table align-middle mb-0 table-sm table-bordered">
+                        <thead class="table-light">
+                            <tr class="text-center">
+                                <th>Sr. No.</th>
+                                <th>Name Of Security</th>
+                                <th>Instrument Type</th>
+                                <th>Transaction Type</th>
+                                <th>Quantity</th>
+                 
+                                <th>Status</th>
+                                <th>Rejection Reason</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of irf">
+                                <td>{{item.Srno}}</td>
+                                <td>{{item.Security || item.Primary_Issue_Type}}</td>
+                                <td>{{item.NatureofTrade}}</td>
+                                <td>{{item.Transaction}}</td>
+                                <td>{{item.EqQuantity}}</td>
+                          
+                                <td>{{item.ApprovalStatus}}
+                                </td>
+                                <td>{{item.FormattedRejectionReason }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 md:col-4 lg:col-4 d-flex">
+                <div class="card radius-10 mb-2 w-100">
+                    <div class="card-header bg-transparent">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">Monthly/Quaterly//Declarations</h6>
+                            </div>
+                            <!-- <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"
+                                    aria-expanded="false"><i
+                                        class="bx bx-dots-horizontal-rounded font-22 text-option"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Export to Excel</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                                    </li>                                   
+                                </ul>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table mb-0 table-sm table-bordered">
+                            <thead class="table-light">
+                                <tr class="text-center">
+                                    <th scope="col" style="width:45%">Action</th>
+                                    <th scope="col">Closure Date</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+
+                                    <td (click)="navigatejd()" class="custom-link">Onboarding Pledge</td>
+                                    <td>
+                                        <div class="">{{employeeData.joindate}}</div>
+                                    </td>
+                                    <td class="p-0">
+                                        <!-- <div class="bg-gradient-ohhappiness text-white pl-1">Submitted</div> -->
+                                        <div *ngIf="employeeData.jdsubmit == true"
+                                            class="bg-gradient-ohhappiness text-white p-1 border-bottom">Submitted</div>
+                                        <div *ngIf="employeeData.jdsubmit != true"
+                                            class="bg-gradient-ibiza text-white p-1 border-bottom">Pending</div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td (click)="navigateEah()" class="custom-link">Staff Annual Holdings</td>
+                                    <td>
+                                        <div class="">20-12-2023</div>
+                                    </td>
+                                    <td class="p-0">
+                                        <div *ngIf="employeeData.eahsubmit == true"
+                                            class="bg-gradient-ohhappiness text-white p-1 border-bottom">Submitted</div>
+                                        <div *ngIf="employeeData.eahsubmit != true"
+                                            class="bg-gradient-ibiza text-white p-1 border-bottom">Pending</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="align-items-center justify-content-center" (click)="navigatePCOI()"
+                                        class="custom-link">
+                                        Personal Interest Conflict
+                                    </td>
+                                    <td class="p-0">
+                                        <div class="border p-1">{{employeeData.previousquatname}}</div>
+                                        <div class="border p-1">{{employeeData.currentquatname}}</div>
+                                    </td>
+                                    <td class="p-0">
+                                        <div *ngIf="employeeData.hasdatainpreviousquarter == true"
+                                            class="bg-gradient-ohhappiness text-white p-1 border-bottom">Submitted</div>
+                                        <div *ngIf="employeeData.hasdatainpreviousquarter != true"
+                                            class="bg-gradient-ibiza text-white p-1 border-bottom">Pending</div>
+                                        <div *ngIf="employeeData.hasdataincurrentquarter == true"
+                                            class="bg-gradient-ohhappiness text-white p-1 border-bottom">Submitted</div>
+                                        <div *ngIf="employeeData.hasdataincurrentquarter != true"
+                                            class="bg-gradient-ibiza text-white p-1 border-bottom">Pending</div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td class="align-items-center justify-content-center" (click)="mavigaupsi()"
+                                        class="custom-link">
+                                        Material Interest Statement
+                                    </td>
+                                    <td class="p-0">
+                                        <div class="border p-1">{{employeeData.previousquatname}}</div>
+                                        <div class="border p-1">{{employeeData.currentquatname}}</div>
+                                    </td>
+                                    <td class="p-0">
+                                        <div class="bg-gradient-ohhappiness text-white p-1 border-bottom">Submitted
+                                        </div>
+                                        <!-- <div *ngIf="employeeData.hasdatainpreviousquarter != true" class="bg-gradient-ibiza text-white pl-1">Pending</div> -->
+                                        <div *ngIf="employeeData.hasbothscoiacceptloganddata == true"
+                                            class="bg-gradient-ohhappiness text-white p-1 border-bottom">Submitted</div>
+                                        <div *ngIf="employeeData.hasbothscoiacceptloganddata != true"
+                                            class="bg-gradient-ibiza text-white p-1 border-bottom">Pending</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 md:col-8 lg:col-8 d-flex">
+                <div class="card w-100 radius-10 mb-2">
+                    <div class="card-header bg-transparent">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">Violation Details</h6>
+                            </div>
+                            <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"
+                                    aria-expanded="false"><i
+                                        class="bx bx-dots-horizontal-rounded font-22 text-option"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- <li><a class="dropdown-item" href="javascript:;">Export to Excel</a>
+                                    </li> -->
+                                    <!-- <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                                    </li> -->
+                                    <button class="dropdown-item" onclick="exportToExcel2()">Export to Excel</button>
+                                    <button class="dropdown-item" onclick="exportToPDF2()">Export to PDF</button>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body" style="max-height: 195px; overflow-y: auto;">
+                        <table #table2 class="table mb-0 table-sm table-bordered">
+                            <thead class="table-light">
+                                <tr class="text-center">
+
+                                    <th>Sr.No.</th>
+                                    <th>Trade Violation</th>
+                                    <th>Scrip Name</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let x of Violationdata">
+                                    <td>{{x.SrNo}}</td>
+                                    <td>{{x.NoApprovalVoil}}</td>
+                                    <td>{{x.ScripName}}</td>
+                                    <td>{{x.CreatedDate | date}}</td>
+                                    <td *ngIf="x.Status=='Clarification Provided'"
+                                        class="bg-gradient-ohhappiness text-white">
+                                        {{x.Status}}</td>
+                                    <td *ngIf="x.Status=='Clarification Not Provided'"
+                                        class="bg-gradient-ibiza text-white">
+                                        {{x.Status}}</td>
+                                    <td class="text-center">
+                                        <button pButton pRipple type="button" (click)="showDialog(x)" label=""
+                                            class="btn-light btn-primary p-button-info p-button-sm mx-0 py-0">Add
+                                            Remarks</button>
+                                        <!-- <button *ngIf="x.Status=='Clarification Not Provided'" pButton pRipple
+                                            type="button" (click)="showDialog(x)" label=""
+                                            class="btn-light btn-primary p-button-info p-button-sm mx-0 py-0">Add
+                                            Remarks</button>
+                                        <ng-container *ngIf="x.Status !== 'Clarification Not Provided' ">
+                                                <i class="pi pi-pencil" (click)="onEditVioStatus(x)"></i>
+                                        </ng-container> -->
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="card flex justify-content-center">
+
+            <p-dialog header="Violation" [(visible)]="visible" [style]="{width: '50vw'}">
+                <!-- <b>
+                    <hr>
+                </b> -->
+                <br>
+                <form autocomplete="off" [formGroup]="Voilationform">
+                    <div class="row">
+                        <div class="inputText col-md-6 col-lg-6 col-xl-6 mb-2">
+                            <div class="form-floating form-floating-outline">
+                                <input type="text" class="form-control w-100" placeholder="" pInputText
+                                    formControlName="Voilation" required>
+                                <label for="inputText4" class="">Violation<span
+                                        class="required-asterisk">*</span></label>
+                                <small style="color: red;"
+                                    *ngIf="Voilationform.get('Voilation').hasError('required') && (Voilationform.get('Voilation').touched || Voilationform.get('Voilation').dirty)">
+                                    Violation Required.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="inputText col-md-12 col-lg-12 col-xl-12 mb-2">
+
+                            <div class="form-floating form-floating-outline">
+                                <!-- <textarea rows="1" cols="20" pInputTextarea formControlName="Remark"
+                                    class="form-control" placeholder=""></textarea> -->
+                                <input rows="1" cols="20" pInputTextarea formControlName="Remark" class="form-control"
+                                    placeholder="">
+                                <label for="inputText1">Remark<span class="required-asterisk">*</span></label>
+
+                                <small style="color: red;"
+                                    *ngIf="Voilationform.get('Remark').hasError('required') && (Voilationform.get('Remark').touched || Voilationform.get('Remark').dirty)">
+                                    Remark Required.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <button (click)="ViolationRemarkSave()" [disabled]="Voilationform.invalid" pButton pRipple type="button"
+                    class="btn-light btn-primary p-button-info p-button-sm mx-1 py-1" label="Submit">
+                </button>
+                <button (click)="Reset()" pButton pRipple type="button" class="p-button-secondary button-sm mx-1 py-1"
+                    label="Reset"></button>
+                <div class="card radius-10 mb-2" *ngIf="showviolationStatusData">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <p-table #dt [value]="violationStatusData" [rows]="5" [paginator]="true"
+                                styleClass="p-datatable-sm" [globalFilterFields]="['LASTNAME','FIRSTNAME','Remarks']"
+                                [tableStyle]="{'min-width': '50rem'}" [(selection)]="selectedProducts" [rowHover]="true"
+                                dataKey="id"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                                <ng-template pTemplate="header">
+                                    <tr class="text-center">
+                                        <th pSortableColumn="Remarks">Remark<p-sortIcon field="price"></p-sortIcon></th>
+                                        <th pSortableColumn="NAME">Name<p-sortIcon field="category"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="NAME">Created Date<p-sortIcon
+                                                field="category"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-product>
+                                    <tr>
+                                        <td>{{product.Remarks}}</td>
+                                        <td>{{product.FIRSTNAME}}</td>
+                                        <td>{{product.CREATED_ON | date}}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </p-dialog>
+        </div>
+        <div class="card flex justify-content-center">
+            <p-dialog header="Violation Status" [(visible)]="visiblestatusGrid" [style]="{width: '50vw'}">
+                <br>
+                <div class="card radius-10 mb-2" *ngIf="showvioStatusGrid">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <p-table #dt [value]="vioStatusGridData" [rows]="5" [paginator]="true"
+                                styleClass="p-datatable-sm" [globalFilterFields]="['LASTNAME','FIRSTNAME','Remarks']"
+                                [tableStyle]="{'min-width': '50rem'}" [(selection)]="selectedProducts" [rowHover]="true"
+                                dataKey="id"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                                <ng-template pTemplate="header">
+                                    <tr class="text-center">
+                                        <th pSortableColumn="Remarks">Remark<p-sortIcon field="price"></p-sortIcon></th>
+                                        <th pSortableColumn="NAME">Name<p-sortIcon field="category"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="NAME">Created Date<p-sortIcon
+                                                field="category"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-product>
+                                    <tr>
+                                        <td>{{product.Remarks}}</td>
+                                        <td>{{product.FIRSTNAME}}</td>
+                                        <td>{{product.CREATED_ON | date}}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </p-dialog>
+        </div>
+    </p-tabPanel>
+    <p-tabPanel header="Compliance" *ngIf="true && CODE === 'Super Admin'">
+        <!-- row row-cols-1 row-cols-md-2 row-cols-xl-4;row row-cols-auto row-cols-md-auto row-cols-xl-auto -->
+        <div class="row row-cols-auto row-cols-md-auto row-cols-xl-auto">
+            <div class="col">
+                <div class="card radius-10 mb-2 bg-gradient-ohhappiness status-box">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <p class="mb-0 text-white text-center fw-bold">EAH Update Status</p>
+                                <ul class="list-group">
+                                    <li
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-white">
+                                        Applicable -
+                                        <span class="badge bg-gradient-ohhappiness rounded-pill"><a
+                                                class="text-white underline" (click)="showProjectData('AllEAH')">
+                                                {{TotalUProjectCount}}
+                                            </a></span>
+                                    </li>
+                                    <li
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-white">
+                                        Completed -
+                                        <span class="badge bg-gradient-ohhappiness rounded-pill"><a
+                                                class="text-white underline"
+                                                (click)="showProjectData('ActiveEAH')">{{ProjectCount}}
+                                            </a></span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="widgets-icons bg-white text-success ms-auto"><i class='bx bx-user-check'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 mb-2 bg-gradient-cosmic status-box">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <p class="mb-0 text-white text-center fw-bold">PCOI Update Status</p>
+                                <ul class="list-group">
+                                    <li
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-white">
+                                        Applicable -
+                                        <span class="badge bg-gradient-cosmic rounded-pill"><a
+                                                class="text-white underline" (click)="showProjectData('PCOIAll')">
+                                                {{TotalUPCOICount}}
+                                            </a></span>
+                                    </li>
+                                    <li
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-white">
+                                        Completed -
+                                        <span class="badge bg-gradient-cosmic rounded-pill"><a
+                                                class="text-white underline" (click)="showProjectData('PCOIActive')">
+                                                {{PCOICount}}
+                                            </a> </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="widgets-icons bg-white text-primary ms-auto"><i
+                                    class="bx bx-message-square-edit"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 mb-2 bg-gradient-ibiza status-box">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <p class="mb-0 text-white text-center fw-bold">SCOI Update Status</p>
+                                <ul class="list-group">
+                                    <li
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-white">
+                                        Applicable -
+                                        <span class="badge bg-gradient-ibiza rounded-pill"><a
+                                                class="text-white underline" (click)="showProjectData('SCOIAll')">
+                                                {{TotalUSCOICount}}
+                                            </a></span>
+                                    </li>
+                                    <li
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-white">
+                                        Completed -
+                                        <span class="badge bg-gradient-ibiza rounded-pill"><a
+                                                class="text-white underline" (click)="showProjectData('SCOIActive')">
+                                                {{SCOICount}}
+                                            </a></span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="widgets-icons bg-white text-danger ms-auto"><i
+                                    class="bx bx-message-square-edit"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col">
+                <div class="card radius-10 mb-2 bg-gradient-kyoto">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center flex-row">
+                            <div>
+                                <p class="mb-0 text-white text-center">Today's IRF Approvals</p>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span class="text-white">Total Requests -</span> <a
+                                        (click)="showProjectData('TodayIRFActive')">
+                                        <h6 class="my-1 text-white">{{TotalUIRFCount}}</h6>
+                                    </a>
+                                    <span class="text-white">Rejected Requests -</span> <a
+                                        (click)="showProjectData('TodayRejectIRF')">
+                                        <h6 class="my-1 text-white">{{TotalRejectIRFCount}}</h6>
+                                    </a>
+                                    <span class="text-white" (click)="showProjectData('ViolationReceive')">Clarification
+                                        Received</span>
+                                    <span class="text-white" (click)="showProjectData('ViolationAwait')">Clarification
+                                        Awaited</span>
+                                    <span class="text-white">Violations -</span><a style="margin-right: 10px;"
+                                        (click)="showProjectData('ViolationActive')">
+                                        <h6 class="my-1 text-white">{{ViolationCount}}</h6>
+                                    </a>
+
+                                </div>                               
+                            </div>
+                            <div class="widgets-icons bg-white text-warning ms-auto"><i class="bx bx-download"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="col">
+                <div class="card radius-10 mb-2 bg-gradient-kyoto status-box">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <p class="mb-0 text-white text-center fw-bold">Today's IRF Approvals</p>
+                                <ul class="list-group">
+                                    <li
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-white">
+                                        Total Requests -
+                                        <span class="badge bg-gradient-kyoto rounded-pill"><a
+                                                class="text-white underline"
+                                                (click)="showProjectData('TodayIRFActive')">
+                                                {{TotalUIRFCount}}
+                                            </a></span>
+                                    </li>
+                                    <li
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-white">
+                                        Rejected Requests -
+                                        <span class="badge bg-gradient-kyoto rounded-pill"><a
+                                                class="text-white underline"
+                                                (click)="showProjectData('TodayRejectIRF')">
+                                                {{TotalRejectIRFCount}}
+                                            </a></span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="widgets-icons bg-white text-danger ms-auto"><i class="bx bx-list-check"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 mb-2 bg-gradient-blues status-box">
+                    <div class="card-body pb-0">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <p class="mb-0 text-white fw-bold">Violations</p>
+                                <ul class="list-group">
+                                    <li (click)="showProjectData('ViolationReceive')"
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-0 text-white underline cursor-pointer">
+                                        Clarification
+                                        Received
+
+                                    </li>
+                                    <li (click)="showProjectData('ViolationAwait')"
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-0 text-white underline cursor-pointer">
+                                        Clarification
+                                        Awaited
+                                    </li>
+                                    <li
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-01 text-white">
+                                        Violations -
+                                        <span class="badge bg-gradient-blues rounded-pill"><a
+                                                class="text-white underline"
+                                                (click)="showProjectData('ViolationActive')">
+                                                {{ViolationCount}}
+                                            </a></span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="widgets-icons bg-white text-danger ms-auto"><i class='bx bx-error'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card radius-10 mb-2" *ngIf="showRequestDataTable">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">Request Details</h6>
+                            </div>
+                            <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i
+                                        class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Export to Excel</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                                    </li>
+                                </ul>
+                                <span class="close-icon small-icon" (click)="closeFunction()">
+                                    <i class='bx bx-x'></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <p-table #dt [value]="requestdetailsdata" [rows]="5" [paginator]="true"
+                                styleClass="p-datatable-sm" [globalFilterFields]="['STATUS','REQUEST_TYPE','EMPNO']"
+                                [tableStyle]="{'min-width': '75rem'}" [(selection)]="selectedProducts" [rowHover]="true"
+                                dataKey="id"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                                <ng-template pTemplate="caption">
+                                    <div class="flex align-items-center justify-content-between">
+                                        <h5 class="m-0"></h5>
+                                        <span class="p-input-icon-left">
+                                            <i class="pi pi-search"></i>
+                                            <input pInputText type="text" class="p-inputtext-sm"
+                                                (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                                placeholder="Search..." />
+                                        </span>
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header">
+                                    <tr class="text-center">
+                                        <th pSortableColumn="price">Sr. No<p-sortIcon field="price"></p-sortIcon></th>
+                                        <th pSortableColumn="REQID" style="min-width:10rem">REQ ID<p-sortIcon
+                                                field="category"></p-sortIcon></th>
+                                        <th pSortableColumn="EMPNO" style="min-width:10rem">EMPNO<p-sortIcon
+                                                field="category"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="REQUEST_TYPE" style="min-width:10rem">REQUEST TYPE
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="QUERY" style="min-width:10rem">QUERY<p-sortIcon
+                                                field="inventoryStatus"></p-sortIcon></th>
+                                        <th pSortableColumn="STATUS" style="min-width:10rem">STATUS<p-sortIcon
+                                                field="inventoryStatus"></p-sortIcon></th>
+                                        <th pSortableColumn="STATUS" style="min-width:10rem">Action<p-sortIcon
+                                                field="inventoryStatus"></p-sortIcon></th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-product>
+                                    <tr>
+                                        <td>{{product.Srno}}</td>
+                                        <td>{{product.REQID}}</td>
+                                        <td>{{product.EMPNO}}</td>
+                                        <td>{{product.REQUEST_TYPE}}</td>
+                                        <td>{{product.QUERY}}</td>
+                                        <td>{{product.STATUS}}</td>
+                                        <td><ng-container *ngIf="product.STATUS !== 'Completed' ">
+                                                <i class="pi pi-pencil" (click)="oneditStatus(product)"></i>
+                                            </ng-container>
+                                            <ng-container *ngIf="product.STATUS === 'Completed' ">
+                                                <i class="pi pi-pencil" (click)="oneditStatusComp(product)"></i>
+                                            </ng-container>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="summary">
+                                    <div class="flex align-items-center justify-content-between">
+                                        In total there are {{requestdetailsdata ? requestdetailsdata.length : 0 }}
+                                        products.
+                                    </div>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card radius-10 mb-2" *ngIf="showActiveProjectsTable">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">EAH Completed Details</h6>
+                            </div>
+                            <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i
+                                        class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Export to Excel</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                                    </li>
+                                </ul>
+                                <span class="close-icon small-icon" (click)="closeFunction()">
+                                    <i class='bx bx-x'></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <p-table #dt [value]="activeProjectsData" [rows]="5" [paginator]="true"
+                                styleClass="p-datatable-sm" [globalFilterFields]="['LASTNAME','FIRSTNAME','EMPNO']"
+                                [tableStyle]="{'min-width': '75rem'}" [(selection)]="selectedProducts" [rowHover]="true"
+                                dataKey="id"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                                <ng-template pTemplate="caption">
+                                    <div class="flex align-items-center justify-content-between">
+                                        <h5 class="m-0"></h5>
+                                        <span class="p-input-icon-left">
+                                            <i class="pi pi-search"></i>
+                                            <input pInputText type="text" class="p-inputtext-sm"
+                                                (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                                placeholder="Search..." />
+                                        </span>
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header">
+                                    <tr class="text-center">
+                                        <th pSortableColumn="price">Sr. No<p-sortIcon field="price"></p-sortIcon></th>
+                                        <th pSortableColumn="EMPNO" style="min-width:10rem">EMPNO<p-sortIcon
+                                                field="category"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="FIRSTNAME" style="min-width:10rem">FirstName<p-sortIcon
+                                                field="inventoryStatus"></p-sortIcon></th>
+                                        <th pSortableColumn="LASTNAME" style="min-width:10rem">LastName
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-product>
+                                    <tr>
+                                        <td>{{product.Srno}}</td>
+                                        <td>{{product.EMPNO}}</td>
+                                        <td>{{product.FIRSTNAME}}</td>
+                                        <td>{{product.LASTNAME}}</td>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="summary">
+                                    <div class="flex align-items-center justify-content-between">
+                                        In total there are {{activeProjectsData ? activeProjectsData.length : 0 }}
+                                        products.
+                                    </div>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card radius-10 mb-2" *ngIf="showAllProjectsTable">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">EAH Applicable Details</h6>
+                            </div>
+                            <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i
+                                        class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Export to Excel</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                                    </li>
+                                </ul>
+                                <span class="close-icon small-icon" (click)="closeFunction()">
+                                    <i class='bx bx-x'></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <p-table #dt [value]="allProjectsData" [rows]="5" [paginator]="true"
+                                styleClass="p-datatable-sm" [globalFilterFields]="['LASTNAME','FIRSTNAME','EMPNO']"
+                                [tableStyle]="{'min-width': '75rem'}" [(selection)]="selectedProducts" [rowHover]="true"
+                                dataKey="id"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                                <ng-template pTemplate="caption">
+                                    <div class="flex align-items-center justify-content-between">
+                                        <h5 class="m-0"></h5>
+                                        <span class="p-input-icon-left">
+                                            <i class="pi pi-search"></i>
+                                            <input pInputText type="text" class="p-inputtext-sm"
+                                                (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                                placeholder="Search..." />
+                                        </span>
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header">
+                                    <tr class="text-center">
+                                        <th pSortableColumn="price">Sr. No<p-sortIcon field="price"></p-sortIcon></th>
+                                        <th pSortableColumn="EMPNO" style="min-width:10rem">EMPNO<p-sortIcon
+                                                field="category"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="FIRSTNAME" style="min-width:10rem">FirstName<p-sortIcon
+                                                field="inventoryStatus"></p-sortIcon></th>
+                                        <th pSortableColumn="LASTNAME" style="min-width:10rem">LastName
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-product>
+                                    <tr>
+                                        <td>{{product.Srno}}</td>
+                                        <td>{{product.EMPNO}}</td>
+                                        <td>{{product.FIRSTNAME}}</td>
+                                        <td>{{product.LASTNAME}}</td>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="summary">
+                                    <div class="flex align-items-center justify-content-between">
+                                        In total there are {{allProjectsData ? allProjectsData.length : 0 }} products.
+                                    </div>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card radius-10 mb-2" *ngIf="showActivePcoiData">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">PCOI Completed Details</h6>
+                            </div>
+                            <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i
+                                        class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Export to Excel</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                                    </li>
+                                </ul>
+                                <span class="close-icon small-icon" (click)="closeFunction()">
+                                    <i class='bx bx-x'></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <p-table #dt [value]="activePCOIData" [rows]="5" [paginator]="true"
+                                styleClass="p-datatable-sm" [globalFilterFields]="['LASTNAME','FIRSTNAME','EMPNO']"
+                                [tableStyle]="{'min-width': '75rem'}" [(selection)]="selectedProducts" [rowHover]="true"
+                                dataKey="id"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                                <ng-template pTemplate="caption">
+                                    <div class="flex align-items-center justify-content-between">
+                                        <h5 class="m-0"></h5>
+                                        <span class="p-input-icon-left">
+                                            <i class="pi pi-search"></i>
+                                            <input pInputText type="text" class="p-inputtext-sm"
+                                                (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                                placeholder="Search..." />
+                                        </span>
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header">
+                                    <tr class="text-center">
+                                        <th pSortableColumn="price">Sr. No<p-sortIcon field="price"></p-sortIcon></th>
+                                        <th pSortableColumn="EMPNO" style="min-width:10rem">EMPNO<p-sortIcon
+                                                field="category"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="FIRSTNAME" style="min-width:10rem">FirstName<p-sortIcon
+                                                field="inventoryStatus"></p-sortIcon></th>
+                                        <th pSortableColumn="LASTNAME" style="min-width:10rem">LastName
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-product>
+                                    <tr>
+                                        <td>{{product.Srno}}</td>
+                                        <td>{{product.EMPNO}}</td>
+                                        <td>{{product.FIRSTNAME}}</td>
+                                        <td>{{product.LASTNAME}}</td>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="summary">
+                                    <div class="flex align-items-center justify-content-between">
+                                        In total there are {{activePCOIData ? activePCOIData.length : 0 }} products.
+                                    </div>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card radius-10 mb-2" *ngIf="showAllPcoiData">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">PCOI Applicable Details</h6>
+                            </div>
+                            <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i
+                                        class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Export to Excel</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                                    </li>
+                                </ul>
+                                <span class="close-icon small-icon" (click)="closeFunction()">
+                                    <i class='bx bx-x'></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <p-table #dt [value]="allPCOIData" [rows]="5" [paginator]="true" styleClass="p-datatable-sm"
+                                [globalFilterFields]="['LASTNAME','FIRSTNAME','EMPNO']"
+                                [tableStyle]="{'min-width': '75rem'}" [(selection)]="selectedProducts" [rowHover]="true"
+                                dataKey="id"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                                <ng-template pTemplate="caption">
+                                    <div class="flex align-items-center justify-content-between">
+                                        <h5 class="m-0"></h5>
+                                        <span class="p-input-icon-left">
+                                            <i class="pi pi-search"></i>
+                                            <input pInputText type="text" class="p-inputtext-sm"
+                                                (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                                placeholder="Search..." />
+                                        </span>
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header">
+                                    <tr class="text-center">
+                                        <th pSortableColumn="price">Sr. No<p-sortIcon field="price"></p-sortIcon></th>
+                                        <th pSortableColumn="EMPNO" style="min-width:10rem">EMPNO<p-sortIcon
+                                                field="category"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="FIRSTNAME" style="min-width:10rem">FirstName<p-sortIcon
+                                                field="inventoryStatus"></p-sortIcon></th>
+                                        <th pSortableColumn="LASTNAME" style="min-width:10rem">LastName
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-product>
+                                    <tr>
+                                        <td>{{product.Srno}}</td>
+                                        <td>{{product.EMPNO}}</td>
+                                        <td>{{product.FIRSTNAME}}</td>
+                                        <td>{{product.LASTNAME}}</td>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="summary">
+                                    <div class="flex align-items-center justify-content-between">
+                                        In total there are {{allPCOIData ? allPCOIData.length : 0 }} products.
+                                    </div>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card radius-10 mb-2" *ngIf="showActiveScoiData">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">SCOI Completed Details</h6>
+                            </div>
+                            <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i
+                                        class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Export to Excel</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                                    </li>
+                                </ul>
+                                <span class="close-icon small-icon" (click)="closeFunction()">
+                                    <i class='bx bx-x'></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <p-table #dt [value]="activeSCOIData" [rows]="5" [paginator]="true"
+                                styleClass="p-datatable-sm" [globalFilterFields]="['LASTNAME','FIRSTNAME','EMPNO']"
+                                [tableStyle]="{'min-width': '75rem'}" [(selection)]="selectedProducts" [rowHover]="true"
+                                dataKey="id"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                                <ng-template pTemplate="caption">
+                                    <div class="flex align-items-center justify-content-between">
+                                        <h5 class="m-0"></h5>
+                                        <span class="p-input-icon-left">
+                                            <i class="pi pi-search"></i>
+                                            <input pInputText type="text" class="p-inputtext-sm"
+                                                (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                                placeholder="Search..." />
+                                        </span>
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header">
+                                    <tr class="text-center">
+                                        <th pSortableColumn="price">Sr. No<p-sortIcon field="price"></p-sortIcon></th>
+                                        <th pSortableColumn="EMPNO" style="min-width:10rem">EMPNO<p-sortIcon
+                                                field="category"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="FIRSTNAME" style="min-width:10rem">FirstName<p-sortIcon
+                                                field="inventoryStatus"></p-sortIcon></th>
+                                        <th pSortableColumn="LASTNAME" style="min-width:10rem">LastName
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-product>
+                                    <tr>
+                                        <td>{{product.Srno}}</td>
+                                        <td>{{product.EMPNO}}</td>
+                                        <td>{{product.FIRSTNAME}}</td>
+                                        <td>{{product.LASTNAME}}</td>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="summary">
+                                    <div class="flex align-items-center justify-content-between">
+                                        In total there are {{activeSCOIData ? activeSCOIData.length : 0 }} products.
+                                    </div>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card radius-10 mb-2" *ngIf="showAllScoiData">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">SCOI Applicable Details</h6>
+                            </div>
+                            <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i
+                                        class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Export to Excel</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                                    </li>
+                                </ul>
+                                <span class="close-icon small-icon" (click)="closeFunction()">
+                                    <i class='bx bx-x'></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <p-table #dt [value]="allSCOIData" [rows]="5" [paginator]="true" styleClass="p-datatable-sm"
+                                [globalFilterFields]="['LASTNAME','FIRSTNAME','EMPNO']"
+                                [tableStyle]="{'min-width': '75rem'}" [(selection)]="selectedProducts" [rowHover]="true"
+                                dataKey="id"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                                <ng-template pTemplate="caption">
+                                    <div class="flex align-items-center justify-content-between">
+                                        <h5 class="m-0"></h5>
+                                        <span class="p-input-icon-left">
+                                            <i class="pi pi-search"></i>
+                                            <input pInputText type="text" class="p-inputtext-sm"
+                                                (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                                placeholder="Search..." />
+                                        </span>
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header">
+                                    <tr class="text-center">
+                                        <th pSortableColumn="price">Sr. No<p-sortIcon field="price"></p-sortIcon></th>
+                                        <th pSortableColumn="EMPNO" style="min-width:10rem">EMPNO<p-sortIcon
+                                                field="category"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="FIRSTNAME" style="min-width:10rem">FirstName<p-sortIcon
+                                                field="inventoryStatus"></p-sortIcon></th>
+                                        <th pSortableColumn="LASTNAME" style="min-width:10rem">LastName
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-product>
+                                    <tr>
+                                        <td>{{product.Srno}}</td>
+                                        <td>{{product.EMPNO}}</td>
+                                        <td>{{product.FIRSTNAME}}</td>
+                                        <td>{{product.LASTNAME}}</td>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="summary">
+                                    <div class="flex align-items-center justify-content-between">
+                                        In total there are {{allSCOIData ? allSCOIData.length : 0 }} products.
+                                    </div>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card radius-10 mb-2" *ngIf="showTodayIRFData">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">Total Requests Details</h6>
+                            </div>
+                            <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i
+                                        class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Export to Excel</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                                    </li>
+                                </ul>
+                                <span class="close-icon small-icon" (click)="closeFunction()">
+                                    <i class='bx bx-x'></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <p-table #dt [value]="todayIRFData" [rows]="5" [paginator]="true"
+                                styleClass="p-datatable-sm" [globalFilterFields]="['LASTNAME','FIRSTNAME','EMPNO']"
+                                [tableStyle]="{'min-width': '75rem'}" [(selection)]="selectedProducts" [rowHover]="true"
+                                dataKey="id"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                                <ng-template pTemplate="caption">
+                                    <div class="flex align-items-center justify-content-between">
+                                        <h5 class="m-0"></h5>
+                                        <span class="p-input-icon-left">
+                                            <i class="pi pi-search"></i>
+                                            <input pInputText type="text" class="p-inputtext-sm"
+                                                (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                                placeholder="Search..." />
+                                        </span>
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header">
+                                    <tr class="text-center">
+                                        <th pSortableColumn="price">Sr. No<p-sortIcon field="price"></p-sortIcon></th>
+                                        <th pSortableColumn="EMPNO" style="min-width:10rem">Name Of Security<p-sortIcon
+                                                field="category"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="FIRSTNAME" style="min-width:10rem">Instrument
+                                            Type<p-sortIcon field="inventoryStatus"></p-sortIcon></th>
+                                        <th pSortableColumn="LASTNAME" style="min-width:10rem">Transaction Type
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="LASTNAME" style="min-width:10rem">Quantity
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="LASTNAME" style="min-width:10rem">Price Limit<small>(Not
+                                                including
+                                                Brokerage)</small>
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="LASTNAME" style="min-width:10rem">Status
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="LASTNAME" style="min-width:10rem">Rejection Reason
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-product>
+                                    <tr>
+                                        <td>{{product.Srno}}</td>
+                                        <td>{{product.Security || product.Primary_Issue_Type}}</td>
+                                        <td>{{product.NatureofTrade}}</td>
+                                        <td>{{product.Transaction}}</td>
+                                        <td>{{product.EqQuantity}}</td>
+                                        <td></td>
+                                        <td>{{product.ApprovalStatus}}</td>
+                                        <td>{{product.FormattedActiveRejectionReason}}</td>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="summary">
+                                    <div class="flex align-items-center justify-content-between">
+                                        In total there are {{todayIRFData ? todayIRFData.length : 0 }} products.
+                                    </div>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card radius-10 mb-2" *ngIf="showTodayRejectIRFData">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">Rejected Requests Details</h6>
+                            </div>
+                            <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i
+                                        class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Export to Excel</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                                    </li>
+                                </ul>
+                                <span class="close-icon small-icon" (click)="closeFunction()">
+                                    <i class='bx bx-x'></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <p-table #dt [value]="todayIRFRejectData" [rows]="5" [paginator]="true"
+                                styleClass="p-datatable-sm" [globalFilterFields]="['LASTNAME','FIRSTNAME','EMPNO']"
+                                [tableStyle]="{'min-width': '75rem'}" [(selection)]="selectedProducts" [rowHover]="true"
+                                dataKey="id"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                                <ng-template pTemplate="caption">
+                                    <div class="flex align-items-center justify-content-between">
+                                        <h5 class="m-0"></h5>
+                                        <span class="p-input-icon-left">
+                                            <i class="pi pi-search"></i>
+                                            <input pInputText type="text" class="p-inputtext-sm"
+                                                (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                                placeholder="Search..." />
+                                        </span>
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header">
+                                    <tr class="text-center">
+                                        <th pSortableColumn="price">Sr. No<p-sortIcon field="price"></p-sortIcon></th>
+                                        <th pSortableColumn="EMPNO" style="min-width:10rem">Name Of Security<p-sortIcon
+                                                field="category"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="FIRSTNAME" style="min-width:10rem">Instrument
+                                            Type<p-sortIcon field="inventoryStatus"></p-sortIcon></th>
+                                        <th pSortableColumn="LASTNAME" style="min-width:10rem">Transaction Type
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="LASTNAME" style="min-width:10rem">Quantity
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="LASTNAME" style="min-width:10rem">Price Limit<small>(Not
+                                                including
+                                                Brokerage)</small>
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="LASTNAME" style="min-width:10rem">Status
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="LASTNAME" style="min-width:10rem">Rejection Reason
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-product>
+                                    <tr>
+                                        <td>{{product.Srno}}</td>
+                                        <td>{{product.Security || product.Primary_Issue_Type}}</td>
+                                        <td>{{product.NatureofTrade}}</td>
+                                        <td>{{product.Transaction}}</td>
+                                        <td>{{product.EqQuantity}}</td>
+                                        <td></td>
+                                        <td>{{product.ApprovalStatus}}</td>
+                                        <td>{{product.FormattedtodayRejectionReason}}</td>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="summary">
+                                    <div class="flex align-items-center justify-content-between">
+                                        In total there are {{todayIRFRejectData ? todayIRFRejectData.length : 0 }}
+                                        products.
+                                    </div>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card radius-10 mb-2" *ngIf="showViolationData">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">Clarification Received Details</h6>
+                            </div>
+                            <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i
+                                        class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Export to Excel</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                                    </li>
+                                </ul>
+                                <span class="close-icon small-icon" (click)="closeFunction()">
+                                    <i class='bx bx-x'></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <p-table #dt [value]="violationData" [rows]="5" [paginator]="true"
+                                styleClass="p-datatable-sm"
+                                [globalFilterFields]="['NoApprovalVoil','ScripName','Status']"
+                                [tableStyle]="{'min-width': '75rem'}" [(selection)]="selectedProducts" [rowHover]="true"
+                                dataKey="id"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                                <ng-template pTemplate="caption">
+                                    <div class="flex align-items-center justify-content-between">
+                                        <h5 class="m-0"></h5>
+                                        <span class="p-input-icon-left">
+                                            <i class="pi pi-search"></i>
+                                            <input pInputText type="text" class="p-inputtext-sm"
+                                                (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                                placeholder="Search..." />
+                                        </span>
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header">
+                                    <tr class="text-center">
+                                        <th pSortableColumn="price">Sr. No<p-sortIcon field="price"></p-sortIcon></th>
+                                        <th pSortableColumn="NoApprovalVoil" style="min-width:10rem">Trade
+                                            Violation<p-sortIcon field="category"></p-sortIcon></th>
+                                        <th pSortableColumn="ScripName" style="min-width:10rem">Scrip Name<p-sortIcon
+                                                field="inventoryStatus"></p-sortIcon></th>
+                                        <th pSortableColumn="CreatedDate" style="min-width:10rem">Date
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="CreatedDate" style="min-width:10rem">EmpName
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="Status" style="min-width:10rem">Status
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="LASTNAME" style="min-width:10rem">Action
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-product>
+                                    <tr>
+                                        <td>{{product.Srno}}</td>
+                                        <td>{{product.NoApprovalVoil}}</td>
+                                        <td>{{product.ScripName}}</td>
+                                        <td>{{product.CreatedDate | date}}</td>
+                                        <td>{{product.FIRSTNAME}}</td>
+                                        <td *ngIf="product.Status=='Clarification Provided'"
+                                            class="bg-gradient-ohhappiness text-white">
+                                            {{product.Status}}</td>
+                                        <td>
+                                            <ng-container *ngIf="product.Status !== 'Clarification Not Provided' ">
+                                                <i class="pi pi-pencil" (click)="onEditVioStatus(product)"></i>
+                                            </ng-container>
+                                        </td>
+                                        <!-- <td>
+                                    <button *ngIf="product.Status=='Clarification Not Provided'" pButton pRipple
+                                        type="button" (click)="showDialog(product)" label=""
+                                        class="btn-light btn-primary p-button-info p-button-sm mx-0 py-0">Add
+                                        Remarks</button>
+                                </td> -->
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="summary">
+                                    <div class="flex align-items-center justify-content-between">
+                                        In total there are {{violationData ? violationData.length : 0 }} products.
+                                    </div>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card radius-10 mb-2" *ngIf="showViolationWaitedData">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">Clarification Awaited Details</h6>
+                            </div>
+                            <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i
+                                        class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Export to Excel</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                                    </li>
+                                </ul>
+                                <span class="close-icon small-icon" (click)="closeFunction()">
+                                    <i class='bx bx-x'></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <p-table #dt [value]="violationAwaitData" [rows]="5" [paginator]="true"
+                                styleClass="p-datatable-sm"
+                                [globalFilterFields]="['NoApprovalVoil','ScripName','Status']"
+                                [tableStyle]="{'min-width': '75rem'}" [(selection)]="selectedProducts" [rowHover]="true"
+                                dataKey="id"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                                <ng-template pTemplate="caption">
+                                    <div class="flex align-items-center justify-content-between">
+                                        <h5 class="m-0"></h5>
+                                        <span class="p-input-icon-left">
+                                            <i class="pi pi-search"></i>
+                                            <input pInputText type="text" class="p-inputtext-sm"
+                                                (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                                placeholder="Search..." />
+                                        </span>
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header">
+                                    <tr class="text-center">
+                                        <th pSortableColumn="price">Sr. No<p-sortIcon field="price"></p-sortIcon></th>
+                                        <th pSortableColumn="NoApprovalVoil" style="min-width:10rem">Trade
+                                            Violation<p-sortIcon field="category"></p-sortIcon></th>
+                                        <th pSortableColumn="ScripName" style="min-width:10rem">Scrip Name<p-sortIcon
+                                                field="inventoryStatus"></p-sortIcon></th>
+                                        <th pSortableColumn="CreatedDate" style="min-width:10rem">Date
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="Status" style="min-width:10rem">Status
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="LASTNAME" style="min-width:10rem">Action
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-product>
+                                    <tr>
+                                        <td>{{product.Srno}}</td>
+                                        <td>{{product.NoApprovalVoil}}</td>
+                                        <td>{{product.ScripName}}</td>
+                                        <td>{{product.CreatedDate | date}}</td>
+                                        <!-- <td *ngIf="product.Status=='Clarification Provided'"
+                                        class="bg-gradient-ohhappiness text-white">
+                                        {{product.Status}}</td> -->
+                                        <td *ngIf="product.Status=='Clarification Not Provided'"
+                                            class="bg-gradient-ibiza text-white">
+                                            {{product.Status}}</td>
+                                        <td>
+                                            <button *ngIf="product.Status=='Clarification Not Provided'" pButton pRipple
+                                                type="button" (click)="showDialog(product)" label=""
+                                                class="btn-light btn-primary p-button-info p-button-sm mx-0 py-0">Add
+                                                Remarks</button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="summary">
+                                    <div class="flex align-items-center justify-content-between">
+                                        In total there are {{violationAwaitData ? violationAwaitData.length : 0 }}
+                                        products.
+                                    </div>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card radius-10 mb-2" *ngIf="showTotalViolationData">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">Total Violation Details</h6>
+                            </div>
+                            <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i
+                                        class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Export to Excel</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                                    </li>
+                                </ul>
+                                <span class="close-icon small-icon" (click)="closeFunction()">
+                                    <i class='bx bx-x'></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <p-table #dt [value]="totalviolationData" [rows]="5" [paginator]="true"
+                                styleClass="p-datatable-sm"
+                                [globalFilterFields]="['NoApprovalVoil','ScripName','Status','date']"
+                                [tableStyle]="{'min-width': '75rem'}" [(selection)]="selectedProducts" [rowHover]="true"
+                                dataKey="id"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                                <ng-template pTemplate="caption">
+                                    <div class="flex align-items-center justify-content-between">
+                                        <h5 class="m-0"></h5>
+                                        <span class="p-input-icon-left">
+                                            <i class="pi pi-search"></i>
+                                            <input pInputText type="text" class="p-inputtext-sm"
+                                                (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                                placeholder="Search..." />
+                                        </span>
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header">
+                                    <tr class="text-center">
+                                        <th pSortableColumn="price">Sr. No<p-sortIcon field="price"></p-sortIcon></th>
+                                        <th pSortableColumn="NoApprovalVoil" style="min-width:10rem">Trade
+                                            Violation<p-sortIcon field="category"></p-sortIcon></th>
+                                        <th pSortableColumn="ScripName" style="min-width:10rem">Scrip Name<p-sortIcon
+                                                field="inventoryStatus"></p-sortIcon></th>
+                                        <th pSortableColumn=" date" style="min-width:10rem">Date
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="CreatedDate" style="min-width:10rem">EmpName
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="Status" style="min-width:10rem">Status
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="LASTNAME" style="min-width:10rem">Action
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-product>
+                                    <tr>
+                                        <td>{{product.Srno}}</td>
+                                        <td>{{product.NoApprovalVoil}}</td>
+                                        <td>{{product.ScripName}}</td>
+                                        <td>{{product.CreatedDate | date}}</td>
+                                        <td>{{product.FIRSTNAME}}</td>
+                                        <td *ngIf="product.Status=='Clarification Provided'"
+                                            class="bg-gradient-ohhappiness text-white">
+                                            {{product.Status}}</td>
+                                        <td *ngIf="product.Status=='Clarification Not Provided'"
+                                            class="bg-gradient-ibiza text-white">
+                                            {{product.Status}}</td>
+                                        <td>
+                                            <button pButton pRipple type="button" (click)="showDialog(product)" label=""
+                                                class="btn-light btn-primary p-button-info p-button-sm mx-0 py-0">Add
+                                                Remarks</button>
+                                            <!-- <button *ngIf="product.Status=='Clarification Not Provided'" pButton pRipple
+                                                type="button" (click)="showDialog(product)" label=""
+                                                class="btn-light btn-primary p-button-info p-button-sm mx-0 py-0">Add
+                                                Remarks</button>
+                                            <ng-container *ngIf="product.Status !== 'Clarification Not Provided' ">
+                                                    <i class="pi pi-pencil" (click)="onEditVioStatus(product)"></i>
+                                            </ng-container> -->
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="summary">
+                                    <div class="flex align-items-center justify-content-between">
+                                        In total there are {{totalviolationData ? totalviolationData.length : 0 }}
+                                        products.
+                                    </div>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+
+                <p-toast></p-toast>
+
+                <div class="grid">
+                    <!-- Access Control Check -->
+                    <div class="col-12" *ngIf="isCheckingAccess">
+                        <div class="card">
+                            <div class="card-body text-center" style="padding: 2rem;">
+                                <i class="pi pi-spin pi-spinner" style="font-size: 2rem; color: #007ad9;"></i>
+                                <h6 class="mt-3 mb-2">Verifying Access Permissions</h6>
+                                <p class="text-muted">Please wait while we validate your access rights...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Access Denied -->
+                    <div class="col-12" *ngIf="!isCheckingAccess && !hasAccess">
+                        <div class="card">
+                            <div class="card-body text-center" style="padding: 2rem;">
+                                <i class="pi pi-ban" style="font-size: 3rem; color: #e74c3c;"></i>
+                                <h5 class="mt-3 mb-2 text-danger">Access Denied</h5>
+                                <p class="text-muted mb-3">{{ accessDeniedMessage }}</p>
+                                <p class="text-sm text-muted">
+                                    <i class="pi pi-info-circle"></i>
+                                    This component requires Admin or Super Admin privileges. Please contact your system
+                                    administrator if you
+                                    believe you should have access.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Main Content Area - Approval List Card (only shown when access is granted) -->
+                    <div class="col-12" *ngIf="!isCheckingAccess && hasAccess">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h6 class="text-bold mb-0">Trading - Approval Management</h6>
+                                    <div class="d-flex align-items-center gap-2"> <button pButton type="button"
+                                            label="Refresh Data" icon="pi pi-refresh"
+                                            class="p-button-outlined p-button-sm" (click)="loadApprovalData()"
+                                            [disabled]="approvalDataLoading || !hasAccess"></button>
+                                    </div>
+                                </div>
+
+                                <!-- Loading State -->
+                                <div *ngIf="approvalDataLoading" class="center-content" style="height: 15vh;">
+                                    <i class="pi pi-spin pi-spinner" style="font-size: 1.5rem"></i>
+                                    <span>Loading approval data...</span>
+                                </div>
+
+                                <!-- Approval Data Table -->
+                                <p-table [value]="approvalData" [responsive]="true" [paginator]="true" [rows]="10"
+                                    [showCurrentPageReport]="true"
+                                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} approval requests"
+                                    [rowsPerPageOptions]="[5,10,20]" [loading]="approvalDataLoading"
+                                    *ngIf="!approvalDataLoading && approvalData && approvalData.length > 0"
+                                    styleClass="p-datatable-sm p-datatable-gridlines" dataKey="EMPID"
+                                    [resizableColumns]="true" columnResizeMode="expand"> <ng-template
+                                        pTemplate="caption">
+                                        <div class="p-d-flex p-jc-between p-ai-center">
+                                            <h5>Pending Approval Requests</h5>
+                                            <span>Review and approve/reject pending trading requests (approved requests
+                                                are automatically
+                                                filtered out)</span>
+                                        </div>
+                                    </ng-template>
+
+                                    <ng-template pTemplate="header">
+                                        <tr>
+                                            <th pSortableColumn="EMPID">Employee ID <p-sortIcon
+                                                    field="EMPID"></p-sortIcon></th>
+                                            <th pSortableColumn="FIRSTNAME">Employee Name <p-sortIcon
+                                                    field="FIRSTNAME"></p-sortIcon></th>
+                                            <th pSortableColumn="REQUEST_TYPE">Request Type <p-sortIcon
+                                                    field="REQUEST_TYPE"></p-sortIcon></th>
+                                            <th pSortableColumn="CREATED_DT">Request Date <p-sortIcon
+                                                    field="CREATED_DT"></p-sortIcon></th>
+                                            <th pSortableColumn="STATUS">Status <p-sortIcon field="STATUS"></p-sortIcon>
+                                            </th>
+                                            <th pSortableColumn="DESIGNATED">Designation <p-sortIcon
+                                                    field="DESIGNATED"></p-sortIcon></th>
+                                            <th pSortableColumn="REASON">REASON<p-sortIcon field="REASON"></p-sortIcon>
+                                            </th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </ng-template>
+
+                                    <ng-template pTemplate="body" let-record let-rowIndex="rowIndex">
+                                        <tr class="p-selectable-row">
+                                            <td>
+                                                <span class="p-column-title">Employee ID</span>
+                                                {{record.EMPID || 'N/A'}}
+                                            </td>
+
+
+                                            <td>
+                                                <span class="p-column-title">Employee Name</span>
+                                                {{record.FIRSTNAME || 'N/A'}}
+                                            </td>
+                                            <td>
+                                                <span class="p-column-title">Request Type</span>
+                                                <span class="badge request-type-badge" [ngClass]="{
+                        'badge-finalize': record.REQUEST_TYPE === 'FINALIZE',
+                        'badge-reset': record.REQUEST_TYPE === 'RESET',
+                        'badge-default': !record.REQUEST_TYPE || (record.REQUEST_TYPE !== 'FINALIZE' && record.REQUEST_TYPE !== 'RESET')
+                      }">
+                                                    {{record.REQUEST_TYPE || 'N/A'}}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span class="p-column-title">Request Date</span>
+                                                {{record.CREATED_DT | date:'dd/MM/yyyy HH:mm' || 'N/A'}}
+                                            </td>
+                                            <td>
+                                                <span class="p-column-title">Status</span>
+                                                <span class="badge status-badge" [ngClass]="{
+                        'badge-approved': record.isAccepted(),
+                        'badge-rejected': record.IS_ACCEPTED === false,
+                        'badge-pending': record.IS_ACCEPTED === null || record.IS_ACCEPTED === undefined
+                      }">
+                                                    {{record.getStatusText()}}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span class="p-column-title">Designation</span>
+                                                {{record.DESIGNATED || 'N/A'}}
+                                            </td>
+
+                                            <td>
+                                                <span class="p-column-title">REASON</span>
+                                                {{record.REASON || 'N/A'}}
+                                            </td>
+                                            <td> <span class="p-column-title">Actions</span>
+                                                <h6 class="mb-0">
+                                                    <a [routerLink]="['/pit/dark-pool-approval']" class="custom-link">
+                                                        DP Aprrover
+                                                    </a>
+                                                </h6>
+                                            </td>
+                                        </tr>
+                                    </ng-template>
+
+                                    <ng-template pTemplate="emptymessage">
+                                        <tr>
+                                            <td colspan="7" class="text-center p-4">No approval requests found.</td>
+                                        </tr>
+                                    </ng-template>
+
+                                    <ng-template pTemplate="summary">
+                                        <div class="p-d-flex p-ai-center p-jc-between">
+                                            In total there are {{approvalData ? approvalData.length : 0}} approval
+                                            requests.
+                                        </div>
+                                    </ng-template>
+                                </p-table> <!-- Empty State -->
+                                <div *ngIf="!approvalDataLoading && (!approvalData || approvalData.length === 0)"
+                                    class="p-4 text-center">
+                                    <i class="pi pi-info-circle" style="font-size: 2rem; color: #607D8B;"></i>
+                                    <p class="mt-2 mb-1">No pending approval requests available.</p>
+                                    <p class="text-muted small mb-3">All dark pool trading requests have been processed
+                                        or there are no new
+                                        requests pending approval.</p>
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <button pButton type="button" label="Refresh Data" icon="pi pi-refresh"
+                                            class="p-button-outlined p-button-sm" (click)="loadApprovalData()"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Confirmation Dialog for Approve/Reject -->
+                <p-dialog [(visible)]="showConfirmDialog" [modal]="true" [draggable]="false" [resizable]="false"
+                    [style]="{width: '450px'}" styleClass="p-fluid">
+                    <ng-template pTemplate="header">
+                        <div class="d-flex align-items-center">
+                            <i class="pi" [ngClass]="{
+           'pi-check-circle text-success': confirmDialogAction === 'approve',
+           'pi-times-circle text-danger': confirmDialogAction === 'reject'
+         }" style="font-size: 1.2rem; margin-right: 8px;"></i>
+                            <span class="font-bold">{{confirmDialogTitle}}</span>
+                        </div>
+                    </ng-template>
+
+                    <div class="text-center p-3">
+                        <p class="mb-3">{{confirmDialogMessage}}</p>
+                        <div class="d-flex justify-content-center gap-2">
+                            <button pButton type="button" [label]="confirmDialogConfirmLabel"
+                                [icon]="confirmDialogAction === 'approve' ? 'pi pi-check' : 'pi pi-times'"
+                                [class]="confirmDialogAction === 'approve' ? 'p-button-success p-button-sm' : 'p-button-danger p-button-sm'"
+                                (click)="confirmAction()" [disabled]="isProcessing"></button>
+                            <button pButton type="button" label="Cancel" icon="pi pi-ban"
+                                class="p-button-secondary p-button-sm" (click)="cancelAction()"
+                                [disabled]="isProcessing"></button>
+                        </div>
+                    </div>
+                </p-dialog>
+
+                <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+                <!-- <div class="col-12 md:col-6 lg:col-6"> -->
+                <div class="card radius-10 mb-2">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">Current UPSI Open Projects</h6>
+                            </div>
+                            <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i
+                                        class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Export to Excel</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <!-- <table class="table align-middle mb-0 table-sm table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Sr. No.</th>
+                                <th>Project Name</th>
+                                <th>Owner Name</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of upsiprojects">
+                                <td>{{item.Srno}}</td>
+                                <td>{{item.PROJECT_NAME}}</td>
+                                <td></td>
+                                <td>{{item.STARTDATE}}</td>
+                                <td>{{item.ENDDATE}}</td>                                
+                            </tr>
+                        </tbody>
+                    </table> -->
+                            <p-table #dt [value]="upsiprojects" [rows]="5" [paginator]="true"
+                                styleClass="p-datatable-sm"
+                                [globalFilterFields]="['PROJECT_NAME','STARTDATE','ENDDATE']" [tableStyle]="{}"
+                                [(selection)]="selectedProducts" [rowHover]="true" dataKey="id"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                                <ng-template pTemplate="caption">
+                                    <div class="flex align-items-center justify-content-between">
+                                        <h5 class="m-0"></h5>
+                                        <span class="p-input-icon-left">
+                                            <i class="pi pi-search"></i>
+                                            <input pInputText type="text" class="p-inputtext-sm"
+                                                (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                                placeholder="Search..." />
+                                        </span>
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header">
+                                    <tr class="text-center">
+                                        <th pSortableColumn="name">Sr. No. <p-sortIcon field="name"></p-sortIcon></th>
+
+                                        <th pSortableColumn="PROJECT_NAME">Project Name<p-sortIcon
+                                                field="price"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="category" style="min-width:10rem">Owner Name<p-sortIcon
+                                                field="category"></p-sortIcon></th>
+                                        <th pSortableColumn="STARTDATE" style="min-width:10rem">Start Date<p-sortIcon
+                                                field="inventoryStatus"></p-sortIcon></th>
+                                        <th pSortableColumn="ENDDATE" style="min-width:10rem">End Date
+                                            <p-sortIcon field="inventoryStatus"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-project>
+                                    <tr>
+                                        <td>{{project.Srno}}</td>
+                                        <td>{{project.PROJECT_NAME}}</td>
+                                        <td></td>
+                                        <td>{{project.STARTDATE}}</td>
+                                        <td>{{project.ENDDATE}}</td>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="summary">
+                                    <div class="flex align-items-center justify-content-between">
+                                        In total there are {{upsiprojects ? upsiprojects.length : 0 }} products.
+                                    </div>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+
+            <div class="col-12 md:col-6 lg:col-6 d-flex">
+                <div class="card radius-10 w-100 mb-2">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">Holiday Details</h6>
+                            </div>
+                            <!-- <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i
+                                        class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Export to Excel</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                                    </li>
+                                </ul>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <p-table #dt [value]="holidays" [rows]="5" [paginator]="true" styleClass="p-datatable-sm"
+                                [globalFilterFields]="['DATE','DAY']" [tableStyle]="{}" [(selection)]="selectedProducts"
+                                [rowHover]="true" dataKey="id"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                                <ng-template pTemplate="caption">
+                                    <div class="flex align-items-center justify-content-between">
+                                        <h5 class="m-0"></h5>
+                                        <span class="p-input-icon-left">
+                                            <i class="pi pi-search"></i>
+                                            <input pInputText type="text" class="p-inputtext-sm"
+                                                (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                                placeholder="Search..." />
+                                        </span>
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header">
+                                    <tr class="text-center">
+                                        <th pSortableColumn="name">Sr. No. <p-sortIcon field="name"></p-sortIcon></th>
+
+                                        <th pSortableColumn="DATE">Date<p-sortIcon field="price"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="DAY" style="min-width:10rem">Day<p-sortIcon
+                                                field="category"></p-sortIcon></th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-project>
+                                    <tr>
+                                        <td>{{project.Srno}}</td>
+                                        <td>{{project.DATE}}</td>
+                                        <td>{{project.DAY}}</td>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="summary">
+                                    <div class="flex align-items-center justify-content-between">
+                                        In total there are {{holidays ? holidays.length : 0 }} products.
+                                    </div>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 md:col-6 lg:col-6 d-flex">
+                <div class="card radius-10 w-100 mb-2">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <h6 class="mb-0">Expiry Date/Rollover</h6>
+                            </div>
+                            <!-- <div class="dropdown ms-auto">
+                                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i
+                                        class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:;">Export to Excel</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="javascript:;">Export to PDF</a>
+                                    </li>
+                                </ul>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <p-table #dt [value]="expirydatedata" [rows]="5" [paginator]="true"
+                                styleClass="p-datatable-sm" [globalFilterFields]="['EXPIRY_DATE','IS_ACTIVE']"
+                                [tableStyle]="{}" [(selection)]="selectedProducts" [rowHover]="true" dataKey="id"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                                <ng-template pTemplate="caption">
+                                    <div class="flex align-items-center justify-content-between">
+                                        <h5 class="m-0"></h5>
+                                        <span class="p-input-icon-left">
+                                            <i class="pi pi-search"></i>
+                                            <input pInputText type="text" class="p-inputtext-sm"
+                                                (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                                placeholder="Search..." />
+                                        </span>
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="header">
+                                    <tr class="text-center">
+                                        <th pSortableColumn="name">Sr. No. <p-sortIcon field="name"></p-sortIcon></th>
+
+                                        <th pSortableColumn="EXPIRY_DATE">Expiry Date<p-sortIcon
+                                                field="price"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="IS_ACTIVE" style="min-width:10rem">Is Active<p-sortIcon
+                                                field="category"></p-sortIcon></th>
+                                        <th pSortableColumn="DAY" style="min-width:10rem">Action<p-sortIcon
+                                                field="category"></p-sortIcon></th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-project>
+                                    <tr>
+                                        <td>{{project.Srno}}</td>
+                                        <td>{{project.EXPIRY_DATE}}</td>
+                                        <td>{{project.IS_ACTIVE}}</td>
+                                        <td><ng-container *ngIf="project.IS_ACTIVE; else deleteIcon">
+                                                <a routerLink="/pit/expiraymaster" routerLinkActive="active">
+                                                    <i class="pi pi-pencil"></i></a>
+                                            </ng-container>
+                                            <!-- <ng-template #deleteIcon>
+                                                <i class="pi pi-trash" (click)="deletebtn(project)"></i>
+                                            </ng-template> -->
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="summary">
+                                    <div class="flex align-items-center justify-content-between">
+                                        In total there are {{expirydatedata ? expirydatedata.length : 0 }} products.
+                                    </div>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card flex justify-content-center">
+
+            <p-dialog header="Violation" [(visible)]="visible" [style]="{width: '50vw'}">
+                <!-- <b>
+                    <hr>
+                </b> -->
+                <br>
+                <form autocomplete="off" [formGroup]="Voilationform">
+                    <div class="row">
+                        <div class="inputText col-md-6 col-lg-6 col-xl-6 mb-2">
+                            <div class="form-floating form-floating-outline">
+                                <input type="text" class="form-control w-100" placeholder="" pInputText
+                                    formControlName="Voilation" required>
+                                <label for="inputText4" class="">Violation<span
+                                        class="required-asterisk">*</span></label>
+                                <small style="color: red;"
+                                    *ngIf="Voilationform.get('Voilation').hasError('required') && (Voilationform.get('Voilation').touched || Voilationform.get('Voilation').dirty)">
+                                    Violation Required.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="inputText col-md-12 col-lg-12 col-xl-12 mb-2">
+
+                            <div class="form-floating form-floating-outline">
+                                <!-- <textarea rows="1" cols="20" pInputTextarea formControlName="Remark"
+                                    class="form-control" placeholder=""></textarea> -->
+                                <input rows="1" cols="20" pInputTextarea formControlName="Remark" class="form-control"
+                                    placeholder="">
+                                <label for="inputText1">Remark/Query<span class="required-asterisk">*</span></label>
+
+                                <small style="color: red;"
+                                    *ngIf="Voilationform.get('Remark').hasError('required') && (Voilationform.get('Remark').touched || Voilationform.get('Remark').dirty)">
+                                    Remark/Query Required.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <button (click)="ViolationRemarkSave()" [disabled]="Voilationform.invalid" pButton pRipple type="button"
+                    class="btn-light btn-primary p-button-info p-button-sm mx-1 py-1" label="Submit">
+                </button>
+                <button (click)="Reset()" pButton pRipple type="button" class="p-button-secondary button-sm mx-1 py-1"
+                    label="Reset"></button>
+                <div class="card radius-10 mb-2" *ngIf="showviolationStatusData">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <p-table #dt [value]="violationStatusData" [rows]="5" [paginator]="true"
+                                styleClass="p-datatable-sm" [globalFilterFields]="['LASTNAME','FIRSTNAME','Remarks']"
+                                [tableStyle]="{'min-width': '50rem'}" [(selection)]="selectedProducts" [rowHover]="true"
+                                dataKey="id"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                                <ng-template pTemplate="header">
+                                    <tr class="text-center">
+                                        <th pSortableColumn="Remarks">Remark<p-sortIcon field="price"></p-sortIcon></th>
+                                        <th pSortableColumn="NAME">Name<p-sortIcon field="category"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="NAME">Created Date<p-sortIcon
+                                                field="category"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-product>
+                                    <tr>
+                                        <td>{{product.Remarks}}</td>
+                                        <td>{{product.FIRSTNAME}}</td>
+                                        <td>{{product.CREATED_ON | date}}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </p-dialog>
+        </div>
+        <div class="card flex justify-content-center">
+            <p-dialog header="Violation Status" [(visible)]="visiblestatusGrid" [style]="{width: '50vw'}">
+                <br>
+                <div class="card radius-10 mb-2" *ngIf="showvioStatusGrid">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <p-table #dt [value]="vioStatusGridData" [rows]="5" [paginator]="true"
+                                styleClass="p-datatable-sm" [globalFilterFields]="['LASTNAME','FIRSTNAME','Remarks']"
+                                [tableStyle]="{'min-width': '50rem'}" [(selection)]="selectedProducts" [rowHover]="true"
+                                dataKey="id"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                                <ng-template pTemplate="header">
+                                    <tr class="text-center">
+                                        <th pSortableColumn="Remarks">Remark<p-sortIcon field="price"></p-sortIcon></th>
+                                        <th pSortableColumn="NAME">Name<p-sortIcon field="category"></p-sortIcon>
+                                        </th>
+                                        <th pSortableColumn="NAME">Created Date<p-sortIcon
+                                                field="category"></p-sortIcon>
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-product>
+                                    <tr>
+                                        <td>{{product.Remarks}}</td>
+                                        <td>{{product.FIRSTNAME}}</td>
+                                        <td>{{product.CREATED_ON | date}}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </p-dialog>
+        </div>
+    </p-tabPanel>

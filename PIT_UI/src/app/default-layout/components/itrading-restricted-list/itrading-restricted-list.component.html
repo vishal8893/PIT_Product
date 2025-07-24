@@ -1,0 +1,132 @@
+<p-toast></p-toast>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+  <div class="col-12 mb-2 text-primary">
+    <!-- <h6 class="mb-0">Restricted List Master</h6> -->
+  </div>
+  <form autocomplete="off" [formGroup]="restrictedform">
+
+    <div class="row">
+      <label for="inputText1" class="col-md-3 col-lg-2 col-xl-2 col-xxl-auto col-form-label">Scrip Names<span
+          class="required-asterisk">*</span></label>
+      <div class="inputText col-md-7 col-lg-4 col-xl-3 col-xxl-2 mb-2">
+        <!-- <input type="text" class="p-inputtext-sm w-100" placeholder="Scrip Names" formControlName="companyNamecontroller" [(ngModel)]="scrpitnameNgmodel"
+            pInputText required> -->
+        <input type="text" class="p-inputtext-sm w-100" placeholder="Scrip Names"
+          formControlName="companyNamecontroller" pInputText required>
+        <small style="color: red;"
+          *ngIf="restrictedform.get('companyNamecontroller').hasError('required') && (restrictedform.get('companyNamecontroller').touched || restrictedform.get('companyNamecontroller').dirty)">
+          Scrip name Required.
+        </small>
+      </div>
+      <label for="inputText2" class="col-md-3 col-lg-2 col-xl-2 col-form-label">ISIN<span
+          class="required-asterisk">*</span></label>
+      <div class="inputText col-md-7 col-lg-4 col-xl-4 col-xxl-2 mb-2">
+        <!-- <input type="text" class="p-inputtext-sm w-100" placeholder="ISIN Name" formControlName="isincomtroller" [(ngModel)]="isinnameNgmodel" pInputText
+            required> -->
+        <input type="text" class="p-inputtext-sm w-100" placeholder="ISIN Name" formControlName="isincomtroller"
+          pInputText required>
+        <small style="color: red;"
+          *ngIf="restrictedform.get('isincomtroller').hasError('required') && (restrictedform.get('isincomtroller').touched || restrictedform.get('isincomtroller').dirty)">
+          ISIN name Required.
+        </small>
+      </div>
+      <label for="inputText3" class="col-md-3 col-lg-2 col-xl-2 col-xxl-auto col-form-label">Start Date<span
+          class="required-asterisk">*</span></label>
+      <div class="col-md-7 col-lg-4 col-xl-3 col-xxl-2 mb-2">
+        <!-- <p-calendar inputId="basic" class="p-inputtext-sm w-100" formControlName="startdatecontroller" [(ngModel)]="startdateNgmodel" required></p-calendar> -->
+        <p-calendar inputId="basic" class="p-inputtext-sm w-100" formControlName="startdatecontroller"
+          styleClass="w-100" required></p-calendar>
+        <small style="color: red;"
+          *ngIf="restrictedform.get('startdatecontroller').hasError('required') && (restrictedform.get('startdatecontroller').touched || restrictedform.get('startdatecontroller').dirty)">
+          starte date Required.
+        </small>
+      </div>
+      <!-- </div>
+    <div class="row"> -->
+      <label for="inputText4" class="col-md-3 col-lg-2 col-xl-2 col-xxl-auto col-form-label">End Date<span
+          class="required-asterisk">*</span></label>
+      <div class="col-md-7 col-lg-4 col-xl-3 col-xxl-2 mb-2">
+        <!-- <p-calendar inputId="basic" class="p-inputtext-sm w-100" formControlName="enddatecontroller" [(ngModel)]="enddateNgmodel"></p-calendar> -->
+        <p-calendar inputId="basic" class="p-inputtext-sm w-100" formControlName="enddatecontroller"
+          styleClass="w-100"></p-calendar>
+        <small style="color: red;"
+          *ngIf="restrictedform.get('enddatecontroller').hasError('required') && (restrictedform.get('enddatecontroller').touched || restrictedform.get('enddatecontroller').dirty)">
+          end date Required.
+        </small>
+      </div>
+    </div>
+
+    <div class="col-12 text-center">
+      <!-- <div class="grid bg-white my-3 p-2 mx-0"> -->
+      <button pButton pRipple type="button" *ngIf="onadd" (click)="createrestrict()" label=""
+        class="p-button-info p-button-sm mx-2"></button>
+      <button pButton pRipple type="button" *ngIf="oneditbtn" (click)="updaterestrict()" label=""
+        class="p-button-info p-button-sm mx-2"></button>
+      <button pButton pRipple type="button" *ngIf="oncancel" (click)="cancel()" label=""
+        class="p-button-secondary button-sm mx-1 py-2"><span class="fadeIn animated bx bx-reset"></span></button>
+    </div>
+  </form>
+  <!-- </div>
+
+<div class="row card bg-white my-3 px-2 pb-2 mx-0"> -->
+  <div class="col-12">
+    <p-table #dt [value]="products" dataKey="id" styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines"
+      [rowHover]="true" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+      [globalFilterFields]="['SCRIPT_NAME','ISIN','STARTDATE','ENDDATE']">
+      <ng-template pTemplate="caption">
+        <div class="table-header">
+          <span class="globalSearch p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input pInputText class="p-inputtext-sm" type="text"
+              (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search" />
+          </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="SCRIPT_NAME">SCRIP NAME <p-sortIcon field="name"></p-sortIcon></th>
+          <th pSortableColumn="ISIN">ISIN <p-sortIcon field="country.name"></p-sortIcon></th>
+          <th pSortableColumn="STARTDATE">Start Date <p-sortIcon field="date"></p-sortIcon></th>
+          <th pSortableColumn="ENDDATE">End Date <p-sortIcon field="date"></p-sortIcon></th>
+          <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+        <tr class="p-selectable-row">
+          <td>
+            <span class="p-column-title">SCRIP NAME</span>
+            {{product.SCRIPT_NAME}}
+          </td>
+          <td>
+            <span class="p-column-title">ISIN</span>
+            <span class="image-text">{{product.ISIN
+              }}</span>
+          </td>
+          <td>
+            <span class="p-column-title">Start Date</span>
+            <span class="image-text">{{product.STARTDATE}}</span>
+          </td>
+          <td>
+            <span class="p-column-title">End Date</span>
+            {{product.ENDDATE}}
+          </td>
+          <td>
+            <!-- <button pButton type="button" icon="pi pi-pencil" (click)="onEditgroup(product)" iconPos="left"
+              class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary mr-2"></button>
+
+            <button pButton type=" button" icon="pi pi-trash" (click)="deletegroup(product)" iconPos="left"
+              class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"></button> -->
+            <i class="pi pi-pencil" (click)="onEditgroup(product)"></i>&nbsp;&nbsp;
+            <i class="pi pi-trash" (click)="deletegroup(product)"></i>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8">No products found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

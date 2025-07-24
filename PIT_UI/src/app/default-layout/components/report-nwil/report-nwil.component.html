@@ -1,0 +1,38 @@
+<!-- <p-toast></p-toast> -->
+
+<div class="card shadow-sm bg-white px-3 py-2 mx-0 mb-3">
+    <div class="col-12 mb-3 text-primary">
+        <h6 class="mb-0">NWIL Report</h6>
+    </div>
+
+    <div class="grid">
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="form-floating form-floating-outline">
+
+                <p-calendar placeholder="From Date" [(ngModel)]="Fromdate" [showIcon]="true"
+                    class="form-control calendar p-0" styleClass="w-100"></p-calendar>
+                <label for="">From Date</label>
+            </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="form-floating form-floating-outline">
+
+
+                <p-calendar placeholder="To Date" [(ngModel)]="Todate" [showIcon]="true"
+                    class="form-control calendar p-0" styleClass="w-100"></p-calendar>
+                <label for="">To Date</label>
+            </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="">
+
+                <button pButton pRipple type="button" class="btn btn-primary p-button-info p-button-sm mx-1"
+                    label="Download" (click)="getreport()"></button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>

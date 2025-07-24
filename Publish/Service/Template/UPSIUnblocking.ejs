@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    tr td {
+        padding: 5px;
+    }
+
+    tr th {
+        padding: 5px;
+    }
+
+    body {
+        font-family: calibri;
+        font-size: 15px;
+        color: #09095d;
+    }
+</style>
+
+<body>
+    <% FinishData.phsical.forEach(function(data) { %>
+    <p> Dear <%= data.EMPLOYEE_NAME %>,</p>
+    <p>
+        This is to inform you that the restriction imposed on you with regards to trading in SCRIPTNAME for project
+        (PROJECT NAME) is being lifted.
+    </p>
+    <p>
+        Further, you need to comply with relevant PIT Codes adopted by Edelweiss, as applicable to you whilst trading
+        in securities market.
+    </p>
+    <p>
+        For any queries/concerns with regards to this mail, please connect with respective spoc.
+    </p>
+    <p>Note - Do not reply to this email as this is a system generated mail.</p>
+    <br />
+    Regards,<br />
+    Compliance Team
+    <br><br>
+    <% }); %>
+</body>
+
+</html>

@@ -1,0 +1,315 @@
+-- FUNCTION: public.stp_scheduledataformultiplesubtask(timestamp without time zone, character varying)
+
+-- DROP FUNCTION IF EXISTS public.stp_scheduledataformultiplesubtask(timestamp without time zone, character varying);
+---select  * from public."stp_scheduledataformultiplesubtask"('2023-02-20','5')
+CREATE OR REPLACE FUNCTION public.stp_scheduledataformultiplesubtask(
+	taskdate date,
+	sid character varying)
+    RETURNS void
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+BEGIN 
+--DECLARE   n_taskid integer;
+DROP TABLE IF EXISTS temp_table;
+
+CREATE TEMP TABLE  temp_table AS      
+SELECT id as SubTaskID FROM public.csvtotable(sid) ;
+
+--select * from temp_table;
+-- RETURN QUERY(select * from temp_table);
+
+-- Daily   
+INSERT INTO public."tbl_TaskManagement"(
+"ScheduledId", "projectId","TaskId", "SubtaskId", "UserId", "GroupId", "StartDate", 
+"StartTime","ExpectedEndDate", "ExpectedEndTime", "Status", "Priority", "Remarks", 
+"CreatedBy","CreatedOn",  "IsHoliday",  "IsNotified")
+select "SchedulertaskId","ProjectId", "TaskId","SubtaskId","UserId", "GroupId",
+taskdate,"StartTime",
+case when "ExpectedEndTime" < "StartTime" then INTERVAL '1 DAY' +taskdate else taskdate end,
+"ExpectedEndTime",'1',priority, remarks,'Scheduled',CURRENT_DATE ,False,False 
+from public."tbl_ScheduledTask"
+where  taskdate ::date  <= "EndFrequency" ::date 
+and "Frequency" = 'Daily' 
+and "SchedulertaskId" not in(select "ScheduledId"::bigint from public."tbl_TaskManagement"
+where "StartDate" ::date  = taskdate ::date)
+and "EndFrequency" ::date not in 
+	(select EventDate ::date from public."tbl_HolidayMaster") and "IsActive" = true
+	and "SubtaskId" in (select SubTaskID from temp_table);
+	
+-- Weekly   
+INSERT INTO public."tbl_TaskManagement"(
+"ScheduledId", "projectId","TaskId", "SubtaskId", "UserId", "GroupId", "StartDate", 
+"StartTime","ExpectedEndDate", "ExpectedEndTime", "Status", "Priority", "Remarks", 
+"CreatedBy","CreatedOn",  "IsHoliday",  "IsNotified")
+select "SchedulertaskId","ProjectId", "TaskId","SubtaskId","UserId", "GroupId",
+taskdate+INTERVAL '1 DAY'*"DateGap","StartTime",
+taskdate+INTERVAL '1 DAY'*("DateGap"+"TaskPeriod"),
+"ExpectedEndTime",'1',priority, remarks,'Scheduled',CURRENT_DATE ,False,False 
+from public."tbl_ScheduledTask" 
+where taskdate in (select Date from public."get_dates_by_dow" (taskdate,"EndFrequency","FrequencyPeriod"))
+and "Frequency" = 'Weekly' and 
+"SchedulertaskId" not in(select "ScheduledId"::bigint from public."tbl_TaskManagement"
+				  where "StartDate" ::date  = INTERVAL '1 DAY'* "DateGap"  +taskdate ::date)
+and taskdate::date not in 
+	(select EventDate ::date from public."tbl_HolidayMaster") and "IsActive" = true
+	and "SubtaskId" in (select SubTaskID from temp_table);
+---Monthly
+-- --for BusinessDays
+DECLARE 
+    NxtDate TIMESTAMP := taskdate + INTERVAL '1 day';
+BEGIN
+IF EXISTS(
+SELECT 1 FROM public."tbl_HolidayMaster"
+WHERE to_char(EventDate, 'DD/MM/YYYY') = to_char(TaskDate, 'DD/MM/YYYY')
+) THEN
+WHILE NxtDate IN (SELECT to_char(EventDate, 'DD/MM/YYYY') 
+FROM public."tbl_HolidayMaster") 
+LOOP
+NxtDate := NxtDate + INTERVAL '1 day';
+		
+INSERT INTO public."tbl_TaskManagement"(
+"ScheduledId", "projectId","TaskId", "SubtaskId", "UserId", "GroupId", 	"StartDate", 
+"StartTime","ExpectedEndDate", "ExpectedEndTime", "Status", "Priority", "Remarks", 
+"CreatedBy","CreatedOn",  "IsHoliday",  "IsNotified")
+SELECT "SchedulertaskId","ProjectId", "TaskId","SubtaskId","UserId", "GroupId", 
+(NxtDate + "DateGap" * interval '1 day')::date, 
+ StartTime,(NxtDate +"DateGap" * interval '1 day' + "TaskPeriod" * interval '1 day')::date,
+"ExpectedEndTime", '1', "Priority", "Remarks", 'Scheduled', CURRENT_TIMESTAMP, 1, 0 
+FROM public."tbl_ScheduledTask" 
+WHERE CAST(taskdate AS date) IN (
+SELECT unnest(public."getmonthlydates"(to_date(taskdate, 'DD/MM/YYYY'), "EndFrequency",
+"FrequencyPeriod")::date[])) AND "Frequency"= 'Monthly' AND "BusinessDays" = 1 AND "FrequencyPeriod" != ',Last' 
+AND TaskType != 'T+WeekDay' AND "SchedulertaskId" not in(select "ScheduledId"::bigint 
+from public."tbl_TaskManagement"where "StartDate" ::date  = INTERVAL '1 DAY'* ("DateGap"+NxtDate)  +taskdate ::date)
+ AND IsActive = 1 AND 	 "SubtaskId" in (select SubTaskID from temp_table);
+    	
+		
+INSERT INTO public."tbl_TaskManagement"(
+"ScheduledId", "projectId","TaskId", "SubtaskId", "UserId", "GroupId", 	"StartDate", 
+"StartTime","ExpectedEndDate", "ExpectedEndTime", "Status", "Priority", "Remarks", 
+"CreatedBy","CreatedOn",  "IsHoliday",  "IsNotified")
+SELECT "SchedulertaskId","ProjectId", "TaskId","SubtaskId","UserId", "GroupId", 
+(NxtDate + "DateGap" * interval '1 day')::date, 
+ StartTime,(NxtDate +"DateGap" * interval '1 day' + "TaskPeriod" * interval '1 day')::date, 
+ "ExpectedEndTime", '1', "Priority", "Remarks", 'Scheduled', CURRENT_TIMESTAMP, 1, 0 
+FROM public."tbl_ScheduledTask" 
+WHERE taskdate = (DATE_TRUNC('MONTH', taskdate) + INTERVAL '1 MONTH - 1 DAY')::date 
+AND "Frequency" = 'Monthly' 
+AND "BusinessDays" = 1 
+AND "FrequencyPeriod" LIKE '%Last%' 
+AND Convert(date,taskdate,103) <= Convert(date,"EndFrequency",103)
+AND "SchedulertaskId" not in(select "ScheduledId"::bigint from public."tbl_TaskManagement"
+where "StartDate" ::date  = INTERVAL '1 DAY'* ("DateGap"+NxtDate)  +taskdate ::date)
+AND IsActive = 1 AND 	 "SubtaskId" in (select SubTaskID from temp_table);
+END LOOP;
+
+ELSE
+INSERT INTO public."tbl_TaskManagement"(
+"ScheduledId", "projectId","TaskId", "SubtaskId", "UserId", "GroupId", 	"StartDate", 
+"StartTime","ExpectedEndDate", "ExpectedEndTime", "Status", "Priority", "Remarks", 
+"CreatedBy","CreatedOn",  "IsHoliday",  "IsNotified")
+
+SELECT "SchedulertaskId","ProjectId", "TaskId","SubtaskId","UserId", "GroupId", 
+  (taskdate + "DateGap" * INTERVAL '1 DAY')::date, "StartTime", 
+       (taskdate + "DateGap" * INTERVAL '1 DAY' + "TaskPeriod" * INTERVAL '1 DAY')::date, 
+       "ExpectedEndTime", '1', "Priority", "Remarks", 'Scheduled', CURRENT_TIMESTAMP, 0, 0 
+FROM public."tbl_ScheduledTask" 
+WHERE taskdate IN (SELECT "Date" FROM public."getmonthlydates"(to_date(to_char(taskdate, 'DD/MM/YYYY'), 'DD/MM/YYYY'), "EndFrequency", "FrequencyPeriod"))
+AND "Frequency" = 'Monthly' AND "BusinessDays" = 1 AND "FrequencyPeriod" != 'Last' AND "TaskType" != 'T+WeekDay'
+AND "SchedulertaskId" not in(select "ScheduledId"::bigint from public."tbl_TaskManagement"
+where "StartDate" ::date  = INTERVAL '1 DAY'* ("DateGap")  +taskdate ::date)
+AND IsActive = 1 AND 	 "SubtaskId" in (select SubTaskID from temp_table);
+
+INSERT INTO public."tbl_TaskManagement"(
+"ScheduledId", "projectId","TaskId", "SubtaskId", "UserId", "GroupId", 	"StartDate", 
+"StartTime","ExpectedEndDate", "ExpectedEndTime", "Status", "Priority", "Remarks", 
+"CreatedBy","CreatedOn",  "IsHoliday",  "IsNotified")
+SELECT "SchedulertaskId","ProjectId", "TaskId","SubtaskId","UserId", "GroupId", 
+  (taskdate + "DateGap" * INTERVAL '1 DAY')::date, "StartTime", 
+       (taskdate + "DateGap" * INTERVAL '1 DAY' + "TaskPeriod" * INTERVAL '1 DAY')::date, 
+       "ExpectedEndTime", '1', "Priority", "Remarks", 'Scheduled', CURRENT_TIMESTAMP, 0, 0 
+FROM tbl_ScheduledTask 
+WHERE taskdate = DATE_TRUNC('MONTH', taskdate) + INTERVAL '1 MONTH - 1 DAY'
+  AND "Frequency" = 'Monthly' AND "BusinessDays" = 1 AND "FrequencyPeriod" LIKE '%Last%' 
+  AND "TaskType" != 'T+WeekDay' 
+  AND taskdate::date <= "EndFrequency"::date
+AND "SchedulertaskId" not in(select "ScheduledId"::bigint from public."tbl_TaskManagement"
+where "StartDate" ::date  = INTERVAL '1 DAY'* ("DateGap")  +taskdate ::date)
+AND IsActive = 1 AND 	 "SubtaskId" in (select SubTaskID from temp_table);
+
+END IF;
+END;
+--BusinessDays end
+
+--for all Days in Month
+--for all month Days excluding Last Day of month
+INSERT INTO public."tbl_TaskManagement"(
+"ScheduledId", "projectId","TaskId", "SubtaskId", "UserId", "GroupId", 	"StartDate", 
+"StartTime","ExpectedEndDate", "ExpectedEndTime", "Status", "Priority", "Remarks", 
+"CreatedBy","CreatedOn",  "IsHoliday",  "IsNotified")
+SELECT "SchedulertaskId","ProjectId", "TaskId","SubtaskId","UserId", "GroupId", 
+  (taskdate + "DateGap" * INTERVAL '1 DAY')::date, "StartTime", 
+       (taskdate + "DateGap" * INTERVAL '1 DAY' + "TaskPeriod" * INTERVAL '1 DAY')::date, 
+       "ExpectedEndTime", '1', "Priority", "Remarks", 'Scheduled', CURRENT_TIMESTAMP, 0, 0 
+FROM tbl_ScheduledTask 
+WHERE  taskdate IN (SELECT "Date" FROM public."getmonthlydates"(to_date(to_char(taskdate, 'DD/MM/YYYY'), 'DD/MM/YYYY'), "EndFrequency", "FrequencyPeriod"))
+AND "Frequency" = 'Monthly' AND "BusinessDays" = 0 AND "FrequencyPeriod" != ',Last'
+AND "TaskType" != 'T+WeekDay'
+AND "SchedulertaskId" not in(select "ScheduledId"::bigint from public."tbl_TaskManagement"
+where "StartDate" ::date  = INTERVAL '1 DAY'* ("DateGap")  +taskdate ::date)
+AND IsActive = 1 AND 	 "SubtaskId" in (select SubTaskID from temp_table);
+
+--for last Day of Month including all days of month with Last Day
+INSERT INTO public."tbl_TaskManagement"(
+"ScheduledId", "projectId","TaskId", "SubtaskId", "UserId", "GroupId", 	"StartDate", 
+"StartTime","ExpectedEndDate", "ExpectedEndTime", "Status", "Priority", "Remarks", 
+"CreatedBy","CreatedOn",  "IsHoliday",  "IsNotified")
+SELECT "SchedulertaskId","ProjectId", "TaskId","SubtaskId","UserId", "GroupId", 
+  (taskdate + "DateGap" * INTERVAL '1 DAY')::date, "StartTime", 
+       (taskdate + "DateGap" * INTERVAL '1 DAY' + "TaskPeriod" * INTERVAL '1 DAY')::date, 
+       "ExpectedEndTime", '1', "Priority", "Remarks", 'Scheduled', CURRENT_TIMESTAMP, 0, 0 
+FROM tbl_ScheduledTask 
+WHERE taskdate = DATE_TRUNC('MONTH', taskdate) + INTERVAL '1 MONTH - 1 DAY'
+  AND "Frequency" = 'Monthly' AND "BusinessDays" = 0 AND "FrequencyPeriod" LIKE '%Last%' 
+  AND "TaskType" != 'T+WeekDay' 
+  AND taskdate::date <= "EndFrequency"::date
+AND "SchedulertaskId" not in(select "ScheduledId"::bigint from public."tbl_TaskManagement"
+where "StartDate" ::date  = INTERVAL '1 DAY'* ("DateGap")  +taskdate ::date)
+AND IsActive = 1 AND 	 "SubtaskId" in (select SubTaskID from temp_table);
+--Monthly End
+
+--Monthly_TWeekDay
+INSERT INTO public."tbl_TaskManagement"(
+"ScheduledId", "projectId","TaskId", "SubtaskId", "UserId", "GroupId", 	"StartDate", 
+"StartTime","ExpectedEndDate", "ExpectedEndTime", "Status", "Priority", "Remarks", 
+"CreatedBy","CreatedOn",  "IsHoliday",  "IsNotified")
+SELECT "SchedulertaskId","ProjectId", "TaskId","SubtaskId","UserId", "GroupId", 
+  (taskdate + "DateGap" * INTERVAL '1 DAY')::date, "StartTime", 
+       (taskdate + "DateGap" * INTERVAL '1 DAY' + "TaskPeriod" * INTERVAL '1 DAY')::date, 
+       "ExpectedEndTime", '1', "Priority", "Remarks", 'Scheduled', CURRENT_TIMESTAMP, 0, 0 
+FROM tbl_ScheduledTask 
+WHERE  taskdate IN (SELECT "Date" FROM public."last_day_of_week"(to_date(to_char(taskdate, 'DD/MM/YYYY'), 'DD/MM/YYYY'), "EndFrequency", "FrequencyPeriod"))
+AND "Frequency" = 'Monthly'
+AND "TaskType" = 'T+WeekDay'
+AND "SchedulertaskId" not in(select "ScheduledId"::bigint from public."tbl_TaskManagement"
+where "StartDate" ::date  = INTERVAL '1 DAY'* ("DateGap")  +taskdate ::date)
+AND IsActive = 1 AND 	 "SubtaskId" in (select SubTaskID from temp_table);
+--End Monthly_TWeekDay
+
+--QuaterYear
+INSERT INTO public."tbl_TaskManagement"(
+"ScheduledId", "projectId","TaskId", "SubtaskId", "UserId", "GroupId", 	"StartDate", 
+"StartTime","ExpectedEndDate", "ExpectedEndTime", "Status", "Priority", "Remarks", 
+"CreatedBy","CreatedOn",  "IsHoliday",  "IsNotified")
+SELECT "SchedulertaskId","ProjectId", "TaskId","SubtaskId","UserId", "GroupId", 
+  taskdate::date, "StartTime", 
+      (TaskDate + TaskPeriod - interval '1 day')::date, 
+       "ExpectedEndTime", '1', "Priority", "Remarks", 'Scheduled', CURRENT_TIMESTAMP, 0, 0 
+FROM tbl_ScheduledTask 
+WHERE  taskdate IN (SELECT "Date" FROM public."QuaterYear"(to_date(to_char(taskdate, 'DD/MM/YYYY'), 'DD/MM/YYYY'), "EndFrequency", "FrequencyPeriod"))
+AND "Frequency" = 'Quarterly'
+and "FrequencyPeriod" !=',Last'  and "TaskType" != 'T+WeekDay'
+AND "SchedulertaskId" not in(select "ScheduledId"::bigint from public."tbl_TaskManagement"
+where "StartDate" ::date  = INTERVAL '1 DAY'* ("DateGap")  +taskdate ::date)
+AND IsActive = 1 AND 	 "SubtaskId" in (select SubTaskID from temp_table);
+
+
+INSERT INTO public."tbl_TaskManagement"(
+"ScheduledId", "projectId","TaskId", "SubtaskId", "UserId", "GroupId", 	"StartDate", 
+"StartTime","ExpectedEndDate", "ExpectedEndTime", "Status", "Priority", "Remarks", 
+"CreatedBy","CreatedOn",  "IsHoliday",  "IsNotified")
+SELECT "SchedulertaskId","ProjectId", "TaskId","SubtaskId","UserId", "GroupId", 
+   (taskdate + "DateGap" * INTERVAL '1 DAY')::date, "StartTime", 
+  (taskdate + "DateGap" * INTERVAL '1 DAY' + "TaskPeriod" * INTERVAL '1 DAY')::date, 
+       "ExpectedEndTime", '1', "Priority", "Remarks", 'Scheduled', CURRENT_TIMESTAMP, 0, 0 
+FROM tbl_ScheduledTask 
+WHERE  taskdate IN (SELECT "Date" FROM public."QuaterYear"(to_date(to_char(taskdate, 'DD/MM/YYYY'), 'DD/MM/YYYY'), "EndFrequency", 1))
+AND "Frequency" = 'Quarterly'
+and "FrequencyPeriod" like'%Last%'  and "TaskType" != 'T+WeekDay'
+AND "SchedulertaskId" not in(select "ScheduledId"::bigint from public."tbl_TaskManagement"
+where "StartDate" ::date  = INTERVAL '1 DAY'* ("DateGap")  +taskdate ::date)
+AND IsActive = 1 AND 	 "SubtaskId" in (select SubTaskID from temp_table);
+
+
+
+INSERT INTO public."tbl_TaskManagement"(
+"ScheduledId", "projectId","TaskId", "SubtaskId", "UserId", "GroupId", 	"StartDate", 
+"StartTime","ExpectedEndDate", "ExpectedEndTime", "Status", "Priority", "Remarks", 
+"CreatedBy","CreatedOn",  "IsHoliday",  "IsNotified")
+SELECT "SchedulertaskId","ProjectId", "TaskId","SubtaskId","UserId", "GroupId", 
+   (taskdate + "DateGap" * INTERVAL '1 DAY')::date, "StartTime", 
+  (taskdate + "DateGap" * INTERVAL '1 DAY' + "TaskPeriod" * INTERVAL '1 DAY')::date, 
+       "ExpectedEndTime", '1', "Priority", "Remarks", 'Scheduled', CURRENT_TIMESTAMP, 0, 0 
+FROM tbl_ScheduledTask 
+WHERE  taskdate IN (SELECT "Date" FROM public."BiMonthlyWeekDay"(to_date(to_char(taskdate, 'DD/MM/YYYY'), 'DD/MM/YYYY'), "EndFrequency", "FrequencyPeriod",3))
+AND "Frequency" = 'Quarterly'and "TaskType" = 'T+WeekDay'
+AND "SchedulertaskId" not in(select "ScheduledId"::bigint from public."tbl_TaskManagement"
+where "StartDate" ::date  = INTERVAL '1 DAY'* ("DateGap")  +taskdate ::date)
+AND IsActive = 1 AND 	 "SubtaskId" in (select SubTaskID from temp_table);
+
+----End QuaterYear
+
+--ByMonthly
+INSERT INTO public."tbl_TaskManagement"(
+"ScheduledId", "projectId","TaskId", "SubtaskId", "UserId", "GroupId", 	"StartDate", 
+"StartTime","ExpectedEndDate", "ExpectedEndTime", "Status", "Priority", "Remarks", 
+"CreatedBy","CreatedOn",  "IsHoliday",  "IsNotified")
+SELECT "SchedulertaskId","ProjectId", "TaskId","SubtaskId","UserId", "GroupId", 
+  taskdate::date, "StartTime", 
+      (TaskDate + TaskPeriod * interval '1 day')::date, 
+       "ExpectedEndTime", '1', "Priority", "Remarks", 'Scheduled', CURRENT_TIMESTAMP, 0, 0 
+FROM tbl_ScheduledTask 
+WHERE  taskdate IN (SELECT "Date" FROM public."BiMonthly"(to_date(to_char(taskdate, 'DD/MM/YYYY'), 'DD/MM/YYYY'), "EndFrequency", "FrequencyPeriod"))
+AND "Frequency" = 'Bi Monthly'
+and "FrequencyPeriod" !=',Last'  and "TaskType" != 'T+WeekDay'
+AND "SchedulertaskId" not in(select "ScheduledId"::bigint from public."tbl_TaskManagement"
+where "StartDate" ::date  = taskdate ::date)
+AND IsActive = 1 AND 	 "SubtaskId" in (select SubTaskID from temp_table);
+
+
+INSERT INTO public."tbl_TaskManagement"(
+"ScheduledId", "projectId","TaskId", "SubtaskId", "UserId", "GroupId", 	"StartDate", 
+"StartTime","ExpectedEndDate", "ExpectedEndTime", "Status", "Priority", "Remarks", 
+"CreatedBy","CreatedOn",  "IsHoliday",  "IsNotified")
+SELECT "SchedulertaskId","ProjectId", "TaskId","SubtaskId","UserId", "GroupId", 
+   (taskdate + "DateGap" * INTERVAL '1 DAY')::date, "StartTime", 
+  (taskdate + "DateGap" * INTERVAL '1 DAY' + "TaskPeriod" * INTERVAL '1 DAY')::date, 
+       "ExpectedEndTime", '1', "Priority", "Remarks", 'Scheduled', CURRENT_TIMESTAMP, 0, 0 
+FROM tbl_ScheduledTask 
+WHERE  taskdate IN (SELECT "Date" FROM public."BiMonthly"(to_date(to_char(taskdate, 'DD/MM/YYYY'), 'DD/MM/YYYY'), "EndFrequency", 31))
+AND "Frequency" = 'Bi Monthly'
+and "FrequencyPeriod" like'%Last%'  and "TaskType" != 'T+WeekDay'
+AND taskdate::date <= "EndFrequency"::date
+AND "SchedulertaskId" not in(select "ScheduledId"::bigint from public."tbl_TaskManagement"
+where "StartDate" ::date  = INTERVAL '1 DAY'* ("DateGap")  +taskdate ::date)
+AND IsActive = 1 AND 	 "SubtaskId" in (select SubTaskID from temp_table);
+
+
+
+INSERT INTO public."tbl_TaskManagement"(
+"ScheduledId", "projectId","TaskId", "SubtaskId", "UserId", "GroupId", 	"StartDate", 
+"StartTime","ExpectedEndDate", "ExpectedEndTime", "Status", "Priority", "Remarks", 
+"CreatedBy","CreatedOn",  "IsHoliday",  "IsNotified")
+SELECT "SchedulertaskId","ProjectId", "TaskId","SubtaskId","UserId", "GroupId", 
+   (taskdate + "DateGap" * INTERVAL '1 DAY')::date, "StartTime", 
+  (taskdate + "DateGap" * INTERVAL '1 DAY' + "TaskPeriod" * INTERVAL '1 DAY')::date, 
+       "ExpectedEndTime", '1', "Priority", "Remarks", 'Scheduled', CURRENT_TIMESTAMP, 0, 0 
+FROM tbl_ScheduledTask 
+WHERE  taskdate IN (SELECT "Date" FROM public."[WeekDayForQuater_ByM_HalfY]"(to_date(to_char(taskdate, 'DD/MM/YYYY'), 'DD/MM/YYYY'), "EndFrequency", "FrequencyPeriod",2))
+AND "Frequency" = 'Bi Monthly'and "TaskType" = 'T+WeekDay'
+AND "SchedulertaskId" not in(select "ScheduledId"::bigint from public."tbl_TaskManagement"
+where "StartDate" ::date  = INTERVAL '1 DAY'* ("DateGap")  +taskdate ::date)
+AND IsActive = 1 AND 	 "SubtaskId" in (select SubTaskID from temp_table);
+--End ByMonthly
+
+
+
+END;
+
+
+$BODY$;
+
+ALTER FUNCTION public.stp_scheduledataformultiplesubtask(date, character varying)
+    OWNER TO postgres;

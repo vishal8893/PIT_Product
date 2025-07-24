@@ -1,0 +1,191 @@
+<p-toast></p-toast>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+
+    <form autocomplete="off" [formGroup]="TreadForm">
+
+        <div class="row">
+            <div class="inputText col-md-4 col-lg-4 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-dropdown [options]="AssetARrray" formControlName="Asset" optionLabel="Name" [filter]="true"
+                        (onClear)="onAssetCleared1()" (onChange)="onchangeevent()" filterBy="Name" optionValue="Name"
+                        [showClear]="true" placeholder="Select Asset" class="form-control px-0" required></p-dropdown>
+                    <label for="inputText4" class="">Asset<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="TreadForm.get('Asset').hasError('required') && (TreadForm.get('Asset').touched || TreadForm.get('Asset').dirty)">
+                        Asset Required.
+                    </small>
+                </div>
+            </div>
+
+            <div class="inputText col-md-4 col-lg-4 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-dropdown [options]="finalItems" formControlName="RequestID" optionLabel="TRX_NO"
+                        (onClear)="onAssetCleared2()" (onChange)="setalldata($event)" [filter]="true" filterBy="TRX_NO"
+                        placeholder="Request ID" [showClear]="true" optionValue="TRX_NO" class="form-control px-0"
+                        required></p-dropdown>
+                    <label for="inputText4" class="">Request ID<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="TreadForm.get('RequestID').hasError('required') && (TreadForm.get('RequestID').touched || TreadForm.get('RequestID').dirty)">
+                        Request ID Required.
+                    </small>
+                </div>
+            </div>
+
+            <div class="inputText col-md-4 col-lg-4 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control w-100" placeholder="" formControlName="AccountCode" readonly
+                        pInputText>
+                    <label for="inputText4" class="">Account Code<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="TreadForm.get('AccountCode').hasError('required') && (TreadForm.get('AccountCode').touched || TreadForm.get('AccountCode').dirty)">
+                        Account Code Required.
+                    </small>
+                </div>
+            </div>
+
+            <div class="inputText col-md-4 col-lg-4 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control w-100" placeholder="" formControlName="AccountName"
+                        pInputText readonly>
+                    <label for="inputText4" class="">Account Name<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="TreadForm.get('AccountName').hasError('required') && (TreadForm.get('AccountName').touched || TreadForm.get('AccountName').dirty)">
+                        LOB Code Required.
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="inputText col-md-4 col-lg-4 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control w-100" placeholder="" formControlName="Mode" pInputText
+                        readonly>
+                    <label for="inputText4" class="">Mode<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="TreadForm.get('Mode').hasError('required') && (TreadForm.get('Mode').touched || TreadForm.get('Mode').dirty)">
+                        Mode Required.
+                    </small>
+                </div>
+            </div>
+            <div class="inputText col-md-4 col-lg-4 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control w-100" placeholder="" formControlName="ScriptName" pInputText
+                        readonly>
+                    <label for="inputText4" class="">Script Name<span class="required-asterisk">*</span></label>
+                    <span>ISIN : {{ISIN}}</span>
+                    <small style="color: red;"
+                        *ngIf="TreadForm.get('ScriptName').hasError('required') && (TreadForm.get('ScriptName').touched || TreadForm.get('ScriptName').dirty)">
+                        Script Name Required.
+                    </small>
+                </div>
+            </div>
+            <div class="inputText col-md-4 col-lg-4 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control w-100" placeholder="" formControlName="RequestedQuantity"
+                        pInputText readonly>
+                    <label for="inputText4" class="">Requested Quantity<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="TreadForm.get('RequestedQuantity').hasError('required') && (TreadForm.get('RequestedQuantity').touched || TreadForm.get('RequestedQuantity').dirty)">
+                        Requested Quantity Required.
+                    </small>
+                </div>
+            </div>
+            <div class="inputText col-md-4 col-lg-4 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="number" class="form-control w-100" placeholder="" formControlName="TotalPrice"
+                        pInputText readonly>
+                    <label for="inputText4" class="">Total Price<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="TreadForm.get('TotalPrice').hasError('required') && (TreadForm.get('TotalPrice').touched || TreadForm.get('TotalPrice').dirty)">
+                        TotalPrice Required.
+                    </small>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="inputText col-md-4 col-lg-4 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+
+                    <p-calendar class="ui-timepicker ui-widget-header ui-corner-all ng-tns-c9-1 ng-star-inserted"
+                        inputId="icon" formControlName="TradeDate" placeholder="Select Trade Date" [showIcon]="true"
+                        class="border-0 form-control p-0 calendarIcon" styleClass="w-100" required></p-calendar>
+                    <label class=" pt-0">Trade Date<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="TreadForm.get('TradeDate').hasError('required') && (TreadForm.get('TradeDate').touched || TreadForm.get('TradeDate').dirty)">
+                        Trade Date Required.
+                    </small>
+                </div>
+            </div>
+            <div class="inputText col-md-4 col-lg-4 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control w-100" placeholder="" formControlName="Exchange" pInputText
+                        readonly>
+                    <label for="inputText4" class="">Exchange<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="TreadForm.get('Exchange').hasError('required') && (TreadForm.get('Exchange').touched || TreadForm.get('Exchange').dirty)">
+                        Exchange Required.
+                    </small>
+                </div>
+            </div>
+            <div class="inputText col-md-4 col-lg-4 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="number" class="form-control w-100" placeholder="" formControlName="TradeQty" pInputText
+                        required #val (keyup)="setlotandQuantity(val)">
+                    <label for="inputText4" class="">Trade Qty<span class="required-asterisk">*</span></label>
+                    <samp>Trade Available Qty : {{TradeAvailableQty}}</samp>
+                    <small style="color: red;"
+                        *ngIf="TreadForm.get('TradeQty').hasError('required') && (TreadForm.get('TradeQty').touched || TreadForm.get('TradeQty').dirty)">
+                        TradeQty Required.
+                    </small>
+                </div>
+            </div>
+            <div class="inputText col-md-4 col-lg-4 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="number" class="form-control w-100" placeholder="" formControlName="StrikePrice"
+                        pInputText readonly>
+                    <label for="inputText4" class="">Strike Price<span class="required-asterisk">*</span></label>
+
+                    <small style="color: red;"
+                        *ngIf="TreadForm.get('StrikePrice').hasError('required') && (TreadForm.get('StrikePrice').touched || TreadForm.get('StrikePrice').dirty)">
+                        StrikePrice Required.
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="inputText col-md-4 col-lg-4 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+
+                    <p-calendar class="ui-timepicker ui-widget-header ui-corner-all ng-tns-c9-1 ng-star-inserted"
+                        [showIcon]="true" inputId="icon" formControlName="ExpiryDate" placeholder="Select Trade Date"
+                        class="border-0 form-control p-0 calendarIcon" styleClass="w-100" readonly></p-calendar>
+                    <label class=" pt-0">Expiry Date<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="TreadForm.get('ExpiryDate').hasError('required') && (TreadForm.get('ExpiryDate').touched || TreadForm.get('ExpiryDate').dirty)">
+                        Expiry Date Required.
+                    </small>
+                </div>
+            </div>
+            <div class="inputText col-md-4 col-lg-4 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="number" class="form-control w-100" placeholder="" formControlName="OptionType"
+                        pInputText readonly>
+                    <label for="inputText4" class="">Option Type<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="TreadForm.get('OptionType').hasError('required') && (TreadForm.get('OptionType').touched || TreadForm.get('OptionType').dirty)">
+                        Option Type Required.
+                    </small>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="col-12 text-center">
+        <button pButton pRipple type="button" (click)="createBtn()" label="" [disabled]="TreadForm.invalid"
+            class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2">Add</button>
+
+        <button pButton pRipple type="button" (click)="cancel()" label=""
+            class="p-button-secondary button-sm mx-1 py-2">Cancel</button>
+    </div>
+</div>

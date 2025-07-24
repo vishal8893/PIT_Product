@@ -1,0 +1,156 @@
+<p-toast></p-toast>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+  <div class="col-12 mb-2 text-primary">
+    <!-- <h6 class="mb-0">Role Master</h6> -->
+  </div>
+  <form autocomplete="off" [formGroup]="roleform">
+
+    <div class="row">
+
+      <!-- <div class="inputText col-md-6 col-lg-2 mb-2">
+        <div class="form-floating form-floating-outline">
+          <input type="text" class="form-control w-100" placeholder="" pInputText formControlName="rolename"
+            [(ngModel)]="namemodel" required>
+          <label for="inputText4" class="">Role Name<span class="required-asterisk">*</span></label>
+          <small style="color: red;"
+            *ngIf="roleform.get('rolename').hasError('required') && (roleform.get('rolename').touched || roleform.get('rolename').dirty)">
+            Role Name Required.
+          </small>
+        </div>
+      </div> -->
+      <div class="inputText col-md-6 col-lg-2 mb-2">
+        <div class="form-floating form-floating-outline">
+          <input type="text" class="form-control w-100" placeholder="" pInputText formControlName="rolename"
+            [(ngModel)]="namemodel" required>          
+          <label for="inputText4" class="">Role Name<span class="required-asterisk">*</span></label>
+          <small style="color: red;"
+            *ngIf="roleform.get('rolename').hasError('required') && (roleform.get('rolename').touched || roleform.get('rolename').dirty)">
+            Role Name Required.
+          </small>
+          <small style="color: red;" *ngIf="roleform.get('rolename').hasError('pattern') && (roleform.get('rolename').touched || roleform.get('rolename').dirty)">
+            Role Name should only contain letters and spaces.
+          </small>
+        </div>
+      </div>
+
+      <div class="inputText col-md-6 col-lg-2 mb-2">
+        <div class="form-floating form-floating-outline">
+          <input type="text" class="form-control w-100" placeholder="" pInputText formControlName="code"
+            [(ngModel)]="codemodel" required>
+          <label for="inputText4" class="">Code<span class="required-asterisk">*</span></label>
+          <small style="color: red;"
+            *ngIf="roleform.get('code').hasError('required') && (roleform.get('code').touched || roleform.get('code').dirty)">
+            Code Required.
+          </small>
+          <small style="color: red;" *ngIf="roleform.get('code').hasError('pattern') && (roleform.get('code').touched || roleform.get('code').dirty)">
+            Code should Only numerical values are allowed.
+          </small>
+        </div>
+      </div>
+
+
+      <!-- <label for="inputText1" class="col-md-6 col-lg-auto col-form-label">Description<span
+          class="required-asterisk">*</span></label> -->
+      <div class="inputText col-md-6 col-lg-2 mb-2">
+        <div class="form-floating form-floating-outline">
+          <input type="text" class="form-control w-100" placeholder="" pInputText formControlName="Description"
+            [(ngModel)]="desmodel">
+          <label for="inputText4" class="">Description<span class="required-asterisk">*</span></label>
+          <small style="color: red;"
+            *ngIf="roleform.get('Description').hasError('required') && (roleform.get('Description').touched || roleform.get('Description').dirty)">
+            Description Required.
+          </small>
+        </div>
+      </div>
+
+      <label for="inputText1" class="col-md-6 col-lg-1 col-form-label mt-1">Active</label>
+      <div class="inputText col-md-6 col-lg-2 my-2">
+        <p-checkbox [binary]="true" [value]="true" inputId="checkbox1" formControlName="activecontroller"
+          [(ngModel)]="activemodel" required>
+        </p-checkbox>
+        <!-- <label for="inputText4" class="col-md-6 col-lg-1 col-form-label mt-1">Active</label> -->
+        <!-- <small style="color: red;"
+          *ngIf="roleform.get('activecontroller').hasError('required') && (roleform.get('activecontroller').touched || roleform.get('activecontroller').dirty)">
+          IsActive Required.
+        </small> -->
+      </div>
+      <small style="color: red;"
+          *ngIf="roleform.get('activecontroller').hasError('required') && (roleform.get('activecontroller').touched || roleform.get('activecontroller').dirty)">
+          <!-- IsActive Required. -->
+        </small>
+    </div>
+
+    <!-- <div class="col-12">
+    <label for="inputText1" class="col-md-6 col-lg-2 col-form-label">Active</label>
+    <p-checkbox name="IsActive" value="IsActive" formControlName [(ngModel)]="activemodel" inputId="ny"></p-checkbox>
+  </div> -->
+
+    <div class="col-12 text-center">
+      <button pButton pRipple type="button" *ngIf="onadd" (click)="createBtn()" label=""
+        class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><i class="bx bx-plus"></i></button>
+      <button pButton pRipple type="button" *ngIf="oneditbtn" (click)="updateBtn()" label=""
+        class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><span
+          class="fadeIn animated bx bx-reset"></span></button>
+      <button pButton pRipple type="button" *ngIf="oncancel" (click)="cancel()" label=""
+        class="p-button-secondary button-sm mx-1 py-2"><span class="fadeIn animated bx bx-reset"></span></button>
+    </div>
+
+  </form>
+  <!-- <div class="grid bg-white border-rounded14 my-3 px-2 pb-2 mx-0"> -->
+  <div class="col-12">
+    <p-table #dt [value]="products" dataKey="id" styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines"
+      [rowHover]="true" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+      [globalFilterFields]="['NAME','CODE','DESCRIPTION']">
+      <ng-template pTemplate="caption">
+        <div class="table-header">
+          <span class="globalSearch p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+              placeholder="Global Search" />
+          </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="NAME">Role Name <p-sortIcon field="name"></p-sortIcon></th>
+          <th pSortableColumn="CODE">Code <p-sortIcon field="date"></p-sortIcon></th>
+          <th pSortableColumn="DESCRIPTION">Description <p-sortIcon field="date"></p-sortIcon></th>
+          <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+        <tr class="p-selectable-row">
+          <td>
+            <span class="p-column-title">NAME</span>
+            {{product.NAME}}
+          </td>
+          <td>
+            <span class="p-column-title">CODE</span>
+            {{product.CODE}}
+          </td>
+          <td>
+            <span class="p-column-title">DESCRIPTION</span>
+            {{product.DESCRIPTION}}
+          </td>
+
+
+          <td>
+            <!-- <button pButton type="button" icon="pi pi-pencil" (click)="oneditviewbtn(product)" iconPos="left"
+              class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary mr-2"></button>
+
+            <button pButton pRipple icon="pi pi-trash" (click)="deletebtn(product)" iconPos="left"
+              class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"></button> -->
+            <i class="pi pi-pencil" (click)="oneditviewbtn(product)"></i>&nbsp;&nbsp;
+            <i class="pi pi-trash" (click)="deletebtn(product)"></i>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8">No products found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

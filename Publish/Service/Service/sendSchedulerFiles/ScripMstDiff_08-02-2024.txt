@@ -1,0 +1,1150 @@
+New Entries:
++-------------------------------------+-------------------------------------+----------------------+
+| Company Name                        | ISIN                                | Exchange             |
++-------------------------------------+-------------------------------------+----------------------+
+| Blue Coast Hotels Limited           | INE472B01011                        | BSE                  |
++-------------------------------------+-------------------------------------+----------------------+
+Changes in ISIN:
++-------------------------------------+-------------------------------------+----------------------+
+| Company Name                        | Old ISIN                            | New ISIN             |
++-------------------------------------+-------------------------------------+----------------------+
+| Kaushalya Infrastructure Development Corporation Limited | INE234I01010                        | INE234I01028         |
+| Dolphin Offshore Enterprises (India) Limited | INE920A01029                        | INE920A01037         |
+| Talbros Automotive Components Limited | INE187D01011                        | INE187D01029         |
+| STANDARD CAPITAL MARKETS LTD.       | INE625D01010                        | INE625D01028         |
+| Atal Realtech Limited               | INE0ALR01011                        | INE0ALR01029         |
+| Franklin Industries Limited         | INE789R01014                        | INE789R01022         |
+| Pearl Global Industries Limited     | INE940H01014                        | INE940H01022         |
+| Shaily Engineering Plastics Limited | INE151G01010                        | INE151G01028         |
+| Trishakti Industries Limited        | INE238C01014                        | INE238C01022         |
+| Bcl Industries Limited              | INE412G01016                        | INE412G01024         |
+| Teamo Productions HQ Limited        | INE065J01016                        | INE065J01024         |
+| 7NR Retail Limited                  | INE413X01027                        | INE413X01035         |
+| Cantabil Retail India Limited       | INE068L01016                        | INE068L01024         |
+| Pearl Global Industries Limited     | INE940H01014                        | INE940H01022         |
+| GROWINGTON VENTURES INDIA LIMI      | INE451S01019                        | INE451S01027         |
+| Alan Scott Industries Ltd.          | IN9273F01012                        | IN9273F01020         |
+| MAAGH ADVERTISING AND MARKETIN      | INE0KY201013                        | INE0KY201021         |
+| Jay Bharat Maruti Limited           | INE571B01028                        | INE571B01036         |
+| HMA Agro Industries Limited         | INE0ECP01016                        | INE0ECP01024         |
+| AVANCE TECHNOLOGIES LTD.            | INE758A01064                        | INE758A01072         |
+| Shashijit Infraprojects Limite      | INE700V01013                        | INE700V01021         |
+| M K Proteins Limited                | INE964W01013                        | INE964W01021         |
+| HP Adhesives Limited                | INE0GSL01016                        | INE0GSL01024         |
+| Cochin Shipyard Limited             | INE704P01017                        | INE704P01025         |
+| Nestle India Limited                | INE239A01016                        | INE239A01024         |
+| Geekay Wires Limited                | INE669X01016                        | INE669X01024         |
+| Hindcon Chemicals Limited           | INE642Y01011                        | INE642Y01029         |
+| Mittal Life Style Limited           | INE997Y01019                        | INE997Y01027         |
++-------------------------------------+-------------------------------------+----------------------+
+Changes in BSE Group:
++-------------------------------------+-------------------------------------+----------------------+
+| Company Name                        | Old GroupName                       | New GroupName        |
++-------------------------------------+-------------------------------------+----------------------+
+| OMNI AXS SOFTWARE LTD.              | XT                                  | X                    |
+| EPSOM PROPERTIES LTD.               | X                                   | XT                   |
+| Kirloskar Brothers Limited          | B                                   | A                    |
+| Man Industries (India) Limited      | B                                   | T                    |
+| Paramount Communications Limited    | T                                   | B                    |
+| Gokul Refoils and Solvent Limited   | B                                   | T                    |
+| PERFECT-OCTAVE MEDIA PROJECTS       | X                                   | XT                   |
+| FGP LTD.                            | XT                                  | X                    |
+| K.Z.LEASING & FINANCE LTD.          | XT                                  | X                    |
+| Shree Securities Ltd.               | XT                                  | X                    |
+| Indbank Merchant Banking Services Limited | T                                   | B                    |
+| GLOBAL CAPITAL MARKETS LTD.         | XT                                  | X                    |
+| GAGAN GASES LTD.                    | X                                   | XT                   |
+| BLB Limited                         | B                                   | T                    |
+| KAY POWER AND PAPER LTD.            | X                                   | XT                   |
+| Wonder Electricals Limited          | T                                   | B                    |
+| ISHAAN INFRASTRUCTURE AND SHEL      | XT                                  | X                    |
+| Sarveshwar Foods Limited            | T                                   | B                    |
+| Roopshri Resorts Limited            | M                                   | MT                   |
+| Raj Television Network Limited      | B                                   | T                    |
+| Murudeshwar Ceramics Limited        | B                                   | T                    |
+| Naturite Agro Products Limited      | XT                                  | X                    |
+| R. S. Software (India) Limited      | T                                   | B                    |
+| Shoora Designs Limited              | M                                   | MT                   |
+| Beekay Steel Industries Ltd.        | X                                   | B                    |
+| Kamdhenu Ventures Limited           | T                                   | B                    |
+| GlobalSpace Technologies Limit      | B                                   | T                    |
+| FERVENT SYNERGIES LTD.              | X                                   | XT                   |
+| Mcleod Russel India Limited         | T                                   | B                    |
+| Mercantile Ventures Limited         | X                                   | XT                   |
+| UNJHA FORMULATIONS LTD.             | XT                                  | X                    |
+| Landmark Property Development Company Limited | T                                   | B                    |
+| Synergy Green Industries Limited    | T                                   | B                    |
+| HINDUSTAN TIN WORKS LTD.            | X                                   | XT                   |
+| PNGS GARGI FASHION JEWELLERY L      | M                                   | MT                   |
+| O. P. Chains Limited                | M                                   | MT                   |
+| Vishal Bearings Limited             | T                                   | B                    |
+| BDH INDUSTRIES LTD.                 | XT                                  | X                    |
+| AVANTEL LTD.                        | X                                   | B                    |
+| PHAARMASIA LTD.                     | XT                                  | X                    |
+| Humming Bird Education Limited      | M                                   | MT                   |
+| Visagar Polytex Limited             | B                                   | T                    |
+| BHILWARA SPINNERS LTD.              | XT                                  | X                    |
+| Kome-on Communication Limited       | XT                                  | Z                    |
+| GTL Infrastructure Limited          | A                                   | B                    |
+| PRATIKSHA CHEMICALS LTD.            | X                                   | XT                   |
+| BLOOM INDUSTRIES LTD.               | X                                   | XT                   |
+| HIL Limited                         | A                                   | B                    |
+| Virinchi Limited                    | T                                   | B                    |
+| CITADEL REALTY AND DEVELOPERS       | XT                                  | X                    |
+| CUBICAL FINANCIAL SERVICES LTD      | X                                   | XT                   |
+| LLOYDS ENGINEERING WORKS LIMITED    | T                                   | A                    |
+| CRANES SOFTWARE INTERNATIONAL       | XT                                  | Z                    |
+| Valiant Organics Limited            | A                                   | B                    |
+| VL E-Governance & IT Solutions Limited | B                                   | T                    |
+| CENLUB INDUSTRIES LTD.              | XT                                  | X                    |
+| Naapbooks Limited                   | MS                                  | TS                   |
+| Ashika Credit Capital Ltd.          | X                                   | XT                   |
+| REMI EDELSTAHL TUBULARS LIMITE      | X                                   | XT                   |
+| GP Petroleums Limited               | T                                   | B                    |
+| Ganga Pharmaceuticals Limited       | M                                   | MT                   |
+| COMFORT COMMOTRADE LTD.             | XT                                  | X                    |
+| GOLKUNDA DIAMONDS & JEWELLERY       | X                                   | XT                   |
+| CREDENT GLOBAL FINANCE LIMITED      | XT                                  | X                    |
+| Fredun Pharmaceuticals Limited      | XT                                  | X                    |
+| NCL RESEARCH & FINANCIAL SERVI      | XT                                  | X                    |
+| GARMENT MANTRA LIFESTYLE LIMIT      | B                                   | T                    |
+| Patel Integrated Logistics Limited  | T                                   | B                    |
+| AJEL LTD.                           | XT                                  | X                    |
+| Vikas EcoTech Limited               | T                                   | B                    |
+| Kanani Industries Limited           | B                                   | T                    |
+| SANDU PHARMACEUTICALS LTD.          | XT                                  | X                    |
+| Kesoram Industries Limited          | T                                   | A                    |
+| JOHN COCKERILL INDIA LIMITED        | X                                   | B                    |
+| NIHAR INFO GLOBAL LTD.              | X                                   | XT                   |
+| Apollo Pipes Limited                | B                                   | A                    |
+| Apollo Micro Systems Limited        | B                                   | T                    |
+| Syncom Formulations (India) Limited | B                                   | T                    |
+| AMINES & PLASTICIZERS LTD.          | X                                   | B                    |
+| KANORIA ENERGY & INFRASTRUCTUR      | XT                                  | X                    |
+| Aveer Foods Limited                 | XT                                  | X                    |
+| Jindal Worldwide Limited            | B                                   | A                    |
+| BOMBAY CYCLE & MOTOR AGENCY LT      | XT                                  | X                    |
+| RAGHUNATH TOBACCO CO.LTD.           | X                                   | XT                   |
+| DVR - GACM Technologies Limited     | T                                   | B                    |
+| EFC (I) LIMITED                     | XT                                  | X                    |
+| CHD Chemicals Limited               | B                                   | T                    |
+| KMS Medisurgi Limited               | M                                   | MT                   |
+| Transformers And Rectifiers (India) Limited | B                                   | T                    |
+| SHREE PACETRONIX LTD.               | XT                                  | X                    |
+| Tilak Ventures Limited              | XT                                  | X                    |
+| ABC INDIA LTD.                      | XT                                  | X                    |
+| MAXHEIGHTS INFRASTRUCTURE LTD.      | XT                                  | X                    |
+| Indo-National Limited               | T                                   | B                    |
+| HARYANA CAPFIN LTD.                 | XT                                  | X                    |
+| Sanghvi Movers Limited              | B                                   | A                    |
+| GALAXY AGRICO EXPORTS LTD.          | X                                   | XT                   |
+| Nitco Limited                       | B                                   | T                    |
+| SSPDL LTD.                          | X                                   | XT                   |
+| Mercury Laboratories Limited        | X                                   | XT                   |
+| MIRC Electronics Limited            | T                                   | B                    |
+| KANUNGO FINANCIERS LIMITED          | XT                                  | X                    |
+| Fusion Micro Finance Limited        | B                                   | A                    |
+| KINGS INFRA VENTURES LIMITED        | XT                                  | X                    |
+| Sunflag Iron And Steel Company Limited | B                                   | A                    |
+| POLYTEX INDIA LTD.                  | X                                   | XT                   |
+| Creative Castings Limited           | XT                                  | X                    |
+| AMIN TANNERY LIMITED                | X                                   | XT                   |
+| UPSURGE INVESTMENT & FINANCE L      | X                                   | XT                   |
+| INDITRADE CAPITAL LIMITED           | XT                                  | X                    |
+| Himadri Speciality Chemical Limited | A                                   | T                    |
+| AMD Industries Limited              | B                                   | T                    |
+| Narmada Agrobase Limited            | B                                   | T                    |
+| Sun Pharma Advanced Research Company Limited | A                                   | T                    |
+| TEXEL INDUSTRIES LTD.               | XT                                  | X                    |
+| TALBROS ENGINEERING LIMITED         | XT                                  | X                    |
+| Athena Global Technologies Lim      | XT                                  | X                    |
+| Autoline Industries Limited         | T                                   | B                    |
+| JOHNSON PHARMACARE LIMITED          | X                                   | XT                   |
+| TITAN INTECH LIMITED                | XT                                  | X                    |
+| Bhandari Hosiery Exports Limited    | T                                   | B                    |
+| Escorp Asset Management Limite      | M                                   | MT                   |
+| PTC Industries Limited              | A                                   | B                    |
+| BSEL ALGO LIMITED                   | XT                                  | X                    |
+| INNOVATIVE TECH PACK LTD.           | XT                                  | X                    |
+| JYOTI RESINS & ADHESIVES LTD.       | A                                   | B                    |
+| SECUREKLOUD TECHNOLOGIES LIMITED    | B                                   | T                    |
+| ABHINAV CAPITAL SERVICES LTD.       | XT                                  | X                    |
+| JOSTS ENGINEERING CO.LTD.           | X                                   | XT                   |
+| Burnpur Cement Limited              | B                                   | T                    |
+| SURYALATA SPINNING MILLS LTD.       | XT                                  | X                    |
+| Signet Industries Limited           | T                                   | B                    |
+| Patanjali Foods Limited             | T                                   | A                    |
+| ARIHANTS SECURITIES LTD.            | XT                                  | X                    |
+| KIRAN PRINT-PACK LTD.               | XT                                  | X                    |
+| LAKSHMI AUTOMATIC LOOM WORKS L      | XT                                  | X                    |
+| Nagreeka Exports Limited            | B                                   | T                    |
+| Alok Industries Limited             | A                                   | T                    |
+| ZODIAC-JRD-MKJ LTD.                 | XT                                  | X                    |
+| JUMBO BAG LTD.                      | XT                                  | X                    |
+| Lancer Container Lines Limited      | X                                   | B                    |
+| MODERN SHARES & STOCKBROKERS L      | X                                   | XT                   |
+| Stel Holdings Limited               | T                                   | B                    |
+| PVP Ventures Limited                | T                                   | B                    |
+| NUWAY ORGANIC NATURALS INDIA L      | XT                                  | Z                    |
+| CHOKSI IMAGING LTD.                 | X                                   | XT                   |
+| Cineline India Limited              | T                                   | B                    |
+| SYLPH TECHNOLOGIES LTD.             | X                                   | XT                   |
+| Talbros Automotive Components Limited | B                                   | T                    |
+| RAMCHANDRA LEASING & FINANCE L      | X                                   | XT                   |
+| Novateor Research Laboratories      | M                                   | MT                   |
+| HB ESTATE DEVELOPERS LTD.           | X                                   | XT                   |
+| Onelife Capital Advisors Limited    | B                                   | T                    |
+| Vineet Laboratories Limited         | B                                   | T                    |
+| FORCE MOTORS LTD                    | B                                   | A                    |
+| Manugraph India Limited             | T                                   | B                    |
+| Span Divergent Limited              | XT                                  | X                    |
+| Agri-Tech (India) Limited           | T                                   | B                    |
+| Golkonda Aluminium Extrusions       | Z                                   | X                    |
+| Crane Infrastructure Limited        | XT                                  | X                    |
+| Atishay Limited                     | XT                                  | X                    |
+| TIGER LOGISTICS (INDIA) LTD         | X                                   | XT                   |
+| NIDHI GRANITES LTD.                 | X                                   | XT                   |
+| SP CAPITAL FINANCING LTD.           | XT                                  | X                    |
+| Shiva Texyarn Limited               | B                                   | T                    |
+| SAYAJI HOTELS LTD.                  | XT                                  | X                    |
+| Patron Exim Limited                 | M                                   | MT                   |
+| Innovative Ideals and Services      | MT                                  | M                    |
+| LIME CHEMICALS LTD.                 | XT                                  | X                    |
+| GARNET CONSTRUCTION LTD.            | X                                   | XT                   |
+| AXTEL INDUSTRIES LTD.               | X                                   | XT                   |
+| RAGHUVIR SYNTHETICS LTD.            | XT                                  | X                    |
+| Alankit Limited                     | B                                   | T                    |
+| Sterling and Wilson Renewable Energy Limited | T                                   | A                    |
+| NETLINK SOLUTIONS (INDIA) LTD.      | X                                   | XT                   |
+| REGIS INDUSTRIES LIMITED            | XT                                  | X                    |
+| SAILANI TOURS N TRAVELS LIMITE      | M                                   | MT                   |
+| K.P. Energy Limited                 | B                                   | XT                   |
+| DEEP ENERGY RESOURCES LIMITED       | T                                   | B                    |
+| Kokuyo Camlin Limited               | T                                   | B                    |
+| Bhatia Communications & Retail      | T                                   | B                    |
+| GOBLIN INDIA LIMITED                | M                                   | MT                   |
+| Tinna Trade Limited                 | X                                   | XT                   |
+| Smart Finsec Limited                | X                                   | XT                   |
+| PARNAX LAB LTD.                     | XT                                  | X                    |
+| SUNSHIELD CHEMICALS LTD.            | XT                                  | X                    |
+| COSCO (INDIA) LTD.                  | XT                                  | X                    |
+| RATHI BARS LTD.                     | X                                   | XT                   |
+| TELECANOR GLOBAL LTD.               | X                                   | XT                   |
+| Shree Bhavya Fabrics Limited        | X                                   | XT                   |
+| PHOENIX TOWNSHIP LTD                | XT                                  | X                    |
+| STEP TWO CORPORATION LTD.           | X                                   | XT                   |
+| Adani Power Limited                 | A                                   | T                    |
+| Svarnim Trade Udyog Limited         | X                                   | XT                   |
+| Aditya Birla Money Limited          | B                                   | T                    |
+| KMF BUILDERS & DEVELOPERS LTD.      | X                                   | XT                   |
+| Lotus Eye Hospital and Institute Limited | T                                   | B                    |
+| Almondz Global Securities Limited   | B                                   | T                    |
+| TIAAN CONSUMER LIMITED              | X                                   | XT                   |
+| KESAR TERMINALS & INFRASTRUCTU      | X                                   | XT                   |
+| PORWAL AUTO COMPONENTS LTD.         | XT                                  | X                    |
+| GARNET INTERNATIONAL LTD.           | X                                   | XT                   |
+| BANSAL ROOFING PRODUCTS LTD         | T                                   | B                    |
+| JMJ Fintech Limited                 | XT                                  | X                    |
+| SHILCHAR TECHNOLOGIES LTD.          | X                                   | B                    |
+| Compuage Infocom Limited            | B                                   | Z                    |
+| VARIMAN GLOBAL ENTERPRISES LIM      | X                                   | XT                   |
+| PANAFIC INDUSTRIALS LTD             | XT                                  | X                    |
+| NDA SECURITIES LTD.                 | XT                                  | X                    |
+| SHANTI GURU INDUSTRIES LIMITED      | M                                   | MT                   |
+| Atal Realtech Limited               | T                                   | B                    |
+| India Glycols Limited               | A                                   | B                    |
+| INTERNATIONAL COMBUSTION (INDI      | XT                                  | X                    |
+| Arfin India Limited                 | XT                                  | X                    |
+| COMPETENT AUTOMOBILES CO.LTD.       | XT                                  | X                    |
+| CHENNAI MEENAKSHI MULTISPECIAL      | X                                   | XT                   |
+| Liberty Shoes Limited               | B                                   | T                    |
+| Uma Exports Limited                 | B                                   | T                    |
+| ADDI INDUSTRIES LTD.                | XT                                  | X                    |
+| Lypsa Gems & Jewellery Limited      | T                                   | B                    |
+| ULTRAMARINE & PIGMENTS LTD.         | X                                   | B                    |
+| V.B.DESAI FINANCIAL SERVICES L      | XT                                  | X                    |
+| GINI SILK MILLS LTD.                | X                                   | XT                   |
+| SWISS MILITARY CONSUMER GOODS       | XT                                  | X                    |
+| PURSHOTTAM INVESTOFIN LTD           | XT                                  | X                    |
+| Take Solutions Limited              | T                                   | B                    |
+| KEMISTAR CORPORATION LIMITED        | XT                                  | X                    |
+| The Investment Trust Of India Limited | B                                   | T                    |
+| Magnum Ventures Limited             | T                                   | B                    |
+| COSMO FERRITES LTD.                 | XT                                  | X                    |
+| YAAN ENTERPRISES LIMITED            | X                                   | XT                   |
+| Pearl Global Industries Limited     | T                                   | B                    |
+| SHREYAS INTERMEDIATES LTD.          | XT                                  | X                    |
+| G. G. Dandekar Properties Limi      | X                                   | XT                   |
+| RAPICUT CARBIDES LTD.               | XT                                  | X                    |
+| Celebrity Fashions Limited          | B                                   | T                    |
+| JAYSYNTH DYESTUFF (INDIA) LTD.      | X                                   | XT                   |
+| AAA Technologies Limited            | B                                   | T                    |
+| MODERN STEELS LTD.                  | X                                   | XT                   |
+| Inox Green Energy Services Limited  | B                                   | T                    |
+| Shiva Granito Export Limited        | MT                                  | M                    |
+| Emami Realty Limited                | B                                   | T                    |
+| TOYAM SPORTS LIMITED                | XT                                  | X                    |
+| SYSTEMATIX SECURITIES LTD.          | XT                                  | X                    |
+| ELNET TECHNOLOGIES LTD.             | XT                                  | X                    |
+| CITY CROPS AGRO LIMITED             | MT                                  | M                    |
+| SHARANAM INFRAPROJECT AND TRAD      | X                                   | XT                   |
+| Omax Autos Limited                  | B                                   | T                    |
+| Ganesha Ecosphere Limited           | B                                   | A                    |
+| Edvenswa Enterprises Limited        | X                                   | XT                   |
+| MEFCOM CAPITAL MARKETS LTD.         | XT                                  | X                    |
+| RAHUL MERCHANDISING LTD.            | XT                                  | X                    |
+| Eurotex Industries and Exports Limited | T                                   | B                    |
+| SecMark Consultancy Limited         | B                                   | T                    |
+| Rajputana Investment and Finan      | XT                                  | X                    |
+| VAARAD VENTURES LTD                 | XT                                  | X                    |
+| CAPTAIN POLYPLAST LTD               | X                                   | XT                   |
+| BCPL Railway Infrastructure Li      | B                                   | T                    |
+| Premier Polyfilm Limited            | B                                   | T                    |
+| Flexituff Ventures International Limited | T                                   | B                    |
+| Som Distilleries & Breweries Limited | B                                   | A                    |
+| Authum Investment & Infrastruc      | A                                   | B                    |
+| Alps Industries Limited             | T                                   | B                    |
+| Max India Limited                   | B                                   | T                    |
+| Mishtann Foods Limited              | X                                   | B                    |
+| Sundaram Brake Linings Limited      | T                                   | B                    |
+| SHUKRA BULLIONS LTD.                | X                                   | XT                   |
+| GLOBAL OFFSHORE SERVICES LTD.       | X                                   | XT                   |
+| OVOBEL FOODS LTD.                   | XT                                  | X                    |
+| Nirmitee Robotics India Limite      | MS                                  | TS                   |
+| Mitshi India Limited                | XT                                  | X                    |
+| BIOGEN PHARMACHEM INDUSTRIES L      | X                                   | XT                   |
+| Anand Rathi Wealth Limited          | B                                   | A                    |
+| MARG TECHNO PROJECTS LIMITED        | X                                   | XT                   |
+| JYOTI LTD.                          | XT                                  | X                    |
+| Octaware Technologies Limited       | M                                   | MT                   |
+| MONEY MASTERS LEASING & FINANC      | M                                   | MT                   |
+| COLORCHIPS NEW MEDIA LIMITED        | X                                   | XT                   |
+| Advik Capital Limited               | X                                   | XT                   |
+| Noida Toll Bridge Company Limited   | B                                   | T                    |
+| SIMRAN FARMS LTD.                   | X                                   | XT                   |
+| LIBORD FINANCE LTD                  | X                                   | XT                   |
+| NATURA HUE CHEM LTD.                | XT                                  | X                    |
+| SHANTIDOOT INFRA SERVICES LIMI      | M                                   | MT                   |
+| SIMPLEX CASTINGS LTD.               | XT                                  | X                    |
+| Neil Industries Ltd.                | XT                                  | X                    |
+| TGV SRAAC Limited                   | A                                   | B                    |
+| PRIME PROPERTY DEVELOPMENT COR      | XT                                  | X                    |
+| TGB Banquets And Hotels Limited     | B                                   | T                    |
+| UNISHIRE URBAN INFRA LTD            | M                                   | MT                   |
+| Texmo Pipes and Products Limited    | T                                   | B                    |
+| Ultracab (India) Limited            | X                                   | XT                   |
+| Ambica Agarbathies & Aroma industries Limited | T                                   | B                    |
+| Dynamic Cables Limited              | T                                   | B                    |
+| GLOBUS CONSTRUCTORS & DEVELOPE      | XT                                  | X                    |
+| Surya Roshni Limited                | A                                   | B                    |
+| PRIME URBAN DEVELOPMENT INDIA       | X                                   | XT                   |
+| Aarti Pharmalabs Limited            | B                                   | A                    |
+| Prithvi Exchange (India) Limit      | X                                   | XT                   |
+| STL Global Limited                  | T                                   | B                    |
+| N.G.INDUSTRIES LTD.                 | XT                                  | X                    |
+| F MEC INTERNATIONAL FINANCIAL       | XT                                  | X                    |
+| Ausom Enterprise Limited            | T                                   | B                    |
+| VIRAT CRANE INDUSTRIES LTD.         | XT                                  | X                    |
+| Manas Properties Limited            | M                                   | MT                   |
+| DMR Hydroengineering & Infrast      | M                                   | MT                   |
+| FIRST FINTEC LIMITED                | X                                   | XT                   |
+| Rajdarshan Industries Limited       | T                                   | B                    |
+| Kennametal India Limited            | A                                   | B                    |
+| Sagarsoft (India) Limited           | X                                   | XT                   |
+| PARSHWANATH CORPORATION LTD.        | X                                   | XT                   |
+| MUFIN GREEN FINANCE LIMITED         | XT                                  | B                    |
+| Parvati Sweetners and Power Lt      | XT                                  | X                    |
+| Bartronics India Limited            | T                                   | B                    |
+| SVARAJ TRADING & AGENCIES LTD.      | X                                   | XT                   |
+| Creative Eye Limited                | B                                   | T                    |
+| Asian Hotels (North) Limited        | B                                   | T                    |
+| Davangere Sugar Company Limite      | X                                   | B                    |
+| INDIA FINSEC LTD.                   | X                                   | XT                   |
+| BARODA EXTRUSION LTD.               | X                                   | XT                   |
+| Indo Thai Securities Limited        | B                                   | T                    |
+| Sumuka Agro Industries Limited      | XT                                  | X                    |
+| Aryaman Capital Markets Limite      | M                                   | MT                   |
+| Southern Infosys Limited            | XT                                  | X                    |
+| JAUSS POLYMERS LTD.                 | X                                   | XT                   |
+| ARUNA HOTELS LTD.                   | X                                   | XT                   |
+| AMRAWORLD AGRICO LTD.               | X                                   | XT                   |
+| Indo Borax & Chemicals Limited      | T                                   | B                    |
+| POLO HOTELS LTD.                    | XT                                  | Z                    |
+| Samor Reality Limited               | MT                                  | B                    |
+| GARWARE SYNTHETICS LTD.             | X                                   | XT                   |
+| SAVEN TECHNOLOGIES LTD.             | X                                   | XT                   |
+| Chandrima Mercantiles limited       | XT                                  | X                    |
+| Shine Fashions (India) Limited      | M                                   | MT                   |
+| EUREKA INDUSTRIES LTD.              | XT                                  | X                    |
+| Aartech Solonics Limited            | T                                   | B                    |
+| S&T CORPORATION LTD.                | XT                                  | X                    |
+| Cupid Limited                       | B                                   | T                    |
+| ECOPLAST LTD.                       | X                                   | XT                   |
+| Rajeshwari Cans Limited             | M                                   | MT                   |
+| BENGAL & ASSAM COMPANY LTD.         | A                                   | B                    |
+| LE LAVOIR LIMITED                   | XT                                  | X                    |
+| Veerkrupa Jewellers Limited         | M                                   | MT                   |
+| EXPO GAS CONTAINERS LTD.            | X                                   | XT                   |
+| Darshan Orna Limited                | T                                   | B                    |
+| GCM CAPITAL ADVISORS LTD            | MT                                  | M                    |
+| CRANEX LTD.                         | XT                                  | X                    |
+| Concord Drugs Limited               | X                                   | XT                   |
+| ENCODE PACKAGING INDIA LIMITED      | X                                   | XT                   |
+| INDSIL HYDRO POWER AND MANGANE      | X                                   | XT                   |
+| PARAGON FINANCE LTD.                | X                                   | XT                   |
+| JULIEN AGRO INFRATECH LIMITED       | XT                                  | X                    |
+| Netweb Technologies India Limited   | B                                   | T                    |
+| Maan Aluminium Limited              | T                                   | B                    |
+| AMRAPALI INDUSTRIES LTD.            | X                                   | XT                   |
+| Brooks Laboratories Limited         | T                                   | B                    |
+| Tega Industries Limited             | B                                   | A                    |
+| Supreme Infrastructure India Limited | T                                   | Z                    |
+| Galada Finance Limited              | X                                   | XT                   |
+| Balkrishna Paper Mills Limited      | B                                   | T                    |
+| PCS TECHNOLOGY LTD.                 | X                                   | XT                   |
+| RAVINDRA ENERGY LIMITED             | X                                   | XT                   |
+| ZODIAC VENTURES LIMITED             | X                                   | XT                   |
+| K&R RAIL ENGINEERING LIMITED        | XT                                  | T                    |
+| Ashoka Metcast Limited              | B                                   | T                    |
+| Ind-Swift Limited                   | T                                   | B                    |
+| Somany Ceramics Limited             | B                                   | A                    |
+| Glenmark Life Sciences Limited      | B                                   | A                    |
+| Seamec Limited                      | B                                   | T                    |
+| Network18 Media & Investments Limited | A                                   | T                    |
+| MAHARASHTRA CORPORATION LTD.        | XT                                  | X                    |
+| PICTUREHOUSE MEDIA LTD.             | X                                   | XT                   |
+| LAXMIPATI ENGINEERING WORKS LI      | M                                   | MT                   |
+| Astec LifeSciences Limited          | A                                   | B                    |
+| ISHITA DRUGS & INDUSTRIES LTD.      | XT                                  | X                    |
+| Aananda Lakshmi Spinning Mills      | XT                                  | X                    |
+| KBS INDIA LIMITED                   | X                                   | XT                   |
+| VEEJAY LAKSHMI ENGINEERING WOR      | XT                                  | X                    |
+| SIR SHADI LAL ENTERPRISES LTD.      | X                                   | XT                   |
+| DANLAW TECHNOLOGIES INDIA LTD.      | X                                   | XT                   |
+| Khemani Distributors & Marketi      | M                                   | MT                   |
+| SCOOBEE DAY GARMENTS (INDIA) L      | X                                   | XT                   |
+| Olatech Solutions Limited           | MT                                  | M                    |
+| Ashnisha Industries Limited         | X                                   | XT                   |
+| Silver Pearl Hospitality & Lux      | M                                   | MT                   |
+| PIONEER INVESTCORP LTD.             | X                                   | XT                   |
+| Datamatics Global Services Limited  | B                                   | A                    |
+| Enbee Trade &amp; Finance Ltd       | X                                   | XT                   |
+| BHARAT BHUSHAN SHARE & COMMODI      | X                                   | XT                   |
+| GREENCREST FINANCIAL SERVICES       | X                                   | XT                   |
+| KAMADGIRI FASHION LTD.              | XT                                  | X                    |
+| Aashka Hospitals Limited            | M                                   | MT                   |
+| PECOS Hotels And Pubs Limited       | M                                   | MT                   |
+| INANI SECURITIES LTD.               | X                                   | XT                   |
+| PRIYA LTD.                          | XT                                  | X                    |
+| CYBELE INDUSTRIES LTD.              | X                                   | XT                   |
+| 3P Land Holdings Limited            | B                                   | T                    |
+| WELSPUN SPECIALTY SOLUTIONS LI      | T                                   | B                    |
+| Gujarat Lease Financing Limited     | B                                   | T                    |
+| JTL INDUSTRIES LIMITED              | B                                   | A                    |
+| Hisar Metal Industries Limited      | T                                   | B                    |
+| SHREEVATSAA FINANCE & LEASING       | XT                                  | X                    |
+| Ekennis Software Service Limit      | M                                   | MT                   |
+| MAGELLANIC CLOUD LIMITED            | B                                   | T                    |
+| Ahluwalia Contracts (India) Limited | B                                   | A                    |
+| Harish Textile Engineers Limit      | XT                                  | X                    |
+| BRIJLAXMI LEASING & FINANCE LT      | X                                   | XT                   |
+| Softtech Engineers Limited          | T                                   | B                    |
+| PREMIER SYNTHETICS LTD.             | X                                   | XT                   |
+| ANUPAM FINSERV LIMITED              | X                                   | XT                   |
+| N.D.METAL INDUSTRIES LTD.           | X                                   | XT                   |
+| GLANCE FINANCE LTD.                 | X                                   | XT                   |
+| ANSAL PROPERTIES & INFRASTRUCT      | T                                   | Z                    |
+| LOOKS HEALTH SERVICES LIMITED       | XT                                  | X                    |
+| NPR FINANCE LTD.                    | X                                   | XT                   |
+| KCP Sugar and Industries Corporation Limited | T                                   | B                    |
+| Manaksia Aluminium Company Limited  | B                                   | T                    |
+| 20 Microns Limited                  | T                                   | B                    |
+| New Delhi Television Limited        | A                                   | B                    |
+| Navoday Enterprises Limited         | MT                                  | M                    |
+| Madhucon Projects Limited           | B                                   | T                    |
+| Wherrelz IT Solutions Limited       | MS                                  | TS                   |
+| INDRAYANI BIOTECH LTD.              | X                                   | XT                   |
+| ARNOLD HOLDINGS LTD                 | X                                   | XT                   |
+| PTC India Financial Services Limited | B                                   | T                    |
+| Saumya Consultants Ltd.             | X                                   | XT                   |
+| BNR UDYOG LTD.                      | X                                   | XT                   |
+| Centum Electronics Limited          | T                                   | B                    |
+| SHREE HARI CHEMICALS EXPORT LT      | X                                   | XT                   |
+| ISF LIMITED                         | XT                                  | X                    |
+| Mukta Agriculture Limited           | X                                   | XT                   |
+| Emerald Leisures Limited            | XT                                  | X                    |
+| Dishman Carbogen Amcis Limited      | B                                   | A                    |
+| GANGA PAPERS INDIA LTD.             | X                                   | XT                   |
+| INTEGRA TELECOMMUNICATION & SO      | X                                   | XT                   |
+| KESAR INDIA LIMITED                 | MT                                  | M                    |
+| Artemis Electricals and Projec      | B                                   | T                    |
+| Suryoday Small Finance Bank Limited | B                                   | A                    |
+| FRESHTROP FRUITS LTD.               | X                                   | XT                   |
+| Emkay Global Financial Services Limited | B                                   | T                    |
+| JAYATMA INDUSTRIES LIMITED          | XT                                  | X                    |
+| SARTHAK INDUSTRIES LTD.             | XT                                  | X                    |
+| Venky's (India) Limited             | A                                   | B                    |
+| H.P.COTTON TEXTILE MILLS LTD.       | X                                   | XT                   |
+| Eastern Logica Infoway Limited      | M                                   | MT                   |
+| SYBLY INDUSTRIES LTD.               | XT                                  | X                    |
+| Somi Conveyor Beltings Limited      | B                                   | T                    |
+| B.C. POWER CONTROLS LTD             | X                                   | XT                   |
+| Net Pix Shorts Digital Media L      | MS                                  | TS                   |
+| GATI Limited                        | A                                   | B                    |
+| S V GLOBAL MILL LTD.                | XT                                  | X                    |
+| IFL ENTERPRISES LIMITED             | B                                   | T                    |
+| HOWARD HOTELS LTD.                  | XT                                  | X                    |
+| JAINCO PROJECTS (INDIA) LTD.        | X                                   | XT                   |
+| PARKER AGROCHEM EXPORTS LTD.        | X                                   | XT                   |
+| E-Land Apparel Limited              | X                                   | XT                   |
+| Shree Krishna Infrastructure L      | M                                   | MT                   |
+| M. K. Exim (India) Ltd.             | X                                   | XT                   |
+| DVR - Jain Irrigation Systems Limited | T                                   | B                    |
+| Ginni Filaments Limited             | T                                   | B                    |
+| INNOKAIZ INDIA LIMITED              | M                                   | MT                   |
+| CAPITAL TRADE LINKS LTD             | XT                                  | X                    |
+| RANDER CORPORATION LTD.             | XT                                  | X                    |
+| UCAL LIMITED                        | T                                   | B                    |
+| PBA INFRASTRUCTURE LTD.             | B                                   | T                    |
+| Flora Corporation Limited           | X                                   | XT                   |
+| Suzlon Energy Limited               | T                                   | A                    |
+| SIMMONDS MARSHALL LTD.              | XT                                  | X                    |
+| Bindal Exports Limited              | M                                   | MT                   |
+| SHILP GRAVURES LTD.                 | X                                   | XT                   |
+| Suyog Gurbaxani Funicular Rope      | M                                   | MT                   |
+| JAYANT INFRATECH LIMITED            | M                                   | MT                   |
+| DISHA RESOURCES LIMITED             | X                                   | XT                   |
+| PANJON LTD.                         | XT                                  | X                    |
+| Aban Offshore Limited               | B                                   | T                    |
+| HYPERSOFT TECHNOLOGIES LIMITED      | X                                   | XT                   |
+| ORIENT BEVERAGES LTD.               | X                                   | XT                   |
+| Eimco Elecon (India) Limited        | B                                   | T                    |
+| Newgen Software Technologies Limited | A                                   | T                    |
+| KJMC CORPORATE ADVISORS (INDIA      | XT                                  | X                    |
+| GTN INDUSTRIES LTD.                 | X                                   | XT                   |
+| Madhav Marbles and Granites Limited | B                                   | T                    |
+| Coffee Day Enterprises Limited      | A                                   | B                    |
+| Lex Nimble Solutions Limited        | M                                   | MT                   |
+| Jet Freight Logistics Limited       | T                                   | B                    |
+| MADHUR INDUSTRIES LTD.              | X                                   | XT                   |
+| ORCHASP LIMITED                     | X                                   | XT                   |
+| VIKRAM THERMO (INDIA) LTD.          | XT                                  | X                    |
+| Orient Green Power Company Limited  | T                                   | B                    |
+| RASI ELECTRODES LTD.                | XT                                  | X                    |
+| Piramal Pharma Limited              | B                                   | A                    |
+| SHELTER INFRA PROJECTS LTD.         | XT                                  | X                    |
+| Kfin Technologies Limited           | B                                   | A                    |
+| Thomas Cook  (India)  Limited       | T                                   | B                    |
+| VAGHANI TECHNO-BUILD LTD.           | X                                   | XT                   |
+| DRC Systems India Limited           | B                                   | T                    |
+| Bharat Wire Ropes Limited           | B                                   | T                    |
+| Golden Crest Education & Servi      | XT                                  | X                    |
+| Energy Development Company Limited  | B                                   | T                    |
+| HIND ALUMINIUM INDUSTRIES LTD.      | X                                   | XT                   |
+| Diksat Transworld Limited           | M                                   | MT                   |
+| YOGI LIMITED                        | X                                   | XT                   |
+| Kuberan Global Edu Solutions L      | MS                                  | TS                   |
+| PRAG BOSIMI SYNTHETICS LTD.         | X                                   | XT                   |
+| CHARTERED CAPITAL & INVESTMENT      | X                                   | XT                   |
+| Integrated Capital Services Lt      | X                                   | XT                   |
+| Amrapali Fincap Limited             | M                                   | MT                   |
+| FLUIDOMAT LTD.                      | XT                                  | X                    |
+| HASTI FINANCE LTD.                  | X                                   | XT                   |
+| NATIONAL OXYGEN LTD.                | XT                                  | X                    |
+| Country Condo's Limited             | B                                   | T                    |
+| Sanghvi Brands Limited              | MT                                  | M                    |
+| SUPER SALES INDIA LTD.              | XT                                  | X                    |
+| LEE & NEE SOFTWARES (EXPORTS)       | X                                   | XT                   |
+| Sakuma Exports Limited              | T                                   | B                    |
+| HINDUSTAN HARDY LIMITED             | XT                                  | X                    |
+| Compucom Software Limited           | B                                   | T                    |
+| ACCEL LIMITED                       | XT                                  | X                    |
+| CONTAINE TECHNOLOGIES LIMITED       | MT                                  | M                    |
+| VCU DATA MANAGEMENT LTD             | X                                   | XT                   |
+| VEER ENERGY & INFRASTRUCTURE L      | X                                   | XT                   |
+| DECCAN GOLD MINES LTD.              | XT                                  | X                    |
+| AVAILABLE FINANCE LTD.              | X                                   | XT                   |
+| Baid Finserv Limited                | T                                   | B                    |
+| EKAM LEASING & FINANCE CO.LTD.      | XT                                  | X                    |
+| IVP Limited                         | B                                   | T                    |
+| ADOR MULTIPRODUCTS LTD.             | XT                                  | X                    |
+| COSMO FIRST LIMITED                 | A                                   | B                    |
+| Vidli Restaurants Limited           | B                                   | T                    |
+| LAHOTI OVERSEAS LTD.                | X                                   | XT                   |
+| UNIROYAL INDUSTRIES LTD.            | X                                   | XT                   |
+| Sandur Manganese & Iron Ores Limited | A                                   | B                    |
+| GAYATRI PROJECTS LTD.               | T                                   | Z                    |
+| INDIA CEMENTS CAPITAL LTD.          | X                                   | XT                   |
+| Kriti Nutrients Limited             | T                                   | B                    |
+| CALCOM VISION LTD.                  | XT                                  | X                    |
+| KCD INDUSTRIES INDIA LIMITED        | X                                   | XT                   |
+| IFB Industries Limited              | A                                   | B                    |
+| KANDAGIRI SPINNING MILLS LTD.       | X                                   | XT                   |
+| CARNATION INDUSTRIES LTD.           | XT                                  | X                    |
+| SPARC ELECTREX LIMITED              | X                                   | XT                   |
+| DAULAT SECURITIES LTD.              | X                                   | XT                   |
+| Transwarranty Finance Limited       | B                                   | T                    |
+| SOM DATT FINANCE CORPORATION L      | XT                                  | X                    |
+| SIKA INTERPLANT SYSTEMS LTD.        | XT                                  | X                    |
+| JUPITER INFOMEDIA LTD.              | X                                   | XT                   |
+| PICCADILY AGRO INDUSTRIES LTD.      | X                                   | XT                   |
+| AMRAPALI CAPITAL AND FINANCE S      | M                                   | MT                   |
+| RODIUM REALTY LIMITED               | X                                   | XT                   |
+| Jindal Poly Films Limited           | A                                   | B                    |
+| SHYAMKAMAL INVESTMENTS LTD.         | X                                   | XT                   |
+| UFO Moviez India Limited            | T                                   | B                    |
+| Amba Enterprises Ltd.               | XT                                  | X                    |
+| EASTERN TREADS LTD.                 | XT                                  | X                    |
+| EKI Energy Services Limited         | A                                   | B                    |
+| WAGEND INFRA VENTURE LIMITED        | X                                   | XT                   |
+| TITAN SECURITIES LTD.               | X                                   | XT                   |
+| HAWKINS COOKERS LTD.                | A                                   | B                    |
+| PRO CLB GLOBAL LIMITED              | XT                                  | X                    |
+| Dreamfolks Services Limited         | B                                   | A                    |
+| Pavna Industries Limited            | B                                   | T                    |
+| Universal Autofoundry Limited       | T                                   | B                    |
+| J.A. Finance Limited                | XT                                  | X                    |
+| Lorenzini Apparels Limited          | T                                   | B                    |
+| Mahalaxmi Rubtech Limited           | B                                   | T                    |
+| Windsor Machines Limited            | T                                   | B                    |
+| WAAREE TECHNOLOGIES LIMITED         | M                                   | MT                   |
+| ICL Organic Dairy Products Lim      | M                                   | MT                   |
+| MASTER TRUST LTD.                   | X                                   | XT                   |
+| Poddar Housing and Development Limited | B                                   | Z                    |
+| PHOTOQUIP INDIA LTD.                | X                                   | XT                   |
+| JCT LTD.                            | XT                                  | X                    |
+| PROMACT IMPEX LIMITED               | XT                                  | X                    |
+| PACIFIC INDUSTRIES LTD.             | X                                   | XT                   |
+| Aayush Food And Herbs Limited       | X                                   | XT                   |
+| Iris Business Services Limited      | T                                   | B                    |
+| DiGiSPICE Technologies Limited      | T                                   | B                    |
+| Mirza International Limited         | A                                   | T                    |
+| Meson Valves India Limited          | M                                   | MT                   |
+| ANJANI FINANCE LTD.                 | X                                   | XT                   |
+| PUNJAB COMMUNICATIONS LTD.          | T                                   | B                    |
+| KIRAN SYNTEX LTD.                   | XT                                  | X                    |
+| SWARNSARITA JEWELS INDIA LIMIT      | XT                                  | X                    |
+| Navigant Corporate Advisors Li      | M                                   | MT                   |
+| PREMIER CAPITAL SERVICES LTD.       | X                                   | XT                   |
+| Delta Industrial Resources Lim      | XT                                  | X                    |
+| Pankaj Piyush Trade & Inv. Ltd      | XT                                  | X                    |
+| ALPHALOGIC INDUSTRIES LIMITED       | M                                   | MT                   |
+| SOFTRAK VENTURE INVESTMENT LTD      | XT                                  | X                    |
+| TV18 Broadcast Limited              | A                                   | T                    |
+| Sky Gold Limited                    | B                                   | T                    |
+| MSR INDIA LTD.                      | XT                                  | X                    |
+| ALLIANCE INTEGRATED METALIKS L      | XT                                  | X                    |
+| OBJECTONE INFORMATION SYSTEMS       | X                                   | XT                   |
+| GROWINGTON VENTURES INDIA LIMI      | M                                   | B                    |
+| CINDRELLA HOTELS LTD.               | XT                                  | X                    |
+| Global Health Limited               | B                                   | A                    |
+| PANORAMA STUDIOS INTERNATIONAL      | X                                   | XT                   |
+| Riddhi Corporate Services Limi      | T                                   | B                    |
+| Wonderla Holidays Limited           | B                                   | A                    |
+| PERMANENT MAGNETS LTD.              | X                                   | B                    |
+| LOTUS CHOCOLATE CO.LTD.             | XT                                  | X                    |
+| CORAL LABORATORIES LTD.             | X                                   | XT                   |
+| SK International Export Limite      | M                                   | MT                   |
+| PMC FINCORP LIMITED                 | X                                   | XT                   |
+| ASHISH POLYPLAST LTD.               | X                                   | XT                   |
+| INDIA HOME LOAN LTD.                | X                                   | XT                   |
+| Global Vectra Helicorp Limited      | B                                   | T                    |
+| TULSYAN NEC LTD.                    | XT                                  | X                    |
+| WAAREE RENEWABLE TECHNOLOGIES       | B                                   | T                    |
+| INDIANIVESH LTD.                    | X                                   | XT                   |
+| Zenlabs Ethica Limited              | X                                   | XT                   |
+| EAST WEST HOLDINGS LIMITED          | X                                   | XT                   |
+| North Eastern Carrying Corporation Limited | B                                   | T                    |
+| Rithwik Facility Management Se      | M                                   | MT                   |
+| Manaksia Steels Limited             | B                                   | T                    |
+| Balgopal Commercial limited         | X                                   | XT                   |
+| VALLABH STEELS LTD.                 | XT                                  | X                    |
+| Retro Green Revolution Limited      | X                                   | XT                   |
+| Scan Steels Limited                 | XT                                  | X                    |
+| Bang Overseas Limited               | B                                   | T                    |
+| Kapil Raj Finance Ltd.              | X                                   | XT                   |
+| JAYKAY ENTERPRISES LTD.             | X                                   | XT                   |
+| VIRTUAL GLOBAL EDUCATION LTD.       | X                                   | XT                   |
+| Hemisphere Properties India Limited | A                                   | B                    |
+| Indo Tech Transformers Limited      | T                                   | B                    |
+| PANASONIC ENERGY INDIA COMPANY      | XT                                  | X                    |
+| Power & Instrumentation (Gujarat) Limited | T                                   | B                    |
+| SADHNA BROADCAST LTD                | X                                   | XT                   |
+| W S Industries (I) Limited          | T                                   | B                    |
+| NELCO Limited                       | A                                   | B                    |
+| Chandni Machines Limited            | X                                   | XT                   |
+| Waa Solar Limited                   | M                                   | MT                   |
+| SDC TECHMEDIA LIMITED               | M                                   | MT                   |
+| RAJASTHAN TUBE MANUFACTURING C      | X                                   | XT                   |
+| HINDUSTAN ORGANIC CHEMICALS LT      | B                                   | T                    |
+| AD-MANUM FINANCE LTD.               | X                                   | XT                   |
+| SG MART LIMITED                     | XT                                  | T                    |
+| GENPHARMASEC LIMITED                | X                                   | XT                   |
+| MUNOTH COMMUNICATION LIMITED        | XT                                  | X                    |
+| Nucleus Software Exports Limited    | B                                   | T                    |
+| SUPER BAKERS (INDIA) LTD.           | X                                   | XT                   |
+| Uday Jewellery Industries Limi      | X                                   | XT                   |
+| RDB REALTY & INFRASTRUCTURE LT      | X                                   | XT                   |
+| Ranjeet Mechatronics Limited        | M                                   | MT                   |
+| Ksolves India Limited               | T                                   | B                    |
+| Natural Biocon (India) Limited      | XT                                  | X                    |
+| RISHI TECHTEX LTD.                  | X                                   | XT                   |
+| Shubham Polyspin Limited            | B                                   | T                    |
+| SUNRAJ DIAMOND EXPORTS LTD.         | XT                                  | X                    |
+| NATIONAL FITTINGS LIMITED           | X                                   | XT                   |
+| GSB FINANCE LTD.                    | X                                   | XT                   |
+| TAI INDUSTRIES LTD.                 | X                                   | XT                   |
+| SUNIL HEALTHCARE LTD                | X                                   | XT                   |
+| GUJARAT INTRUX LTD.                 | X                                   | XT                   |
+| CONTINENTAL CONTROLS LTD.           | X                                   | XT                   |
+| Regent Enterprises Limited          | X                                   | XT                   |
+| Mihika Industries Ltd.              | XT                                  | X                    |
+| Concord Control Systems Limite      | M                                   | MT                   |
+| Gian Life Care Limited              | T                                   | B                    |
+| Walchandnagar Industries Limited    | T                                   | B                    |
+| APOLLO FINVEST (INDIA) LTD.         | X                                   | XT                   |
+| Pyxis Finvest Limited               | M                                   | MT                   |
+| Tera Software Limited               | B                                   | T                    |
+| Citizen Infoline Ltd.               | XT                                  | X                    |
+| JD ORGOCHEM LTD.                    | X                                   | XT                   |
+| INDIAN SUCROSE LTD.                 | XT                                  | X                    |
+| ENTERPRISE INTERNATIONAL LTD.       | X                                   | XT                   |
+| Fone4 Communications (India) L      | M                                   | MT                   |
+| Kilitch Drugs (India) Limited       | T                                   | B                    |
+| Khaitan (India) Limited             | T                                   | B                    |
+| Canopy Finance Limited              | X                                   | XT                   |
+| ROSELABS FINANCE LTD.               | X                                   | XT                   |
+| Shree Ajit Pulp And Paper Ltd.      | X                                   | XT                   |
+| NDL Ventures Limited                | T                                   | B                    |
+| Lumax Auto Technologies Limited     | B                                   | A                    |
+| Rajshree Sugars & Chemicals Limited | T                                   | B                    |
+| VELJAN DENISON LIMITED              | XT                                  | X                    |
+| MEGA CORPORATION LTD.               | X                                   | XT                   |
+| SUPER FINE KNITTERS LIMITED         | M                                   | MT                   |
+| SM Auto Stamping Limited            | M                                   | MT                   |
+| TARC Limited                        | B                                   | T                    |
+| Premier Explosives Limited          | T                                   | B                    |
+| Sula Vineyards Limited              | B                                   | A                    |
+| Kaynes Technology India Limited     | B                                   | A                    |
+| Intense Technologies Limited        | B                                   | T                    |
+| Symbiox Investment & Trading C      | XT                                  | X                    |
+| SIBAR AUTO PARTS LTD.               | X                                   | XT                   |
+| UNITED CREDIT LTD.                  | X                                   | XT                   |
+| Gautam Exim Limited                 | M                                   | MT                   |
+| Shyam Century Ferrous Limited       | B                                   | T                    |
+| AADI INDUSTRIES LTD.                | X                                   | XT                   |
+| Tarsons Products Limited            | A                                   | B                    |
+| CATVISION  LIMITED                  | X                                   | XT                   |
+| BEST AGROLIFE LIMITED               | B                                   | A                    |
+| DUKE OFFSHORE LTD.                  | XT                                  | X                    |
+| G.K.CONSULTANTS LTD.                | XT                                  | X                    |
+| Shantai Industries Limited          | X                                   | XT                   |
+| PATIDAR BUILDCON LIMITED            | X                                   | XT                   |
+| Gallantt Ispat Limited              | B                                   | T                    |
+| MUNOTH FINANCIAL SERVICES LTD.      | XT                                  | X                    |
+| Shree Ganesh Biotech (India) L      | X                                   | XT                   |
+| Sungold Media and Entertainmen      | M                                   | MT                   |
+| V2 Retail Limited                   | T                                   | B                    |
+| CHANDRA PRABHU INTERNATIONAL L      | X                                   | XT                   |
+| Cosmic CRF Limited                  | M                                   | MT                   |
+| STELLAR CAPITAL SERVICES LTD        | M                                   | MT                   |
+| SALORA INTERNATIONAL LTD.           | XT                                  | X                    |
+| ALFAVISION OVERSEAS (INDIA) LT      | XT                                  | X                    |
+| POLYLINK POLYMERS (INDIA) LTD.      | X                                   | XT                   |
+| PRABHHANS INDUSTRIES LIMITED        | XT                                  | X                    |
+| TRICOM FRUIT PRODUCTS LIMITED       | X                                   | XT                   |
+| Sonalis Consumer Products Limi      | M                                   | MT                   |
+| ANNA INFRASTRUCTURES LTD.           | X                                   | XT                   |
+| Scintilla Commercial & Credit       | X                                   | XT                   |
+| Nila Infrastructures Limited        | T                                   | B                    |
+| CG-VAK SOFTWARE & EXPORTS LTD.      | XT                                  | X                    |
+| INDIAN INFOTECH & SOFTWARE LTD      | X                                   | XT                   |
+| P.M.TELELINNKS LTD.                 | X                                   | XT                   |
+| Shri Keshav Cements and Infra       | X                                   | XT                   |
+| Srestha Finvest Limited             | XT                                  | X                    |
+| PSP Projects Limited                | A                                   | B                    |
+| Bondada Engineering Limited         | M                                   | MT                   |
+| Essar Shipping Limited              | T                                   | B                    |
+| GUJARAT NATURAL RESOURCES LIMI      | X                                   | XT                   |
+| Niraj Cement Structurals Limited    | T                                   | B                    |
+| GUJARAT THEMIS BIOSYN LTD.          | B                                   | T                    |
+| GUJARAT CRAFT INDUSTRIES LTD.       | X                                   | XT                   |
+| NAGPUR POWER & INDUSTRIES LTD.      | XT                                  | X                    |
+| MACHINO PLASTICS LTD.               | XT                                  | X                    |
+| SAM INDUSTRIES LTD.                 | XT                                  | X                    |
+| KOVILPATTI LAKSHMI ROLLER FLOU      | XT                                  | X                    |
+| VISION CINEMAS LTD.                 | XT                                  | X                    |
+| Jupiter Wagons Limited              | B                                   | A                    |
+| UNIJOLLY INVESTMENTS CO.LTD.        | X                                   | XT                   |
+| Williamson Magor & Company Limited  | B                                   | T                    |
+| Mehai Technology  Limited           | B                                   | T                    |
+| Shashijit Infraprojects Limite      | B                                   | T                    |
+| JLA Infraville Shoppers Limite      | M                                   | MT                   |
+| Sambhaav Media Limited              | T                                   | B                    |
+| KOTHARI FERMENTATION & BIOCHEM      | XT                                  | X                    |
+| MFL INDIA LTD.                      | X                                   | XT                   |
+| M K Proteins Limited                | B                                   | T                    |
+| RUDRA GLOBAL INFRA PRODUCTS LI      | XT                                  | X                    |
+| THAKRAL SERVICES (INDIA) LTD.       | X                                   | XT                   |
+| SELLWIN TRADERS LIMITED             | X                                   | XT                   |
+| Tamil Nadu Newsprint & Papers Limited | A                                   | B                    |
+| Mystic Electronics Limited          | X                                   | XT                   |
+| Visco Trade Associates Ltd          | X                                   | XT                   |
+| Duncan Engineering Limited          | XT                                  | X                    |
+| STERLING GREEN WOODS LTD.           | XT                                  | X                    |
+| ESAAR (INDIA) LTD.                  | X                                   | XT                   |
+| SUGAL & DAMANI SHARE BROKERS L      | X                                   | XT                   |
+| BERYL DRUGS LTD.                    | XT                                  | X                    |
+| Shradha AI Technologies Limite      | X                                   | XT                   |
+| Bikaji Foods International Limited  | B                                   | A                    |
+| Bhartiya International Limited      | B                                   | T                    |
+| ECOBOARD INDUSTRIES LTD.            | XT                                  | X                    |
+| DCW Limited                         | A                                   | B                    |
+| 7SEAS ENTERTAINMENT LIMITED         | X                                   | XT                   |
+| Genus Power Infrastructures Limited | B                                   | A                    |
+| Valencia Nutrition Limited          | MS                                  | TS                   |
+| WSFX Global Pay Limited             | XT                                  | X                    |
+| Apoorva Leasing Finance & Inve      | X                                   | XT                   |
+| Fairchem Organics Limited           | A                                   | B                    |
+| SAWACA BUSINESS MACHINES LTD.       | X                                   | XT                   |
+| Aro Granite Industries Limited      | T                                   | B                    |
+| VALIANT COMMUNICATIONS LTD.         | XT                                  | X                    |
+| JBM Auto Limited                    | T                                   | A                    |
+| BETEX INDIA LTD.                    | X                                   | XT                   |
+| MODISON LIMITED                     | T                                   | B                    |
+| Manomay Tex India Limited           | B                                   | T                    |
+| RIBA TEXTILES LTD.                  | X                                   | XT                   |
+| SHRISTI INFRASTRUCTURE DEVELOP      | X                                   | XT                   |
+| SQUARE FOUR PROJECTS INDIA LIM      | X                                   | XT                   |
+| QUASAR INDIA LTD                    | XT                                  | X                    |
+| Akar Auto Industries Limited        | X                                   | XT                   |
+| Vibrant Global Capital Limited      | X                                   | XT                   |
+| Spandana Sphoorty Financial Limited | B                                   | A                    |
+| TUNI TEXTILE MILLS LTD.             | X                                   | XT                   |
+| ONE GLOBAL SERVICE PROVIDER LI      | XT                                  | X                    |
+| INSOLATION ENERGY LIMITED           | M                                   | MT                   |
+| PRISMX GLOBAL VENTURES LIMITED      | XT                                  | X                    |
+| Zeal Aqua Limited                   | B                                   | T                    |
+| SHREE PRECOATED STEELS LTD.         | X                                   | XT                   |
+| Surana Telecom and Power Limited    | B                                   | T                    |
+| Loyal Equipments Limited            | X                                   | XT                   |
+| MRC AGROTECH LIMITED                | T                                   | B                    |
+| Jigar Cables Limited                | M                                   | MT                   |
+| JAYSHREE CHEMICALS LTD.             | X                                   | XT                   |
+| DCM  Limited                        | T                                   | B                    |
+| DECO-MICA LTD.                      | XT                                  | X                    |
+| MAURIA UDYOG LIMITED                | XT                                  | X                    |
+| GOGIA CAPITAL SERVICES LIMITED      | XT                                  | X                    |
+| Kashyap Tele-Medicines Limited      | X                                   | XT                   |
+| Tilaknagar Industries Limited       | B                                   | A                    |
+| KAYCEE INDUSTRIES LTD.              | X                                   | XT                   |
+| Patel Engineering Limited           | B                                   | A                    |
+| Ridings Consulting Engineers I      | M                                   | MT                   |
+| Zodiac Energy Limited               | B                                   | T                    |
+| Vikas Lifecare Limited              | B                                   | T                    |
+| GEE LTD.                            | X                                   | Z                    |
+| Axita Cotton Limited                | T                                   | B                    |
+| Fiem Industries Limited             | A                                   | B                    |
+| WALCHAND PEOPLEFIRST LTD.           | XT                                  | X                    |
+| INVESTMENT & PRECISION CASTING      | X                                   | XT                   |
+| PG Electroplast Limited             | B                                   | A                    |
+| Next Mediaworks Limited             | B                                   | T                    |
+| Dc Infotech And Communication Limited | T                                   | B                    |
+| Shreyans Industries Limited         | T                                   | B                    |
+| A.F. ENTERPRISES LTD                | XT                                  | X                    |
+| Bizotic Commercial Limited          | M                                   | MT                   |
+| SRI KPR INDUSTRIES LTD.             | X                                   | XT                   |
+| CHARTERED LOGISTICS LTD.            | X                                   | XT                   |
+| OSIAJEE TEXFAB LIMITED              | X                                   | XT                   |
+| TRANS INDIA HOUSE IMPEX LIMITE      | X                                   | XT                   |
+| VENLON ENTERPRISES LTD.             | X                                   | XT                   |
+| Shah Metacorp Limited               | B                                   | T                    |
+| Sanghi Industries Limited           | T                                   | B                    |
+| Prakash Industries Limited          | T                                   | B                    |
+| Venus Pipes & Tubes Limited         | B                                   | A                    |
+| NATIONAL PLASTIC TECHNOLOGIES       | XT                                  | X                    |
+| CLIO INFOTECH LTD.                  | X                                   | XT                   |
+| AGS Transact Technologies Limited   | B                                   | T                    |
+| Industrial Investment Trust Limited | B                                   | T                    |
+| TTI ENTERPRISE LTD                  | X                                   | XT                   |
+| Inventure Growth & Securities Limited | B                                   | T                    |
+| POLYCHEM LTD.                       | XT                                  | X                    |
+| Shivam Autotech Limited             | T                                   | B                    |
+| Tamilnad Mercantile Bank Limited    | B                                   | A                    |
+| SATCHMO HOLDINGS LIMITED            | XT                                  | X                    |
+| Apcotex Industries Limited          | A                                   | B                    |
+| ELEGANT MARBLES & GRANI INDUST      | X                                   | XT                   |
+| CENTENIAL SURGICAL SUTURE LTD.      | XT                                  | X                    |
+| California Software Company Limited | B                                   | T                    |
+| DENIS CHEM LAB LTD                  | XT                                  | X                    |
+| Kohinoor Foods Limited              | B                                   | T                    |
+| Johnson Controls - Hitachi Air Conditioning India Limited | A                                   | B                    |
+| Reliance Infrastructure Limited     | T                                   | A                    |
+| Reliance Power Limited              | A                                   | T                    |
+| SAINIK FINANCE & INDUSTRIES LT      | X                                   | XT                   |
+| MPL PLASTICS LTD.                   | XT                                  | X                    |
+| RDB RASAYANS LTD.                   | XT                                  | X                    |
+| Malu Paper Mills Limited            | B                                   | T                    |
+| Mahanagar Telephone Nigam Limited   | A                                   | B                    |
+| GCM COMMODITY & DERIVATIVES LT      | M                                   | MT                   |
+| VAMA INDUSTRIES LTD.                | XT                                  | X                    |
+| Tirupati Tyres Ltd.                 | X                                   | XT                   |
+| Abhinav Leasing & Finance Limi      | XT                                  | X                    |
+| Tranway Technologies Limited        | MS                                  | TS                   |
+| WINSOME TEXTILE INDUSTRIES LTD      | B                                   | X                    |
+| Archean Chemical Industries Limited | B                                   | A                    |
+| WARDWIZARD INNOVATIONS AND MOB      | A                                   | B                    |
+| Coral India Finance & Housing Limited | B                                   | T                    |
+| V R FILMS & STUDIOS LIMITED         | M                                   | B                    |
+| WELCAST STEELS LTD.                 | X                                   | XT                   |
+| MOHITE INDUSTRIES LIMITED           | X                                   | XT                   |
+| NUTECH GLOBAL LTD.                  | XT                                  | X                    |
+| Bharat Parenterals Limited          | XT                                  | X                    |
+| KIDUJA INDIA LTD.                   | X                                   | XT                   |
+| ADARSH PLANT PROTECT LTD.           | XT                                  | X                    |
+| B.N.RATHI SECURITIES LTD.           | XT                                  | X                    |
+| SABOO SODIUM CHLORO LTD.            | XT                                  | X                    |
+| Suven Life Sciences Limited         | B                                   | T                    |
+| MINAXI TEXTILES LTD.                | X                                   | XT                   |
+| GTV Engineering Limited             | X                                   | XT                   |
+| Five-Star Business Finance Limited  | B                                   | A                    |
+| PRO FIN CAPITAL SERVICES LTD.       | X                                   | XT                   |
+| Aspira Pathlab & Diagnostics L      | XT                                  | X                    |
+| MAESTROS ELECTRONICS & TELECOM      | XT                                  | X                    |
+| Aptech Limited                      | B                                   | A                    |
+| MENON PISTONS LTD.                  | XT                                  | X                    |
+| Delta Manufacturing Limited         | T                                   | B                    |
+| GENESIS IBRC INDIA LIMITED          | XT                                  | X                    |
+| ASIT C.MEHTA FINANCIAL SERVICE      | X                                   | XT                   |
+| Dhani Services Limited              | T                                   | A                    |
+| CARYSIL LIMITED                     | A                                   | B                    |
+| Saptak Chem And Business Limit      | XT                                  | X                    |
+| Dhabriya Polywood Limited           | XT                                  | X                    |
+| PEE CEE COSMA SOPE LTD.             | XT                                  | X                    |
+| HOV Services Limited                | B                                   | T                    |
+| Yash Chemex Limited                 | B                                   | X                    |
+| QUANTUM BUILD-TECH LTD              | X                                   | XT                   |
+| Orient Press Limited                | T                                   | B                    |
+| SKYLINE MILLARS LTD.                | X                                   | XT                   |
+| AMBALAL SARABHAI ENTERPRISES L      | XT                                  | X                    |
+| Urja Global Limited                 | B                                   | T                    |
+| Lasa Supergenerics Limited          | T                                   | B                    |
+| PRADHIN LIMITED                     | X                                   | XT                   |
+| Vaxfab Enterprises Limited          | XT                                  | X                    |
+| Bhagyanagar India Limited           | T                                   | B                    |
+| RIDDHI SIDDHI GLUCO BIOLS LTD.      | X                                   | XT                   |
+| Medico Intercontinental Limite      | X                                   | XT                   |
+| Man Infraconstruction Limited       | B                                   | A                    |
+| Classic Filaments Limited           | XT                                  | X                    |
+| HINDOOSTAN MILLS LTD.               | X                                   | XT                   |
+| Cinevista Limited                   | T                                   | B                    |
+| Xelpmoc Design And Tech Limited     | B                                   | T                    |
+| JMD Ventures Limited                | X                                   | XT                   |
+| KISAN MOULDINGS LTD.                | XT                                  | X                    |
+| Kwality Pharmaceuticals Limite      | B                                   | T                    |
+| MM RUBBER COMPANY LTD.              | X                                   | XT                   |
+| Inox Wind Energy Limited            | B                                   | T                    |
+| VALSON INDUSTRIES LTD.              | X                                   | XT                   |
+| RO Jewels Limited                   | B                                   | T                    |
+| MBL Infrastructure Limited          | B                                   | T                    |
+| BILCARE LTD.                        | XT                                  | X                    |
+| NEO INFRACON LTD.                   | XT                                  | X                    |
+| UNI ABEX ALLOY PRODUCTS LTD.        | XT                                  | X                    |
+| PRAVEG LIMITED                      | X                                   | B                    |
+| 63 moons technologies limited       | B                                   | T                    |
+| RISHI LASER LTD.                    | X                                   | XT                   |
+| SHARPLINE BROADCAST LIMITED         | X                                   | XT                   |
+| Harsha Engineers International Limited | A                                   | B                    |
+| Primo Chemicals Limited             | A                                   | B                    |
+| Sindhu Trade Links Limited          | T                                   | B                    |
+| KUWER INDUSTRIES LTD.               | XT                                  | X                    |
+| Keynote Financial Services Limited  | T                                   | B                    |
+| Blue Cloud Softech Solutions L      | XT                                  | X                    |
+| Milestone Furniture Limited         | M                                   | MT                   |
+| Focus Business Solution Limite      | M                                   | MT                   |
+| EVEXIA LIFECARE LIMITED             | X                                   | XT                   |
+| FLEX FOODS LTD.                     | XT                                  | X                    |
+| HAZOOR MULTI PROJECTS LTD.          | X                                   | XT                   |
+| FAMILY CARE HOSPITALS LIMITED       | XT                                  | X                    |
+| QUADRANT TELEVENTURES LIMITED       | XT                                  | X                    |
+| Vaswani Industries Limited          | T                                   | B                    |
+| Akshar Spintex Limited              | B                                   | T                    |
+| PAUSHAK LTD.                        | A                                   | B                    |
+| NMDC Steel Limited                  | B                                   | A                    |
+| Rane Engine Valve Limited           | T                                   | B                    |
+| CRESSANDA SOLUTIONS LTD.            | A                                   | B                    |
+| Vivaa Tradecom Limited              | MT                                  | M                    |
+| SANMIT INFRA LIMITED                | B                                   | T                    |
+| Avonmore Capital & Management Services Limited | T                                   | B                    |
+| SRU Steels Limited                  | XT                                  | X                    |
+| HB Stockholdings Limited            | B                                   | T                    |
+| Thyrocare Technologies Limited      | A                                   | B                    |
+| CNI RESEARCH LTD.                   | X                                   | XT                   |
+| ASHIRWAD CAPITAL LTD.               | X                                   | XT                   |
+| MARTIN BURN LTD.                    | X                                   | XT                   |
+| Cubex Tubings Limited               | B                                   | T                    |
+| NORRIS MEDICINES LTD.               | X                                   | XT                   |
+| Northlink Fiscal And Capital S      | X                                   | XT                   |
+| HIPOLIN LTD.                        | X                                   | XT                   |
+| Mohit Industries Limited            | T                                   | B                    |
+| LKP Securities Limited              | X                                   | XT                   |
+| ALFRED HERBERT (INDIA) LTD.         | X                                   | XT                   |
+| Cian Healthcare Limited             | M                                   | MT                   |
+| TV Vision Limited                   | T                                   | B                    |
+| Navneet Education Limited           | A                                   | B                    |
+| Vanta Bioscience Limited            | MT                                  | M                    |
+| Nanavati Ventures Limited           | MT                                  | M                    |
+| DHANLAXMI FABRICS LTD.              | XT                                  | X                    |
+| GARWARE MARINE INDUSTRIES LTD.      | X                                   | XT                   |
+| 21st Century Management Services Limited | B                                   | T                    |
+| APLAB LTD.                          | XT                                  | X                    |
+| SWASTI VINAYAKA ART AND HERITA      | X                                   | XT                   |
+| ANSAL BUILDWELL LTD.                | X                                   | XT                   |
+| Aurum PropTech Limited              | B                                   | T                    |
+| Reliance Chemotex Industries Limited | B                                   | T                    |
+| BALU FORGE INDUSTRIES LIMITED       | X                                   | B                    |
+| INTER GLOBE FINANCE LTD.            | X                                   | XT                   |
+| Stove Kraft Limited                 | A                                   | B                    |
+| Sadbhav Engineering Limited         | T                                   | B                    |
+| NIBE LIMITED                        | XT                                  | X                    |
+| WEP SOLUTIONS LTD.                  | XT                                  | X                    |
+| BHARAT SEATS LTD.                   | XT                                  | X                    |
+| TINNA RUBBER AND INFRASTRUCTUR      | X                                   | XT                   |
+| SHALIMAR WIRES INDUSTRIES LTD.      | XT                                  | X                    |
+| VISHVPRABHA VENTURES LIMITED        | X                                   | XT                   |
+| DECIPHER LABS LIMITED               | XT                                  | X                    |
+| Trimurthi Limited                   | X                                   | XT                   |
+| Hindprakash Industries Limited      | T                                   | B                    |
+| BLS INFOTECH LTD.                   | XT                                  | X                    |
+| AKM CREATIONS LIMITED               | M                                   | MT                   |
+| BALURGHAT TECHNOLOGIES LTD.         | XT                                  | X                    |
+| RISA INTERNATIONAL LTD.             | X                                   | XT                   |
+| SHRI KRISHNA DEVCON LTD.            | X                                   | XT                   |
+| JAYABHARAT CREDIT LTD.              | XT                                  | X                    |
+| FACOR ALLOYS LTD.                   | X                                   | XT                   |
+| Winsome Yarns Limited               | B                                   | T                    |
+| Shakti Pumps (India) Limited        | B                                   | T                    |
+| Saksoft Limited                     | B                                   | T                    |
+| SEMAC CONSULTANTS LIMITED           | T                                   | B                    |
+| MAFIA TRENDS LIMITED                | M                                   | MT                   |
+| PHYTO CHEM (INDIA) LTD.             | X                                   | XT                   |
+| Manaksia Coated Metals & Industries Limited | T                                   | B                    |
+| Morarjee Textiles Limited           | B                                   | T                    |
+| Mega Nirman & Industries Limit      | X                                   | XT                   |
+| KHOOBSURAT LTD                      | X                                   | XT                   |
+| Unick Fix-A- Form and Printers      | XT                                  | X                    |
+| Times Guaranty Limited              | B                                   | T                    |
+| AUTO PINS (INDIA) LTD.              | XT                                  | X                    |
+| Dredging Corporation of India Limited | B                                   | T                    |
+| Ritco Logistics Limited             | T                                   | B                    |
+| MILESTONE GLOBAL LTD.               | X                                   | XT                   |
+| TITAN BIOTECH LTD.                  | XT                                  | X                    |
+| CL Educate Limited                  | T                                   | B                    |
+| HARIYANA SHIP BREAKERS LTD.         | X                                   | XT                   |
+| SHREE KARTHIK PAPERS LTD.           | XT                                  | X                    |
+| SEVEN HILL INDUSTRIES LIMITED       | X                                   | XT                   |
+| ORGANIC COATINGS LTD.               | X                                   | XT                   |
+| WinPro Industries Limited           | XT                                  | Z                    |
+| MODERN DAIRIES LTD.                 | X                                   | XT                   |
++-------------------------------------+-------------------------------------+----------------------+
+Changes in Scrip Name:
++-------------------------------------+-------------------------------------+----------------------+
+| Old CompanyName                     | New CompanyName                     | Exchange             |
++-------------------------------------+-------------------------------------+----------------------+
+| MIRCH TECHNOLOGIES (INDIA) LTD      | HARSHIL AGROTECH LIMITED            | BSE                  |
+| KILPEST INDIA LTD.                  | 3B BlackBio Dx Limited              | BSE                  |
+| QUINT DIGITAL MEDIA LIMITED         | Quint Digital Limited               | BSE                  |
+| BSEL INFRASTRUCTURE REALTY LTD      | BSEL ALGO LIMITED                   | BSE                  |
+| Tarini International Ltd            | TARINI INTERNATIONAL LTD            | BSE                  |
+| RITESH PROPERTIES & INDUSTRIES      | HAMPTON SKY REALTY LIMITED          | BSE                  |
+| G.G.DANDEKAR MACHINE WORKS LTD      | G. G. Dandekar Properties Limi      | BSE                  |
+| sical logistics ltd.                | SICAL LOGISTICS LTD.                | BSE                  |
+| Unishire Urban Infra Ltd            | UNISHIRE URBAN INFRA LTD            | BSE                  |
+| Jhandewalas Foods Ltd               | Jhandewalas Foods Limited           | BSE                  |
+| TRISHAKTI ELECTRONICS & INDUST      | Trishakti Industries Limited        | BSE                  |
+| GCM Capital Advisors Ltd            | GCM CAPITAL ADVISORS LTD            | BSE                  |
+| Partly Paid - Shree Ganesh Remedies Limited | Shree Ganesh Remedies Limited       | BSE                  |
+| INDO ASIAN FINANCE LTD.             | CHALLANI CAPITAL LIMITED            | BSE                  |
+| VBC FERRO ALLOYS LTD.               | Chrome Silicon Limited              | BSE                  |
+| Bhanderi Infracon Ltd               | BHANDERI INFRACON LTD               | BSE                  |
+| NATIONAL PEROXIDE LTD.              | Naperol Investments Limited         | BSE                  |
+| UNIMODE OVERSEAS LTD.               | Manbro Industries Limited           | BSE                  |
+| Partly Paid - Aurum PropTech Limited | Aurum PropTech Limited              | BSE                  |
+| Polymac Thermoformers Ltd           | POLYMAC THERMOFORMERS LTD           | BSE                  |
+| Kintech Renewables Limited          | SG MART LIMITED                     | BSE                  |
+| Karnimata Cold Storage Ltd          | KARNIMATA COLD STORAGE LTD          | BSE                  |
+| INTEGRA CAPITAL MANAGEMENT LTD      | INTEGRA CAPITAL LIMITED             | BSE                  |
+| Partly Paid - Alan Scott Industries Ltd. | Alan Scott Industries Ltd.          | BSE                  |
+| EVERGREEN TEXTILES LIMITED          | MARKOBENZ VENTURES LIMITED          | BSE                  |
+| Stellar Capital Services Ltd        | STELLAR CAPITAL SERVICES LTD        | BSE                  |
+| R J Bio-Tech Ltd                    | R J BIO-TECH LTD                    | BSE                  |
+| Partly Paid - Bharti Airtel  Ltd.   | Bharti Airtel  Ltd.                 | BSE                  |
+| S R G Securities Finance Ltd        | S R G SECURITIES FINANCE LTD        | BSE                  |
+| Alacrity Securities Ltd             | ALACRITY SECURITIES LTD             | BSE                  |
+| CHITRADURGA SPINTEX LTD.            | MKP Mobility Limited                | BSE                  |
+| plaza wires limited                 | Plaza Wires Limited                 | BSE                  |
+| DVR - Future Enterprises Limited    | Future Enterprises Limited          | BSE                  |
+| Indian Renewable Energy Develo      | Indian Renewable Energy Development Agency Limited | NSE                  |
+| panache digilife limited            | Panache Digilife Limited            | NSE                  |
+| DIGJAM LIMITED                      | Digjam Limited                      | NSE                  |
+| Sonam Clock Limited                 | SONAM LIMITED                       | NSE                  |
+| Davangere Sugar Company Limite      | Davangere Sugar Company Limited     | NSE                  |
+| EASTERN SILK INDUSTRIES LTD.        | Eastern Silk Industries Limited     | NSE                  |
+| DVR - Tata Motors Limited           | Tata Motors Limited                 | NSE                  |
+| ESAF Small Finance Bank Ltd         | ESAF Small Finance Bank Limited     | NSE                  |
+| MODERN THREADS (INDIA) LTD.         | Modern Threads (India) Limited      | NSE                  |
+| PRUDENTIAL SUGAR CORPORATION L      | Prudential Sugar Corporation Limited | NSE                  |
+| GATI Limited                        | Allcargo Gati Limited               | NSE                  |
+| NIRAJ ISPAT INDUSTRIES LIMITED      | Niraj Ispat Industries Limited      | NSE                  |
+| GAYATRI PROJECTS LTD.               | Gayatri Projects Limited            | NSE                  |
+| PRUDENTIAL SUGAR CORPORATION L      | Prudential Sugar Corporation Limited | NSE                  |
+| Atlanta  Limited                    | ATLANTAA LIMITED                    | NSE                  |
+| Flair Writing Industries Limit      | Flair Writing Industries Limited    | NSE                  |
+| RADAAN MEDIAWORKS (I) LTD.          | Radaan Mediaworks India Limited     | NSE                  |
+| MODERN THREADS (INDIA) LTD.         | Modern Threads (India) Limited      | NSE                  |
+| madhya bharat agro products limited | Madhya Bharat Agro Products Limited | NSE                  |
+| Suraj Estate Developers Limite      | Suraj Estate Developers Limited     | NSE                  |
+| INNOVA CAPTAB LIMITED               | Innova Captab Limited               | NSE                  |
+| SICAL LOGISTICS LTD.                | Sical Logistics Limited             | NSE                  |
+| DVR - GACM Technologies Limited     | GACM Technologies Limited           | NSE                  |
+| SUNDARAM-CLAYTON LIMITED            | Sundaram Clayton Limited            | NSE                  |
+| Amara Raja Batteries Limited        | Amara Raja Energy & Mobility Limited | NSE                  |
+| Medi Assist Healthcare Service      | Medi Assist Healthcare Services Limited | NSE                  |
+| HOUSING DEVELOPMENT & INFRASTR      | Housing Development and Infrastructure Limited | NSE                  |
+| DIGIDRIVE DISTRIBUTORS LIMITED      | Digidrive Distributors Limited      | NSE                  |
+| libas consumer products limited     | Libas Consumer Products Limited     | NSE                  |
+| HINDUSTHAN NATIONAL GLASS & IN      | Hindusthan National Glass & Industries Limited | NSE                  |
+| BLUE COAST HOTELS LTD.              | Blue Coast Hotels Limited           | NSE                  |
+| Fedbank Financial Services Lim      | Fedbank Financial Services Limited  | NSE                  |
+| Gandhar Oil Refinery (India) L      | Gandhar Oil Refinery (India) Limited | NSE                  |
+| Flair Writing Industries Limit      | Flair Writing Industries Limited    | NSE                  |
+| EDUCOMP SOLUTIONS LTD.              | Educomp Solutions Limited           | NSE                  |
+| INNOVA CAPTAB LIMITED               | Innova Captab Limited               | NSE                  |
+| TARC Limited                        | Anant Raj Global Limited            | NSE                  |
+| MUFIN GREEN FINANCE LIMITED         | Mufin Green Finance Limited         | NSE                  |
+| SUMEET INDUSTRIES LTD.              | Sumeet Industries Limited           | NSE                  |
+| IRM ENERGY LIMITED                  | IRM Energy Limited                  | NSE                  |
+| ROLTA INDIA LTD.                    | Rolta India Limited                 | NSE                  |
+| Gandhar Oil Refinery (India) L      | Gandhar Oil Refinery (India) Limited | NSE                  |
+| AMINES & PLASTICIZERS LTD.          | Amines & Plasticizers Limited       | NSE                  |
+| Goldstone Technologies Limited      | AION-TECH SOLUTIONS LIMITED         | NSE                  |
+| Adroit Infotech Limited             | Adroit Infotech Ltd-RE              | NSE                  |
+| ESAF Small Finance Bank Ltd         | ESAF Small Finance Bank Limited     | NSE                  |
+| VISA STEEL LTD.                     | Visa Steel Limited                  | NSE                  |
+| India Shelter Finance Corporat      | India Shelter Finance Corporation Limited | NSE                  |
+| SUNDARAM-CLAYTON LIMITED            | Sundaram Clayton Limited            | NSE                  |
+| IRM ENERGY LIMITED                  | IRM Energy Limited                  | NSE                  |
+| India Shelter Finance Corporat      | India Shelter Finance Corporation Limited | NSE                  |
+| BLUE COAST HOTELS LTD.              | Blue Coast Hotels Limited           | NSE                  |
+| Future Supply Chain Solutions       | Future Supply Chain Solutions Limited | NSE                  |
+| INDIABULLS HOUSING FINANCE LIM      | Indiabull Hsg Fin Ltd-RE            | NSE                  |
+| DIGIDRIVE DISTRIBUTORS LIMITED      | Digidrive Distributors Limited      | NSE                  |
+| DVR - Jain Irrigation Systems Limited | Jain Irrigation Systems Limited     | NSE                  |
+| Indian Renewable Energy Develo      | Indian Renewable Energy Development Agency Limited | NSE                  |
+| Medi Assist Healthcare Service      | Medi Assist Healthcare Services Limited | NSE                  |
+| Suraj Estate Developers Limite      | Suraj Estate Developers Limited     | NSE                  |
+| Fedbank Financial Services Lim      | Fedbank Financial Services Limited  | NSE                  |
+| ANSAL PROPERTIES & INFRASTRUCT      | Ansal Properties & Infrastructure Limited | NSE                  |
+| Welspun India Limited               | Welspun Living Limited              | NSE                  |
+| MAGNUM VENTURES LIMITED             | Magnum Ventures Ltd-RE              | NSE                  |
++-------------------------------------+-------------------------------------+----------------------+

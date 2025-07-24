@@ -1,0 +1,128 @@
+<p-toast></p-toast>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+    <div class="col-12 mb-2 text-primary">
+        <!-- <h6 class="mb-0">Manage UPSI Admin</h6> -->
+    </div>
+
+    <form autocomplete="off" [formGroup]="UPSIform">
+        <div class="row mt-2">
+
+            <!-- <label for="inputText4" class="col-md-6 col-lg-auto col-form-label">Employee Name<span
+                    class="required-asterisk">*</span></label> -->
+
+            <!-- <p-dropdown [options]="empid" [(ngModel)]="empNgmodel" optionLabel="FIRSTNAME" [filter]="true"
+                filterBy="FIRSTNAME" [showClear]="true" placeholder="Select EMP_Name" class="p-inputtext-sm"
+                formControlName="empcontroller" required></p-dropdown> -->
+            <div class="inputText col-md-6 col-lg-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-dropdown [options]="empid" optionLabel="FIRSTNAME" [filter]="true" filterBy="FIRSTNAME"
+                        [showClear]="true" placeholder="Select Employee Name" class="form-control px-0"
+                        formControlName="empcontroller" required></p-dropdown>
+                    <label for="inputText4" class="">Employee Name<span
+                            class="required-asterisk">*</span></label>
+
+                    <small style="color: red;"
+                        *ngIf="UPSIform.get('empcontroller').hasError('required') && (UPSIform.get('empcontroller').touched || UPSIform.get('empcontroller').dirty)">
+                        Employee Name is required
+                    </small>
+                    <!-- <span *ngIf="!empNgmodel" class="text-red-500">
+                <h6>EMP_Name is required</label>
+            </span> -->
+
+                </div>
+            </div>
+
+
+            <!-- <label for="inputText4" class="col-md-6 col-lg-auto col-form-label">Applicability<span
+                    class="required-asterisk">*</span></label> -->
+
+            <!-- <p-dropdown [options]="applid" [(ngModel)]="applNgmodel" optionLabel="NAME" [filter]="true" filterBy="NAME"
+                [showClear]="true" placeholder="Select Applicability" class="p-inputtext-sm"
+                formControlName="applcontroller" required></p-dropdown> -->
+            <div class="inputText col-md-6 col-lg-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-dropdown [options]="applid" optionLabel="NAME" [filter]="true" filterBy="NAME" [showClear]="true"
+                        placeholder="Select Applicability" class="form-control px-0" formControlName="applcontroller"
+                        required></p-dropdown>
+                    <label for="inputText4" class="">Applicability<span
+                            class="required-asterisk">*</span></label>
+
+                    <small style="color: red;"
+                        *ngIf="UPSIform.get('applcontroller').hasError('required') && (UPSIform.get('applcontroller').touched || UPSIform.get('applcontroller').dirty)">
+                        Applicability is required
+                    </small>
+                    <!-- <span *ngIf="!applNgmodel" class="text-red-500">
+                <h6>Applicability is required</label>
+            </span> -->
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-12 text-center">
+            <button pButton pRipple type="button" *ngIf="onadd" (click)="createUPSI()" label=""
+                class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><i class="bx bx-plus"></i></button>
+            <button pButton pRipple type="button" *ngIf="oneditbtn" (click)="updateUPSI()" label=""
+                class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><span
+                    class="fadeIn animated bx bx-reset"></span></button>
+            <button pButton pRipple type="button" *ngIf="oncancel" (click)="cancel()" label=""
+                class="p-button-secondary button-sm mx-1 py-2"><span
+                    class="fadeIn animated bx bx-reset"></span></button>
+        </div>
+    </form>
+
+    <div class="col-12">
+        <p-table #dt [value]="products" dataKey="id"
+            styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines" [rowHover]="true" [rows]="5"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+            [globalFilterFields]="['EMP_NAME','TBL_GENERIC_MST.NAME']">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    <span class="globalSearch p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value,'contains')"
+                            placeholder="Global Search" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="EMP_NAME">Employee Name <p-sortIcon
+                            field="EMP_NAME"></p-sortIcon></th>
+                    <th pSortableColumn="TBL_GENERIC_MST.NAME">Applicability <p-sortIcon
+                            field="TBL_GENERIC_MST.NAME"></p-sortIcon></th>
+                    <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr class="p-selectable-row">
+                    <td>
+                        <span class="p-column-title">EMP_NAME</span>
+                        {{product.EMP_NAME}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Applicability</span>
+                        <span class="image-text">{{product.TBL_GENERIC_MST?.NAME}}</span>
+                    </td>
+                    <td>
+                        <!-- <button pButton type="button" icon="pi pi-pencil" (click)="oneditUPSI(product)" iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary mr-2"></button>
+                     
+                        <button pButton type=" button" icon="pi pi-trash" (click)="DeleteUPSI(product)" iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"></button> -->
+                        <i class="pi pi-pencil" (click)="oneditUPSI(product)"></i>&nbsp;&nbsp;
+                        <i class="pi pi-trash" (click)="DeleteUPSI(product)"></i>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No products found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+

@@ -1,0 +1,7 @@
+RMS Blocking/UnBlocking
+||||1212121|||ALL|bse_cm|526468|XT||||Y|||Blocked as per mail from EWM 20240513
+||||1212121|||ALL|nse_cm|STAR|null||||Y|||Blocked as per mail from EWM 20240513
+||||1212121|||ALL|bse_cm|532531|A||||Y|||Blocked as per mail from EWM 20240513
+||||1212121|||ALL|nse_cm|PGIL|null||||Y|||Blocked as per mail from EWM 20240513
+||||1212121|||ALL|bse_cm|532808|T||||Y|||Blocked as per mail from EWM 20240513
+||||1212121|||ALL|bse_cm|517437|XT||||Y|||Blocked as per mail from EWM 20240513

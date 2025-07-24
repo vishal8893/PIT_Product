@@ -1,0 +1,422 @@
+/* Created By Vaijanath Pawale - Team Lead (UI/UX)
+Author: Newel Technologies Pvt. Ltd.
+Author URL: https://www.neweltechnologies.com/ */
+
+html.color-header .topbar .navbar-nav .nav-link {
+
+    color: #ffffff;
+
+}
+
+html.color-header .topbar .navbar .navbar-nav .nav-link:hover,
+html.color-header .topbar .navbar .navbar-nav .nav-link:focus {
+    background-color: rgb(255 255 255 / 12%);
+    color: #ffffff;
+}
+
+html.color-header .search-bar a.btn,
+html.color-header .search-bar a.btn:focus {
+    color: #221f1f;
+    background-color: #ffffff;
+}
+
+html.color-header::placeholder {
+
+    color: #08090a !important;
+
+    opacity: .5 !important;
+
+    /* Firefox */
+
+}
+
+html.color-header .search-show {
+
+    color: #221f1f;
+
+}
+
+html.color-header .user-info .user-name {
+
+    color: #ffffff;
+
+}
+
+html.color-header .user-info .designattion {
+
+    color: #ffffff;
+
+}
+
+html.color-header .user-box {
+    border-left: 1px solid rgb(255 255 255 / .15) !important;
+    border-right: 1px solid rgb(255 255 255 / .15) !important;
+}
+
+html.color-header .topbar-logo-header {
+
+    border-right: 1px solid rgb(255 255 255 / 0.35) !important;
+
+}
+
+/* html.color-header .topbar-logo-header .logo-icon {
+
+	filter: invert(1) grayscale(100%) brightness(200%);
+
+} */
+
+
+html.color-header .topbar-logo-header .logo-text {
+    color: #ffffff;
+}
+
+html.color-header .mobile-toggle-menu {
+
+    color: #ffffff;
+
+}
+
+/* header colors */
+
+.switcher-body .headercolor1 {
+
+    background: #0727d7 !important;
+
+}
+
+.switcher-body .headercolor2 {
+
+    background: #23282c !important;
+
+}
+
+.switcher-body .headercolor3 {
+
+    background: #e10a1f !important;
+
+}
+
+.switcher-body .headercolor4 {
+
+    background: #157d4c !important;
+
+}
+
+.switcher-body .headercolor5 {
+
+    background: #673ab7 !important;
+
+}
+
+.switcher-body .headercolor6 {
+
+    background: #795548 !important;
+
+}
+
+.switcher-body .headercolor7 {
+
+    background: #d3094e !important;
+
+}
+
+.switcher-body .headercolor8 {
+
+    background: #ff9800 !important;
+
+}
+
+html.headercolor1 .topbar {
+
+    background: #0727d7;
+
+}
+
+html.headercolor2 .topbar {
+
+    background: #03002f;
+
+}
+
+html.headercolor2 .active .step-trigger {
+    background-color: #03002f !important;
+    color: #fff;
+}
+
+html.headercolor2 .bg-primary {
+    background-color: #03002f !important;
+}
+
+html.headercolor2 .btn-danger {
+    color: #fff;
+    background-color: #ff4c51;
+    border-color: #ff4c51;
+}
+
+html.headercolor2 .btn-danger:hover {
+    color: var(--bs-btn-active-color);
+    background-color: var(--bs-btn-active-bg);
+    border-color: var(--bs-btn-active-border-color);
+}
+
+html.headercolor2 .p-button.p-button-secondary,
+html.headercolor2 .btn-outline-secondary,
+html.headercolor2 .p-buttonset.p-button-secondary>.p-button,
+html.headercolor2 .p-splitbutton.p-button-secondary>.p-button {
+    color: #000000;
+    background: #f8f9fa;
+    border: 1px solid #f8f9fa;
+}
+
+html.headercolor2 .p-button.p-button-secondary:hover,
+html.headercolor2 .btn-outline-secondary:hover,
+html.headercolor2 .p-buttonset.p-button-secondary:hover>.p-button,
+html.headercolor2 .p-splitbutton.p-button-secondary:hover>.p-button {
+    color: #000000;
+    background: #d3d4d5;
+    border: 1px solid #d3d4d5;
+}
+
+html.headercolor2 .bg-footer-theme {
+    color: #03002f;
+}
+
+html.headercolor2 .bg-lightGray {
+    background-color: #f8f9fa !important;
+}
+
+html.headercolor2 a {
+    color: #03002f;
+    cursor: pointer;
+}
+
+html.headercolor2 .primary-menu .navbar .navbar-nav a.nav-link:hover {
+    color: #ffffff;
+    background: linear-gradient(270deg, #f04d44 0%, #f2ada9 100%);
+}
+
+html.headercolor2 .primary-menu .navbar .navbar-nav a.nav-link:active,
+html.headercolor2 .primary-menu .navbar .navbar-nav a.nav-link:focus {
+    color: #ffffff;
+    background: linear-gradient(270deg, #f04d44 0%, #f2ada9 100%);
+}
+
+html.headercolor2 .dropdown-item.active,
+html.headercolor2 .dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background: linear-gradient(270deg, #f04d44 0%, #f2ada9 100%);
+}
+
+html.headercolor2 .form-floating.form-floating-outline>.form-control:focus~label,
+html.headercolor2 .form-floating.form-floating-outline>.form-control:not(:placeholder-shown)~label,
+html.headercolor2 .form-floating.form-floating-outline>.form-select:focus~label,
+html.headercolor2 .form-floating.form-floating-outline>.form-select:not(:placeholder-shown)~label {
+
+    color: #03002f;
+}
+
+html.headercolor2 .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+    background: #e9ecef;
+    border-color: #e9ecef;
+    color: #03002f;
+}
+
+html.headercolor2 .btn-primary {
+    color: #fff;
+    background-color: #282a42;
+    border-color: #282a42;
+}
+
+html.headercolor2 .btn-primary:hover {
+    color: #fff !important;
+    background-color: #0d0f20 !important;
+    border-color: #0d0f20 !important;
+}
+
+html.headercolor2 .p-steps-current {
+    background: linear-gradient(270deg, #f04d44 0%, #f2ada9 100%);
+    color: #fff;
+}
+html.headercolor2 .p-steps-current::after {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 10px;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 10px solid #f04d44;
+}
+html.headercolor2 .p-steps .p-steps-item .p-menuitem-link .p-steps-title {
+    color: #03002f;
+    font-weight: bold;
+}
+
+html.headercolor2 .p-steps .p-steps-item .p-menuitem-link {
+    background: transparent;
+    color: #ffffff !important;
+}
+
+html.headercolor2 .p-steps-item {
+    justify-content: left;
+}
+
+html.headercolor2 .p-steps .p-steps-item.p-highlight .p-steps-title {
+    color: #ffffff;
+}
+
+html.headercolor2 .progress-bar {
+    background-color: #03002f;
+}
+
+html.headercolor2 .accordion-button {
+    background-color: #f8f9fa;
+    padding: 0.7rem 1rem;
+}
+
+html.headercolor2 .p-radiobutton-checked+label {
+    background: linear-gradient(270deg, #f04d44 0%, #f2ada9 100%);
+    color: #fff;
+    position: relative;
+}
+html.headercolor2 .p-radiobutton-checked+label::after {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 10px;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 10px solid #f04d44;
+}
+
+
+html.headercolor2 .p-autocomplete {
+    display: inline-flex;
+    position: relative;
+    height: 40px;
+    top: -10px;
+    border-radius: 6px;
+}
+
+html.headercolor2 .p-dropdown {
+    display: inline-flex;
+    cursor: pointer;
+    position: relative;
+    -webkit-user-select: none;
+    user-select: none;
+    /* height: 40px; */
+    top: -11px;
+    border-radius: 6px;
+    padding: 8px 0;
+    height: calc(2.5rem + calc(var(--bs-border-width) * 2));
+    min-height: calc(2.5rem + calc(var(--bs-border-width) * 2));
+    line-height: 1.25;
+    border: 1px solid #ced4da !important;
+}
+
+html.headercolor2 .p-checkbox .p-checkbox-box.p-highlight {
+    border-color: #03002f !important;
+    background: #03002f !important;
+}
+
+html.headercolor2 .p-inputtext:enabled:focus,
+.p-dropdown:not(.p-disabled).p-focus {
+    box-shadow: 0 0 0 0.2rem rgba(3, 0, 47, 0.20) !important;
+    border-color: #03002f !important;
+}
+
+html.headercolor2 .calendarIcon .p-button,
+html.headercolor2 .calendar .p-button {
+    background: #f1f1f2 !important;
+    color: #03002f !important;
+    border: 1px solid #03002f !important;
+}
+
+html.headercolor2 .calendarIcon .p-button:hover,
+html.headercolor2 .calendar .p-button:hover {
+    background: #03002f !important;
+    color: #ffffff !important;
+    border: 1px solid #03002f !important;
+}
+
+html.headercolor2 .UPSItab .nav-item {
+    justify-content: left !important;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: start;
+    gap: 0rem;
+    font-size: 0.9rem;
+    color: #6c757d;
+    text-decoration: none;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    background-color: #f1f1f2 !important;
+    border-radius: 6px;
+    border-radius: 0.25rem;
+    transition: background-color .15s ease-out, color .15s ease-out;
+}
+
+html.headercolor2 .UPSItab .nav-item .nav-link.active {
+    color: #080617 !important;
+    font-weight: bold !important;
+}
+
+html.headercolor2 .dashboard-tabView .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+    background: #080617;
+    border-color: #080617;
+    color: #ffffff;
+}
+html.headercolor2 .dashboard-tabView .p-tabview .p-tabview-nav li .p-tabview-nav-link, html.headercolor2 .dashboard-tabView .p-tabview .p-tabview-nav {
+    border-color: #080617;
+    font-weight: bold;
+}
+
+/* html.headercolor2 .dashboard-tabView .p-tabview-panels{
+    background-image: linear-gradient(to top, rgba(255,0,0,0), rgb(255, 255, 255));
+} */
+html.headercolor2 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    color: #000000;
+}
+
+html.headercolor2 .p-datatable .p-datatable-thead > tr > th, html.headercolor2 .table thead > tr > th {
+    background: #f8f9fa;
+}
+
+
+html.headercolor3 .topbar {
+
+    background: #e10a1f;
+
+}
+
+html.headercolor4 .topbar {
+
+    background: #157d4c;
+
+}
+
+html.headercolor5 .topbar {
+
+    background: #673ab7;
+
+}
+
+html.headercolor6 .topbar {
+
+    background: #795548;
+
+}
+
+html.headercolor7 .topbar {
+
+    background: #d3094e;
+
+}
+
+html.headercolor8 .topbar {
+
+    background: #ff9800;
+
+}

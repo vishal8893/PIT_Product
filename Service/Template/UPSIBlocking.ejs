@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    tr td {
+        padding: 5px;
+    }
+
+    tr th {
+        padding: 5px;
+    }
+
+    body {
+        font-family: calibri;
+        font-size: 15px;
+        color: #09095d;
+    }
+</style>
+
+<body>
+    <% FinishData.phsical.forEach(function(data) { %>
+    <p> Dear <%= data.EMPLOYEE_NAME %>,</p>
+    <p>
+        You are hereby advised to refrain from dealing in the scrip SCRIPTNAME till further notice.
+        This restriction also applies to your Immediate Relatives and Connected Persons. The restriction
+        has been initiated in compliance with the Edelweiss Code for Prohibition of Insider Trading in the
+        securities of Edelweiss financial Services Limited.
+    </p>
+    <p>
+        For any queries/concerns with regards to this restriction, please connect with SPOCNAME.For information 
+        with regards to above mentioned Codes, please email us @nwm.emptrading@nuvama.com
+    </p>
+    <p>Note - Do not reply to this email as this is a system generated mail.</p>
+    <br />
+    Regards,<br />
+    Compliance Team
+    <br><br>
+    <% }); %>
+</body>
+
+</html>

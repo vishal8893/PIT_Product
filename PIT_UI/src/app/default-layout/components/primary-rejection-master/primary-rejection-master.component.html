@@ -1,0 +1,273 @@
+<p-toast></p-toast>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+    <div class="col-12 mb-2 text-primary">
+        <!-- <h6 class="mb-0">ITrading Primary Issue Master</h6> -->
+    </div>
+    <form autocomplete="off" [formGroup]="primaryRejectform">
+
+        <div class="row">
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Name of Issue<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="inputText col-md-4 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control w-100" placeholder="" formControlName="issnamecontroller"
+                        pInputText required>
+                    <label for="inputText4" class="">Name of Issue<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="primaryRejectform.get('issnamecontroller').hasError('required') && (primaryRejectform.get('issnamecontroller').touched || primaryRejectform.get('issnamecontroller').dirty)">
+                        Name of Issue Required.
+                    </small>
+                    <small style="color: red;" *ngIf="primaryRejectform.get('issnamecontroller').hasError('pattern') && (primaryRejectform.get('issnamecontroller').touched || primaryRejectform.get('issnamecontroller').dirty)">
+                        Name of Issue should only contain letters and spaces.
+                      </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Issue Description<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="inputText col-md-4 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control w-100" placeholder="" formControlName="issDescontroller"
+                        pInputText required>
+                    <label for="inputText4" class="">Issue Description<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="primaryRejectform.get('issDescontroller').hasError('required') && (primaryRejectform.get('issDescontroller').touched || primaryRejectform.get('issDescontroller').dirty)">
+                        Issue Description Required.
+                    </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Open From Date<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="col-md-4 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-calendar formControlName="fromdatecontroller"
+                        class="ui-timepicker ui-widget-header ui-corner-all ng-tns-c9-1 ng-star-inserted"
+                        [showIcon]="true" inputId="icon" class="border-0 form-control p-0 calendarIcon"
+                        styleClass="w-100" placeholder="Select Open From Date" required></p-calendar>
+                    <label for="inputText4" class="">Open From Date<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="primaryRejectform.get('fromdatecontroller').hasError('required') && (primaryRejectform.get('fromdatecontroller').touched || primaryRejectform.get('fromdatecontroller').dirty)">
+                        Open From Date Required.
+                    </small>
+                    <small style="color: red;"
+                        *ngIf="primaryRejectform.get('fromdatecontroller').hasError('invalidDate') && (primaryRejectform.get('fromdatecontroller').touched || primaryRejectform.get('fromdatecontroller').dirty)">
+                        Please select a date from the calendar.
+                    </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Open Till Date<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="col-md-4 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-calendar formControlName="tilldatecontroller"
+                        class="ui-timepicker ui-widget-header ui-corner-all ng-tns-c9-1 ng-star-inserted"
+                        [showIcon]="true" inputId="icon" class="border-0 form-control p-0 calendarIcon"
+                        styleClass="w-100" placeholder="Select Open Till Date" required></p-calendar>
+                    <label for="inputText4" class="">Open Till Date<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="primaryRejectform.get('tilldatecontroller').hasError('required') && (primaryRejectform.get('tilldatecontroller').touched || primaryRejectform.get('tilldatecontroller').dirty)">
+                        Open Till Date Required.
+                    </small>
+                    <small style="color: red;"
+                        *ngIf="primaryRejectform.get('tilldatecontroller').hasError('invalidDate') && (primaryRejectform.get('tilldatecontroller').touched || primaryRejectform.get('tilldatecontroller').dirty)">
+                        Please select a date from the calendar.
+                    </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Min Bid Price<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="inputText col-md-4 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control w-100" placeholder="" formControlName="minbidontroller"
+                        pInputText required>
+                    <label for="inputText4" class="">Min Bid Price<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="primaryRejectform.get('minbidontroller').hasError('required') && (primaryRejectform.get('minbidontroller').touched || primaryRejectform.get('minbidontroller').dirty)">
+                        Min Bid Price Required.
+                    </small>
+                    <small style="color: red;" *ngIf="primaryRejectform.get('minbidontroller').hasError('pattern') && (primaryRejectform.get('minbidontroller').touched || primaryRejectform.get('minbidontroller').dirty)">
+                        Min Bid Price should Only numerical values are allowed.
+                    </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Max Bid Price<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="inputText col-md-4 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control w-100" placeholder="" formControlName="maxbidcontroller"
+                        pInputText required>
+                    <label for="inputText4" class="">Max Bid Price<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="primaryRejectform.get('maxbidcontroller').hasError('required') && (primaryRejectform.get('maxbidcontroller').touched || primaryRejectform.get('maxbidcontroller').dirty)">
+                        Max Bid Price Required.
+                    </small>
+                    <small style="color: red;" *ngIf="primaryRejectform.get('maxbidcontroller').hasError('pattern') && (primaryRejectform.get('maxbidcontroller').touched || primaryRejectform.get('maxbidcontroller').dirty)">
+                        Max Bid Price should Only numerical values are allowed.
+                    </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Lot Size<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="inputText col-md-4 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control w-100" placeholder="" formControlName="lotcontroller"
+                        pInputText required>
+                    <label for="inputText4" class="">Lot Size<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="primaryRejectform.get('lotcontroller').hasError('required') && (primaryRejectform.get('lotcontroller').touched || primaryRejectform.get('lotcontroller').dirty)">
+                        Lot Size Required.
+                    </small>
+                    <small style="color: red;" *ngIf="primaryRejectform.get('lotcontroller').hasError('pattern') && (primaryRejectform.get('lotcontroller').touched || primaryRejectform.get('lotcontroller').dirty)">
+                        Lot Size should Only numerical values are allowed.
+                    </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Primary Issue Type<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="col-md-4 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-dropdown [options]="typeid" formControlName="pitypecontroller" optionLabel="NAME" [filter]="true"
+                        filterBy="NAME" [showClear]="true" optionValue="ID" placeholder="Select Primary Issue Type"
+                        class="form-control px-0"></p-dropdown>
+                    <label for="inputText4" class="">Primary Issue Type<span
+                            class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="primaryRejectform.get('pitypecontroller').hasError('required') && (primaryRejectform.get('pitypecontroller').touched || primaryRejectform.get('pitypecontroller').dirty)">
+                        Primary Issue Type Required.
+                    </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Primary Issue Category<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="col-md-4 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-dropdown [options]="catid" formControlName="picatcontroller" optionLabel="NAME" [filter]="true"
+                        filterBy="NAME" [showClear]="true" optionValue="ID" placeholder="Select Primary Issue Category"
+                        class="form-control px-0"></p-dropdown>
+                    <label for="inputText4" class="">Primary Issue Category<span
+                            class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="primaryRejectform.get('picatcontroller').hasError('required') && (primaryRejectform.get('picatcontroller').touched || primaryRejectform.get('picatcontroller').dirty)">
+                        Primary Issue Category Required.
+                    </small>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 text-center">
+            <button pButton pRipple type="button" *ngIf="onadd" (click)="createpriReject()" label=""
+                class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><i class="bx bx-plus"></i></button>
+            <button pButton pRipple type="button" *ngIf="oneditbtn" (click)="updatepriReject()" label=""
+                class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><span
+                    class="fadeIn animated bx bx-reset"></span></button> <button pButton pRipple type="button"
+                *ngIf="oncancel" (click)="cancel()" label="" class="p-button-secondary button-sm mx-1 py-2"><span
+                    class="fadeIn animated bx bx-reset"></span></button>
+        </div>
+
+    </form>
+
+    <div class="col-12">
+        <p-table #dt [value]="products" dataKey="id"
+            styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines" [rowHover]="true" [rows]="5"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+            [globalFilterFields]="['NAME_OF_ISSUE','ISSUE_DESC','IPOID','OPEN_FROM_DATE','OPEN_TILL_DATE','MIN_BID_PRICE','MAX_BID_PRICE','LOT_SIZE','Type.NAME','Category.NAME']">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    <span class="globalSearch p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                            class="form-control" placeholder="Global Search" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="NAME_OF_ISSUE">Name of Issue<p-sortIcon field="name"></p-sortIcon></th>
+                    <th pSortableColumn="IPOID">IPOID<p-sortIcon field="name"></p-sortIcon></th>
+                    <th pSortableColumn="ISSUE_DESC">Issue Description<p-sortIcon field="country.name"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="OPEN_FROM_DATE">Open From Date<p-sortIcon field="country.name"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="OPEN_TILL_DATE">Open Till Date<p-sortIcon field="name"></p-sortIcon></th>
+                    <th pSortableColumn="MIN_BID_PRICE">Min Bid Price<p-sortIcon field="country.name"></p-sortIcon></th>
+                    <th pSortableColumn="MAX_BID_PRICE">Max Bid Price<p-sortIcon field="country.name"></p-sortIcon></th>
+                    <th pSortableColumn="LOT_SIZE">Lot Size<p-sortIcon field="name"></p-sortIcon></th>
+                    <th pSortableColumn="Type.NAME">Primary Issue Type<p-sortIcon field="country.name"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="Category.NAME">Primary Issue Category<p-sortIcon
+                            field="country.name"></p-sortIcon></th>
+                    <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr class="p-selectable-row">
+                    <td>
+                        <span class="p-column-title">Name of Issue</span>
+                        <span class="image-text">{{product.NAME_OF_ISSUE}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">IPOID</span>
+                        <span class="image-text">{{product.IPOID}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Issue Description</span>
+                        <span class="image-text">{{product.ISSUE_DESC}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Open From Date</span>
+                        <span class="image-text">{{product.OPEN_FROM_DATE}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Open Till Date</span>
+                        <span class="image-text">{{product.OPEN_TILL_DATE}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Min Bid Price</span>
+                        <span class="image-text">{{product.MIN_BID_PRICE}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Max Bid Price</span>
+                        <span class="image-text">{{product.MAX_BID_PRICE}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Lot_Size</span>
+                        <span class="image-text">{{product.LOT_SIZE}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Primary Issue Type</span>
+                        <span class="image-text">{{product.Type?.NAME}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Primary Issue Category</span>
+                        <span class="image-text">{{product.Category?.NAME}}</span>
+                    </td>
+                    <td>
+                        <!-- <button pButton type="button" icon="pi pi-pencil" (click)="oneditpriReject(product)"
+                            iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary mr-2"></button>
+
+                        <button pButton type=" button" icon="pi pi-trash" (click)="deletepriReject(product)"
+                            iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"></button> -->
+                        <i class="pi pi-pencil" (click)="oneditpriReject(product)"></i>&nbsp;&nbsp;
+                        <i class="pi pi-trash" (click)="deletepriReject(product)"></i>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No products found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

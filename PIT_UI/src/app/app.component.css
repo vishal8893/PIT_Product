@@ -1,0 +1,49 @@
+:host ::ng-deep .p-button-info {
+  background: #00609e;
+  border: 1px solid #00609e;
+}
+
+:host ::ng-deep .p-button-info:enabled:hover {
+  background: #025183;
+  border-color: #025183;
+}
+
+::ng-deep .p-button.p-button-info.p-button-outlined {
+  color: #00609e;
+}
+
+::ng-deep .p-button.p-button-info.p-button-outlined:enabled:hover {
+  color: #00609e;
+}
+
+::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+  padding: 0.6rem;
+  font-weight: 400;
+  font-size: small;
+}
+
+::ng-deep .p-tabview .p-tabview-panels {
+  padding: 0.6rem;
+}
+
+/* radio button */
+::ng-deep .p-radiobutton .p-radiobutton-box {
+  width: 16px;
+  height: 16px;
+}
+
+::ng-deep .p-radiobutton .p-radiobutton-box .p-radiobutton-icon {
+  width: 13px;
+  height: 13px;
+}
+
+::ng-deep .p-radiobutton-box.p-highlight .p-radiobutton-icon {
+  transform: translateZ(0) scale(0.5, 0.5);
+}
+
+::ng-deep .p-radiobutton {
+  padding: 0.2rem 0.3rem;
+  margin-left: 0.3rem;
+  /* margin-right: 0.1rem; */
+}
+

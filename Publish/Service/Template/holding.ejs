@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <style>
+        .container {
+            margin: 0 auto;
+            /* This centers the container horizontally */
+            max-width: 800px;
+            /* Adjust this width as needed */
+            padding: 20px;
+            /* Add padding to create space on the sides */
+        }
+
+        header {
+            background-color: #007BFF;
+            /* Set the background color for the header */
+            color: #FFFFFF;
+            /* Set the text color for the header */
+            text-align: center;
+            padding: 10px 0;
+            /* Add padding to the header */
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #007BFF;
+            /* Set the background color for the footer */
+            color: #FFFFFF;
+            /* Set the text color for the footer */
+            text-align: center;
+            padding: 10px 0;
+            /* Add padding to the footer */
+        }
+
+        table {
+            width: 100%;
+        }
+
+        table th,
+        table td {
+            word-wrap: break-word;
+            max-width: 150px; /* Adjust the max-width as needed */
+        }
+    </style>
+    <!-- Add your CSS and other meta tags as needed -->
+</head>
+
+<body>
+    <header>
+        <span class="title" style="text-align: center; display: block; width: 100%;">Security Holding Details</span>
+        <br />
+    </header>
+    <div class="container">
+        <div>
+            <div>
+                <h2>Security Holding Details:</h2>
+                <table border="1" style="margin-top: 20px;">
+                    <tr>
+                        <th>NAME</th>
+                        <th>RELATION</th>
+                        <th>DP NAME</th>
+                        <th>DP CLIENT ID</th>
+                        <th>Proofs/Authorization</th>                
+                    </tr>
+                    <% FinishData.SecHold.forEach(function(data) { %>
+                        <tr>
+                            <td>
+                                <%= data.name %>
+                            </td>
+                            <td>
+                                <!-- <%= data.RELATIONSHIP_NAME %> -->
+                                <% if (data.relation === 'Other' || data.relation === 'Others') { %>
+                                    <%= data.othername %>
+                                <% } else { %>
+                                    <%= data.relation %>
+                                <% } %>
+                            </td>
+                            <td>
+                                <%= data.brokername %>
+                            </td>
+                            <td>
+                                <%= data.dpaccount %>
+                            </td>
+                            <td>
+                                <% if (data.uploadedfile) { %>
+                                    <% const filename = data.uploadedfile.split('/').pop(); %>
+                                    <%= filename %>
+                                <% } else if (data.authorize) { %>
+                                    Authorize Compliance
+                                <% } else if (data.isprovide) { %>
+                                    Will Provide Later
+                                <% } %>
+                            </td>                    
+                        </tr>
+                    <% }); %>
+                </table>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h2>Physical Share Holding Details:</h2>
+                <table border="1" style="margin-top: 20px;">
+                    <tr>
+                        <th>Physical Share Holding</th>
+                        <th>Proofs</th>                
+                    </tr>
+                    <% FinishData.phsical.forEach(function(data) { %>
+                        <tr>
+                            <td>
+                                Physical Share Holding
+                            </td>
+                            <td>
+                                <% if (data.UPLOAD_PATH) { %>
+                                    <% const filename = data.UPLOAD_PATH.split('/').pop(); %>
+                                    <%= filename %>
+                                <% } %>                            
+                            </td>                    
+                        </tr>
+                    <% }); %>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Newel Technologies Pvt</p>
+        <!-- You can add any content you want in the footer section -->
+    </footer>
+</body>
+
+</html>

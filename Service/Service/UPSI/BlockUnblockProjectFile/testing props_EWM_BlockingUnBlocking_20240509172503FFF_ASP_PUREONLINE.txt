@@ -1,0 +1,4 @@
+RMS Blocking/UnBlocking
+||||1212121|||ALL|bse_cm|539403|M||||Y|||Blocked as per mail from EWM 20240509
+||||1212121|||ALL|bse_cm|539637|M||||Y|||Blocked as per mail from EWM 20240509
+||||1212121|||ALL|bse_cm|524440|X||||Y|||Blocked as per mail from EWM 20240509

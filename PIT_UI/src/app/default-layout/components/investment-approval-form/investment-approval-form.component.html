@@ -1,0 +1,738 @@
+<p-toast></p-toast>
+
+<div class="grid">
+
+  <!-- <div class="col-12 mt-n1">
+		<h6 class="text-muted">Employee Investment Request Form</h6>
+		<div class="demo-vertical-spacing demo-only-element mb-2">
+			<div class="progress">
+				<div class="progress-bar" role="progressbar" style="width: 15%;" aria-valuenow="15" aria-valuemin="0"
+					aria-valuemax="100">15%</div>
+			</div>
+		</div>
+	</div> -->
+
+  <div class="col-12 md:col-2 lg:col-2 px-0">
+    <div class="col-12 -mt-5">
+      <!-- <h6 class="text-muted mb-0">Nature Of Trade</h6> -->
+      <h6 class="text-bold mb-0">Nature Of Trade</h6>
+    </div>
+    <div class="grid mx-0 py-1">
+      <div class="col-12 gap-2">
+        <div class="NatureOfTrade">
+          <p-radioButton name="Equity" value="Equity" [(ngModel)]="selectedValue3"
+            (onClick)="onRadioButtonClick($event.value)" label="Equity"> </p-radioButton>
+          <!-- <label for="Equity" class="pl-2 pr-4" style="font-size: small;">Equity</label> -->
+        </div>
+        <div class="NatureOfTrade">
+          <p-radioButton name="Future" value="Future" [(ngModel)]="selectedValue3"
+            (onClick)="onRadioButtonClick($event.value)" label="Future"></p-radioButton>
+          <!-- <label for="Future" class="pl-2 pr-4" style="font-size: small;">Future</label> -->
+        </div>
+        <div class="NatureOfTrade">
+          <p-radioButton name="Option" value="Option" [(ngModel)]="selectedValue3"
+            (onClick)="onRadioButtonClick($event.value)" label="Option"></p-radioButton>
+          <!-- <label for="Option" class="pl-2 pr-4" style="font-size: small;">Option</label> -->
+        </div>
+        <div class="NatureOfTrade">
+          <p-radioButton name="SpecialCase" value="SpecialCase" [(ngModel)]="selectedValue3"
+            (onClick)="onRadioButtonClick($event.value)" label="Special Case"></p-radioButton>
+          <!-- <label for="SpecialCase" class="pl-2 pr-4" style="font-size: small;">Special Case</label> -->
+        </div>
+        <div class="NatureOfTrade">
+          <p-radioButton name="PrimaryIssue" value="PrimaryIssue" [(ngModel)]="selectedValue3"
+            (onClick)="onRadioButtonClick($event.value)" label="Primary Issue"></p-radioButton>
+          <!-- <label for="SpecialCase" class="pl-2 pr-4" style="font-size: small;">Special Case</label> -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-12 md:col-10 lg:col-10">
+    <div class="card">
+      <div class="card-body">
+        <div class="row" *ngIf="showmainForm">
+          <div class="grid">
+            <div class="col-12 md:col-6 lg:col-4">
+              <label for="inputText4" class="">Request For</label>
+              <div class="inputText">
+                <p-radioButton name="groupname" (click)="getallEmployeeAccountCode()" value="Self"
+                  [(ngModel)]="selectedValue1">
+                </p-radioButton>
+                <label for="city1" class="pl-2 pr-4" style="font-size: small;">Self</label>
+                <p-radioButton name="groupname" value="Dependent" (click)="getallEmployeeAccountCode()"
+                  [(ngModel)]="selectedValue1"></p-radioButton>
+                <label for="city1" class="pl-2 pr-4" style="font-size: small;">Dependent</label>
+              </div>
+            </div>
+            <div class="col-12 md:col-6 lg:col-4">
+              <div class="form-floating form-floating-outline">
+                <p-dropdown [options]="EmployeeAccountCode" [(ngModel)]="PANNo" optionLabel="Display" [filter]="true"
+                  filterBy="Display" [showClear]="true" placeholder="Account Name"
+                  class="form-control px-0"></p-dropdown>
+                <label for="inputText4" class="">Account Name <span class="required-asterisk">*</span></label>
+              </div>
+
+            </div>
+            <!-- <div class="col-12 mb-2">
+            <h6 class="my-2">Nature Of Trade</h6>
+            <hr class="m-0">
+          </div> -->
+          </div>
+
+
+          <div class="grid">
+            <!-- <div class="row" *ngIf="showmainForm"> -->
+            <ng-container [formGroup]="irfmainForm">
+
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="!isVisiblePrimaryIssue">
+                <div class="form-floating form-floating-outline">
+                  <p-autoComplete [inputStyle]="{'width':'100%'}" [showClear]="true" class="form-control px-0"
+                    placeholder="--Write--" field="SCRIP_DESC" formControlName="SearchSecurity"
+                    [suggestions]="SearchSecurityData" (completeMethod)="getallirfdata($event)"
+                    (onSelect)="setisin($event)" (paste)="onPaste($event)"></p-autoComplete>
+                  <label class="">Search
+                    Security<span class="required-asterisk">*</span></label>
+                  <small style="color: red;"
+                    *ngIf="irfmainForm.get('SearchSecurity').hasError('required') && (irfmainForm.get('SearchSecurity').touched || irfmainForm.get('SearchSecurity').dirty)">
+                    Search Security is required
+                  </small>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="isVisiblePrimaryIssue">
+                <div class="form-floating form-floating-outline">
+                  <p-dropdown class="form-control px-0" [filter]="true" filterBy="NAME_OF_ISSUE" [showClear]="true"
+                    [options]="Allnameissue" optionValue="NAME_OF_ISSUE" formControlName="NameOfIssue"
+                    optionLabel="NAME_OF_ISSUE" placeholder="--Select--"></p-dropdown>
+                  <label class="">Search
+                    Security<span class="required-asterisk">*</span></label>
+                  <small style="color: red;"
+                    *ngIf="irfmainForm.get('NameOfIssue').hasError('required') && (irfmainForm.get('NameOfIssue').touched || irfmainForm.get('NameOfIssue').dirty)">
+                    Search Security is required
+                  </small>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4"
+                *ngIf="isVisibleEquity || isVisibleFuture || isVisibleOption || isVisibleDebt || isVisiblePMS || isVisibleSpecialCase">
+
+                <div class="form-floating form-floating-outline">
+                  <input type="text" class="form-control" placeholder="" formControlName="ISINNumber" readonly
+                    pInputText>
+                  <label class="">ISIN
+                    Number<span class="required-asterisk">*</span></label>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4"
+                *ngIf="isVisibleEquity || isVisibleOption || isVisibleDebt || isVisiblePMS || isVisibleSpecialCase">
+                <div class="form-floating form-floating-outline">
+                  <p-dropdown class="form-control px-0" [filter]="true" filterBy="value" [showClear]="true"
+                    [options]="Alltransaction" optionValue="value" formControlName="Transaction" optionLabel="value"
+                    placeholder="Select Transaction " (onChange)="Showoppositetransaction($event)" (onChange)="SettAvQTY()"></p-dropdown>
+                  <label
+                    *ngIf="isVisibleEquity || isVisibleOption || isVisibleDebt || isVisiblePMS || isVisibleSpecialCase">Transaction<span
+                      class="required-asterisk">*</span></label>
+
+                  <small style="color: red;"
+                    *ngIf="irfmainForm.get('Transaction').hasError('required') && (irfmainForm.get('Transaction').touched || irfmainForm.get('Transaction').dirty)">
+                    Transaction Type is required
+                  </small>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4"
+                *ngIf="irfmainForm.get('Transaction').value === 'BUY' && this.selectedValue3 == 'Equity' && designatedstatus === false">
+                <!-- && designatedstatus === false -->
+                <div class="form-floating form-floating-outline">
+                  <h7>Trade Value :</h7>
+                </div>
+                <div class="">
+                  <p-radioButton name="isNoSelected" [value]="true" [(ngModel)]="isNoSelected"
+                    (ngModelChange)="noradioselect()" formControlName="isNoSelected"></p-radioButton>
+                  <label for="noRadio" class="pl-2 mt-2">
+                    <10 Lacs</label>
+                      <p-radioButton name="isYesSelected" [value]="true" [(ngModel)]="isYesSelected"
+                        (ngModelChange)="yesradioselect()" formControlName="isYesSelected"></p-radioButton>
+                      <label for="yesRadio" class="pl-2 mt-2">>=10 Lacs</label>
+                </div>
+                <div *ngIf="checktruebox">
+                  <div class="pl-2 mt-2">
+                    <p-checkbox name="Tenlacsmodel" value="true" [(ngModel)]="Tenlacsmodel"
+                      formControlName="Tenlacsmodel"></p-checkbox>
+                    <span class="">
+                      I accept the investment made above for minimum period of 30 days or expiry whichever is earlier.
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4"
+                *ngIf="irfmainForm.get('Transaction').value === 'SELL' && this.selectedValue3 == 'Equity' && designatedstatus === false">
+                <!-- && designatedstatus === false -->
+                <div class="">
+                  <span class="pr-5">
+                    Sold share consist of any prior purchase lot worth more than 10 lacs.
+                  </span>
+                  <p-radioButton name="isSellNoSelected" [value]="true" [(ngModel)]="isSellNoSelected"
+                    (ngModelChange)="noSellradioselect()" formControlName="isSellNoSelected"></p-radioButton>
+                  <label for="city1" class="pl-2 pr-4">No</label>
+                  <p-radioButton name="isSellYesSelected" [value]="true" [(ngModel)]="isSellYesSelected"
+                    (ngModelChange)="yesSellradioselect()" formControlName="isSellYesSelected"></p-radioButton>
+                  <label for="city1" class="pl-2">Yes</label>
+                </div>
+              </div>
+
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="isVisibleFuture">
+                <div class="form-floating form-floating-outline">
+                  <p-dropdown class="form-control px-0" [filter]="true" filterBy="value" [showClear]="true"
+                    [options]="Alltransaction1" optionValue="value" formControlName="Transaction" optionLabel="value"
+                    placeholder="Select Transaction " (onChange)="Showoppositetransaction($event)"></p-dropdown>
+                  <label *ngIf="isVisibleFuture">Transaction<span class="required-asterisk">*</span></label>
+
+                  <small style="color: red;"
+                    *ngIf="irfmainForm.get('Transaction').hasError('required') && (irfmainForm.get('Transaction').touched || irfmainForm.get('Transaction').dirty)">
+                    Transaction Type is required
+                  </small>
+                </div>
+              </div>
+
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="isVisibleSpecialCase">
+                <div class="form-floating form-floating-outline">
+                  <p-dropdown class="form-control px-0" [filter]="true" filterBy="name" [showClear]="true"
+                    [options]="SpecialCasearray" optionValue="name" formControlName="SpecialCase" optionLabel="name"
+                    placeholder="Select Special Case" (onChange)="VetReason($event.value)"></p-dropdown>
+                  <label class=" pt-2">Special Case<span class="required-asterisk">*</span></label>
+
+                  <small style="color: red;"
+                    *ngIf="irfmainForm.get('SpecialCase').hasError('required') && (irfmainForm.get('SpecialCase').touched || irfmainForm.get('SpecialCase').dirty)">
+                    SpecialCase is required
+                  </small>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="isVisibleFuture || isVisibleOption">
+                <!-- <label class=" pt-2 offset-lg-2" -->
+                <div class="form-floating form-floating-outline">
+                  <p-calendar placeholder="--Select--" [showIcon]="true" inputId="icon" view="month" dateFormat="MM"
+                    [showClear]="true" class="form-control calendar p-0" formControlName="Month" [minDate]="minDate"
+                    [maxDate]="maxDate" [viewDate]="today" styleClass="w-100"></p-calendar>
+                  <label class=" pt-2">Month<span class="required-asterisk">*</span></label>
+
+                  <small style="color: red;"
+                    *ngIf="irfmainForm.get('Month').hasError('required') && (irfmainForm.get('Month').touched || irfmainForm.get('Month').dirty)">
+                    Month is required
+                  </small>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="isVisibleOption">
+                <div class="form-floating form-floating-outline">
+                  <p-dropdown class="form-control px-0" optionValue="name" [options]="optiontypearray" placeholder=""
+                    formControlName="optiontype" optionValue="name" optionLabel="name"></p-dropdown>
+                  <label class=" pt-2">Option Type<span class="required-asterisk">*</span></label>
+
+                  <small style="color: red;"
+                    *ngIf="irfmainForm.get('optiontype').hasError('required') && (irfmainForm.get('optiontype').touched || irfmainForm.get('optiontype').dirty)">
+                    Option Type is required
+                  </small>
+                </div>
+              </div>
+
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="isVisibleFuture || isVisibleOption">
+                <div class="form-floating form-floating-outline">
+                  <p-dropdown class="form-control px-0" [options]="QuantityLotarray" formControlName="QuantityLot"
+                    placeholder="Select Quantity/Lot" optionValue="name" optionLabel="name"
+                    (onChange)="setquantitylot()"></p-dropdown>
+                  <label *ngIf="isVisibleFuture || isVisibleOption">Quantity/Lot<span
+                      class="required-asterisk">*</span></label>
+
+                  <small style="color: red;"
+                    *ngIf="irfmainForm.get('QuantityLot').hasError('required') && (irfmainForm.get('QuantityLot').touched || irfmainForm.get('QuantityLot').dirty)">
+                    QuantityLot is required
+                  </small>
+                </div>
+
+              </div>
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="isVisibleFuture || isVisibleOption">
+                <label for="city1" class="pl-2 mb-1">Lot Size: {{LotSize}}</label>
+              </div>
+
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="isvisibleonql">
+                <div class="form-floating form-floating-outline">
+                  <input type="text" class="form-control" placeholder="" formControlName="Lot" pInputText>
+                  <label class=" pt-2">Lot<span class="required-asterisk">*</span></label>
+
+                  <small style="color: red;"
+                    *ngIf="irfmainForm.get('Lot').hasError('required') && (irfmainForm.get('Lot').touched || irfmainForm.get('Lot').dirty)">
+                    Lot is required
+                  </small>
+                  <small style="color: red;" *ngIf="Lot?.hasError('pattern') && !Lot?.hasError('required')">
+                    Please Enter Valid Lot
+                  </small>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="isVisibleFuture || isVisibleOption">
+                <div class="form-floating form-floating-outline">
+                  <p-dropdown class="form-control px-0" optionValue="name" [options]="Postionarray" optionValue="name"
+                    formControlName="Postion" placeholder="Select Position" optionLabel="name"
+                    (onChange)="setdrops($event)"></p-dropdown>
+                  <!-- (onChange)="setdate()" -->
+                  <label class=" pt-2">Position<span class="required-asterisk">*</span></label>
+
+                  <small style="color: red;"
+                    *ngIf="irfmainForm.get('Postion').hasError('required') && (irfmainForm.get('Postion').touched || irfmainForm.get('Postion').dirty)">
+                    Position is required
+                  </small>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4"
+                *ngIf="(this.selectedValue3 == 'Future' || this.selectedValue3 == 'Option') && irfmainForm.get('Postion').value === 'Fresh'">
+                <!-- && designatedstatus === false -->
+                <div class="form-floating form-floating-outline">
+                  <h7>Trade Value :</h7>
+                </div>
+                <div class="">
+                  <p-radioButton name="isNoSelected" [value]="true" [(ngModel)]="isNoSelected"
+                    (ngModelChange)="noradioselect()" formControlName="isNoSelected"></p-radioButton>
+                  <label for="noRadio" class="pl-2 mt-2">
+                    <10 Lacs</label>
+                      <p-radioButton name="isYesSelected" [value]="true" [(ngModel)]="isYesSelected"
+                        (ngModelChange)="yesradioselect()" formControlName="isYesSelected"></p-radioButton>
+                      <label for="yesRadio" class="pl-2 mt-2">>=10 Lacs</label>
+                </div>
+                <div *ngIf="checktruebox">
+                  <div class="pl-2 mt-2">
+                    <p-checkbox name="Tenlacsmodel" value="true" [(ngModel)]="Tenlacsmodel"
+                      formControlName="Tenlacsmodel"></p-checkbox>
+                    <span class="">
+                      I accept the investment made above for minimum period of 30 days or expiry whichever is earlier.
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4"
+                *ngIf="(this.selectedValue3 == 'Future' || this.selectedValue3 == 'Option') && irfmainForm.get('Postion').value === 'SquareOff'">
+                <!-- && designatedstatus === false -->
+                <div class="">
+                  <span class="pr-5">
+                    Sold share consist of any prior purchase lot worth more than 10 lacs.
+                  </span>
+                  <p-radioButton name="isSellNoSelected" [value]="true" [(ngModel)]="isSellNoSelected"
+                    (ngModelChange)="noSellradioselect()" formControlName="isSellNoSelected"></p-radioButton>
+                  <label for="city1" class="pl-2 pr-4">No</label>
+                  <p-radioButton name="isSellYesSelected" [value]="true" [(ngModel)]="isSellYesSelected"
+                    (ngModelChange)="yesSellradioselect()" formControlName="isSellYesSelected"></p-radioButton>
+                  <label for="city1" class="pl-2">Yes</label>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-2"
+                *ngIf="isVisibleEquity || isVisibleDebt || isVisiblePMS || isVisibleSpecialCase || isVisibleqty">
+
+                <div class="form-floating form-floating-outline">
+                  <input type="text" #val (keyup)="setlotandQuantity(val)" class="form-control" placeholder=""
+                    formControlName="Quantity" pInputText>
+                  <label class=" pt-2">Quantity<span class="required-asterisk">*</span></label>
+
+                  <span *ngIf="show1" class="text-red-500 text-xs">
+                    Quantity size invalid
+                  </span>
+                  <small style="color: red;"
+                    *ngIf="irfmainForm.get('Quantity').hasError('required') && irfmainForm.get('Quantity').touched">
+                    Quantity is Required.
+                  </small>
+                  <small style="color: red;"
+                    *ngIf="irfmainForm.get('Quantity').hasError('pattern') && !irfmainForm.get('Quantity').hasError('required')">
+                    Please Enter Valid Quantity
+                  </small>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-2"
+                *ngIf="isVisibleEquity || isVisibleDebt || isVisiblePMS || isVisibleSpecialCase || isVisibleqty">
+                <div class="form-floating form-floating-outline">
+                  <input type="number" style="color: rgb(202, 67, 14);" class="form-control" placeholder="" value="{{AVQTYFINAL}}" pInputText readonly>
+                      <label class=" pt-2">Available QTY<span class="required-asterisk"></span></label>
+                </div>
+              </div>
+
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="isVisiblePrimaryIssue">
+                <div class="form-floating form-floating-outline">
+                  <p-dropdown class="form-control px-0" [filter]="true" filterBy="name" [showClear]="true"
+                    [options]="PrimaryIssueTypearray1" optionValue="name" formControlName="PrimaryIssueType"
+                    optionLabel="name" placeholder="">
+                  </p-dropdown>
+                  <label class="pt-2">Primary Issue Type<span class="required-asterisk">*</span></label>
+                  <!-- <small style="color: red;" *ngIf="irfmainForm.get('PrimaryIssueType').hasError('required') && 
+                (irfmainForm.get('PrimaryIssueType').touched || irfmainForm.get('PrimaryIssueType').dirty)">
+                  Primary Issue is Required.
+                </small> -->
+                  <small style="color: red;"
+                    *ngIf="irfmainForm.get('PrimaryIssueType').hasError('required') && irfmainForm.get('PrimaryIssueType').touched">
+                    Primary Issue is Required.
+                  </small>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="isVisiblesell">
+                <div class="form-floating form-floating-outline">
+                  <p-dropdown [showClear]="true" class="form-control px-0" [options]="allAquiredthrough" placeholder=""
+                    formControlName="Aquiredthrough" optionValue="value" (onChange)="setprimaryeshutype()"
+                    optionLabel="value"></p-dropdown>
+                  <label class=" pt-2">Acquired through<span class="required-asterisk">*</span></label>
+
+                  <small style="color: red;" *ngIf="Aquiredthrough?.hasError('required') && Aquiredthrough?.touched">
+                    Aquiredthrough is Required.
+                  </small>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="isVisiblePrimaryIssueonly">
+                <div class="form-floating form-floating-outline">
+                  <p-dropdown [options]="PrimaryIssueTypearray" formControlName="PrimaryIssueType" optionValue="name"
+                    placeholder="" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true"
+                    class="form-control px-0"></p-dropdown>
+                  <label class="pt-2">Primary Issue
+                    Type<span class="required-asterisk">*</span></label>
+
+                  <!-- <small style="color: red;"
+                    *ngIf="PrimaryIssueTypearray?.hasError('required') && PrimaryIssueTypearray?.touched">
+                    Primary Issue is Required.
+                  </small> -->
+                  <small style="color: red;"
+                    *ngIf="irfmainForm.get('PrimaryIssueType').hasError('required') && irfmainForm.get('PrimaryIssueType').touched">
+                    Primary Issue is Required.
+                  </small>
+                </div>
+
+              </div>
+              <div class="col-12 md:col-6 lg:col-4"
+                *ngIf="isVisibleEquity || isVisibleFuture || isVisibleDebt || isVisiblePMS">
+                <div class="form-floating form-floating-outline">
+                  <input type="text" class="form-control" placeholder="" formControlName="Price" pInputText>
+                  <label class=" pt-2">Price<span class="required-asterisk">*</span></label>
+
+
+                  <small style="color: red;" *ngIf="Price?.hasError('pattern') && !Price?.hasError('required')">
+                    Please Enter Valid Price
+                  </small>
+                </div>
+                <div class="pl-2 mt-2" *ngIf="isVisibleEquity || isVisibleFuture || isVisibleDebt || isVisiblePMS">
+                  <div class="">
+                    <p-checkbox name="IsActive" (click)="setprice($event)" formControlName="MarketPrice"
+                      [binary]="true"></p-checkbox>
+                    <label for="city1" class="pl-3 mt-0">Market Price</label><br />
+                    <div class="mt-2">
+                      <small style="color: red;" *ngIf="Price?.hasError('required') && Price?.touched">
+                        Price is Required.
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="isVisibleSpecialCase && IsisVisibleReason">
+                <div class="form-floating form-floating-outline">
+                  <input type="text" class="form-control" placeholder="" formControlName="Reason" pInputText>
+                  <label class=" pt-2">Reason<span class="required-asterisk">*</span></label>
+
+                  <small style="color: red;"
+                    *ngIf="irfmainForm.get('Reason').hasError('required') && irfmainForm.get('Reason').touched">
+                    Reason is Required.
+                  </small>
+
+                </div>
+                <div class="pl-2 mt-2" *ngIf="isVisibleEquity || isVisibleFuture || isVisibleDebt || isVisiblePMS">
+                  <div class="">
+                    <p-checkbox name="IsActive" (click)="setprice($event)" formControlName="MarketPrice"
+                      [binary]="true"></p-checkbox>
+                    <label for="city1" class="pl-3 mt-0">Market Price</label><br />
+                    <div class="mt-2">
+                      <small style="color: red;" *ngIf="Price?.hasError('required') && Price?.touched">
+                        Price is Required.
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="isVisiblesell">
+
+                <div class="form-floating form-floating-outline">
+                  <p-calendar class="ui-timepicker ui-widget-header ui-corner-all ng-tns-c9-1 ng-star-inserted"
+                    formControlName="SelltransactionDate" [showIcon]="true" inputId="icon"
+                    class="form-control p-0 calendarIcon" styleClass="w-100"></p-calendar>
+                  <!-- [maxDate]="minDatenew" -->
+                  <label class="">Date of earlier opposite
+                    transaction<span class="required-asterisk">*</span></label>
+                  <small style="color: red;"
+                    *ngIf="SelltransactionDate?.hasError('required') && SelltransactionDate?.touched">
+                    Date is Required.
+                  </small>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="byredio || isvisibleonpostion">
+
+                <div class="form-floating form-floating-outline">
+
+                  <p-calendar formControlName="StartDate" [showIcon]="true" inputId="icon"
+                    class="form-control p-0 calendarIcon" [maxDate]="today" styleClass="w-100"></p-calendar>
+                  <label class="">Date of earlier opposite
+                    transaction<span class="required-asterisk">*</span></label>
+                  <small style="color: red;" *ngIf="StartDate?.hasError('required') && StartDate?.touched">
+                    StartDate is Required.
+                  </small>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="isVisiblebuy || isVisibleDebt">
+                <div class="">
+                  <label class="pt-0"><span class=" pr-5">
+                      Have you done opposite
+                      transaction earlier in this
+                      scrip?
+                    </span> </label>
+
+                  <p-radioButton value="val1" (click)="hotein('val1')" formControlName="selectedValue4">
+                  </p-radioButton>
+                  <label for="city1" class="pl-2 pr-4">No</label>
+                  <p-radioButton value="val2" (click)="hotein('val2')" formControlName="selectedValue4"></p-radioButton>
+                  <label for="city1" class="pl-2">Yes</label>
+                </div>
+
+              </div>
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="isVisibleOption">
+                <div class="form-floating form-floating-outline">
+                  <input type="text" class="form-control" placeholder="" formControlName="Premium" pInputText>
+                  <label class="">Premium<span class="required-asterisk">*</span></label>
+
+                  <small style="color: red;" *ngIf="Premium?.hasError('required') && Premium?.touched">
+                    Premium is Required.
+                  </small>
+
+                </div>
+              </div>
+
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="isVisibleOption">
+                <div class="">
+
+                  <p-checkbox name="IsActive" (click)="setpremium()" formControlName="activemodel"
+                    [binary]="true"></p-checkbox>
+                  <label for="city1" class="pl-2 mt-2">Market Price</label>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="isVisibleDebt">
+                <div class="form-floating form-floating-outline">
+                  <p-dropdown class="form-control px-0" [options]="cities" formControlName="TypeofDebt"
+                    optionLabel="name"></p-dropdown>
+                  <label class="">Type of Debt<span class="required-asterisk">*</span></label>
+
+                  <!-- <span class="text-red-500 text-xs">
+                    Contact Type is required
+                </span> -->
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="isVisibleOption">
+                <div class="form-floating form-floating-outline">
+                  <input type="text" class="form-control" formControlName="StrikePrice" placeholder="" pInputText>
+                  <label class="">Strike Price<span class="required-asterisk">*</span></label>
+
+                  <small style="color: red;" *ngIf="StrikePrice?.hasError('required') && StrikePrice?.touched">
+                    StrikePrice is Required.
+                  </small>
+                  <small style="color: red;"
+                    *ngIf="StrikePrice?.hasError('pattern') && !StrikePrice?.hasError('required')">
+                    Please Enter Valid StrikePrice
+                  </small>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="isVisiblePrimaryIssue">
+                <div class="form-floating form-floating-outline">
+                  <!-- <input type="text" class="form-control" placeholder="" formControlName="BidPrice" pInputText> -->
+                  <input type="text" class="form-control" placeholder="" formControlName="BidPrice" pInputText
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+
+
+                  <label class="">Bid Price</label>
+                  <!-- <span class="required-asterisk">*</span> -->
+                  <!-- <span class="text-red-500 text-xs">
+                     is required
+                </span> -->
+                  <!-- <p-checkbox name="IsActive" (click)="setBidPrice()" formControlName="activemodel1"
+                    [binary]="true"></p-checkbox>                    
+                  <label for="city1" class="pl-4 mt-6">Cut Off</label> -->
+                </div>
+                <p-checkbox name="IsActive" (click)="setBidPrice()" formControlName="activemodel1"
+                  [binary]="true"></p-checkbox>
+                <label for="city1" class="pl-2 mt-2">Cut Off</label>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="isVisiblePrimaryIssue">
+                <div class="form-floating form-floating-outline">
+                  <input type="text" class="form-control" placeholder="" formControlName="BidLotShares" pInputText>
+                  <label class="">Bid Lot/Shares</label>
+                  <!-- <span class="required-asterisk">*</span> -->
+
+                  <!-- <span class="text-red-500 text-xs">
+                     is required
+                </span> -->
+                </div>
+              </div>
+            </ng-container>
+            <!-- [disabled]="irfmainForm.invalid" -->
+            <div class="col-12 text-center">
+              <button (click)="AddToList()" *ngIf="show==false" [disabled]="irfmainForm.invalid" pButton pRipple
+                type="button" class="btn btn-primary p-button-info p-button-sm mx-1" label="Add To List"></button>
+              <button (click)="ResetMainform()" pButton pRipple type="button"
+                class="p-button-secondary p-button-sm mx-2" label="Reset"></button>
+            </div>
+            <!-- </div> -->
+
+            <div class="col-12" *ngIf="showtablegrid">
+              <p-table class="bg-white " #dt [value]="formDataArray" [rows]="5" [paginator]="true"
+                [totalRecords]="formDataArray.length" styleClass="p-datatable-sm p-datatable-gridlines"
+                [tableStyle]="{'min-width': '75rem'}" [rowHover]="true" dataKey="id"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [showCurrentPageReport]="true">
+
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th>Action</th>
+                    <th>Nature of Trade</th>
+                    <th>Request For</th>
+                    <th>Account Code</th>
+                    <th>Security Name</th>
+                    <th>ISIN</th>
+                    <th>Transaction</th>
+                    <th>Qty/Lot</th>
+                    <th>Qty Value</th>
+                    <th>Lot Value</th>
+                    <th>Price</th>
+                    <th>Expiry Month</th>
+                    <th>Option Type</th>
+                    <th>StrikePrice</th>
+                    <th>Position/Type</th>
+                    <th>Date Of Earlier Transaction</th>
+                    <th>Primary Issue Type</th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-formDataArray>
+                  <tr>
+                    <td>
+                      <!-- <button pButton pRipple icon="pi pi-times"
+                class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"
+                (click)="deletetabledata(formDataArray)"></button>  -->
+                      <i class="pi pi-trash" (click)="deletetabledata(formDataArray)"></i>
+                    </td>
+                    <td>{{formDataArray.NatureofTrade}}</td>
+                    <td>{{formDataArray.Requestfor}}</td>
+                    <td>{{formDataArray.AccountCode}}</td>
+                    <td>{{formDataArray.Security || formDataArray.NameOfIssue}}</td>
+                    <td>{{formDataArray.ISIN}}</td>
+                    <td>{{formDataArray.Transaction}}</td>
+                    <td>{{formDataArray.QuantityLot}}</td>
+                    <td>{{formDataArray.EqQuantity}}</td>
+                    <td>{{formDataArray.FutOpQuantityLot}}</td>
+                    <td>{{formDataArray.Price}}</td>
+                    <td>{{formDataArray.Month}}</td>
+                    <td>{{formDataArray.OptionType}}</td>
+                    <td>{{formDataArray.StrikePrice}}</td>
+                    <td>{{formDataArray.Position}}</td>
+                    <td>{{formDataArray.StartDate | date}}</td>
+                    <td>{{formDataArray.Primary_Issue_Type}}</td>
+                  </tr>
+                </ng-template>
+                <!-- <ng-template pTemplate="summary">
+          <div class="flex align-items-center justify-content-between">
+            In total there are {{formDataArray ? formDataArray.length : 0 }} Records.
+          </div>
+        </ng-template> -->
+              </p-table>
+              <div class="center-content">
+                <div *ngIf="showtablegrid">
+                  <p-checkbox name="IsActive" value="1" [(ngModel)]="IAgreeDisclaimer"
+                    (onChange)="oniagreebtn($event)"></p-checkbox>
+                  <label for="city1" class="pl-2 mt-2">I Agree Disclaimer</label>
+                </div>&nbsp;
+                <div *ngIf="showtablegrid">
+                  <button (click)="finalsave()" pButton pRipple type="button" class="p-button-info p-button-sm mx-1"
+                    [disabled]="lastbtn == true" label="Submit"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div *ngIf="irfapprovaldata">
+          <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }"
+            styleClass="p-datatable-sm p-datatable-gridlines">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Nature Of Trade</th>
+                <th>Security Name</th>
+                <th>Transaction</th>
+                <th>Quantity/Lot</th>
+                <th>Quantity/Lot Value</th>
+                <th>Price</th>
+                <th>Expiry Month</th>
+                <th>Option Type</th>
+                <th>Strike Price</th>
+                <th>Status</th>
+                <th>Rejection Reason</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+              <tr>
+                <td>{{ product.NatureofTrade }}</td>
+                <td>{{ product.Security }}</td>
+                <td>{{ product.Transaction }}</td>
+                <td>{{ product.QuantityLot }}</td>
+                <td>{{ product.EqQuantity }}</td>
+                <td>{{ product.PricePremium }}</td>
+                <td>{{ product.Month }}</td>
+                <td>{{ product.OptionType }}</td>
+                <td>{{ product.StrikePrice }}</td>
+                <td>{{ product.ApprovalStatus }}</td>
+                <td>{{ getFormattedReasons(product.RejectionReason) }}</td>
+              </tr>
+            </ng-template>
+          </p-table>&nbsp;
+          <div class="center-content">
+            <button (click)="Back()" pButton pRipple type="button" class="p-button-info p-button-sm mx-1"
+              label="Back"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card flex justify-content-center">
+
+  <p-dialog header="Disclaimer" [(visible)]="visible" [style]="{width: '50vw'}">
+    <b>
+      <!-- <hr> -->
+    </b>
+
+    <p style="font-size: 12px;">I, hereby confirm and undertake that I and my immediate dependants relatives (including
+      non-dependent spouse):
+      <br><br>
+      1.Are not engaged in any trading activities or maintain any holdings with entities other than NWML<br>
+      2.If I or my immediate dependent relative/s intend to trade, I will ensure that I/they will trade only through
+      NWIL and hold the DP account also with NWIL only<br>
+      3.Any trades executed by me and/ or my immediate dependent relatives shall not be based on any unpublished price
+      sensitive information<br><br>
+      <span style="font-weight: bold;">
+        This declaration is in line with the principles of disclosure and adherence to PIT Regulations.</span><br><br>
+      <span style="color: red;">
+        This declaration shall be sought now and then on an annual basis from all employees. Also, all this shall be
+        sought from all new employees at the time of onboarding
+      </span>
+    </p>
+
+    <button pButton pRipple type="button" (click)="SubmitDisclaimer()" label="Continue"
+      class="p-button-info p-button-sm" style="margin-right: auto;"></button>
+  </p-dialog>
+</div>
+
+<p-dialog header="Warning !" [(visible)]="visibles" [style]="{ width: '25rem' }" [closable]="false">
+  <h6 style="color: rgb(212, 16, 16); margin-bottom: 8px;" class="p-text-secondary block">
+    Holdings are not finalized. Do you want to finalize now so Click ok button?
+  </h6>
+
+  <div class="flex justify-end gap-4">
+    <p-button label="Ok" (click)="showDialog()"
+      [style]="{ backgroundColor: 'black', color: 'white', border: 'none' }" />
+  </div>
+</p-dialog>

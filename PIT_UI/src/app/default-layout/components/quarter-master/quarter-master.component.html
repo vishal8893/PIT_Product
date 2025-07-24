@@ -1,0 +1,125 @@
+<p-toast></p-toast>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+    <div class="col-12 mb-2 text-primary">
+        <!-- <h6 class="mb-0">Quarter Master</h6> -->
+    </div>
+    <form autocomplete="off" [formGroup]="quarterform">
+        <div class="row">
+
+            <!-- <label for="inputText4" class="col-md-6 col-lg-auto col-form-label">Quarter Name<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="inputText col-lg-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <!-- <p-dropdown [options]="quatid" formControlName="quatnamecontroller"
+                    optionLabel="QuarterName" [filter]="true" filterBy="QuarterName" [showClear]="true"
+                    placeholder="Select quarter" class="p-inputtext-sm" required></p-dropdown> -->
+                    <input type="text" class="form-control w-100" placeholder="" formControlName="quatnamecontroller"
+                        pInputText required readonly>
+                    <label for="inputText4" class="">QuarterName<span class="required-asterisk">*</span></label>
+                    <small class="text-danger"
+                        *ngIf="quarterform.get('quatnamecontroller').hasError('required') && (quarterform.get('quatnamecontroller').touched || quarterform.get('quatnamecontroller').dirty)">
+                        Quarter Name is required.
+                    </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Start Date<span
+                    class="required-asterisk">*</span></label>
+            <div class="col-md-4 col-lg-4 col-xl-2 mb-2">
+                <p-calendar inputId="basic" formControlName="startdatecontroller" class="p-inputtext-sm w-100"
+                    styleClass="w-100" placeholder="Open From Date" required></p-calendar>
+                <small style="color: red;"
+                    *ngIf="quarterform.get('startdatecontroller').hasError('required') && (quarterform.get('startdatecontroller').touched || quarterform.get('startdatecontroller').dirty)">
+                    start Date Required.
+                </small>
+            </div> -->
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">End Date<span
+                    class="required-asterisk">*</span></label>
+            <div class="col-md-4 col-lg-4 col-xl-2 mb-2">
+                <p-calendar inputId="basic" formControlName="tilldatecontroller" class="p-inputtext-sm w-100"
+                    styleClass="w-100" placeholder="Open Till Date" required></p-calendar>
+                <small style="color: red;"
+                    *ngIf="quarterform.get('tilldatecontroller').hasError('required') && (quarterform.get('tilldatecontroller').touched || quarterform.get('tilldatecontroller').dirty)">
+                    End Date Required.
+                </small>
+            </div> -->
+
+            <label for="inputText4" class="col-md-6 col-lg-auto col-form-label">Is Active</label>
+            <div class="col-md-6 col-lg-2 mb-2 pt-1">
+                <p-checkbox name="IsActive" [binary]="true" inputId="checkbox1" formControlName="activecontroller"
+                    [(ngModel)]="activemodel">
+                </p-checkbox>
+            </div>
+
+        </div>
+
+        <div class="col-12 text-center">
+            <!-- <button pButton pRipple type="button" *ngIf="onadd" (click)="createEntCeoBm()" label=""
+                class="p-button-info p-button-sm mx-2"></button> -->
+            <button pButton pRipple type="button" *ngIf="oneditbtn" (click)="updateQuarter()" label=""
+                class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><span
+                    class="fadeIn animated bx bx-reset"></span></button>
+            <button pButton pRipple type="button" *ngIf="oncancel" (click)="cancel()" label=""
+                class="p-button-secondary button-sm mx-1 py-2"><span
+                    class="fadeIn animated bx bx-reset"></span></button>
+        </div>
+    </form>
+    <div class="col-12">
+        <p-table #dt [value]="products" dataKey="id"
+            styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines" [rowHover]="true" [rows]="5"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+            [globalFilterFields]="['QuarterName','StartDate','EndDate','CurrentActive']">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    <span class="globalSearch p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                            placeholder="Global Search" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="QuarterName">Quarter Name<p-sortIcon field="name"></p-sortIcon></th>
+                    <!-- <th pSortableColumn="StartDate">Start Date<p-sortIcon field="country.name"></p-sortIcon></th>
+                    <th pSortableColumn="EndDate">End Date<p-sortIcon field="country.name"></p-sortIcon></th> -->
+                    <th pSortableColumn="CurrentActive">Is Active<p-sortIcon field="country.name"></p-sortIcon></th>
+                    <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr class="p-selectable-row">
+                    <td>
+                        <span class="p-column-title">Quarter Name</span>
+                        {{product.QuarterName}}
+                    </td>
+                    <!-- <td>
+                        <span class="p-column-title">Start Date</span>
+                        <span class="image-text">{{product.StartDate}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">End Date</span>
+                        <span class="image-text">{{product.EndDate}}</span>
+                    </td> -->
+                    <td>
+                        <span class="p-column-title">Is Active</span>
+                        <span class="image-text">{{product.CurrentActive}}</span>
+                    </td>
+                    <td>
+                        <ng-container>
+                            <i class="pi pi-pencil" (click)="oneditQuarter(product)"></i>&nbsp;&nbsp;
+                            <!-- <i class="pi pi-trash" (click)="DeleteM3UAM(product)"></i> -->
+                        </ng-container>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No products found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+.file-input-field {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adjust the gap as needed to separate the input and button */
+  }
+  
+  .button-and-input-container {
+    display: flex;
+    align-items: center;
+    gap: 50px; /* Adjust this value to control the spacing between elements */
+  }
+  

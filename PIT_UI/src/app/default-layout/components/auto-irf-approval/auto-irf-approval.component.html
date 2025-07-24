@@ -1,0 +1,32 @@
+<p-toast></p-toast>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+    <div class="col-12 mb-2 text-primary">
+    </div>
+    <form autocomplete="off" [formGroup]="AutoIRfApprovalform">
+        <div class="row">
+            <div class="inputText col-lg-2 mb-2">
+                <div class="form-floating form-floating-outline">
+
+                    <p-dropdown [options]="Array" formControlName="AutoIRfApproval" optionLabel="Name" [filter]="true"
+                        filterBy="Name" [showClear]="true" placeholder="Select Auto IRf Approval"
+                        class="form-control px-0" (onChange)="setvalidtion()"></p-dropdown>
+                    <label for="inputText4" class=""><b>Auto IRf Approval</b><span
+                            class="required-asterisk">*</span></label>
+                    <small class="text-danger"
+                        *ngIf="AutoIRfApprovalform.get('AutoIRfApproval').hasError('required') && (AutoIRfApprovalform.get('AutoIRfApproval').touched || AutoIRfApprovalform.get('AutoIRfApproval').dirty)">
+                        Auto IRf Approval Name is required.
+                    </small>
+                </div>
+            </div>
+
+            <label for="inputText4" class="col-md-6 col-lg-auto col-form-label"><b>Is Auto ?</b></label>
+            <div class="col-md-6 col-lg-2 mb-2 pt-1">
+                <p-checkbox name="IsActive" [binary]="true" inputId="checkbox1" (onChange)="handleCheckboxChange()"
+                    formControlName="activecontroller" *ngIf="disabled==true" [(ngModel)]="activemodel">
+                </p-checkbox>
+            </div>
+
+        </div>
+    </form>
+
+</div>

@@ -1,0 +1,5 @@
+RMS Blocking/UnBlocking
+||||1212121|||ALL|nse_fo|RELIANCE|null||||Y|||Blocked as per mail from EWM 20240509
+||||1212121|||ALL|bse_cm|543921|M||||Y|||Blocked as per mail from EWM 20240509
+||||1212121|||ALL|nse_cm|JAKHARIA|null||||Y|||Blocked as per mail from EWM 20240509
+||||1212121|||ALL|bse_cm|500325|A||||Y|||Blocked as per mail from EWM 20240509

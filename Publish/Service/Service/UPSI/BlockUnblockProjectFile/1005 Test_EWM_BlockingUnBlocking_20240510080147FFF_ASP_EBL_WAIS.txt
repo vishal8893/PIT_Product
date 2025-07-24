@@ -1,0 +1,5 @@
+RMS Blocking/UnBlocking
+||||12555|||ALL|Project Team Wise User|530127|X||||Y|||Blocked as per mail from EWM 20240510
+||||12555|||ALL|NWML Admin blocked in NWML|516108|X||||Y|||Blocked as per mail from EWM 20240510
+||||12555|||ALL|NWML Admin blocked in NWML|SUNDRMFAST|null||||Y|||Blocked as per mail from EWM 20240510
+||||12555|||ALL|NWML Admin blocked in NWML|500403|A||||Y|||Blocked as per mail from EWM 20240510

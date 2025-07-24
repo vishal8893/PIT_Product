@@ -1,0 +1,383 @@
+<!-- kalinditech - Dark Pool Component UI Changes:
+     - Added CRUD activity column with edit/delete buttons
+-->
+<p-toast></p-toast>
+
+<div class="grid">
+  <!-- Main Content Area - Form Card -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row" *ngIf="true"> <!-- Similar to showmainForm in IAF -->
+          <div class="grid">
+            <div class="col-12">
+              <h6 class="text-bold mb-3">My Holding Details</h6>
+            </div>
+          </div>
+          <!-- <div *ngIf="isLoading" class="center-content">
+            <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+            <span>Loading data...</span>
+          </div> -->
+
+          <form [formGroup]="darkPoolForm" (ngSubmit)="onSubmit()">
+            <div class="grid">
+              <div class="col-12 md:col-6 lg:col-4">
+                <div class="form-floating form-floating-outline">
+                  <p-dropdown [options]="EmployeeAccountCode" formControlName="accCode" optionLabel="AccountCode"
+                    [filter]="true" filterBy="Display" [showClear]="true" placeholder="Account Code"
+                    class="form-control px-0" (onChange)="SetAcountName($event)"></p-dropdown>
+                  <label for="inputText4" class="">Account Code <span class="required-asterisk">*</span></label>
+                  <small style="color: red;"
+                    *ngIf="darkPoolForm.get('accCode')?.invalid && darkPoolForm.get('accCode')?.touched">
+                    Account Code is required.
+                  </small>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4">
+                <div class="form-floating form-floating-outline">
+                  <input id="accName" type="text" class="form-control" placeholder="" pInputText
+                    formControlName="accName" readonly>
+                  <label for="accName" class="">Account Name <span class="required-asterisk">*</span></label>
+                  <small style="color: red;"
+                    *ngIf="darkPoolForm.get('accName')?.invalid && darkPoolForm.get('accName')?.touched">
+                    Account Name is required.
+                  </small>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4">
+                <div class="form-floating form-floating-outline">
+                  <input id="panNo" type="text" class="form-control" placeholder="" pInputText formControlName="panNo">
+                  <label for="panNo" class="">PAN No <span class="required-asterisk">*</span></label>
+                  <small style="color: red;"
+                    *ngIf="darkPoolForm.get('panNo')?.invalid && darkPoolForm.get('panNo')?.touched">
+                    PAN No is required.
+                  </small>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4">
+                <div class="form-floating form-floating-outline">
+                  <input id="e_boid" type="text" class="form-control" placeholder="" pInputText
+                    formControlName="e_boid">
+                  <label for="e_boid" class="">E-BOID <span class="required-asterisk">*</span></label>
+                  <small style="color: red;"
+                    *ngIf="darkPoolForm.get('e_boid')?.invalid && darkPoolForm.get('e_boid')?.touched">
+                    E-BOID is required.
+                  </small>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="editMode ==false">
+                <div class="form-floating form-floating-outline">
+                  <p-autoComplete [inputStyle]="{'width':'100%'}" [showClear]="true" class="form-control px-0"
+                    placeholder="Type the name of the Security" field="SCRIP_DESC" formControlName="securitySearch"
+                    [suggestions]="securityList" (completeMethod)="getSecuritySearch($event)" (onClear)="onSecurityClear()"
+                    (onSelect)="onSecuritySelect($event)" (paste)="onPaste($event)"></p-autoComplete>
+                  <label class="">Search Security</label>
+                  <!-- kalinditech - removed required asterisk and validation -->
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4" *ngIf="editMode ==true">
+                <div class="form-floating form-floating-outline">
+                  <input value="{{values}}" type="text" class="form-control" placeholder="" pInputText
+                    readonly>
+                  <label for="e_boid" class="">Search Security <span class="required-asterisk">*</span></label>
+
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4">
+                <div class="form-floating form-floating-outline">
+                  <input type="text" class="form-control" placeholder="" formControlName="isincode" readonly pInputText>
+                  <label class="">ISIN Number<span class="required-asterisk">*</span></label>
+                </div>
+              </div>
+
+              <div class="col-12 md:col-6 lg:col-4">
+                <div class="form-floating form-floating-outline">
+                  <p-calendar formControlName="trxDate" [showIcon]="true" inputId="icon"
+                    class="form-control p-0 calendarIcon" styleClass="w-100"></p-calendar>
+                  <label class="">Transaction Date <span class="required-asterisk">*</span></label>
+                  <small style="color: red;"
+                    *ngIf="darkPoolForm.get('trxDate')?.hasError('required') && darkPoolForm.get('trxDate')?.touched">
+                    Date is Required.
+                  </small>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4">
+                <div class="form-floating form-floating-outline">
+                  <input id="dpqty" type="number" class="form-control" placeholder="" pInputText
+                    formControlName="dpqty">
+                  <label class="">DP Quantity <span class="required-asterisk">*</span></label>
+                  <small style="color: red;"
+                    *ngIf="darkPoolForm.get('dpqty')?.hasError('required') && darkPoolForm.get('dpqty')?.touched">
+                    Quantity is Required.
+                  </small>
+                  <small style="color: red;"
+                    *ngIf="darkPoolForm.get('dpqty')?.hasError('pattern') && !darkPoolForm.get('dpqty')?.hasError('required')">
+                    Please Enter Valid Quantity
+                  </small>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4">
+                <div class="form-floating form-floating-outline">
+                  <p-dropdown [options]="TradeArray" formControlName="segment" [(ngModel)]="buisnessidNgmodel"
+                    optionLabel="Name" [filter]="true" filterBy="Name" optionValue="Name" [showClear]="true"
+                    placeholder="Select Segment" class="form-control px-0" required></p-dropdown>
+                  <label for="inputText4" class="">Segment<span class="required-asterisk">*</span></label>
+                  <small style="color: red;"
+                    *ngIf="darkPoolForm.get('segment')?.invalid && darkPoolForm.get('segment')?.touched">
+                    Segment is required.
+                  </small>
+                </div>
+              </div>
+              <div class="col-12 md:col-6 lg:col-4">
+                <!-- <div class="form-floating form-floating-outline">
+                <input id="abqty" type="number" class="form-control" placeholder="" pInputText formControlName="abqty" readonly>
+                <label class="">Available Quantity</label>
+                
+              </div> -->
+              </div>
+            </div>
+
+
+            <div class="grid mt-3">
+              <div class="col-12" style="text-align: right;">
+                <button pButton type="submit" [label]="editMode ? 'Update' : 'Submit'"
+                  [icon]="editMode ? 'pi pi-save' : 'pi pi-check'" class="p-button-success"
+                  [disabled]="!darkPoolForm.valid || isSubmitting || isTableFrozen || showResetButtonOnly"></button>
+                <!-- kalinditech - dynamic button for add/update, disabled when table frozen or only reset allowed -->
+                <button pButton type="button" label="Cancel" icon="pi pi-times" class="p-button-warning"
+                  (click)="cancelEdit()" style="margin-left: .5em" [disabled]="isSubmitting" *ngIf="editMode"></button>
+                <!-- kalinditech - cancel button for edit mode -->
+                <button pButton type="button" label="Reset" icon="pi pi-refresh" class="p-button-secondary"
+                  (click)="reset()" style="margin-left: .5em" [disabled]="isSubmitting" *ngIf="!editMode"></button>
+                <!-- kalinditech - reset button for add mode -->
+              </div>
+              <div class="col-12 mt-2" *ngIf="isSubmitting">
+                <div class="center-content" style="height: 10vh;">
+                  <i class="pi pi-spin pi-spinner"></i>
+                  <span>Submitting your request...</span>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Holding Data Grid Section - New Card -->
+<div class="grid mt-4">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h6 class="text-bold mb-0">Your Holdings</h6>
+          <div class="d-flex align-items-center gap-2">
+            <!-- kalinditech - Approval status indicator -->
+            <div *ngIf="approvalDataLoading" class="d-flex align-items-center me-2">
+              <i class="pi pi-spin pi-spinner" style="font-size: 0.8rem;"></i>
+              <span class="small text-muted ms-1">Checking approval status...</span>
+            </div>
+            <div *ngIf="!approvalDataLoading && isEmployeeInApprovalList" class="d-flex align-items-center me-2">
+              <i class="pi pi-lock text-warning" style="font-size: 0.9rem;"></i>
+              <span class="small text-warning ms-1">{{currentEmployeeApprovalRecord?.getStatusText() || 'In Approval
+                Process'}}</span>
+            </div>
+            <button pButton type="button" label="Refresh Data" icon="pi pi-refresh"
+              class="p-button-outlined p-button-sm" (click)="loadInitialData()"
+              [disabled]="holdingGridLoading || approvalDataLoading"></button>
+          </div>
+        </div>
+        <div *ngIf="holdingGridLoading || approvalDataLoading" class="center-content" style="height: 15vh;">
+          <i class="pi pi-spin pi-spinner" style="font-size: 1.5rem"></i>
+          <span>Loading holdings and approval data...</span>
+        </div> <p-table [value]="holdingData" [responsive]="true" [paginator]="true" [rows]="10"
+          [showCurrentPageReport]="true"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} holdings"
+          [rowsPerPageOptions]="[5,10,20]" [loading]="holdingGridLoading || approvalDataLoading"
+          *ngIf="!(holdingGridLoading || approvalDataLoading) && holdingData && holdingData.length > 0"
+          styleClass="p-datatable-sm p-datatable-gridlines" [ngClass]="{'table-frozen': isTableFrozen}"
+          dataKey="ACCCODE" [resizableColumns]="true" columnResizeMode="expand"><ng-template pTemplate="caption">
+            <div class="p-d-flex p-jc-between p-ai-center">
+              <h5>Holdings Data</h5>
+              <span>Use the Action buttons to edit or delete records</span>
+              <!-- kalinditech - updated caption for CRUD functionality -->
+            </div>
+          </ng-template> <ng-template pTemplate="header"> <!-- kalinditech - Security column removed -->
+            <tr>
+              <th pSortableColumn="ACCCODE">Account Code <p-sortIcon field="ACCCODE"></p-sortIcon></th>
+              <th pSortableColumn="ACCNAME">Account Name <p-sortIcon field="ACCNAME"></p-sortIcon></th>
+              <th pSortableColumn="PANNO">PAN No <p-sortIcon field="PANNO"></p-sortIcon></th>
+              <th pSortableColumn="E_BOID">E-BOID <p-sortIcon field="E_BOID"></p-sortIcon></th>
+              <th pSortableColumn="SCRIP_DESC">Search Security <p-sortIcon field="SCRIP_DESC"></p-sortIcon></th>
+              <th pSortableColumn="TRX_DATE">TRX DATE <p-sortIcon field="TRX_DATE"></p-sortIcon></th>
+              <th pSortableColumn="ISIN_CODE">ISIN Code <p-sortIcon field="ISIN_CODE"></p-sortIcon></th>
+              <th pSortableColumn="SEGMENT">Segment <p-sortIcon field="SEGMENT"></p-sortIcon></th>
+              <th pSortableColumn="QTY">Quantity <p-sortIcon field="QTY"></p-sortIcon></th>
+              <th pSortableColumn="ApprovalAvailableQty">Approval Available Qty <p-sortIcon field="ApprovalAvailableQty"></p-sortIcon></th>
+              <th pSortableColumn="TradeAvailableQty">Trade Available Qty <p-sortIcon field="TradeAvailableQty"></p-sortIcon></th>
+              <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
+              <!-- kalinditech - added activity column -->
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-holding let-rowIndex="rowIndex">
+            <tr class="p-selectable-row">
+              <td>
+                <span class="p-column-title">Account Code</span>
+                {{holding.ACCCODE || 'N/A'}}
+              </td>
+              <td>
+                <span class="p-column-title">Account Name</span>
+                {{holding.ACCNAME || 'N/A'}}
+              </td>
+              <td>
+                <span class="p-column-title">PAN No</span>
+                {{holding.PANNO || 'N/A'}}
+              </td>
+              <td>
+                <span class="p-column-title">E-BOID</span>
+                {{holding.E_BOID || 'N/A'}}
+              </td>
+
+              <td>
+                <span class="p-column-title">E-BOID</span>
+                {{holding.Script.SCRIP_DESC || 'N/A'}}
+              </td>
+               <td>
+                <span class="p-column-title">E-BOID</span>
+                {{holding.TRX_DATE | date: 'yyyy-MM-dd' }}
+              </td>
+              <td>
+                <span class="p-column-title">ISIN Code</span>
+                {{holding.ISIN_CODE || 'N/A'}}
+              </td>
+              <td>
+                <span class="p-column-title">Segment</span>
+                {{holding.SEGMENT || 'N/A'}}
+              </td>
+              <td class="text-end">
+                <span class="p-column-title">Quantity</span>
+                {{holding.QTY || '0'}}
+              </td>
+             
+              <td class="text-end">
+                <span class="p-column-title">Quantity</span>
+                {{holding.ApprovalAvailableQty || '0'}}
+              </td>
+                 <td class="text-end">
+                <span class="p-column-title">Quantity</span>
+                {{holding.TradeAvailableQty || '0'}}
+              </td>
+              <td> <!-- kalinditech - activity column with edit/delete buttons -->
+                <span class="p-column-title">Activity</span>
+                <i class="pi pi-pencil" (click)="onEditHolding(holding)" style="cursor: pointer; margin-right: 8px;"
+                  [class.disabled-icon]="isTableFrozen || showResetButtonOnly"
+                  [style.cursor]="(isTableFrozen || showResetButtonOnly) ? 'not-allowed' : 'pointer'"
+                  pTooltip="Edit this record"></i> <!-- kalinditech - edit button -->
+                <i class="pi pi-trash" (click)="deleteHolding(holding)" style="cursor: pointer;"
+                  [class.disabled-icon]="isTableFrozen || showResetButtonOnly"
+                  [style.cursor]="(isTableFrozen || showResetButtonOnly) ? 'not-allowed' : 'pointer'"
+                  pTooltip="Delete this record"></i> <!-- kalinditech - delete button -->
+              </td>
+            </tr>
+          </ng-template> <ng-template pTemplate="emptymessage">
+            <tr>
+              <td colspan="8" class="text-center p-4">No holding records found.</td>
+              <!-- kalinditech - updated colspan from 9 to 8 after removing Security column -->
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+              In total there are {{holdingData ? holdingData.length : 0}} holdings.
+            </div>
+          </ng-template>
+        </p-table>
+        <div *ngIf="!(holdingGridLoading || approvalDataLoading) && (!holdingData || holdingData.length === 0)"
+          class="p-4 text-center">
+          <i class="pi pi-info-circle" style="font-size: 2rem; color: #607D8B;"></i>
+          <p class="mt-2 mb-1">No holdings data available.</p>
+          <p class="text-muted small mb-3">You can try one of the following options:</p>
+          <div class="d-flex justify-content-center gap-2">
+            <button pButton type="button" label="Refresh Data" icon="pi pi-refresh"
+              class="p-button-outlined p-button-sm" (click)="loadInitialData()"></button>
+          </div>
+        </div> <!-- kalinditech - Finalize and Reset buttons section -->
+        <div *ngIf="!(holdingGridLoading || approvalDataLoading) && holdingData && holdingData.length > 0"
+          class="mt-4 p-3 border-top">
+          <div class="d-flex justify-content-end gap-2"> <button pButton type="button" label="Finalize"
+              icon="pi pi-check-circle" class="p-button-success p-button-sm" (click)="finalizeRecords()"
+              [disabled]="isTableFrozen || isSubmitting || showResetButtonOnly"
+              pTooltip="Finalize all records - Submit for approval and freeze the table"></button>
+            <button pButton type="button" label="Reset" icon="pi pi-refresh"
+              [class]="showResetButtonOnly ? 'p-button-warning p-button-sm p-button-highlighted' : 'p-button-warning p-button-sm'"
+              (click)="resetRecords()"
+              [disabled]="disableResetButton || ((isTableFrozen && !showResetButtonOnly) || isSubmitting)"
+              [pTooltip]="showResetButtonOnly ? 'Reset all records - Only action allowed in Finalized state' : disableResetButton ? 'Reset not available - Submit records for approval first' : 'Reset all records - this will freeze the table'"></button>
+          </div>
+          <div *ngIf="isTableFrozen" class="mt-2">
+            <p class="text-center small mb-0"
+              [ngClass]="{'text-muted': !showResetButtonOnly, 'text-warning': showResetButtonOnly}">
+              <i [ngClass]="{'pi pi-lock': !showResetButtonOnly, 'pi pi-unlock': showResetButtonOnly}"></i>
+              <span *ngIf="isEmployeeInApprovalList && !showResetButtonOnly">Table is frozen -
+                {{currentEmployeeApprovalRecord?.getStatusText() || 'In approval process'}}</span>
+              <span *ngIf="isEmployeeInApprovalList && showResetButtonOnly">
+                <strong>FINALIZED:</strong> Records have been finalized. Only Reset operation is allowed.
+                <i class="pi pi-arrow-right"></i> Use the Reset button to request for data updation.
+              </span>
+              <span *ngIf="!isEmployeeInApprovalList">Table is frozen - no further modifications allowed</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- kalinditech - Simple Submit/Update confirmation dialog -->
+<p-dialog [(visible)]="showSubmitDialog" [modal]="true" [draggable]="false" [resizable]="false"
+  [style]="{width: '450px'}" [header]="submitDialogTitle" styleClass="p-fluid">
+
+  <div class="simple-dialog-content">
+    <p class="dialog-message">{{submitDialogMessage}}</p>
+
+    <!-- Action Buttons -->
+    <div class="dialog-actions">
+      <button pButton type="button" [label]="submitDialogConfirmLabel"
+        [icon]="pendingSubmitAction === 'add' ? 'pi pi-plus' : 'pi pi-save'"
+        [class]="pendingSubmitAction === 'add' ? 'p-button-success p-button-sm' : 'p-button-info p-button-sm'"
+        (click)="confirmSubmitAction()" [disabled]="isSubmitting">
+        <span *ngIf="isSubmitting" class="pi pi-spin pi-spinner" style="margin-right: 0.5rem;"></span>
+      </button>
+
+      <button pButton type="button" label="Cancel" icon="pi pi-times" class="p-button-secondary p-button-sm"
+        (click)="cancelSubmitAction()" [disabled]="isSubmitting">
+      </button>
+    </div>
+  </div>
+</p-dialog>
+
+
+<p-dialog [(visible)]="ResetSubmitDialog" [modal]="true" [draggable]="false" [resizable]="false"
+  [style]="{width: '450px'}" [header]="submitDialogTitle" styleClass="p-fluid">
+
+  <div class="simple-dialog-content">
+
+
+    <div class="form-floating form-floating-outline">
+      <input type="text" class="form-control" placeholder="" [(ngModel)]="valueofremark" pInputText>
+      <label class="">Remark<span class="required-asterisk">*</span></label>
+
+    </div>
+
+    <div class="dialog-actions">
+      <p-button (click)="confirm1($event)" label="Save" *ngIf="valueofremark && valueofremark.trim() !== ''" />
+      <p-button (click)="confirm2($event)" label="Cancel" severity="danger" />
+    </div>
+  </div>
+</p-dialog>
+
+
+
+
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>

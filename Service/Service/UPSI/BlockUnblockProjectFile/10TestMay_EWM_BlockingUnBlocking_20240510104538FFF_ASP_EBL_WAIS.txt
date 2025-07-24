@@ -1,0 +1,3 @@
+RMS Blocking/UnBlocking
+||||12555|||ALL|nse_cm|INFINIUM|null||||Y|||Blocked as per mail from EWM 20240510
+||||12555|||ALL|bse_cm|539637|M||||N|||Unblocked as per mail from EWM 20240510

@@ -1,0 +1,452 @@
+<p-toast></p-toast>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+	<div class="col-12 mb-2 text-primary">
+		<!-- <h6 class="mb-0">User Master</h6> -->
+	</div>
+
+	<form autocomplete="off" [formGroup]="userform">
+
+		<div class="row">
+
+			<!-- <label for="inputText4" class="col-md-6 col-lg-1 col-form-label">Employee No<span
+					class="required-asterisk">*</span></label> -->
+			<div class="inputText col-md-6 col-lg-2 mb-2">
+				<div class="form-floating form-floating-outline">
+					<input type="text" class="form-control w-100" formControlName="empnocotroller"
+						[(ngModel)]="empnameNgmodel" placeholder="" pInputText required>
+					<label for="inputText4" class="">Employee No<span class="required-asterisk">*</span></label>
+					<small style="color: red;"
+						*ngIf="userform.get('empnocotroller').hasError('required') && (userform.get('empnocotroller').touched || userform.get('empnocotroller').dirty)">						
+						Employee No Required.
+					</small>
+				</div>
+			</div>
+			<!-- <label for="inputText4" class="col-md-6 col-lg-1 col-form-label">First Name<span
+					class="required-asterisk">*</span></label> -->
+			<div class="inputText col-md-6 col-lg-2 mb-2">
+				<div class="form-floating form-floating-outline">
+					<input type="text" class="form-control w-100" formControlName="fristname"
+						[(ngModel)]="fristnameNgmodel" placeholder="" pInputText required>
+					<label for="inputText4" class="">First Name<span class="required-asterisk">*</span></label>
+					<small style="color: red;"
+						*ngIf="userform.get('fristname').hasError('required') && (userform.get('fristname').touched || userform.get('fristname').dirty)">
+						First Name Required.
+					</small>
+				</div>
+			</div>
+			<!-- <label for="inputText4" class="col-md-6 col-lg-1 col-form-label">Last Name<span
+					class="required-asterisk">*</span></label> -->
+			<div class="inputText col-md-6 col-lg-2 mb-2">
+				<div class="form-floating form-floating-outline">
+					<input type="text" class="form-control w-100" formControlName="lastname"
+						[(ngModel)]="lastnameNgmodel" placeholder="" pInputText required>
+					<label for="inputText4" class="">Last Name<span class="required-asterisk">*</span></label>
+					<small style="color: red;"
+						*ngIf="userform.get('lastname').hasError('required') && (userform.get('lastname').touched || userform.get('lastname').dirty)">
+						Last Name Required.
+					</small>
+				</div>
+			</div>
+			<!-- <label for="inputText4" class="col-md-6 col-lg-1 col-form-label">Login Id<span
+					class="required-asterisk">*</span></label> -->
+			<div class="inputText col-md-6 col-lg-2 mb-2">
+				<div class="form-floating form-floating-outline">
+					<input type="text" class="form-control w-100" formControlName="loginid" [(ngModel)]="loginidNgmodel"
+						placeholder="" pInputText required>
+					<label for="inputText4" class="">Login Id<span class="required-asterisk">*</span></label>
+					<small style="color: red;"
+						*ngIf="userform.get('loginid').hasError('required') && (userform.get('loginid').touched || userform.get('loginid').dirty)">
+						Login Id Required.
+					</small>
+				</div>
+			</div>
+			<!-- <label for="inputText4" class="col-md-6 col-lg-1 col-form-label">Department<span
+					class="required-asterisk">*</span></label> -->
+			<div class="inputText col-md-6 col-lg-2 mb-2">
+				<div class="form-floating form-floating-outline">
+					<input type="text" class="form-control w-100" formControlName="departmenet"
+						[(ngModel)]="departmentNgmodel" placeholder="" pInputText required>
+					<label for="inputText4" class="">Department<span class="required-asterisk">*</span></label>
+					<small style="color: red;"
+						*ngIf="userform.get('departmenet').hasError('required') && (userform.get('departmenet').touched || userform.get('departmenet').dirty)">
+						Department Required.
+					</small>
+				</div>
+			</div>
+			<!-- <label for="inputText4" class="col-md-6 col-lg-1 col-form-label">Email Id<span
+					class="required-asterisk">*</span></label> -->
+			<div class="inputText col-md-6 col-lg-2 mb-2">
+				<div class="form-floating form-floating-outline">
+					<input type="email" class="form-control w-100" formControlName="emailid" [(ngModel)]="emialNgmodel"
+						placeholder="" pInputText required>
+					<label for="inputText4" class="">Email Id<span class="required-asterisk">*</span></label>
+					<small style="color: red;"
+						*ngIf="userform.get('emailid').hasError('required') && (userform.get('emailid').touched || userform.get('emailid').dirty)">
+						Email Id Required.
+					</small>
+				</div>
+			</div>
+			<!-- <label for="inputText4" class="col-md-6 col-lg-1 col-form-label">Trader Email Ids<span
+					class="required-asterisk">*</span></label> -->
+			<div class="inputText col-md-6 col-lg-2 mb-2">
+				<div class="form-floating form-floating-outline">
+					<input type="text" class="form-control w-100" formControlName="traderemailid"
+						[(ngModel)]="tradeemildidsNgmodel" placeholder="" pInputText required>
+					<label for="inputText4" class="">Trader Email Id<span class="required-asterisk">*</span></label>
+					<small style="color: red;"
+						*ngIf="userform.get('traderemailid').hasError('required') && (userform.get('traderemailid').touched || userform.get('traderemailid').dirty)">
+						Trader Email Id Required.
+					</small>
+				</div>
+			</div>
+			<!-- <label for="inputText4" class="col-md-6 col-lg-1 col-form-label">Entity<span
+					class="required-asterisk">*</span></label> -->
+			<div class="col-md-6 col-lg-2 mb-2">
+				<!-- <p-dropdown [options]="entitids" formControlName [(ngModel)]="entityNgModel" optionLabel="ENTITY_CODE" [filter]="true"
+      filterBy="ENTITY_CODE" optionValue="ID" [showClear]="true"
+        placeholder="Select Entity Name" class="form-control" required></p-dropdown> -->
+
+				<div class="form-floating form-floating-outline">
+					<p-dropdown [options]="entitids" formControlName="entitytype" [(ngModel)]="entityNgModel"
+						optionLabel="ENTITY_NAME" [filter]="true" filterBy="ENTITY_NAME" [showClear]="true"
+						placeholder="Select Entity" optionValue="ID" class="form-control px-0" required></p-dropdown>
+					<label for="inputText4" class="">Entity<span class="required-asterisk">*</span></label>
+					<small style="color: red;"
+						*ngIf="userform.get('entitytype').hasError('required') && (userform.get('entitytype').touched || userform.get('entitytype').dirty)">
+						Entity Required.
+					</small>
+				</div>
+			</div>
+			<!-- <label for="inputText4" class="col-md-6 col-lg-1 col-form-label">PanCard No<span
+					class="required-asterisk">*</span></label> -->
+			<div class="inputText col-md-6 col-lg-2 mb-2">
+				<!-- <div class="form-floating form-floating-outline">
+					<input type="text" class="form-control w-100" formControlName="pancardno" 
+						[(ngModel)]="pancardNgModel" placeholder="" pInputText required>
+					<label for="inputText4" class="">PanCard No<span class="required-asterisk">*</span></label>					
+					<small style="color: red;"
+						*ngIf="userform.get('pancardno').hasError('required') && (userform.get('pancardno').touched || userform.get('pancardno').dirty)">
+						PanCard No Required.
+					</small>	
+				</div> -->
+				<div class="form-floating form-floating-outline">
+					<input type="text" class="form-control w-100" formControlName="pancardno" 
+						[(ngModel)]="pancardNgModel" placeholder="" pInputText required
+						pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}">
+					<label for="inputText4" class="">PanCard No<span class="required-asterisk">*</span></label>                   
+					<small style="color: red;"
+						*ngIf="userform.get('pancardno').hasError('required') && (userform.get('pancardno').touched || userform.get('pancardno').dirty)">
+						PanCard No Required.
+					</small> 
+					<small style="color: red;"
+						*ngIf="userform.get('pancardno').hasError('pattern') && (userform.get('pancardno').touched || userform.get('pancardno').dirty)">
+						Invalid PAN format.
+					</small> 
+				</div>
+				
+			</div>
+			<!-- <label for="inputText4" class="col-md-6 col-lg-1 col-form-label">Designation<span
+					class="required-asterisk">*</span></label> -->
+			<div class="inputText col-md-6 col-lg-2 mb-2">
+				<div class="form-floating form-floating-outline">
+					<input type="text" class="form-control w-100" formControlName="desgination"
+						[(ngModel)]="desginationNgModel" placeholder="" pInputText required>
+					<label for="inputText4" class="">Designation<span class="required-asterisk">*</span></label>
+					<small style="color: red;"
+						*ngIf="userform.get('desgination').hasError('required') && (userform.get('desgination').touched || userform.get('desgination').dirty)">
+						Designation Required.
+					</small>
+				</div>
+			</div>
+			<!-- <label for="inputText4" class="col-md-6 col-lg-1 col-form-label">BG Name<span
+					class="required-asterisk">*</span></label> -->
+			<div class="col-md-6 col-lg-2 mb-2">
+				<div class="form-floating form-floating-outline">
+					<p-dropdown [options]="businessids" formControlName="bgname" [(ngModel)]="bgNgModel"
+						optionLabel="BG_NAME" [filter]="true" (onChange)="onchangeevent(bgNgModel)"
+						placeholder="Select BG Name" filterBy="BG_NAME" optionValue="ID" [showClear]="true"
+						class="form-control px-0" required></p-dropdown>
+					<label for="inputText4" class="">BG Name<span class="required-asterisk">*</span></label>
+					<small style="color: red;"
+						*ngIf="userform.get('bgname').hasError('required') && (userform.get('bgname').touched || userform.get('bgname').dirty)">
+						BG Name Required.
+					</small>
+				</div>
+			</div>
+			<!-- <label for="inputText4" class="col-md-6 col-lg-1 col-form-label">SBU Name<span
+					class="required-asterisk">*</span></label> -->
+			<div class="col-md-6 col-lg-2 mb-2">
+				<div class="form-floating form-floating-outline">
+					<p-dropdown [options]="finalItems" formControlName="sbuname" [(ngModel)]="sbuNgModel"
+						optionLabel="SBU_NAME" [filter]="true" (onChange)="onchangeeventsub(sbuNgModel)"
+						filterBy="SBU_NAME" [showClear]="true" placeholder="Select SBU Name" optionValue="ID"
+						class="form-control px-0" required></p-dropdown>
+					<label for="inputText4" class="">SBU Name<span class="required-asterisk">*</span></label>
+					<small style="color: red;"
+						*ngIf="userform.get('sbuname').hasError('required') && (userform.get('sbuname').touched || userform.get('sbuname').dirty)">
+						SBU Name Required.
+					</small>
+				</div>
+			</div>
+			<!-- <label for="inputText4" class="col-md-6 col-lg-1 col-form-label">SUBLOB Code<span
+					class="required-asterisk">*</span></label> -->
+			<div class="col-md-6 col-lg-2 mb-2">
+				<div class="form-floating form-floating-outline">
+					<p-dropdown [options]="finallobitem" formControlName="sbulobcode" [(ngModel)]="slobNgModel"
+						optionLabel="SUBLOB_CODE" [filter]="true" filterBy="SUBLOB_CODE" [showClear]="true"
+						placeholder="Select SUBLOB Code" optionValue="ID" class="form-control px-0" required></p-dropdown>
+					<label for="inputText4" class="">SUBLOB Code<span class="required-asterisk">*</span></label>
+					<small style="color: red;"
+						*ngIf="userform.get('sbulobcode').hasError('required') && (userform.get('sbulobcode').touched || userform.get('sbulobcode').dirty)">
+						SUBLOB Code Required.
+					</small>
+				</div>
+			</div>
+			<!-- <label for="inputText4" class="col-md-6 col-lg-1 col-form-label">RA Id<span
+					class="required-asterisk">*</span></label> -->
+			<div class="inputText col-md-6 col-lg-2 mb-2">
+				<div class="form-floating form-floating-outline">
+					<input type="text" class="form-control w-100" formControlName="raid" [(ngModel)]="raNgModel"
+						placeholder="" pInputText required>
+					<label for="inputText4" class="">RA Id<span class="required-asterisk">*</span></label>
+					<small style="color: red;"
+						*ngIf="userform.get('raid').hasError('required') && (userform.get('raid').touched || userform.get('raid').dirty)">
+						RA Id Required.
+					</small>
+				</div>
+			</div>
+			<!-- <label for="inputText4" class="col-md-6 col-lg-1 col-form-label">Emp Join Date<span
+					class="required-asterisk">*</span></label> -->
+			<div class="col-md-6 col-lg-2 mb-2">
+				<div class="form-floating form-floating-outline">
+					<p-calendar class="ui-timepicker ui-widget-header ui-corner-all ng-tns-c9-1 ng-star-inserted"
+						[showIcon]="true" inputId="icon" class="border-0 form-control p-0 calendarIcon"
+						formControlName="empjoindate" [(ngModel)]="empjoinNgModel" styleClass="w-100" placeholder="Select Emp Join Date"
+						required></p-calendar>
+					<label for="inputText4" class="">Emp Join Date<span class="required-asterisk">*</span></label>
+					<small style="color: red;"
+						*ngIf="userform.get('empjoindate').hasError('required') && (userform.get('empjoindate').touched || userform.get('empjoindate').dirty)">
+						Emp Join Date Required.
+					</small>
+				</div>
+			</div>
+			<!-- <label for="inputText4" class="col-md-6 col-lg-1 col-form-label">Resign Date</label> -->
+			<div class="col-md-6 col-lg-2 mb-2">
+				<div class="form-floating form-floating-outline">
+					<p-calendar class="ui-timepicker ui-widget-header ui-corner-all ng-tns-c9-1 ng-star-inserted"
+						[showIcon]="true" inputId="icon" class="border-0 form-control p-0 calendarIcon" [disabled]="!calendarEnabled" 
+						formControlName="resigndate" styleClass="w-100" [(ngModel)]="resigndateNgModel" placeholder="Select Resign Date"
+						></p-calendar>						
+					<label for="inputText4" class="">Resign Date</label>
+					<!-- <small style="color: red;"
+					*ngIf="userform.get('empnocotroller').hasError('required') && (userform.get('empnocotroller').touched || userform.get('empnocotroller').dirty)">
+					Resign Date Required.
+				</small> -->
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-2 mb-2">				
+				<div class="form-floating form-floating-outline">
+					<p-dropdown [options]="rolesids" formControlName="roletype" [(ngModel)]="roleNgModel"
+						optionLabel="NAME" [filter]="true" filterBy="NAME" [showClear]="true"
+						placeholder="Select Role" optionValue="ID" class="form-control px-0" required></p-dropdown>
+					<label for="inputText4" class="">Role<span class="required-asterisk">*</span></label>
+					<small style="color: red;"
+						*ngIf="userform.get('roletype').hasError('required') && (userform.get('roletype').touched || userform.get('roletype').dirty)">
+						Role Required.
+					</small>
+				</div>
+			</div>
+			<label for="inputText4" class="col-md-6 col-lg-auto col-form-label">Grey List</label>
+			<div class="col-md-6 col-lg-1 mb-2 pt-1">
+				<p-checkbox name="IsActive" formControlName="greylist" [(ngModel)]="greylistNgmodel" [binary]="true"
+					inputId="checkbox1"></p-checkbox>
+			</div>
+			<label for="inputText4" class="col-md-6 col-lg-auto col-form-label">Is Active</label>
+			<div class="col-md-6 col-lg-1 mb-2 pt-1">
+				<p-checkbox name="IsActive" formControlName="activecontroller" [(ngModel)]="isactiveNgmodel"
+					[binary]="true" inputId="checkbox1"></p-checkbox>
+			</div>
+			<small style="color: red;"
+          *ngIf="userform.get('activecontroller').hasError('required') && (userform.get('activecontroller').touched || userform.get('activecontroller').dirty)">
+          <!-- IsActive Required. -->
+        </small>
+			<!-- <label for="inputText1" class="col-md-6 col-lg-2 col-form-label">Business Designated</label>
+			<div class="col-md-6 col-lg-2 mb-2">
+				<p-checkbox name="IsActive" formControlName="businessdesignated"
+					[(ngModel)]="isBuisneeDesignatedNgModle" [binary]="true" inputId="checkbox1"></p-checkbox>
+			</div>
+
+			<label for="inputText1" class="col-md-6 col-lg-2 col-form-label">Designated</label>
+			<div class="col-md-6 col-lg-2 mb-2">
+				<p-checkbox name="IsActive" formControlName="desginated" [(ngModel)]="desginatedNgModel" [binary]="true"
+					inputId="checkbox1"></p-checkbox>
+			</div> -->
+		</div>
+		<div class="row">
+
+			<!-- <label for="inputText1" class="col-md-6 col-lg-2 col-form-label">Grey List</label>
+			<div class="col-md-6 col-lg-2 mb-2">
+				<p-checkbox name="IsActive" formControlName="greylist" [(ngModel)]="greylistNgmodel" [binary]="true"
+					inputId="checkbox1"></p-checkbox>
+			</div> -->
+
+			<!-- <label for="inputText1" class="col-md-6 col-lg-2 col-form-label">Is GM</label>
+			<div class="col-md-6 col-lg-2 mb-2">
+				<p-checkbox name="IsActive" formControlName="isgm" [(ngModel)]="isGmNgModel"
+					[binary]="true"></p-checkbox>
+			</div>
+
+			<label for="inputText1" class="col-md-6 col-lg-2 col-form-label">Is IE Compliance Member</label>
+			<div class="col-md-6 col-lg-2 mb-2">
+				<p-checkbox name="IsActive" formControlName="iscompliancemember"
+					[(ngModel)]="is_ieComoliancememberNgmodel" [binary]="true" inputId="checkbox1"></p-checkbox>
+			</div> -->
+		</div>
+		<div class="row">
+			<!-- <label for="inputText1" class="col-md-6 col-lg-2 col-form-label">Is Research Analyst</label>
+			<div class="col-md-6 col-lg-2 mb-2">
+				<p-checkbox name="IsActive" formControlName="isresearch" [(ngModel)]="Is_ResearchAnalysNgModel"
+					[binary]="true" inputId="checkbox1"></p-checkbox>
+			</div>
+
+			<label for="inputText1" class="col-md-6 col-lg-2 col-form-label">Is Quantitative Research
+				Analyst</label>
+			<div class="col-md-6 col-lg-2 mb-2">
+				<p-checkbox name="IsActive" formControlName="isquantativeresearch"
+					[(ngModel)]="is_qytreasaerchAnalystNgmodel" [binary]="true" inputId="checkbox1"></p-checkbox>
+			</div>
+
+			<label for="inputText1" class="col-md-6 col-lg-2 col-form-label">Is GWMRA Member</label>
+			<div class="col-md-6 col-lg-2 mb-2">
+				<p-checkbox name="IsActive" formControlName="isgwramember" [(ngModel)]="isGMNgModel" [binary]="true"
+					inputId="checkbox1"></p-checkbox>
+			</div> -->
+		</div>
+		<div class="row">
+			<!-- <label for="inputText1" class="col-md-6 col-lg-2 col-form-label">Is Active</label>
+			<div class="col-md-6 col-lg-2 mb-2">
+				<p-checkbox name="IsActive" formControlName="activecontroller" [(ngModel)]="isactiveNgmodel"
+					[binary]="true" inputId="checkbox1"></p-checkbox>
+			</div> -->
+
+			<!-- <label for="inputText1" class="col-md-6 col-lg-2 col-form-label">EFSL Designated</label>
+			<div class="col-md-6 col-lg-2 mb-2">
+				<p-checkbox name="IsActive" formControlName="efsldesginated" [(ngModel)]="isefslNgmodel" [binary]="true"
+					inputId="checkbox1"></p-checkbox>
+			</div>
+
+			<label for="inputText1" class="col-md-6 col-lg-2 col-form-label">Is EGI</label>
+			<div class="col-md-6 col-lg-2 mb-2">
+				<p-checkbox name="IsActive" formControlName="isegi" [(ngModel)]="isegiNgmodel" [binary]="true"
+					inputId="checkbox1"></p-checkbox>
+			</div> -->
+		</div>
+		<div class="row">
+			<!-- <label for="inputText1" class="col-md-6 col-lg-2 col-form-label">Is ETLI</label>
+			<div class="col-md-6 col-lg-2 mb-2">
+				<p-checkbox name="IsActive" formControlName="isetli" [(ngModel)]="isetilNgModel" [binary]="true"
+					inputId="checkbox1"></p-checkbox>
+			</div> -->
+		</div>
+		<div class="col-12 text-center">
+			<button pButton pRipple type="button" *ngIf="onadd" (click)="createBtn()" label=""
+				class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><i class="bx bx-plus"></i></button>
+			<button pButton pRipple type="button" *ngIf="oneditbtn" (click)="updateBtn()" label=""
+				class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><span
+					class="fadeIn animated bx bx-reset"></span></button>
+			<button pButton pRipple type="button" *ngIf="oncancel" (click)="cancel()" label=""
+				class="p-button-secondary button-sm mx-1 py-2"><span
+					class="fadeIn animated bx bx-reset"></span></button>
+		</div>
+	</form>
+	<!-- </div> -->
+	<!-- <div class="row bg-white border-rounded14 my-3 px-2 pb-2 mx-0"> -->
+	<div class="col-12">
+		<p-table #dt [value]="products" dataKey="id"
+			styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines" [rowHover]="true" [rows]="5"
+			[showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+			currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+			[globalFilterFields]="['FIRSTNAME','LASTNAME','LOGINID','DEPARTMENT']">
+			<!-- <ng-template pTemplate="caption">
+				<div class="table-header">
+					<span class="globalSearch p-input-icon-left">
+						<i class="pi pi-search"></i>
+						<input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+							placeholder="Global Search" />
+					</span>									
+				</div>
+			</ng-template> -->
+			<ng-template pTemplate="caption">
+				<div class="table-header d-flex justify-content-between align-items-center">
+					<div class="globalSearch p-input-icon-left">
+						<i class="pi pi-search"></i>
+						<input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+							placeholder="Global Search" />
+					</div>
+					<div class="dropdown">
+						<a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							<i class="bx bx-dots-horizontal-rounded font-22 text-option"></i>
+						</a>
+						<ul class="dropdown-menu dropdown-menu-end">
+							<!-- <button class="dropdown-item" onclick="exportToExcel()">Export to Excel</button> -->
+							<button class="dropdown-item" (click)="exportToExcel()">Export to Excel</button>
+						</ul>
+					</div>
+				</div>
+			</ng-template>
+			
+			<ng-template pTemplate="header">
+				<tr>
+					<th pSortableColumn="FIRSTNAME">First Name<p-sortIcon field="products.name"></p-sortIcon></th>
+					<th pSortableColumn="LASTNAME">Last Name <p-sortIcon field="name"></p-sortIcon></th>
+					<th pSortableColumn="LOGINID">Login Id<p-sortIcon field="date"></p-sortIcon></th>
+					<th pSortableColumn="DEPARTMENT">Department<p-sortIcon field="status"></p-sortIcon></th>
+					<th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
+				</tr>
+			</ng-template>
+			<ng-template pTemplate="body" let-product>
+				<tr class="p-selectable-row">
+					<td>
+						<span class="p-column-title">FIRSTNAME</span>
+						<span class="image-text">{{product.FIRSTNAME
+							}}</span>
+					</td>
+					<td>
+						<span class="p-column-title">LASTNAME</span>
+						{{product.LASTNAME}}
+					</td>
+
+					<td>
+						<span class="p-column-title">LOGINID</span>
+						{{product.LOGINID}}
+					</td>
+					<td>
+						<span class="p-column-title">DEPARTMENT</span>
+						{{product.DEPARTMENT}}
+					</td>
+					<!-- <td>
+                        <span class="p-column-title">LOB NAME</span>
+                        {{product.TBL_LOB_MST?.LOB_NAME}}
+                    </td> -->
+					<td>
+						<!-- <button pButton type="button" icon="pi pi-pencil" (click)="oneditViewBtn(product)"
+							iconPos="left"
+							class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary mr-2"></button>
+
+						<button pButton type=" button" icon="pi pi-trash" (click)="deleteBtn(product)" iconPos="left"
+							class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"></button> -->
+						<i class="pi pi-pencil" (click)="oneditViewBtn(product)"></i>&nbsp;&nbsp;
+						<i class="pi pi-trash" (click)="deleteBtn(product)"></i>
+						<!-- <p-progressBar [value]="product.activity" [showValue]="false"></p-progressBar> -->
+					</td>
+				</tr>
+			</ng-template>
+			<ng-template pTemplate="emptymessage">
+				<tr>
+					<td colspan="8">No products found.</td>
+				</tr>
+			</ng-template>
+		</p-table>
+	</div>
+</div>

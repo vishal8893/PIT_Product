@@ -1,0 +1,202 @@
+<p-toast></p-toast>
+
+<div class="grid">
+  <!-- Access Control Check -->
+  <div class="col-12" *ngIf="isCheckingAccess">
+    <div class="card">
+      <div class="card-body text-center" style="padding: 2rem;">
+        <i class="pi pi-spin pi-spinner" style="font-size: 2rem; color: #007ad9;"></i>
+        <h6 class="mt-3 mb-2">Verifying Access Permissions</h6>
+        <p class="text-muted">Please wait while we validate your access rights...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Access Denied -->
+  <div class="col-12" *ngIf="!isCheckingAccess && !hasAccess">
+    <div class="card">
+      <div class="card-body text-center" style="padding: 2rem;">
+        <i class="pi pi-ban" style="font-size: 3rem; color: #e74c3c;"></i>
+        <h5 class="mt-3 mb-2 text-danger">Access Denied</h5>
+        <p class="text-muted mb-3">{{ accessDeniedMessage }}</p>
+        <p class="text-sm text-muted">
+          <i class="pi pi-info-circle"></i>
+          This component requires Admin or Super Admin privileges. Please contact your system administrator if you
+          believe you should have access.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Area - Approval List Card (only shown when access is granted) -->
+  <div class="col-12" *ngIf="!isCheckingAccess && hasAccess">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h6 class="text-bold mb-0">Trading - Approval Management</h6>
+          <div class="d-flex align-items-center gap-2"> <button pButton type="button" label="Refresh Data"
+              icon="pi pi-refresh" class="p-button-outlined p-button-sm" (click)="loadApprovalData()"
+              [disabled]="approvalDataLoading || !hasAccess"></button>
+          </div>
+        </div>
+
+        <!-- Loading State -->
+        <div *ngIf="approvalDataLoading" class="center-content" style="height: 15vh;">
+          <i class="pi pi-spin pi-spinner" style="font-size: 1.5rem"></i>
+          <span>Loading approval data...</span>
+        </div>
+
+        <!-- Approval Data Table -->
+        <p-table [value]="approvalData" [responsive]="true" [paginator]="true" [rows]="10"
+          [showCurrentPageReport]="true"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} approval requests"
+          [rowsPerPageOptions]="[5,10,20]" [loading]="approvalDataLoading"
+          *ngIf="!approvalDataLoading && approvalData && approvalData.length > 0"
+          styleClass="p-datatable-sm p-datatable-gridlines" dataKey="EMPID" [resizableColumns]="true"
+          columnResizeMode="expand"> <ng-template pTemplate="caption">
+            <div class="p-d-flex p-jc-between p-ai-center">
+              <h5>Pending Approval Requests</h5>
+              <span>Review and approve/reject pending trading requests (approved requests are automatically
+                filtered out)</span>
+            </div>
+          </ng-template>
+
+          <ng-template pTemplate="header">
+            <tr>
+              <th pSortableColumn="EMPID">Employee ID <p-sortIcon field="EMPID"></p-sortIcon></th>
+              <th pSortableColumn="FIRSTNAME">Employee Name <p-sortIcon field="FIRSTNAME"></p-sortIcon></th>
+              <th pSortableColumn="REQUEST_TYPE">Request Type <p-sortIcon field="REQUEST_TYPE"></p-sortIcon></th>
+              <th pSortableColumn="CREATED_DT">Request Date <p-sortIcon field="CREATED_DT"></p-sortIcon></th>
+              <th pSortableColumn="STATUS">Status <p-sortIcon field="STATUS"></p-sortIcon></th>
+              <th pSortableColumn="DESIGNATED">Designation <p-sortIcon field="DESIGNATED"></p-sortIcon></th>
+              <th pSortableColumn="REASON">REASON<p-sortIcon field="REASON"></p-sortIcon></th>
+              <th>Actions</th>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="body" let-record let-rowIndex="rowIndex">
+            <tr class="p-selectable-row">
+              <td>
+                <span class="p-column-title">Employee ID</span>
+                {{record.EMPID || 'N/A'}}
+              </td>
+
+
+              <td>
+                <span class="p-column-title">Employee Name</span>
+                {{record.FIRSTNAME || 'N/A'}}
+              </td>
+              <td>
+                <span class="p-column-title">Request Type</span>
+                <span class="badge request-type-badge" [ngClass]="{
+                        'badge-finalize': record.REQUEST_TYPE === 'FINALIZE',
+                        'badge-reset': record.REQUEST_TYPE === 'RESET',
+                        'badge-default': !record.REQUEST_TYPE || (record.REQUEST_TYPE !== 'FINALIZE' && record.REQUEST_TYPE !== 'RESET')
+                      }">
+                  {{record.REQUEST_TYPE || 'N/A'}}
+                </span>
+              </td>
+              <td>
+                <span class="p-column-title">Request Date</span>
+                {{record.CREATED_DT | date:'dd/MM/yyyy HH:mm' || 'N/A'}}
+              </td>
+              <td>
+                <span class="p-column-title">Status</span>
+                <span class="badge status-badge" [ngClass]="{
+                        'badge-approved': record.isAccepted(),
+                        'badge-rejected': record.IS_ACCEPTED === false,
+                        'badge-pending': record.IS_ACCEPTED === null || record.IS_ACCEPTED === undefined
+                      }">
+                  {{record.getStatusText()}}
+                </span>
+              </td>
+              <td>
+                <span class="p-column-title">Designation</span>
+                {{record.DESIGNATED || 'N/A'}}
+              </td>
+
+              <td>
+                <span class="p-column-title">REASON</span>
+                {{record.REASON || 'N/A'}}
+              </td>
+              <td> <span class="p-column-title">Actions</span>
+                <!-- Show buttons for pending requests (not yet approved/rejected) -->
+                <div class="action-buttons">
+                  <!-- Approve Button (Tick) -->
+                  <button pButton type="button" class="p-button-success p-button-sm action-btn approve-btn"
+                    [disabled]="isProcessing && processingRecordId === record.EMPID" (click)="approveRequest(record)"
+                    pTooltip="Approve this request">
+                    <i *ngIf="!(isProcessing && processingRecordId === record.EMPID)" class="pi pi-check"></i>
+                    <i *ngIf="isProcessing && processingRecordId === record.EMPID" class="pi pi-spin pi-spinner"></i>
+                  </button>
+
+                  <!-- Reject Button (Cross) -->
+                  <button pButton type="button" class="p-button-danger p-button-sm action-btn reject-btn"
+                    [disabled]="isProcessing && processingRecordId === record.EMPID" (click)="rejectRequest(record)"
+                    pTooltip="Reject this request">
+                    <i class="pi pi-times"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="emptymessage">
+            <tr>
+              <td colspan="7" class="text-center p-4">No approval requests found.</td>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+              In total there are {{approvalData ? approvalData.length : 0}} approval requests.
+            </div>
+          </ng-template>
+        </p-table> <!-- Empty State -->
+        <div *ngIf="!approvalDataLoading && (!approvalData || approvalData.length === 0)" class="p-4 text-center">
+          <i class="pi pi-info-circle" style="font-size: 2rem; color: #607D8B;"></i>
+          <p class="mt-2 mb-1">No pending approval requests available.</p>
+          <p class="text-muted small mb-3">All dark pool trading requests have been processed or there are no new
+            requests pending approval.</p>
+          <div class="d-flex justify-content-center gap-2">
+            <button pButton type="button" label="Refresh Data" icon="pi pi-refresh"
+              class="p-button-outlined p-button-sm" (click)="loadApprovalData()"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Confirmation Dialog for Approve/Reject -->
+<p-dialog [(visible)]="showConfirmDialog" [modal]="true" [draggable]="false" [resizable]="false"
+  [style]="{width: '450px'}" styleClass="p-fluid">
+  <ng-template pTemplate="header">
+    <div class="d-flex align-items-center">
+      <i class="pi" [ngClass]="{
+           'pi-check-circle text-success': confirmDialogAction === 'approve',
+           'pi-times-circle text-danger': confirmDialogAction === 'reject'
+         }" style="font-size: 1.2rem; margin-right: 8px;"></i>
+      <span class="font-bold">{{confirmDialogTitle}}</span>
+    </div>
+  </ng-template>
+
+  <div class="text-center p-3">
+    <p class="mb-3">{{confirmDialogMessage}}</p>
+    <div class="form-floating form-floating-outline" *ngIf="this.rejectflag==true">
+      <input type="text" class="form-control" placeholder="" [(ngModel)]="valueofremark" pInputText>
+      <label class="">Remark<span class="required-asterisk">*</span></label>
+
+    </div><br>
+    <div class="d-flex justify-content-center gap-2">
+      <button pButton type="button" [label]="confirmDialogConfirmLabel"
+        [icon]="confirmDialogAction === 'approve' ? 'pi pi-check' : 'pi pi-times'"
+        [class]="confirmDialogAction === 'approve' ? 'p-button-success p-button-sm' : 'p-button-danger p-button-sm'"
+        (click)="confirmAction()"  [disabled]="confirmDialogAction === 'reject' && rejectflag && !valueofremark?.trim() || isProcessing"></button>
+      <button pButton type="button" label="Cancel" icon="pi pi-ban" class="p-button-secondary p-button-sm"
+        (click)="cancelAction()" [disabled]="isProcessing"></button>
+    </div>
+  </div>
+</p-dialog>
+
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>

@@ -1,0 +1,129 @@
+<p-toast></p-toast>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+    <div class="col-12 mb-2 text-primary">
+        <!-- <h6 class="mb-0">Primary Issue Rejection List Master</h6> -->
+    </div>
+    <form autocomplete="off" [formGroup]="primaryissueform">
+
+        <div class="row">
+
+            <!-- <label for="inputText1" class="col-md-3 col-lg-2 col-xl-auto col-form-label">Employee Code<span
+                    class="required-asterisk">*</span></label> -->
+            <!-- <input type="text" class="p-inputtext-sm w-100" placeholder="Employee Code" formControlName="empcontroller" [(ngModel)]="employeecodeNgmodel"
+            pInputText required> -->
+            <div class="col-md-7 col-lg-3 col-xl-2 col-xxl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control" placeholder="" formControlName="empcontroller" pInputText
+                        required>
+                    <label for="inputText4" class="">Employee Code</label>
+                    <small style="color: red;"
+                        *ngIf="primaryissueform.get('empcontroller').hasError('required') && (primaryissueform.get('empcontroller').touched || primaryissueform.get('empcontroller').dirty)">
+                        Employee code Required.
+                    </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-3 col-lg-2 col-xl-auto col-form-label">IPO ID<span
+                    class="required-asterisk">*</span></label> -->
+            <!-- <input type="text" class="p-inputtext-sm w-100" placeholder="IPOID" formControlName="ipoidcontroller" [(ngModel)]="ipoidNgmodel" pInputText
+            required> -->
+            <div class="inputText col-md-7 col-lg-3 col-xl-2 col-xxl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control" placeholder="" formControlName="ipoidcontroller" pInputText
+                        required>
+                    <label for="inputText4" class="">IPO ID </label>
+                    <small style="color: red;"
+                        *ngIf="primaryissueform.get('ipoidcontroller').hasError('required') && (primaryissueform.get('ipoidcontroller').touched || primaryissueform.get('ipoidcontroller').dirty)">
+                        IPO ID Required.
+                    </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-3 col-lg-3 col-xl-auto col-form-label">IPO Name<span
+                    class="required-asterisk">*</span></label> -->
+            <!-- <input type="text" class="p-inputtext-sm w-100" placeholder="IPO Name" formControlName="iponamecontroller" [(ngModel)]="iponameNgmodel" pInputText
+            required> -->
+            <div class="inputText col-md-7 col-lg-3 col-xl-2 col-xxl-2 mb-2">
+                <div class="form-floating form-floating-outline"> <input type="text" class="form-control" placeholder=""
+                        formControlName="iponamecontroller" pInputText required>
+                    <label for="inputText4" class="">IPO Name</label>
+                </div>
+                <small style="color: red;"
+                    *ngIf="primaryissueform.get('iponamecontroller').hasError('required') && (primaryissueform.get('iponamecontroller').touched || primaryissueform.get('iponamecontroller').dirty)">
+                    IPO Name Required.
+                </small>
+            </div>
+
+        </div>
+        <div class="col-12 text-center">
+            <button pButton pRipple type="button" *ngIf="onadd" (click)="createprimaryissue()" label=""
+                class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><i class="bx bx-plus"></i></button>
+            <button pButton pRipple type="button" *ngIf="oneditbtn" (click)="updateprimaryissue()" label=""
+                class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><span
+                    class="fadeIn animated bx bx-reset"></span></button>
+            <button pButton pRipple type="button" *ngIf="oncancel" (click)="cancel()" label=""
+                class="p-button-secondary button-sm mx-1 py-2"><span
+                    class="fadeIn animated bx bx-reset"></span></button>
+        </div>
+
+    </form>
+
+    <div class="col-12">
+        <p-table #dt [value]="products" dataKey="id"
+            styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines" [rowHover]="true" [rows]="5"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+            [globalFilterFields]="['EMPLOYEE_CODE','IPOID','IPO_NAME']">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    <span class="globalSearch p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                            class="p-inputtext-sm" placeholder="Global Search" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="EMPLOYEE_CODE">Employee Code <p-sortIcon field="name"></p-sortIcon></th>
+                    <th pSortableColumn="IPOID">IPO ID <p-sortIcon field="country.name"></p-sortIcon></th>
+                    <th pSortableColumn="IPO_NAME">IPO Name <p-sortIcon field="country.name"></p-sortIcon></th>
+                    <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr class="p-selectable-row">
+                    <td>
+                        <span class="p-column-title">EMPLOYEE CODE</span>
+                        {{product.EMPLOYEE_CODE}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">IPOID</span>
+                        <span class="image-text">{{product.IPOID
+                            }}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">IPO NAME</span>
+                        <span class="image-text">{{product.IPO_NAME}}</span>
+                    </td>
+                    <td>
+                        <!-- <button pButton type="button" icon="pi pi-pencil" (click)="oneditprimaryissue(product)"
+                            iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary mr-2"></button>
+
+                        <button pButton type=" button" icon="pi pi-trash" (click)="deleteprimaryissue(product)"
+                            iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"></button> -->
+                        <i class="pi pi-pencil" (click)="oneditprimaryissue(product)"></i>&nbsp;&nbsp;
+                        <i class="pi pi-trash" (click)="deleteprimaryissue(product)"></i>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No products found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

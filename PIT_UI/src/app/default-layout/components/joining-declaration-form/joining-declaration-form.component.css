@@ -1,0 +1,129 @@
+.p-button.p-button-icon-only.p-button-rounded {
+  height: 2rem;
+}
+
+.p-button.p-button-icon-only {
+  width: 2rem;
+}
+
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 5px;
+  position: relative;
+}
+
+.small-button {
+  padding: 5px 10px;
+  font-size: 12px;
+  display: block;
+  margin: 0 auto;
+}
+
+.attachment-icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.change-link {
+  font-size: 10px;
+  color: blue;
+  cursor: pointer;
+  position: relative;
+  bottom: -8px;
+}
+
+.file-name {
+  font-size: 12px;
+  text-align: center;
+  position: absolute;
+  top: -20px;
+}
+
+.button-container {
+  display: flex;
+  /* gap: 5px;  */
+  margin-right: 5px;
+}
+
+/* alert box */
+.alert {
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid white;
+  padding: 0;
+  width: 450px;
+  height: 168px;
+  box-sizing: border-box;
+}
+
+.alert-header {
+  font-size: 18px;
+  font-weight: bold;
+  background-color: red;
+  color: white;
+  margin: 0;
+  padding: 10px 20px;
+}
+
+.alert-msg {
+  font-size: 12px;
+  background-color: lightblue;
+  padding: 10px 20px;
+}
+
+.btn-container {
+  text-align: center;
+  padding: 10px;
+}
+
+.btn-authorize {
+  background-color: blue;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-close {
+  position: absolute;
+  top: 9%;
+  left: 95%;
+  color: gray;
+  cursor: pointer;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* hover */
+.hidden-text {
+  display: none; /* Initially hide the text */
+  font-size: small;
+}
+
+button:hover + .hidden-text {
+  display: inline; /* Show the text when hovering over the button */
+  font-size: smaller;
+}
+
+::ng-deep .p-steps .p-steps-item .p-menuitem-link:not(.p-disabled):focus {
+  box-shadow: none;
+}
+
+.step-disabled {
+  pointer-events: none; /* Disable pointer events */
+  opacity: 0.6; 
+  /* Add any other styles to indicate the step is disabled */
+}

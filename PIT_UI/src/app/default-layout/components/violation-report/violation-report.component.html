@@ -1,0 +1,222 @@
+<p-toast></p-toast>
+
+<div class="card shadow-sm bg-white px-3 py-2 mx-0 mb-3">
+    <div class="col-12 mb-3 text-primary">
+        <!-- <h6 class="mb-0">Violation Tracker</h6> -->
+    </div>
+
+    <div class="grid">
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="form-floating form-floating-outline">
+                <p-autoComplete #autoCompleteRef [inputStyle]="{'width':'100%'}" [showClear]="true"
+                    class="form-control px-0" placeholder="--Write--" field="SCRIP_DESC" [(ngModel)]="SearchSecurity"
+                    [suggestions]="SearchSecurityData" (completeMethod)="getallirfdata($event)"
+                    (onSelect)="setisin($event)" (paste)="onPaste($event)"></p-autoComplete>
+                <label class="">Scrip Name</label>
+            </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="form-floating form-floating-outline">
+                <p-calendar placeholder="From Date" [(ngModel)]="Fromdate" [showIcon]="true"
+                    class="form-control calendar p-0" styleClass="w-100"></p-calendar>
+                <label for="">From Date</label>
+            </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="form-floating form-floating-outline">
+                <p-calendar placeholder="To Date" [(ngModel)]="Todate" [showIcon]="true"
+                    class="form-control calendar p-0" styleClass="w-100"></p-calendar>
+                <label for="">To Date</label>
+            </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="">
+                <button pButton pRipple type="button" class="btn btn-primary p-button-info p-button-sm mx-1"
+                    label="Serach" (click)="getreport()"></button>
+                <button pButton pRipple type="button" class="btn btn-primary p-button-info p-button-sm mx-1"
+                    label="Download" (click)="getdownload()"></button>
+                <button pButton pRipple type="button" icon="pi pi-refresh" (click)="RefreshTaskDates()"
+                    class="p-button-rounded p-button-outlined custom-refresh-button w-2rem h-2rem mx-3"></button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-12" *ngIf="showGrid">
+        <p-table #dt [value]="products" dataKey="id"
+            styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines" [rowHover]="true" [rows]="5"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+            [globalFilterFields]="['EMP_NAME','TBL_GENERIC_MST.NAME']">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="EMP_NAME">Sr. No<p-sortIcon field="EMP_NAME"></p-sortIcon></th>
+                    <th pSortableColumn="TBL_GENERIC_MST.NAME">Trade Violation<p-sortIcon
+                            field="TBL_GENERIC_MST.NAME"></p-sortIcon></th>
+                    <th pSortableColumn="TBL_GENERIC_MST.NAME">Scrip Name<p-sortIcon
+                            field="TBL_GENERIC_MST.NAME"></p-sortIcon></th>
+                    <th pSortableColumn="TBL_GENERIC_MST.NAME">Date<p-sortIcon
+                            field="TBL_GENERIC_MST.NAME"></p-sortIcon></th>
+                    <th pSortableColumn="TBL_GENERIC_MST.NAME">EmpName<p-sortIcon
+                            field="TBL_GENERIC_MST.NAME"></p-sortIcon></th>
+                    <th pSortableColumn="TBL_GENERIC_MST.NAME">Status<p-sortIcon
+                            field="TBL_GENERIC_MST.NAME"></p-sortIcon></th>
+                    <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr class="p-selectable-row">
+                    <td>
+                        <span class="p-column-title">EMP_NAME</span>
+                        {{product.Srno}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Applicability</span>
+                        <span class="image-text">{{product.NoApprovalVoil}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Applicability</span>
+                        <span class="image-text">{{product.ScripName}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Applicability</span>
+                        <span class="image-text">{{product.CreatedDate | date}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Applicability</span>
+                        <span class="image-text">{{product.FIRSTNAME}}</span>
+                    </td>
+                    <td *ngIf="product.Status=='Clarification Provided'" class="bg-gradient-ohhappiness text-white">
+                        {{product.Status}}</td>
+                    <td *ngIf="product.Status=='Clarification Not Provided'" class="bg-gradient-ibiza text-white">
+                        {{product.Status}}</td>
+                    <td>
+                        <button pButton pRipple type="button" (click)="showDialog(product)" label=""
+                            class="btn-light btn-primary p-button-info p-button-sm mx-0 py-0">Add
+                            Remarks</button>
+                        <!-- <button *ngIf="product.Status=='Clarification Not Provided'" pButton pRipple type="button"
+                            (click)="showDialog(product)" label=""
+                            class="btn-light btn-primary p-button-info p-button-sm mx-0 py-0">Add
+                            Remarks</button>
+                        <ng-container *ngIf="product.Status !== 'Clarification Not Provided' ">
+                            <i class="pi pi-pencil" (click)="onEditVioStatus(product)"></i>
+                        </ng-container> -->
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No products found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+    <div class="card flex justify-content-center">
+
+        <p-dialog header="Violation" [(visible)]="visible" [style]="{width: '50vw'}">
+            <!-- <b>
+                <hr>
+            </b> -->
+            <br>
+            <form autocomplete="off" [formGroup]="Voilationform">
+                <div class="row">
+                    <div class="inputText col-md-6 col-lg-6 col-xl-6 mb-2">
+                        <div class="form-floating form-floating-outline">
+                            <input type="text" class="form-control w-100" placeholder="" pInputText
+                                formControlName="Voilation" required>
+                            <label for="inputText4" class="">Violation<span class="required-asterisk">*</span></label>
+                            <small style="color: red;"
+                                *ngIf="Voilationform.get('Voilation').hasError('required') && (Voilationform.get('Voilation').touched || Voilationform.get('Voilation').dirty)">
+                                Violation Required.
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="inputText col-md-12 col-lg-12 col-xl-12 mb-2">
+
+                        <div class="form-floating form-floating-outline">
+                            <!-- <textarea rows="1" cols="20" pInputTextarea formControlName="Remark"
+                                class="form-control" placeholder=""></textarea> -->
+                            <input rows="1" cols="20" pInputTextarea formControlName="Remark" class="form-control"
+                                placeholder="">
+                            <label for="inputText1">Remark/Query<span class="required-asterisk">*</span></label>
+
+                            <small style="color: red;"
+                                *ngIf="Voilationform.get('Remark').hasError('required') && (Voilationform.get('Remark').touched || Voilationform.get('Remark').dirty)">
+                                Remark/Query Required.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <button (click)="ViolationRemarkSave()" [disabled]="Voilationform.invalid" pButton pRipple type="button"
+                class="btn-light btn-primary p-button-info p-button-sm mx-1 py-1" label="Submit">
+            </button>
+            <button (click)="Reset()" pButton pRipple type="button" class="p-button-secondary button-sm mx-1 py-1"
+                label="Reset"></button>
+            <div class="card radius-10 mb-2" *ngIf="showviolationStatusData">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <p-table #dt [value]="violationStatusData" [rows]="5" [paginator]="true"
+                            styleClass="p-datatable-sm" [globalFilterFields]="['LASTNAME','FIRSTNAME','Remarks']"
+                            [tableStyle]="{'min-width': '50rem'}" [(selection)]="selectedProducts" [rowHover]="true"
+                            dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                            [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                            <ng-template pTemplate="header">
+                                <tr class="text-center">
+                                    <th pSortableColumn="Remarks">Remark<p-sortIcon field="price"></p-sortIcon></th>
+                                    <th pSortableColumn="NAME">Name<p-sortIcon field="category"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="NAME">Created Date<p-sortIcon field="category"></p-sortIcon>
+                                    </th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-product>
+                                <tr>
+                                    <td>{{product.Remarks}}</td>
+                                    <td>{{product.FIRSTNAME}}</td>
+                                    <td>{{product.CREATED_ON | date}}</td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+            </div>
+        </p-dialog>
+    </div>
+    <div class="card flex justify-content-center">
+        <p-dialog header="Violation Status" [(visible)]="visiblestatusGrid" [style]="{width: '50vw'}">
+            <br>
+            <div class="card radius-10 mb-2" *ngIf="showvioStatusGrid">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <p-table #dt [value]="vioStatusGridData" [rows]="5" [paginator]="true"
+                            styleClass="p-datatable-sm" [globalFilterFields]="['LASTNAME','FIRSTNAME','Remarks']"
+                            [tableStyle]="{'min-width': '50rem'}" [(selection)]="selectedProducts" [rowHover]="true"
+                            dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                            [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,15,25]">
+                            <ng-template pTemplate="header">
+                                <tr class="text-center">
+                                    <th pSortableColumn="Remarks">Remark<p-sortIcon field="price"></p-sortIcon></th>
+                                    <th pSortableColumn="NAME">Name<p-sortIcon field="category"></p-sortIcon>
+                                    </th>
+                                    <th pSortableColumn="NAME">Created Date<p-sortIcon field="category"></p-sortIcon>
+                                    </th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-product>
+                                <tr>
+                                    <td>{{product.Remarks}}</td>
+                                    <td>{{product.FIRSTNAME}}</td>
+                                    <td>{{product.CREATED_ON | date}}</td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+            </div>
+        </p-dialog>
+    </div>
+
+</div>

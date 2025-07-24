@@ -1,0 +1,203 @@
+<p-toast></p-toast>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+    <div class="col-12 mb-2 text-primary">
+        <!-- <h6 class="mb-0">Grey/Restricted List Master</h6> -->
+    </div>
+    <form autocomplete="off" [formGroup]="greylistform">
+
+        <div class="row">
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Type<span
+                    class="required-asterisk">*</span></label> -->
+
+            <div class="col-md-7 col-lg-4 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-multiSelect [options]="typeid" value="Id" (onChange)="typevalidation()"
+                        (onChange)="Setvalidation()" formControlName="typecontroller" [(ngModel)]="typeNgmodel"
+                        [showToggleAll]="false" defaultLabel="Select Type" optionLabel="NAME" class="form-control px-0"
+                        styleClass="w-100 border-0"></p-multiSelect>
+                    <label for="inputText4" class="">Type<span class="required-asterisk">*</span></label>
+
+                </div>
+                <small style="color: red;"
+                    *ngIf="greylistform.get('typecontroller').hasError('required') && (greylistform.get('typecontroller').touched || greylistform.get('typecontroller').dirty)">
+                    Type Required.
+                </small>
+
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Scrip Name<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="col-md-7 col-lg-4 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-autoComplete [showClear]="true" placeholder="--Write--" field="SCRIP_DESC"
+                        class="form-control px-0" formControlName="companyNamecontroller"
+                        [suggestions]="SearchSecurityData" [inputStyle]="{'width':'100%'}"
+                        (completeMethod)="getallirfdata($event)" (onSelect)="setisin($event)" (paste)="onPaste($event)">
+                    </p-autoComplete>
+                    <label class="">Scrip
+                        Name<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="greylistform.get('companyNamecontroller').hasError('required') && (greylistform.get('companyNamecontroller').touched || greylistform.get('companyNamecontroller').dirty)">
+                        Scrip Name Required.
+                    </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">ISIN<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="col-md-7 col-lg-4 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <input type="text" class="form-control  px-0" placeholder="" pInputText formControlName="isincomtroller"
+                        required>
+                    <label class="">ISIN<span class="required-asterisk">*</span></label>
+                
+                <small style="color: red;"
+                    *ngIf="greylistform.get('isincomtroller').hasError('required') && (greylistform.get('isincomtroller').touched || greylistform.get('isincomtroller').dirty)">
+                    ISIN Required.
+                </small>
+                </div>
+            </div>
+
+        </div>
+        <div class="row my-2">
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Start
+                Date<span class="required-asterisk">*</span></label> -->
+            <div class="col-md-7 col-lg-4 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-calendar class="ui-timepicker ui-widget-header ui-corner-all ng-tns-c9-1 ng-star-inserted"
+                        placeholder="Select Start Date" [showIcon]="true" inputId="icon" class="border-0 form-control p-0 calendarIcon"
+                        styleClass="w-100" formControlName="startdatecontroller"></p-calendar>
+                    <label class=" pt-0">Start Date<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="greylistform.get('startdatecontroller').hasError('required') && (greylistform.get('startdatecontroller').touched || greylistform.get('startdatecontroller').dirty)">
+                        Start Date Required.
+                    </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">End Date<span
+                    class="required-asterisk">*</span></label> -->
+
+            <div class="col-md-7 col-lg-4 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-calendar class="ui-timepicker ui-widget-header ui-corner-all ng-tns-c9-1 ng-star-inserted"
+                        placeholder="Select End Date" [showIcon]="true" inputId="icon" class="border-0 form-control p-0 calendarIcon"
+                        styleClass="w-100" formControlName="enddatecontroller"></p-calendar>
+                    <label class=" pt-0">End Date<span class="required-asterisk">*</span></label><small
+                        style="color: red;"
+                        *ngIf="greylistform.get('enddatecontroller').hasError('required') && (greylistform.get('enddatecontroller').touched || greylistform.get('enddatecontroller').dirty)">
+                        End Date Required.
+                    </small>
+
+                </div>
+            </div>
+
+            <!-- <label *ngIf="showuser" for="inputText1" class="col-md-4 col-lg-2 col-xl-1 col-form-label">Emp List<span
+                    class="required-asterisk">*</span></label> -->
+
+            <div *ngIf="showuser" class="col-md-7 col-lg-4 col-xl-3 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-multiSelect [options]="USERGreaylist" value="" formControlName="employee" [(ngModel)]="Userlist"
+                        defaultLabel="Select Employee" optionLabel="Display" [showClear]="true"
+                        class="form-control px-0" styleClass="w-100 border-0"></p-multiSelect>
+                    <label for="inputText4" class="">Employee <span class="required-asterisk">*</span></label>
+
+                </div>
+                <small style="color: red;"
+                    *ngIf="greylistform.get('employee').hasError('required') && (greylistform.get('employee').touched || greylistform.get('employee').dirty)">
+                    Employee Required.
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-12 text-center">
+            <button pButton pRipple type="submit" *ngIf="onadd" (click)="creategreylist()" label=""
+                class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><i class="bx bx-plus"></i></button>
+            <button pButton pRipple type="button" *ngIf="oneditbtn" (click)="updategreylist()" label=""
+                class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><span
+                    class="fadeIn animated bx bx-reset"></span></button>
+            <button pButton pRipple type="button" *ngIf="oncancel" (click)="cancel()" label=""
+                class="p-button-secondary button-sm mx-1 py-2"><span
+                    class="fadeIn animated bx bx-reset"></span></button>
+        </div>
+    </form>
+
+    <div class="col-12">
+        <p-table #dt [value]="products" dataKey="id"
+            styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines" [rowHover]="true" [rows]="5"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+            [globalFilterFields]="['SCRIPT_NAME','ISIN','STARTDATE','ENDDATE']">
+            <ng-template pTemplate="caption">
+                <div class="table-header" style="height: fit-content;width: fit-content;font-size: smaller;">
+                    <span class="globalSearch p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText class="p-inputtext-sm" type="text"
+                            (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="SCRIPT_NAME">Scrip Name <p-sortIcon field="name"></p-sortIcon></th>
+                    <th pSortableColumn="EmpName">Employee Name <p-sortIcon field="name"></p-sortIcon></th>
+                    <th pSortableColumn="ISIN">ISIN <p-sortIcon field="country.name"></p-sortIcon></th>
+                    <th pSortableColumn="STARTDATE">Start Date <p-sortIcon field="date"></p-sortIcon></th>
+                    <th pSortableColumn="ENDDATE">End Date <p-sortIcon field="date"></p-sortIcon></th>
+                    <th pSortableColumn="status">Type <p-sortIcon field="status"></p-sortIcon></th>
+                    <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr class="p-selectable-row">
+                    <td>
+                        <span class="p-column-title">SCRIP NAME</span>
+                        {{product.SCRIPT_NAME}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">EMP NAME</span>
+                        {{product.EmpName}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">ISIN</span>
+                        <span class="image-text">{{product.ISIN
+                            }}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Start Date</span>
+                        <span class="image-text">{{product.STARTDATE}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">End Date</span>
+                        {{product.ENDDATE}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">End Date</span>
+                        {{product.source?.NAME}}
+                    </td>
+                    <td>
+                        <!-- <button pButton type="button" icon="pi pi-pencil" (click)="onEditgreylist(product)"
+                            iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary mr-2"></button> -->
+
+                        <i class="pi pi-pencil" (click)="onEditgreylist(product)"></i>&nbsp;&nbsp;
+                        <i class="pi pi-trash" (click)="deletegreylist(product)"></i>
+                        <!-- <button pButton pRipple icon="pi pi-trash" (click)="deletegreylist(product)" iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"></button> -->
+
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No products found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

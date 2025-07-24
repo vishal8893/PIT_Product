@@ -1,0 +1,106 @@
+<p-toast></p-toast>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+    <div class="col-12 mb-2 text-primary">
+        <!-- <h6 class="mb-0">Trading Window Close</h6> -->
+    </div>
+
+    <form autocomplete="off" [formGroup]="TWCform">
+        <div class="row mt-2">
+
+            <!-- <label for="inputText1" class="col-md-6 col-lg-auto col-form-label">From Date<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="inputText col-md-8 col-lg-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-calendar formControlName="fromdatecontroller"
+                        class="ui-timepicker ui-widget-header ui-corner-all ng-tns-c9-1 ng-star-inserted"
+                        [showIcon]="true" inputId="icon" class="border-0 form-control p-0 calendarIcon" placeholder="Select From Date"
+                        required></p-calendar>
+                    <label for="inputText4" class="">From Date<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="TWCform.get('fromdatecontroller').hasError('required') && (TWCform.get('fromdatecontroller').touched || TWCform.get('fromdatecontroller').dirty)">
+                        From Date is required
+                    </small>
+                </div>
+            </div>
+
+            <!-- <label for="inputText1" class="col-md-6 col-lg-auto col-form-label">To Date<span
+                    class="required-asterisk">*</span></label> -->
+            <div class="inputText col-md-6 col-lg-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-calendar formControlName="todatecontroller"
+                        class="ui-timepicker ui-widget-header ui-corner-all ng-tns-c9-1 ng-star-inserted"
+                        [showIcon]="true" inputId="icon" class="border-0 form-control p-0 calendarIcon" placeholder="Select To Date"
+                        required></p-calendar>
+                    <label for="inputText4" class="">To Date<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="TWCform.get('todatecontroller').hasError('required') && (TWCform.get('todatecontroller').touched || TWCform.get('todatecontroller').dirty)">
+                        To Date is required
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 text-center">
+            <button pButton pRipple type="button" *ngIf="onadd" (click)="createTWC()" label=""
+                class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><i class="bx bx-plus"></i></button>
+            <button pButton pRipple type="button" *ngIf="oneditbtn" (click)="updateTWC()" label=""
+                class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><span
+                    class="fadeIn animated bx bx-reset"></span></button>
+            <button pButton pRipple type="button" *ngIf="oncancel" (click)="cancel()" label=""
+                class="p-button-secondary button-sm mx-1 py-2"><span
+                    class="fadeIn animated bx bx-reset"></span></button>
+        </div>
+    </form>
+
+    <div class="col-12">
+        <p-table #dt [value]="products" dataKey="id"
+            styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines" [rowHover]="true" [rows]="5"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+            [globalFilterFields]="['FROM_DATE','TO_DATE']">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    <span class="globalSearch p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                            placeholder="Global Search" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="FROM_DATE">From Date <p-sortIcon field="name"></p-sortIcon></th>
+                    <th pSortableColumn="TO_DATE">To Date <p-sortIcon field="country.name"></p-sortIcon></th>
+                    <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr class="p-selectable-row">
+                    <td>
+                        <span class="p-column-title">FROM_DATE</span>
+                        {{product.FROM_DATE}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">TO_DATE</span>
+                        <span class="image-text">{{product.TO_DATE}}</span>
+                    </td>
+                    <td>
+                        <!-- <button pButton type="button" icon="pi pi-pencil" (click)="onEditTWC(product)" iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary mr-2"></button>
+                     
+                        <button pButton type=" button" icon="pi pi-trash" (click)="deleteTWC(product)" iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"></button> -->
+                        <i class="pi pi-pencil" (click)="onEditTWC(product)"></i>&nbsp;&nbsp;
+                        <i class="pi pi-trash" (click)="deleteTWC(product)"></i>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No products found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+

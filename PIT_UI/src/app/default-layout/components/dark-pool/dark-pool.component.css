@@ -1,0 +1,222 @@
+/* General Styles */
+:host ::ng-deep .p-component {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.required-asterisk {
+    color: red;
+}
+
+.center-content {
+    display: flex;
+    flex-direction: column; /* Stack icon and text vertically */
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Ensure it takes full height of its container if needed */
+    text-align: center;
+}
+
+.center-content i {
+    margin-bottom: 0.5rem; /* Space between icon and text */
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+/* Card Styles */
+:host ::ng-deep .card {
+    margin-bottom: 1rem; /* Add some space below cards */
+}
+
+:host ::ng-deep .card-header {
+    background-color: #f8f9fa; /* Light background for header */
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+:host ::ng-deep .card-body {
+    padding: 1.25rem;
+}
+
+/* Form Element Styles */
+:host ::ng-deep .form-floating-outline .form-control {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+    height: calc(2.5rem + 2px); /* Adjusted height for better alignment with label */
+}
+
+:host ::ng-deep .form-floating-outline > label {
+    padding-top: 0.75rem; /* Align label with input text */
+    color: #6c757d;
+}
+
+:host ::ng-deep .form-floating-outline .form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+:host ::ng-deep .form-control {
+    font-size: 0.9rem;
+}
+
+/* PrimeNG Component Specific Styles */
+:host ::ng-deep .p-dropdown .p-dropdown-label,
+:host ::ng-deep .p-autocomplete-input,
+:host ::ng-deep .p-calendar .p-inputtext {
+    padding: 0.75rem !important; /* Ensure padding consistency */
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+:host ::ng-deep .p-dropdown {
+    border: none; /* Remove PrimeNG default border, rely on form-control */
+    width: 100%;
+}
+
+:host ::ng-deep .p-autocomplete {
+    width: 100%;
+}
+
+:host ::ng-deep .p-autocomplete .p-inputtext {
+    width: 100%;
+}
+
+:host ::ng-deep .p-calendar {
+    width: 100%;
+}
+
+:host ::ng-deep .calendarIcon .p-button {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: white;
+}
+
+:host ::ng-deep .calendarIcon .p-button:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+/* Table Styles */
+:host ::ng-deep .p-datatable .p-datatable-thead > tr > th {
+    background-color: #e9ecef; /* Header background */
+    color: #495057; /* Header text color */
+    border-color: #dee2e6;
+    font-weight: 600;
+    padding: 0.75rem;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
+    padding: 0.75rem;
+    border-color: #dee2e6;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-tbody > tr.highlight-row {
+    background-color: #e0f2f7 !important; /* Light blue highlight */
+    font-weight: bold;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-tbody > tr:hover {
+    background-color: #f1f1f1 !important; /* Subtle hover for non-selected rows */
+}
+
+:host ::ng-deep .p-datatable-emptymessage td {
+    text-align: center;
+    padding: 1rem;
+    color: #6c757d;
+}
+
+:host ::ng-deep .p-paginator {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Button Styles */
+:host ::ng-deep .p-button {
+    margin-right: 0.25rem;
+}
+
+:host ::ng-deep .p-button.p-button-sm {
+    font-size: 0.875rem;
+    padding: 0.4rem 0.8rem;
+}
+
+/* kalinditech - Disabled icon styles for table freeze functionality */
+.disabled-icon {
+    opacity: 0.5;
+    color: #6c757d !important;
+}
+
+.disabled-icon:hover {
+    opacity: 0.5 !important;
+    color: #6c757d !important;
+}
+
+/* kalinditech - Table frozen state styles */
+.table-frozen {
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.table-frozen .p-datatable-tbody > tr > td {
+    background-color: #f8f9fa !important;
+}
+
+/* kalinditech - Highlighted button when only reset is allowed */
+:host ::ng-deep .p-button-highlighted {
+    box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.5) !important;
+    animation: pulse-warning 1.5s infinite;
+}
+
+@keyframes pulse-warning {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(255, 193, 7, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+    }
+}
+
+/* kalinditech - Simple Dialog Styles - consistent with app theme */
+
+/* Submit Dialog Simple Styling */
+.simple-dialog-content {
+    padding: 1rem;
+}
+
+.dialog-message {
+    margin-bottom: 1rem;
+    color: #495057;
+    font-size: 0.95rem;
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #dee2e6;
+}
+
+/* kalinditech - Button spacing and alignment */
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.border-top {
+    border-top: 1px solid #dee2e6 !important;
+}
+
+/* Responsive Adjustments (if any specific needed beyond PrimeFlex) */
+@media (max-width: 768px) {
+    :host ::ng-deep .p-datatable-caption h5 {
+        font-size: 1rem;
+    }
+    :host ::ng-deep .p-datatable-caption span {
+        font-size: 0.8rem;
+    }
+}

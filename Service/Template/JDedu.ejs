@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <style>
+        .container {
+            margin: 0 auto;
+            /* This centers the container horizontally */
+            max-width: 800px;
+            /* Adjust this width as needed */
+            padding: 20px;
+            /* Add padding to create space on the sides */
+        }
+
+        header {
+            background-color: #007BFF;
+            /* Set the background color for the header */
+            color: #FFFFFF;
+            /* Set the text color for the header */
+            text-align: center;
+            padding: 10px 0;
+            /* Add padding to the header */
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #007BFF;
+            /* Set the background color for the footer */
+            color: #FFFFFF;
+            /* Set the text color for the footer */
+            text-align: center;
+            padding: 10px 0;
+            /* Add padding to the footer */
+        }
+    </style>
+    <!-- Add your CSS and other meta tags as needed -->
+</head>
+
+<body>
+    <header>
+        <span class="title" style="text-align: center; display: block; width: 100%;">Self Details</span>
+        <br />
+    </header>
+    <div class="container">
+
+
+        <div>
+            <div>
+                <h2>Education Details:</h2>
+                <!-- Add a table below -->
+                <table border="1" style="margin-top: 20px;">
+                    <tr>
+                        <th>INSTITUTION</th>
+                        <th>QUALIFICATION</th>
+                        <th>SUB_QUALIFICATION</th>                        
+                    </tr>
+                    <% FinishData.qualification.forEach(function(data) { %>
+                    <tr>
+                        <td>
+                            <%= data.INSTITUTION %>
+                        </td>
+                        <td>
+                            <%= data.QUALIFICATION %>
+                        </td>
+                        <td>
+                            <%= data.SUB_QUALIFICATION %>
+                        </td>                        
+                    </tr>
+                    <% }); %>
+                </table>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h2>Contact Details:</h2>
+                <!-- Add a table below -->
+                <table border="1" style="margin-top: 20px;">
+                    <tr>
+                        <th>CONTACT_TYPE</th>
+                        <th>CONATCT_NUMBER</th>                                                
+                    </tr>
+                    <% FinishData.contactDetails.forEach(function(data) { %>
+                    <tr>
+                        <td>
+                            <%= data.TBL_GENERIC_MST?.NAME %>
+                        </td>
+                        <td>
+                            <%= data.CONATCT_NUMBER %>
+                        </td>                                                
+                    </tr>
+                    <% }); %>
+                </table>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h2>Past Employer Details:</h2>
+                <!-- Add a table below -->
+                <table border="1" style="margin-top: 20px;">
+                    <tr>
+                        <th>PAST_EMPLOYERS</th>                       
+                    </tr>
+                    <% FinishData.workExperience.forEach(function(data) { %>
+                    <tr>
+                        <td>
+                            <%= data.PAST_EMPLOYERS %>
+                        </td>                                                
+                    </tr>
+                    <% }); %>
+                </table>
+            </div>
+        </div>
+        
+
+
+    </div>
+    <footer>
+        <p>Newel Technoloigies Pvt</p>
+        <!-- You can add any content you want in the footer section -->
+    </footer>
+</body>
+
+</html>

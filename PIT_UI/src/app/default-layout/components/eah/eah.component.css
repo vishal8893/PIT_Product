@@ -1,0 +1,359 @@
+.p-button.p-button-icon-only.p-button-rounded {
+  height: 2rem;
+}
+
+.p-button.p-button-icon-only {
+  width: 2rem;
+}
+
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 5px;
+  position: relative;
+}
+
+.small-button {
+  padding: 5px 10px;
+  font-size: 12px;
+  display: block;
+  margin: 0 auto;
+}
+
+.attachment-icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.change-link {
+  font-size: 10px;
+  color: blue;
+  cursor: pointer;
+  position: relative;
+  bottom: -8px;
+}
+
+.file-name {
+  font-size: 12px;
+  text-align: center;
+  position: absolute;
+  top: -20px;
+}
+
+.button-container {
+  display: flex;
+  /* gap: 5px;  */
+  margin-right: 5px;
+}
+/* alert box */
+.alert {
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid white;
+  padding: 0;
+  width: 450px;
+  height: 168px;
+  box-sizing: border-box;
+}
+
+/* .alert9 {
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid white;
+  padding: 0;
+  width: 450px;
+  height: 168px;
+  box-sizing: border-box;
+} */
+
+.alert-header {
+  font-size: 18px;
+  font-weight: bold;
+  background-color: red;
+  color: white;
+  margin: 0;
+  padding: 10px 20px;
+}
+
+.alert-msg {
+  font-size: 12px;
+  background-color: lightblue;
+  padding: 10px 20px;
+}
+
+.btn-container {
+  text-align: center;
+  padding: 10px;
+}
+
+.btn-authorize {
+  background-color: blue;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-close {
+  position: absolute;
+  top: 9%;
+  left: 95%;
+  color: gray;
+  cursor: pointer;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.radio-buttons-horizontal {
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  /* Vertically center align the content */
+}
+
+.radio-group {
+  margin-right: 10px;
+  /* Adjust the margin between radio buttons */
+}
+
+.reopen-msg {
+  font-size: 15px;
+  color: black;
+  position: relative;
+  left: 20%;
+  font-weight: bold;
+}
+
+.relink {
+  font-size: 15px;
+  color: blue;
+  cursor: pointer;
+  position: relative;
+}
+
+/* new */
+.download-button {
+  background-color: #00609e; /* Green background color */
+  color: #fff; /* White text color */
+  border: none; /* Remove button borders */
+  padding: 5px 3px; /* Adjust button padding as needed for a normal size */
+  border-radius: 5px; /* Add rounded corners to the button */
+  position: relative; /* Position the button absolutely */
+  left: 85%; /* Adjust the right distance as needed */
+  /* top: 60px;  */
+  cursor: pointer;
+}
+
+/* Change button color on hover */
+.download-button:hover {
+  background-color: #00609e; /* Darker green color on hover */
+}
+
+.right-align {
+  text-align: right;
+  font-size: smaller;
+}
+
+.custom-link {
+  color: darkblue; /* Change to your desired color using a HEX code, RGB, or color name */
+  font-size: 14px; /* Change to your desired font size */
+  text-decoration: none; /* Remove the underline, if desired */
+  font-weight: bold;
+}
+
+.right-align1 {
+  color: gray; /* Change to your desired color using a HEX code, RGB, or color name */
+  font-size: 2; /* Change to your desired font size */
+  text-decoration: none; /* Remove the underline, if desired */
+  font-weight: bold;
+  text-align: left;
+}
+
+/* submit alert */
+.alert1 {
+  position: fixed;
+  top: 34%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid white;
+  padding: 20px; /* Add padding to the alert message */
+  width: 450px;
+  height: 168px;
+  box-sizing: border-box;
+  text-align: center; /* Center-align the content */
+}
+
+.alert-msg1 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px; /* Add space between message and buttons */
+}
+
+.btn-container1 {
+  text-align: center;
+}
+
+.btn-authorize1 {
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-authorize1:hover {
+  background-color: #0056b3;
+}
+
+/* why sholud link alert */
+.alert4 {
+  background-color: whitesmoke;
+  text-align: left;
+  padding: 20px;
+  border: 1px solid black;
+  overflow: auto;
+  width: 800px;
+  height: 375px;
+  margin: 0;
+}
+
+.alert-header4 {
+  font-weight: bold;
+  background-color: red;
+  color: white;
+}
+
+.pclass {
+  color: black;
+  font-weight: bold;
+}
+
+.alert-msg4 {
+  color: black;
+  white-space: pre-line;
+}
+
+.alert-msg br {
+  content: "";
+  white-space: pre;
+}
+
+.btn-authorize4 {
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 999;
+}
+
+.btn-container4 {
+  text-align: center;
+}
+
+/* list */
+
+.name-list {
+  float: right; /* Float the div to the right */
+  margin-right: 20px; /* Add some margin to create space from the right edge */
+}
+/* Remove default list styles */
+/* Remove default list styles */
+/* Remove default list styles */
+.name-list-items {
+  list-style-type: none;
+  padding: 0;
+  border: 1px solid #333; /* Add a border around the entire list */
+}
+
+/* Style for list items */
+.name-list-items li {
+  margin: 0; /* Reset margin to remove spacing between list items */
+  padding: 5px; /* Add padding to create spacing between the text and the border */
+  cursor: pointer; /* Change the cursor to a pointer on hover to indicate interactivity */
+}
+
+/* Apply your custom-link class styles */
+.custom-link {
+  text-decoration: none; /* Remove underline from links */
+  color: #333; /* Set the text color to your desired color */
+}
+
+.custom-link:hover {
+  color: #007bff; /* Change the text color on hover (e.g., to a blue color) */
+}
+
+/* Style for clicked list items */
+.name-list-items li.clicked {
+  background-color: #007bff; /* Change the background color of clicked items */
+  color: #fff; /* Change the text color of clicked items to white */
+}
+
+/* You can adjust the margin-right value as needed to control the spacing */
+.alert5 {
+  background-color: whitesmoke;
+  text-align: left;
+  padding: 20px;
+  border: 1px solid black;
+  /* overflow: auto; */
+  width: 800px;
+  height: 178px;
+  margin: 0;
+}
+
+/* hover */
+.hidden-text {
+  display: none; /* Initially hide the text */
+  font-size: small;
+}
+
+button:hover + .hidden-text {
+  display: inline; /* Show the text when hovering over the button */
+  font-size: smaller;
+}
+
+::ng-deep .p-steps .p-steps-item .p-menuitem-link:not(.p-disabled):focus {
+  box-shadow: none;
+}
+
+.step-disabled {
+  pointer-events: none; /* Disable pointer events */
+  opacity: 0.6; /* Optionally reduce opacity to indicate disabled state */
+  /* Add any other styles to indicate the step is disabled */
+}
+
+
+
+

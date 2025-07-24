@@ -1,0 +1,156 @@
+<p-toast></p-toast>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+    <div class="col-12 mb-2 text-primary">
+        <!-- <h6 class="mb-0">Entity Material Subsidiary CEO/BH Mapping</h6> -->
+    </div>
+
+    <form autocomplete="off" [formGroup]="EntMateform">
+        <div class="row">
+
+            <!-- <label for="inputText4" class="col-md-6 col-lg-auto col-form-label">Employee Name<span
+                    class="required-asterisk">*</span></label> -->
+            <!-- <p-dropdown [options]="empid" [(ngModel)]="empNgmodel" optionLabel="FIRSTNAME" [filter]="true"
+                (onChange)="onchangeevententity(empNgmodel)" filterBy="FIRSTNAME" [showClear]="true" optionValue="ID"
+                placeholder="Select EMP_Name" class="p-inputtext-sm" formControlName="empcontroller" required></p-dropdown> -->
+            <div class="inputText col-md-6 col-lg-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-dropdown [options]="empid" optionLabel="FIRSTNAME" [filter]="true"
+                        (onChange)="onchangeevententity(EntMateform.get('empcontroller').value?.EMPNO)" filterBy="FIRSTNAME"
+                        [showClear]="true" placeholder="Select Employee Name" class="form-control px-0"
+                        formControlName="empcontroller" required></p-dropdown>
+                    <label for="inputText4" class="">Employee Name<span
+                            class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="EntMateform.get('empcontroller').hasError('required') && (EntMateform.get('empcontroller').touched || EntMateform.get('empcontroller').dirty)">
+                        Employee Name is required
+                    </small>
+                    <!-- <span *ngIf="!empNgmodel" class="text-red-500">
+                <h6>EMP_Name is required</label>
+            </span> -->
+                </div>
+            </div>
+
+            <!-- 
+            <label for="inputText4" class="col-md-6 col-lg-auto col-form-label">Entity<span
+                    class="required-asterisk">*</span></label> -->
+
+            <!-- <p-dropdown [options]="finalItems" [(ngModel)]="entityNgmodel" optionLabel="TBL_ENTITY_MST.ENTITY_NAME"
+                [filter]="true" filterBy="ENTITY_NAME" optionValue="ENTITY_ID" [showClear]="true"
+                placeholder="Select Entity" class="p-inputtext-sm" formControlName="entitycontroller" required></p-dropdown> -->
+            <div class="inputText col-md-6 col-lg-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-dropdown [options]="finalItems" optionLabel="TBL_ENTITY_MST.ENTITY_NAME" [filter]="true"
+                        filterBy="ENTITY_NAME" optionValue="ENTITY_ID" [showClear]="true" placeholder="Select Entity"
+                        class="form-control px-0" formControlName="entitycontroller" required></p-dropdown>
+                    <label for="inputText4" class="">Entity<span class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="EntMateform.get('entitycontroller').hasError('required') && (EntMateform.get('entitycontroller').touched || EntMateform.get('entitycontroller').dirty)">
+                        Entity is required
+                    </small>
+                    <!-- <span *ngIf="!entityNgmodel" class="text-red-500">
+                <h6>Entity is required</label>
+            </span> -->
+                </div>
+            </div>
+
+
+            <!-- <label for="inputText4" class="col-md-6 col-lg-auto col-form-label">MaterialSubsidiary<span
+                    class="required-asterisk">*</span></label> -->
+
+            <!-- <p-dropdown [options]="materialid" [(ngModel)]="materialNgmodel" optionLabel="MATERIALSUBSIDIARY_NAME"
+                [filter]="true" filterBy="MATERIALSUBSIDIARY_NAME" [showClear]="true"
+                placeholder="Select Materialsubsidiary" class="p-inputtext-sm" formControlName="materialcontroller" required></p-dropdown> -->
+            <div class="inputText col-md-6 col-lg-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-dropdown [options]="materialid" optionLabel="MATERIALSUBSIDIARY_NAME" [filter]="true"
+                        filterBy="MATERIALSUBSIDIARY_NAME" [showClear]="true" placeholder="Select Material Select"
+                        class="form-control px-0" formControlName="materialcontroller" required></p-dropdown>
+                    <label for="inputText4" class="">Material Subsidiary<span
+                            class="required-asterisk">*</span></label>
+                    <small style="color: red;"
+                        *ngIf="EntMateform.get('materialcontroller').hasError('required') && (EntMateform.get('materialcontroller').touched || EntMateform.get('materialcontroller').dirty)">
+                        Material Subsidiary is required
+                    </small>
+                    <!-- <span *ngIf="!materialNgmodel" class="text-red-500">
+                <h6>Materialsubsidiary is required</label>
+            </span> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 text-center">
+            <button pButton pRipple type="button" *ngIf="onadd" (click)="createEntmaterial()" label=""
+                class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><i class="bx bx-plus"></i></button>
+            <button pButton pRipple type="button" *ngIf="oneditbtn" (click)="updateEntmaterial()" label=""
+                class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><span
+                    class="fadeIn animated bx bx-reset"></span></button>
+            <button pButton pRipple type="button" *ngIf="oncancel" (click)="cancel()" label=""
+                class="p-button-secondary button-sm mx-1 py-2"><span
+                    class="fadeIn animated bx bx-reset"></span></button>
+        </div>
+
+    </form>
+
+    <div class="col-12">
+        <p-table #dt [value]="products" dataKey="id"
+            styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines" [rowHover]="true" [rows]="5"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+            [globalFilterFields]="['EMP_NAME','TBL_ENTITY_MST.ENTITY_NAME','TBL_MATERIALSUBSIDIARY_MST.MATERIALSUBSIDIARY_NAME']">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    <span class="globalSearch p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                            placeholder="Global Search" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="EMP_NAME">Employee Name <p-sortIcon
+                            field="EMP_NAME"></p-sortIcon></th>
+                    <th pSortableColumn="TBL_ENTITY_MST.ENTITY_NAME">Entity <p-sortIcon
+                            field="TBL_ENTITY_MST.ENTITY_NAME"></p-sortIcon></th>
+                    <th pSortableColumn="TBL_MATERIALSUBSIDIARY_MST.MATERIALSUBSIDIARY_NAME">Material Subsidiary
+                        <p-sortIcon field="TBL_MATERIALSUBSIDIARY_MST.MATERIALSUBSIDIARY_NAME"></p-sortIcon>
+                    </th>                   
+                    <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>                    
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr class="p-selectable-row">
+                    <td>
+                        <span class="p-column-title">EMP_NAME</span>
+                        {{product.EMP_NAME}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Entity</span>
+                        <span class="image-text">{{product.TBL_ENTITY_MST?.ENTITY_NAME}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Materialsubsidiary Name</span>
+                        <span class="image-text">{{product.TBL_MATERIALSUBSIDIARY_MST?.MATERIALSUBSIDIARY_NAME}}</span>
+                    </td>
+                    <td>
+                        <!-- <button pButton type="button" icon="pi pi-pencil" (click)="oneditEntmaterial(product)"
+                            iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"></button>
+                        
+                        <button pButton type=" button" icon="pi pi-trash" (click)="DeleteEntmaterial(product)"
+                            iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"></button> -->
+                        <i class="pi pi-pencil" (click)="oneditEntmaterial(product)"></i>&nbsp;&nbsp;
+                        <i class="pi pi-trash" (click)="DeleteEntmaterial(product)"></i>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No products found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+

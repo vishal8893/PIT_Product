@@ -1,0 +1,40 @@
+<p-toast></p-toast>
+
+<div class="card shadow-sm bg-white px-3 py-2 mx-0 mb-3">
+    <div class="col-12 mb-3 text-primary">
+        <!-- <h6 class="mb-0">NWIL Employee Block/UnBlcok Report</h6> -->
+    </div>
+
+    <div class="grid">
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="form-floating form-floating-outline">
+                <p-autoComplete [inputStyle]="{'width':'100%'}" [showClear]="true" class="form-control px-0"
+                    placeholder="--Write--" field="PROJECT_NAME" [(ngModel)]="Type"
+                    [suggestions]="optiontypearray" (completeMethod)="getallirfdata($event)"
+                    (onSelect)="setisin($event)" (paste)="onPaste($event)"></p-autoComplete>
+                <label for="">Type</label>
+            </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="form-floating form-floating-outline">
+                <p-calendar placeholder="From Date" [(ngModel)]="Fromdate" [showIcon]="true"
+                    class="form-control calendar p-0" styleClass="w-100" (paste)="onPaste($event)" [readonlyInput]="true"></p-calendar>
+                <label for="">From Date</label>
+            </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="form-floating form-floating-outline">
+                <p-calendar placeholder="To Date" [(ngModel)]="Todate" [showIcon]="true"
+                    class="form-control calendar p-0" styleClass="w-100" [minDate]="Fromdate" (paste)="onPaste($event)" [readonlyInput]="true"></p-calendar>
+                <label for="">To Date</label>
+            </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="">
+                <!-- <label for="">Click On</label> -->
+                <button pButton pRipple type="button" class="btn btn-primary p-button-info p-button-sm mx-1"
+                    label="Download" (click)="getreport()"></button>
+            </div>
+        </div>
+    </div>
+</div>

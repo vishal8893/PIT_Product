@@ -1,0 +1,64 @@
+<p-toast></p-toast>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+    <div class="col-12 mb-2 text-primary">
+        <!-- <h6 class="mb-0">Eirf Mail Disclosure Master</h6> -->
+        <!-- <p-dropdown [options]="lobIds"formControlName [(ngModel)]="lobid" optionLabel="lobname" [filter]="true" filterBy="lobname"
+        [showClear]="true" class="p-inputtext-sm float-end"></p-dropdown> -->
+    </div>
+
+
+    <div class="col-12">
+        <p-table #dt [value]="products" dataKey="id"
+            styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines" [rowHover]="true" [rows]="5"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+            [globalFilterFields]="['QuarterName','UserName','IS_ACTIVE']">
+            <ng-template pTemplate="caption">
+                <div class="table-header" style="display: flex; align-items: center;">
+                    <span class="globalSearch p-input-icon-left" style="margin-right: 10px;">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" class="p-inputtext-sm"
+                            (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search" />
+                    </span>
+                    <td>
+                        <button pButton pRipple type="button" (click)="Upadte('true')" label="Active"
+                            class="btn btn-primary p-button-info p-button-sm mx-1"></button>
+                        <button pButton pRipple type="button" (click)="Upadte('false')" label="InActive"
+                            class="btn btn-primary p-button-info p-button-sm mx-1"></button>
+                    </td>
+                </div>
+                
+                
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="QuarterName">Quarter Name <p-sortIcon field="QuarterName"></p-sortIcon></th>
+                    <th pSortableColumn="UserName">User Name <p-sortIcon field="UserName"></p-sortIcon></th>
+                    <th pSortableColumn="IS_ACTIVE">Is Active <p-sortIcon field="IS_ACTIVE"></p-sortIcon></th>                    
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr class="p-selectable-row">
+                    <td>
+                        <span class="p-column-title">Quarter Name</span>
+                        {{product.QuarterName}}
+                    </td>
+
+                    <td>
+                        <span class="p-column-title">User Name</span>
+                        {{product.UserName}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Is Active</span>
+                        {{product.IS_ACTIVE}}
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No products found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

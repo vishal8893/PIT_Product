@@ -1,0 +1,108 @@
+<p-toast></p-toast>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+  <div class="col-12 mb-2 text-primary">
+    <!-- <h6 class="mb-0">Expiry Date Master</h6> -->
+    <!-- <p-dropdown [options]="lobIds"formControlName [(ngModel)]="lobid" optionLabel="lobname" [filter]="true" filterBy="lobname"
+      [showClear]="true" class="p-inputtext-sm float-end"></p-dropdown> -->
+  </div>
+  <form autocomplete="off" [formGroup]="expairyform">
+
+    <div class="row mt-2">
+
+      <!-- <label for="inputText1" class="col-md-auto col-lg-auto col-form-label">Expiry Date<span
+          class="required-asterisk">*</span></label> -->
+      <!-- <p-calendar inputId="basic" formControlName="expairydatecontroller" [(ngModel)]="expdate"
+                class="p-inputtext-sm" required></p-calendar> -->
+      <div class="inputText col-md-6 col-lg-3 col-xl-2">
+        <div class="form-floating form-floating-outline">
+          <p-calendar class="ui-timepicker ui-widget-header ui-corner-all ng-tns-c9-1 ng-star-inserted"
+            [showIcon]="true" inputId="icon" formControlName="expairydatecontroller" placeholder="Select Expiry Date"
+            class="border-0 form-control p-0 calendarIcon" styleClass="w-100" required></p-calendar>
+          <label class=" pt-0">Expiry Date<span class="required-asterisk">*</span></label>
+          <small style="color: red;"
+            *ngIf="expairyform.get('expairydatecontroller').hasError('required') && (expairyform.get('expairydatecontroller').touched || expairyform.get('expairydatecontroller').dirty)">
+            Expiry Date Required.
+          </small>
+        </div>
+      </div>
+
+
+      <label for="inputText1" class="col-md-auto col-lg-auto col-form-label">Active</label>
+      <!-- <p-checkbox  [ariaChecked]="checks" formControlName [(ngModel)]="activemodel" value="1" inputId="1"></p-checkbox> -->
+      <!-- <p-checkbox name="IsActive" [ngModel]="activemodel" (onChange)="handleCheckboxChange()" (ngModelChange)="activemodel = $event ? true : false" inputId="ny" true-value="true" false-value="false"></p-checkbox> -->
+
+      <!-- <p-checkbox name="IsActive" [ngModel]="activemodel" (onChange)="handleCheckboxChange()"></p-checkbox> -->
+      <!-- <p-checkbox name="IsActive"formControlName [(ngModel)]="activemodel" (onChange)="handleCheckboxChange()"></p-checkbox> -->
+      <!-- <p-checkbox name="IsActive"formControlName [(ngModel)]="activemodel" (onChange)="handleCheckboxChange()" [binary]="false"></p-checkbox> -->
+      <div class="inputText col-md-3 col-lg-2 mt-1">
+        <p-checkbox [binary]="true" inputId="checkbox1" formControlName="activecontroller" [(ngModel)]="activemodel" required>
+        </p-checkbox>
+        <!-- <p-checkbox [binary]="true" inputId="checkbox1" formControlName="activecontroller">
+            </p-checkbox> -->
+      </div>
+      <small style="color: red;"
+          *ngIf="expairyform.get('activecontroller').hasError('required') && (expairyform.get('activecontroller').touched || expairyform.get('activecontroller').dirty)">
+          <!-- IsActive Required. -->
+        </small>
+
+
+    </div>
+
+    <div class="col-12 text-center">
+      <button pButton pRipple type="button" *ngIf="onadd" (click)="createExpiraydatebtn()" label=""
+        class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><i class="bx bx-plus"></i></button>
+      <button pButton pRipple type="button" *ngIf="oneditbtn" (click)="updateExpiraydatebtn()" label=""
+        class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><span
+          class="fadeIn animated bx bx-reset"></span></button>
+      <button pButton pRipple type="button" *ngIf="oncancel" (click)="cancel()" label=""
+        class="p-button-secondary button-sm mx-1 py-2"><span class="fadeIn animated bx bx-reset"></span></button>
+
+    </div>
+
+  </form>
+
+  <div class="col-12">
+    <p-table #dt [value]="products" dataKey="id" styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines"
+      [rowHover]="true" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+      [globalFilterFields]="['EXPIRY_DATE']">
+      <ng-template pTemplate="caption">
+        <div class="table-header">
+          <span class="globalSearch p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" class="p-inputtext-sm"
+              (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search" />
+          </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>          
+          <th pSortableColumn="EXPIRY_DATE">Expiry Date <p-sortIcon field="name"></p-sortIcon></th>          
+          <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+        <tr class="p-selectable-row">
+          <td>
+            <span class="p-column-title">EXPIRY DATE</span>
+            {{product.EXPIRY_DATE}}
+          </td>
+          <td>
+            <!-- <button pButton type="button" icon="pi pi-pencil" (click)="onupdateExpiraydatebtn(product)" iconPos="left"
+              class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary mr-2"></button>
+
+            <button pButton pRipple icon="pi pi-trash" (click)="deletebtn(product)" iconPos="left"
+              class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"></button> -->
+            <i class="pi pi-pencil" (click)="onupdateExpiraydatebtn(product)"></i>&nbsp;&nbsp;
+            <i class="pi pi-trash" (click)="deletebtn(product)"></i>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8">No products found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

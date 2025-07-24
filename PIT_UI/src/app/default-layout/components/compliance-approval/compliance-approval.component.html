@@ -1,0 +1,98 @@
+<p-toast></p-toast>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" [closable]="false" width="500" position="top">
+    <ng-template pTemplate="content">
+      <p>{{confirmMessage}}</p>
+    </ng-template>
+</p-confirmDialog>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+    <div class="col-12 mb-2 text-primary">
+        <!-- <h6 class="mb-0">Compliance Approval</h6> -->
+    </div>
+    <form autocomplete="off" [formGroup]="complianceform">
+        <div class="row">
+            <div class="col-md-4 col-lg-4 col-xl-2 mb-2">
+                <div class="form-floating form-floating-outline">
+                    <p-autoComplete [showClear]="true" placeholder="--Write--" field="FIRSTNAME"
+                        class="form-control px-0" formControlName="companyNamecontroller"
+                        [suggestions]="SearchSecurityData" [inputStyle]="{'width':'100%'}"
+                        (completeMethod)="getallirfdata($event)" (onSelect)="setisin($event)" (paste)="onPaste($event)">
+                    </p-autoComplete>
+                    <small style="color: red;"
+                        *ngIf="complianceform.get('companyNamecontroller').hasError('required') && (complianceform.get('companyNamecontroller').touched || complianceform.get('companyNamecontroller').dirty)">
+                         Required.
+                    </small>
+                </div>
+            </div>
+            <div class="col-md-7 fv-plugins-icon-container">
+                <button pButton pRipple type="button" class="btn btn-primary p-button-info p-button-sm mx-1"
+                label="Serach" (click)="getreport()"></button>
+            </div>
+        </div>
+    </form>
+
+    <div class="col-12" *ngIf="showGrid">
+        <p-table #dt [value]="products">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="EMP_NAME">EmpID<p-sortIcon field="EMP_NAME"></p-sortIcon></th>
+                    <th pSortableColumn="TBL_GENERIC_MST.NAME">EmpName<p-sortIcon
+                            field="TBL_GENERIC_MST.NAME"></p-sortIcon></th>
+                    <th pSortableColumn="TBL_GENERIC_MST.NAME">Department<p-sortIcon
+                            field="TBL_GENERIC_MST.NAME"></p-sortIcon></th>
+                    <th pSortableColumn="TBL_GENERIC_MST.NAME">Non-NWML code Employee Type<p-sortIcon
+                            field="TBL_GENERIC_MST.NAME"></p-sortIcon></th>
+                    <th pSortableColumn="TBL_GENERIC_MST.NAME">NWML code Employee Type<p-sortIcon
+                            field="TBL_GENERIC_MST.NAME"></p-sortIcon></th>
+                    <!-- <th pSortableColumn="TBL_GENERIC_MST.NAME">Status<p-sortIcon
+                            field="TBL_GENERIC_MST.NAME"></p-sortIcon></th> -->
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr class="p-selectable-row">
+                    <td>
+                        <span class="p-column-title">EMP_NAME</span>
+                        {{product.EMPNO}}
+                    </td>
+                    <td>
+                        <span class="p-column-title">Applicability</span>
+                        <span class="image-text">{{product.FIRSTNAME}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Applicability</span>
+                        <span class="image-text">{{product.DEPARTMENT}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Applicability</span>
+                        <span class="image-text">{{product.DSIGNATED === true ? 'Designated' : 'Non Designated'}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Applicability</span>
+                        <span class="image-text">{{product.EFSLDESIGNATED === true ? 'Designated' : 'Non Designated'}}</span>
+                    </td>
+                    <!-- <td *ngIf="product.Status=='Clarification Provided'" class="bg-gradient-ohhappiness text-white">
+                        {{product.Status}}</td>
+                    <td *ngIf="product.Status=='Clarification Not Provided'" class="bg-gradient-ibiza text-white">
+                        {{product.Status}}</td>
+                    <td>
+                        <button pButton pRipple type="button" (click)="showDialog(product)" label=""
+                            class="btn-light btn-primary p-button-info p-button-sm mx-0 py-0">Add
+                            Remarks</button>
+                    </td> -->
+                </tr>
+                <tr>
+                    <td colspan="3" class="cancel-row">
+                        <button pButton pRipple type="button" (click)="confirmDelete(product)" label="GO" class="p-button-danger"></button>
+                    </td>
+                    <!-- <td colspan="3" class="cancel-row">
+                        <button pButton pRipple type="button" (click)="onCancel(product)" label="Cancel" class="p-button-danger"></button>
+                    </td> -->
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No products found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

@@ -1,0 +1,326 @@
+<div class="row card  bg-white px-3 mx-0 mb-3">
+    <div class="col-12 px-1 mb-2 text-primary">
+		<!-- <h5 class="mb-0">Joining Declaration</h5> -->
+	</div>
+    <!-- <div class="bg-white px-3 pt-2 pb-1 mb-1"> -->
+        <div class="row justify-content-between">
+            <!-- <div class="col-auto">
+                <h6><span class="fw-bold">Employee Name:</span>{{employeeData.FIRSTNAME}}</h6>
+            </div> -->
+            <div class="col-auto  inline-flex">
+				<p class="mb-0 pr-2">Employee Name:</p>
+				<p class="font-bold mb-0">{{employeeData.FIRSTNAME}}</p>
+			</div>
+            <!-- <div class="col-auto">
+                <h6><span class="fw-bold">Employee ID:</span>{{employeeData.EMPNO}}</h6>
+            </div> -->
+            <div class="col-auto  inline-flex">
+				<p class="mb-0 pr-2">Employee ID:</p>
+				<p class="font-bold mb-0">{{employeeData.EMPNO}}</p>
+			</div>
+            <!-- <div class="col-auto">
+                <h6><span class="fw-bold">Department:</span>{{employeeData.DEPARTMENT}}</h6>
+            </div> -->
+            <div class="col-auto  inline-flex">
+				<p class="mb-0 pr-2">Department:</p>
+				<p class="font-bold mb-0">{{employeeData.DEPARTMENT}}</p>
+			</div>
+            <!-- <div class="col-auto">
+                <h6><span class="fw-bold">PAN:</span>{{employeeData.PANCARDNO}}</h6>
+            </div> -->
+            <div class="col-auto  inline-flex">
+				<p class="mb-0 pr-2">PAN:</p>
+				<p class="font-bold mb-0">{{employeeData.PANCARDNO}}</p>
+			</div>
+        </div>
+    <!-- </div> -->
+
+
+<div *ngIf="!isLoading && showContent">
+    <div class="panel-body" style="background-color: white; text-align: justify; padding: 20px">
+
+        <div class="row">
+            <div class="col-md-12" style="text-align: center; font-size: x-large; color: red">
+                <b>IMPORTANT GUIDANCE ON NUVAMA CODES ON PROHIBITION OF INSIDER TRADING</b>
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="col-md-12" style="text-align: center; font-size: medium;">
+                <b>Please take a few minutes to read these important points with regards to the Prohibition of Insider
+                    Trading Codes and the Dos and Don'ts of Employee Trading and confirm your acceptance.</b>
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="col-md-12" style="text-align: justify">
+                As you are aware, Nuvama has revised the Code for Prohibition of Insider trading in Nuvama Wealth
+                Management Limited (NWML) and other listed securities (Non NWML) for dealing in securities; in line with
+                amendments to SEBI (Prohibition of Insider Trading) Regulations, 2015 effective April 01, 2019
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="col-md-12" style="text-align: justify">
+                Every employee of Nuvama group and their Immediate Relatives/Connected Entities or Persons /Dependents
+                have to adhere to the Codes in place at all times while dealing in securities
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12" style="text-align: justify">
+                In Nuvama, we have following Codes and FAQs governing employee trading:
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12" style="text-align: justify">
+                <ol>
+                    <li>Code For Prohibition Of Insider Trading In The Securities Of Nuvama Wealth Management Limited
+                        (NWML Code) <a href="Doc/EFSLCodeEffectiveApr01_2019.pdf" style="text-decoration: underline"
+                            target="_blank">Click here to know more</a></li>
+                    <li>Nuvama Code for trading in other listed securities (Non NWML Code) <a
+                            href="Doc/NONEFSLCodeEffectiveApr01_2019.pdf" style="text-decoration: underline"
+                            target="_blank">Click here to know more</a></li>
+                    <li>FAQs on Both Codes <a href="Doc/FAQSonPITCodesEffectiveApr01_2019.pdf"
+                            style="text-decoration: underline" target="_blank">Click here to know more</a></li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12" style="text-align: justify">
+                You may refer to the Codes/FAQs in detail at <span style="color: blue">Nuvama Ping >Policies >
+                    Compliance</span>
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="col-md-12" style="text-align: justify">
+                <b>Changes to note (effective April 01, 2019)</b>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12" style="text-align: justify">
+                <ol>
+                    <li style="list-style-type: circle">There may be changes to your categorisation i.e. Designated or
+                        Non-Designated category under both the Codes</li>
+                    <li style="list-style-type: circle">You (including your Immediate Relatives and Connected Persons)
+                        will continue to be categorised separately as Designated or Non-Designated under both the Codes.
+                        However, as per revised Codes, you will be a "Designated Employee" if you are CEO or Business
+                        Head of an Nuvama Group Company or 2 levels below that. In addition, the Company may also treat
+                        you as a "Designated Employee" due to various criteria such as your designation, function, role,
+                        etc. Your exact status will be available on EIRF system effective April 01, 2019.</li>
+                    <li style="list-style-type: circle">You will be given notice to refrain from trading in securities
+                        of any Listed Company (including NWML), in case you are part of any transaction, deal or handle
+                        certain activities; by virtue of which you may have access to or possess Unpublished Price
+                        Sensitive Information (UPSI) about the Company.</li>
+                    <li style="list-style-type: circle">In case you receive notice as above, you shall ensure that you
+                        do not execute contra trade in the securities of such Listed Company for a period of six months.
+                        E.g. If you bought scrip A on Jan 01, 2019, and you get involved in a deal or transaction
+                        pertaining to this scrip on Jan 02, 2019, you will ensure not to execute contra trade i.e sell
+                        scrip A on or before July 02, 2019, or till the time the UPSI is made public, whichever is
+                        later.</li>
+                    <li style="list-style-type: circle">In case you are a Non-Designated Employee, you will need to seek
+                        pre-clearance in case you wish to trade in any scrip above the value of Rs 10 lacs (per day-per
+                        scrip).</li>
+                </ol>
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="col-md-12" style="text-align: justify">
+                <b>Important Points to note</b>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12" style="text-align: justify">
+                <ol>
+                    <li style="list-style-type: circle">The Codes are applicable to you and your Immediate
+                        Relatives/Dependents and Connected Person/Entity</li>
+                    <li style="list-style-type: circle">Spouse is "Deemed Dependent" under both Codes irrespective of
+                        financial status or whether he/she consults you for trading decisions. Pre-clearance and all
+                        other requirements of both Codes as applicable to you shall also apply to your spouse for trades
+                        undertaken by him / her</li>
+                    <li style="list-style-type: circle">Pre-clearance for all securities (including NWML) is valid only
+                        for one day</li>
+                    <li style="list-style-type: circle">Pre-clearance is required for listed Debt securities/REITS/INVTS
+                        in addition to all other securities as mentioned in the Codes</li>
+                    <li style="list-style-type: circle">Pre-clearance and Holding Period requirements are applicable to
+                        Discretionary Portfolio Management Services (DPMS)</li>
+                    <li style="list-style-type: circle">You are required to trade only through Nuvama Wealth Management
+                        Limited / Nuvama Wealth and Investment Limited, the only exception being in case of a
+                        Financially Independent Spouse who is allowed to trade through a broker of their choice.</li>
+                    <li style="list-style-type: circle">Trading Window Closure for NWML securities shall continue to
+                        apply to all employees and their Relatives/Dependents and Connected Person/Entity irrespective
+                        of whether you are Designated or Non-Designated under the NWML Code</li>
+                    <li style="list-style-type: circle">You are required to submit declarations/undertakings, including
+                        Annual declaration for self as well as your Immediate Relatives/Dependents and Connected
+                        Person/Entity, as required under the relevant Code</li>
+                </ol>
+            </div>
+        </div>
+        <br />
+
+        <br />
+
+        <div class="row">
+            <div class="col-md-12" style="text-align: justify; text-decoration: underline">
+                NWML Code (NWML securities including listed debt securities issued by subsidiary companies)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table-responsive table-bordered">
+                    <tr>
+                        <th >Particular</th>
+                        <th>Designated Person For NWML code</th>
+                        <th>Non Designated Person For NWML code</th>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">Preclearance</td>
+                        <td style="text-align: center;">✔</td>
+                        <td style="text-align: center;">✔<br />Only above Rs. 10 lacs (cumulative value per day)</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">Holding</td>
+                        <td style="text-align: center;">✔<br />6 months</td>
+                        <td style="text-align: center;">✔<br />30 Days<br />Only above Rs. 10 lacs (cumulative value per
+                            day)</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center;">Contra<br />(Position Opposite to earlier transaction)</td>
+                        <td style="text-align: center;">✔</td>
+                        <td style="text-align: center;">✖</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col-md-12" style="text-align: justify; text-decoration: underline">
+                Non NWML Securities (Securities other than NWML)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12" style="vertical-align: central">
+                <table class="table-responsive table-bordered">
+                    <tr>
+                        <th>Particular</th>
+                        <th>Designated Person For Non NWML code</th>
+                        <th>Non Designated Person For Non NWML code</th>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center">Preclearance</td>
+                        <td style="text-align: center">✔</td>
+                        <td style="text-align: center">✔<br />Only above Rs. 10 lacs (cumulative value per day)</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center">Holding</td>
+                        <td style="text-align: center">✔<br />30 Days</td>
+                        <td style="text-align: center">✔<br />30 Days<br />Only above Rs. 10 lacs (cumulative value per
+                            day)</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table-responsive table-bordered">
+                    <tr>
+                        <th>Do's</th>
+                        <th>Dont's</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li style="list-style-type: circle">Before procuring or sharing any information
+                                    pertaining to any listed security, ensure that it is not an Unpublished Price
+                                    Sensitive Information (UPSI)</li>
+                                <li style="list-style-type: circle">Before trading, ensure that you are not in
+                                    possession of any UPSI with regards to the security in which you intend to trade.
+                                </li>
+                                <li style="list-style-type: circle">Check whether you are a Designated Employee under
+                                    both or any of the Codes. If yes, follow all the trading restrictions and other
+                                    disclosure requirements laid down in the respective Code/s</li>
+                                <li style="list-style-type: circle">Ensure you inform your Immediate Relatives and
+                                    Connected Persons about Codes and also seek preclearance on their behalf as required
+                                </li>
+                                <li style="list-style-type: circle">Ensure you take preclearance of trades undertaken by
+                                    your spouse, irrespective of financial status or whether he/she consults you for
+                                    trading decisions</li>
+                            </ul>
+                        </td>
+                        <td style="vertical-align: top">
+                            <ul>
+                                <li style="list-style-type: circle">Trading in NWML securities by any employee as well
+                                    as their Immediate Relative/Dependent/ Connected Person/Entity is strictly
+                                    prohibited during the period of Trading Window Closure.</li>
+                                <li style="list-style-type: circle">Do not communicate any UPSI pertaining to NWML or
+                                    any other listed company to any other person in any form including social media,
+                                    chat etc.</li>
+                                <li style="list-style-type: circle">Do not trade in securities when you are in
+                                    possession of UPSI</li>
+                                <li style="list-style-type: circle">In case you are a Designated Person as per NWML Code
+                                    or hold UPSI with regards to other listed company, do not undertake any trade
+                                    contrary to the last trade within a period of 6 months.</li>
+                                <li style="list-style-type: circle">Do not undertake intraday trades (except for trading
+                                    in Index/Currency/Commodity derivatives)</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col-md-12" style="text-align: justify">
+                You can take online approval on Ping at <span style="color: blue">Nuvama Ping > Investment Request
+                    Form</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12" style="text-align: justify">
+                Reach out in case of any doubt, to Global Compliance Group - nwm.emptrading@nuvama.com
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12" style="text-align: justify">
+                I hereby agree that I shall abide by all Rules, Codes & Procedures set forth by Nuvama for dealing in
+                securities. I authorize the Compliance Officer/Designated Compliance officer to share my details with
+                regulatory authorities as and when required for purposes as deemed fit.
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col-md-12" style="text-align: center">
+                <button class="btn btn-primary" (click)="onAcceptClick()">I Accept & Next</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+<!-- </div> -->

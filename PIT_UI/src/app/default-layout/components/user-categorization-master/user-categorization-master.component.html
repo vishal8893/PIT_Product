@@ -1,0 +1,211 @@
+<p-toast></p-toast>
+<div class="row card shadow-sm bg-white px-3 mx-0 mb-3">
+  <div class="col-12 mb-2 text-primary">
+    <!-- <h6 class="mb-0">User Categorization</h6> -->
+  </div>
+
+  <form autocomplete="off" [formGroup]="UserCateform">
+    <div class="row">
+
+      <!-- <label for="inputText4" class="col-md-6 col-lg-auto col-form-label">Entity</label> -->
+      <div class="col-md-6 col-lg-2 mb-2">
+        <div class="form-floating form-floating-outline">
+          <p-dropdown [(ngModel)]="entityNgmodel" (ngModelChange)="onEntityChange()" [options]="entityid"
+            optionLabel="ENTITY_NAME" [filter]="true" filterBy="ENTITY_NAME" [showClear]="true"
+            placeholder="Select Entity" optionValue="ID" class="form-control px-0" [disabled]="isEntityDisabled"
+            formControlName="entitycontroller" required></p-dropdown>
+          <label for="inputText4" class="">Entity</label>
+          <!-- <small style="color: red;" *ngIf="entitycontroller?.hasError('required') && entitycontroller?.touched">
+          Entity is required
+        </small> -->
+          <!-- <span *ngIf="!entityNgmodel" class="text-red-500">
+        <label>Entity is required</label>
+      </span> -->
+        </div>
+      </div>
+
+      <!-- <label for="inputText4" class="col-md-6 col-lg-auto col-form-label">SBU</label> -->
+      <div class="col-md-6 col-lg-2 mb-2">
+        <div class="form-floating form-floating-outline">
+          <p-dropdown [options]="sbuid" [(ngModel)]="sbuNgmodel" (ngModelChange)="onSbuChange()" optionLabel="SBU_NAME"
+            [filter]="true" (onChange)="onchangeeventsub(sbuNgmodel)" filterBy="SBU_NAME" [showClear]="true"
+            placeholder="Select SBU" optionValue="ID" class="form-control px-0" [disabled]="isSbuDisabled"
+            formControlName="sbucontroller" required></p-dropdown>
+          <label for="inputText4" class="">SBU</label>
+          <!-- <small style="color: red;" *ngIf="sbucontroller?.hasError('required') && sbucontroller?.touched">
+          SBU is required
+        </small> -->
+          <!-- <span *ngIf="!sbuNgmodel" class="text-red-500">
+        <label>SBU is required</label>
+      </span> -->
+        </div>
+      </div>
+
+      <!-- <label for="inputText4" class="col-md-6 col-lg-auto col-form-label">LOB</label> -->
+      <div class="col-md-6 col-lg-2 mb-2">
+        <div class="form-floating form-floating-outline">
+          <p-dropdown [options]="finallobitem" [(ngModel)]="lobNgmodel" optionLabel="LOB_NAME" [filter]="true"
+            (onChange)="onchangeeventlob(lobNgmodel)" filterBy="LOB_NAME" [showClear]="true" placeholder="Select LOB"
+            optionValue="ID" class="form-control px-0" [disabled]="isLobDisabled" formControlName="lobcontroller"
+            required></p-dropdown>
+          <label for="inputText4" class="">LOB</label>
+          <!-- <small style="color: red;" *ngIf="lobcontroller?.hasError('required') && lobcontroller?.touched">
+          LOB is required
+        </small> -->
+          <!-- <span *ngIf="!lobNgmodel" class="text-red-500">
+        <label>LOB is required</label>
+      </span> -->
+        </div>
+      </div>
+
+      <!-- <label for="inputText4" class="col-md-6 col-lg-auto col-form-label">SubLOB</label> -->
+      <div class="col-md-6 col-lg-2 mb-2">
+        <div class="form-floating form-floating-outline">
+          <p-dropdown [options]="finalsublobitems" [(ngModel)]="sublobNgmodel" optionLabel="SUBLOB_NAME" [filter]="true"
+            filterBy="SUBLOB_NAME" [showClear]="true" placeholder="Select SUBLOB" optionValue="ID" class="form-control px-0"
+            [disabled]="isSublobDisabled" formControlName="sublobcontroller" required></p-dropdown>
+          <label for="inputText4" class="">SUBLOB</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <!-- <label for="inputText4" class="col-md-6 col-lg-1 col-form-label">SubLOB</label>
+      <div class="col-md-6 col-lg-2 mb-2">
+        <p-dropdown [options]="finalsublobitems" [(ngModel)]="sublobNgmodel" optionLabel="SUBLOB_NAME" [filter]="true"
+          filterBy="SUBLOB_NAME" [showClear]="true" placeholder="Select SubLOB" optionValue="ID" class="p-inputtext-sm"
+          [disabled]="isSublobDisabled" formControlName="sublobcontroller" required></p-dropdown>
+        </div> -->
+      <!-- <small style="color: red;" *ngIf="sublobcontroller?.hasError('required') && sublobcontroller?.touched">
+          SuBLOB is required
+        </small> -->
+      <!-- <span *ngIf="!sublobNgmodel" class="text-red-500">
+        <label>SuBLOB is required</label>
+      </span> -->
+
+
+      <!-- <label for="inputText4" class="col-md-6 col-lg-2 col-form-label">2</label> -->
+      <div class="col-md-6 col-lg-auto mb-2 pt-2">
+        <p-radioButton name="selectedUserCatSVP" [value]="true" [(ngModel)]="selectedUserCatSVP"
+          formControlName="selectedUserCatSVP" (ngModelChange)="handleSelectionChangeSVP()"
+          [disabled]="isSVPDisabled"></p-radioButton>
+        <label for="svp" style="margin-left: 10px;font-size: smaller;">SVP and Above</label>
+      </div>
+
+      <!-- <label for="inputText4" class="col-md-6 col-lg-2 col-form-label">3</label> -->
+      <div class="col-md-6 col-lg-auto mb-2 pt-2">
+        <p-radioButton name="selectedUserCatCEO" [value]="true" [(ngModel)]="selectedUserCatCEO"
+          formControlName="selectedUserCatCEO" (ngModelChange)="handleSelectionChangeCEO()"
+          [disabled]="isAllCEODisabled"></p-radioButton>
+        <label for="ceo" style="margin-left: 10px;font-size: smaller;">CEO & 2 LevelDown</label>
+      </div>
+
+      <div class="col-md-6 col-lg-auto mb-2 pt-2">
+        <p-radioButton name="selectedUserCatEmpAll" [value]="true" [(ngModel)]="selectedUserCatEmpAll"
+          formControlName="selectedUserCatEmpAll" (ngModelChange)="handleSelectionChangeEmpALL()"
+          [disabled]="isAllEmployeesDisabled"></p-radioButton>
+        <label for="all" style="margin-left: 10px;font-size: smaller;">All Employees</label>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <!-- <label for="inputText4" class="col-md-6 col-lg-2 col-form-label">4</label> -->
+      <!-- <div class="col-md-6 col-lg-2 mb-2">
+        <p-radioButton name="selectedUserCatEmpAll" [value]="true" [(ngModel)]="selectedUserCatEmpAll"
+          formControlName="selectedUserCatEmpAll" (ngModelChange)="handleSelectionChangeEmpALL()"
+          [disabled]="isAllEmployeesDisabled"></p-radioButton>
+        <label for="all" style="margin-left: 10px;">All Employees</label>
+      </div> -->
+    </div>
+
+    <div class="col-12 text-center">
+      <button pButton pRipple type="button" *ngIf="onadd" (click)="createUserCategory()" label=""
+        class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><i class="bx bx-plus"></i></button>
+      <button pButton pRipple type="button" *ngIf="oneditbtn" (click)="updateUserCategory()" label=""
+        class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"><span
+          class="fadeIn animated bx bx-reset"></span></button>
+      <button pButton pRipple type="button" *ngIf="oncancel" (click)="cancel()" label=""
+        class="p-button-secondary button-sm mx-1 py-2"><span class="fadeIn animated bx bx-reset"></span></button>
+    </div>
+  </form>
+
+  <div class="col-12">
+    <p-table #dt [value]="products" dataKey="id" styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines"
+      [rowHover]="true" [rows]="5" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+      [globalFilterFields]="['TBL_ENTITY_MST.ENTITY_NAME','TBL_SBU_MST.SBU_NAME','TBL_LOB_MST.LOB_NAME','TBL_SUBLOB_MST.SUBLOB_NAME','CEO_TWO_LEVEL_DOWN','SVP_ABOVE','ALL_EMPLOYEEES']">
+      <ng-template pTemplate="caption">
+        <div class="table-header">
+          <span class="globalSearch p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+              placeholder="Global Search" />
+          </span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="TBL_ENTITY_MST.ENTITY_NAME">Entity <p-sortIcon
+              field="TBL_ENTITY_MST.ENTITY_NAME"></p-sortIcon></th>
+          <th pSortableColumn="TBL_SBU_MST.SBU_NAME">SBU <p-sortIcon field="TBL_SBU_MST.SBU_NAME"></p-sortIcon></th>
+          <th pSortableColumn="TBL_LOB_MST.LOB_NAME">LOB<p-sortIcon field="TBL_LOB_MST.LOB_NAME"></p-sortIcon>
+          </th>
+          <th pSortableColumn="TBL_SUBLOB_MST.SUBLOB_NAME">SUBLOB<p-sortIcon
+              field="TBL_SUBLOB_MST.SUBLOB_NAME"></p-sortIcon></th>
+          <th pSortableColumn="SVP_ABOVE">SVP and Above<p-sortIcon field="svp"></p-sortIcon></th>
+          <th pSortableColumn="CEO_TWO_LEVEL_DOWN">CEO & 2 LevelDown<p-sortIcon field="ceo"></p-sortIcon></th>
+          <th pSortableColumn="ALL_EMPLOYEEES">All Employees<p-sortIcon field="emp"></p-sortIcon></th>
+          <th pSortableColumn="activity">Activity <p-sortIcon field="activity"></p-sortIcon></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+        <tr class="p-selectable-row">
+          <td>
+            <span class="p-column-title">Entity</span>
+            {{product.TBL_ENTITY_MST?.ENTITY_NAME}}
+          </td>
+          <td>
+            <span class="p-column-title">SBU</span>
+            <span class="image-text">{{product.TBL_SBU_MST?.SBU_NAME}}</span>
+          </td>
+          <td>
+            <span class="p-column-title">LOB</span>
+            <span class="image-text">{{product.TBL_LOB_MST?.LOB_NAME}}</span>
+          </td>
+          <td>
+            <span class="p-column-title">SuBLOB</span>
+            <span class="image-text">{{product.TBL_SUBLOB_MST?.SUBLOB_NAME}}</span>
+          </td>
+          <td>
+            <span class="p-column-title">SVP and Above</span>
+            <span class="image-text">{{product.SVP_ABOVE}}</span>
+          </td>
+          <td>
+            <span class="p-column-title">CEO & 2 LevelDown</span>
+            <span class="image-text">{{product.CEO_TWO_LEVEL_DOWN}}</span>
+          </td>
+          <td>
+            <span class="p-column-title">All Employees</span>
+            <span class="image-text">{{product.ALL_EMPLOYEEES}}</span>
+          </td>
+          <td>
+            <!-- <button pButton type="button" icon="pi pi-pencil" (click)="oneditUserCategory(product)"
+                            iconPos="left"
+                            class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"></button> -->
+            <!-- <td> -->
+            <!-- <button pButton type=" button" icon="pi pi-trash" (click)="DeleteUserCategory(product)" iconPos="left"
+              class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"></button> -->
+            <i class="pi pi-trash" (click)="DeleteUserCategory(product)"></i>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8">No products found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

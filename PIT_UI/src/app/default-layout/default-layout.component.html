@@ -1,0 +1,221 @@
+<!--start header wrapper-->
+<div class="header-wrapper">
+    <!--start header -->
+    <header>
+        <div class="topbar d-flex align-items-center">
+            <nav class="navbar navbar-expand gap-3">
+                <div class="topbar-logo-header d-none d-lg-flex">
+                    <div class="">
+                       <img [src]="'assets/logo/NewelTechnologiesextra.png'" class="logo-icon-1" alt="logo icon" style="border-radius: 30px;">
+
+                    </div>
+
+                </div>
+                <div class="mobile-toggle-menu d-block d-lg-none" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar"><i class='bx bx-menu'></i></div>
+                <!-- <div class="search-bar d-lg-block d-none" data-bs-toggle="modal" data-bs-target="#SearchModal">
+                    <a href="avascript:;" class="btn d-flex align-items-center"><i
+                            class='bx bx-search'></i>Search</a>
+                </div> -->
+                <div class="top-menu ms-auto">
+                    <ul class="navbar-nav align-items-center gap-1">
+                        <li class="nav-item mobile-search-icon d-flex d-lg-none" data-bs-toggle="modal"
+                            data-bs-target="#SearchModal">
+                            <a class="nav-link" href="avascript:;"><i class='bx bx-search'></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="user-box dropdown px-3">
+                    <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret" href="#"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="assets/images/avatars/avatar-2.png" class="user-img" alt="user avatar">
+                        <div class="user-info">
+                            <p class="user-name mb-0"><b>{{userLoggedIn.FIRSTNAME}}</b></p>  
+                            <p class="designattion mb-0"><b>{{userLoggedIn.CODE}}</b></p>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <!-- <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                    class="bx bx-user fs-5"></i><span>Profile</span></a>
+                        </li>
+                        <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                                    class="bx bx-cog fs-5"></i><span>Settings</span></a>
+                        </li> -->
+
+                        <!-- <li>
+                            <div class="dropdown-divider mb-0"></div>
+                        </li> -->
+                        <li><a class="dropdown-item d-flex align-items-center" href="#">Logout</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--end header -->
+    <!--navigation-->
+    <div class="primary-menu">
+        <nav class="navbar navbar-expand-lg align-items-center">
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header border-bottom">
+                    <div class="d-flex align-items-center">
+                        <div class="">
+                            <img [src]="'assets/logo/NewelTechnologiesextra.png'" class="logo-icon" alt="logo icon">
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+
+                <!-- <div *ngFor="let item of menuItems; let i = index;" class="nav-item ptb1">
+
+                    <div class="nav-item dropdown border-end" *ngIf="item.PARENETID == 0 && item.IS_ACTIVE == true">
+
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> {{item.TITLE}} </a>
+                        <ul class="dropdown-menu">
+                            <ng-container *ngFor="let item2 of menuItems">
+                                <mat-divider
+                                    *ngIf="item.Id == item2.PARENETID && item2.ISCHILD == false && item2.IS_ACTIVE == true">
+                                </mat-divider>
+                                <li (click)="onSubMenuClick(item2)"><a class="dropdown-item"
+                                        *ngIf="item.ID == item2.PARENETID && item2.ISCHILD == false && item2.IS_ACTIVE == true">
+                                        {{item2.TITLE}} </a>
+                                </li>
+                            </ng-container>
+                        </ul>
+                    </div>
+
+                </div> -->
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav align-items-center flex-grow-1">
+                        <!-- <li class="nav-item dropdown">
+                            <a class="nav-link" href="#">
+                                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                                </div>
+                                <div class="menu-title d-flex align-items-center">Dashboard</div>
+                            </a>
+                        </li> -->
+                        <li class="nav-item dropdown" *ngFor="let item of menuItems; let i = index;">
+                            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
+                                data-bs-toggle="dropdown" *ngIf="item.PARENETID == 0 && item.IS_ACTIVE == true">
+                                <div class="{{item.ICON}}">
+                                </div>
+                                <div class="menu-title d-flex align-items-center">{{item.TITLE}}</div>
+                                <div class="ms-auto dropy-icon"><i class='pi pi-caret-down'></i></div>
+                            </a>
+                            <ul class="dropdown-menu" style="overflow-x: hidden;">
+                                <ng-container *ngFor="let item2 of menuItems">
+                                  <li (click)="onSubMenuClick(item2)">
+                                    <a class="dropdown-item" style="font-size: 12px; white-space: normal; overflow: visible;"
+                                       *ngIf="item.ID == item2.PARENETID && item2.ISCHILD == false && item2.IS_ACTIVE == true">
+                                      <i style="font-size: 12px;" class='{{item2.ICON}}'></i> {{item2.TITLE}}
+                                    </a>
+                                  </li>
+                                </ng-container>
+                              </ul>
+                              
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!--end navigation-->
+</div>
+<!--end header wrapper-->
+
+<div class="page-wrapper">
+    <div class="page-content py-2">
+    <!--breadcrumb-->
+<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+	<div class="breadcrumb-title fw-bold pe-3"><h6 style="font-weight: bolder;">{{PageName}}</h6></div>
+	<div class="ps-3">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb mb-0 p-0">
+		<li class="breadcrumb-item"><a  routerLink="/pit/Home" routerLinkActive="active"><i class="bx bx-home-alt"></i></a>
+				</li>&nbsp;
+				<!-- <li><i class="pi pi-angle-right" style="font-size:small"></i> {{shortname}}</li> -->
+			</ol>
+		</nav>
+	</div>
+	<div class="ms-auto">
+        <!-- <div class="alert border-0 border-start border-5 border-primary alert-dismissible fade show py-2 px-1">
+            <div class="d-flex align-items-center">
+                <div class="ms-3">
+                    <h6 class="mb-0 text-primary">NSE/BSE Live Feed</h6>
+                    <div><marquee direction="left" scrolldelay="85" behavior="loop">Adani Enterpris 2,176.70, Adani Ports 792.25, Apollo Hospital 5,490.05 Adani Enterpris 2,176.70, Adani Ports 792.25</marquee></div>
+                </div>
+            </div>
+        </div> -->
+		<div class="card mb-0">
+			<div class="user-profile-header d-flex flex-lg-row text-sm-start mb-2">
+				
+				<div class="flex-grow-1 mt-1 mt-lg-1">
+					<div
+						class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-3 flex-md-row flex-column gap-4">
+						<div class="user-profile-info">
+							Emp Name :<span class="fw-bold">{{userLoggedIn.FIRSTNAME}}</span>                            
+							<ul
+								class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
+								<li class="list-inline-item">
+									<i class="mdi mdi-card-account-details-outline mdi-20px"></i>Emp
+                                        Id : <span class="fw-bold">{{userLoggedIn.EMPNO}}</span>
+								</li>
+								<li class="list-inline-item">
+									<i class="mdi mdi-sitemap-outline me-1 mdi-20px"></i> Dept :
+									<span class="fw-bold">
+										{{userLoggedIn.DEPARTMENT}}</span>
+								</li>
+								<!-- <li class="list-inline-item">
+									<i class="mdi mdi-card-bulleted-outline me-1 mdi-20px"></i> PAN : 
+									<span class="fw-bold">{{userLoggedIn.PANCARDNO}}</span>
+								</li> -->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--end breadcrumb-->
+        <router-outlet></router-outlet>
+    </div>
+</div>
+<!-- Footer -->
+
+
+
+<!-- <p-sidebar [(visible)]="sidebar" [baseZIndex]="1000" [style]="{width:'15em'}">
+
+
+    <div class="offcanvas-body" id="colour">
+        <div id="wrapper" class="active">
+            <div id="sidebar-wrapper" class="active">
+
+                <ul class="sidebar-nav mt-4" id="sidebar">
+                    <li>
+                        <a (click)="isVisible = !isVisible" class="fs-6"><span id="sub_icon"
+                                class="fas fa-bars"></span></a>
+                    </li>
+                </ul>
+
+                <p-panelMenu [model]="items" routerLinkActive="bored" class=""
+                    [style]="{'width':'250px'}"></p-panelMenu>
+            </div>
+        </div>
+    </div>
+</p-sidebar> -->
+<footer class="content-footer footer bg-footer-theme start-0">
+    <div class="container-xxl" class="footer">
+        <div 
+            class="footer-container d-flex justify-content-between py-1 flex-md-row flex-column">
+            <div class="text-body mb-0 mb-md-0" >
+                <a href="https://www.neweltechnologies.com/">
+              <p class="mx-4 my-2 text-white">All Rights Reserved. Copyright Newel Technologies Pvt LTD.</p>  </a>
+               
+            </div>
+        </div> 
+    </div>
+</footer>
+<!-- / Footer -->

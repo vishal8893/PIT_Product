@@ -1,0 +1,5 @@
+RMS Blocking/UnBlocking
+ ||6789|S||ALL|nse_cm|NEWEL|||||Y|||Contra-Trade not allowed - EMPTRADING
+ ||7890|S||ALL|nse_cm|NEWEL|||||Y|||Contra-Trade not allowed - EMPTRADING
+ ||6789|S||ALL|bse_cm|543988|||||Y|||Contra-Trade not allowed - EMPTRADING
+ ||7890|S||ALL|bse_cm|543988|||||Y|||Contra-Trade not allowed - EMPTRADING
