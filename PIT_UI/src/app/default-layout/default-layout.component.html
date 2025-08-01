@@ -6,7 +6,7 @@
             <nav class="navbar navbar-expand gap-3">
                 <div class="topbar-logo-header d-none d-lg-flex">
                     <div class="">
-                       <img [src]="'assets/logo/NewelTechnologiesextra.png'" class="logo-icon-1" alt="logo icon" style="border-radius: 30px;">
+                       <img [src]="'assets/logo/NewelTechnologiesextra.png'" class="logo-icon-1" alt="logo icon">
 
                     </div>
 
@@ -26,6 +26,9 @@
                         </li>
                     </ul>
                 </div>
+                <div class="top-menu ms-auto">
+							
+						</div>
                 <div class="user-box dropdown px-3">
                     <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret" href="#"
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -46,6 +49,27 @@
                         <!-- <li>
                             <div class="dropdown-divider mb-0"></div>
                         </li> -->
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+							Emp Name: <span class="fw-bold">{{userLoggedIn.FIRSTNAME}}</span>                            
+							<ul
+								class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
+								
+							</ul>
+						</a>
+                        </li>
+                        <li><a class="dropdown-item d-flex align-items-center" href="#">
+									<i class="mdi mdi-card-account-details-outline mdi-20px ms-0"></i>Emp Id: <span class="fw-bold">{{userLoggedIn.EMPNO}}</span>
+								</a></li>
+								<li><a class="dropdown-item d-flex align-items-center" href="#">
+									<i class="mdi mdi-sitemap-outline me-1 mdi-20px ms-0"></i>Dept: 
+									<span class="fw-bold">
+										{{userLoggedIn.DEPARTMENT}}</span></a>
+								</li>
+								<!-- <li class="list-inline-item">
+									<i class="mdi mdi-card-bulleted-outline me-1 mdi-20px"></i> PAN : 
+									<span class="fw-bold">{{userLoggedIn.PANCARDNO}}</span>
+								</li> -->
                         <li><a class="dropdown-item d-flex align-items-center" href="#">Logout</a></li>
                     </ul>
                 </div>
@@ -125,14 +149,14 @@
 <!--end header wrapper-->
 
 <div class="page-wrapper">
-    <div class="page-content py-2">
+    <div class="page-content pt-0 pb-2">
     <!--breadcrumb-->
 <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-	<div class="breadcrumb-title fw-bold pe-3"><h6 style="font-weight: bolder;">{{PageName}}</h6></div>
+	<div class="breadcrumb-title fw-bold pe-3"><h6>{{PageName}}</h6></div>
 	<div class="ps-3">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb mb-0 p-0">
-		<li class="breadcrumb-item"><a  routerLink="/pit/Home" routerLinkActive="active"><i class="bx bx-home-alt"></i></a>
+		<li class="breadcrumb-item"><a  routerLink="/pit/Home" routerLinkActive="active"><i class="bx bx-home-alt text-black"></i></a>
 				</li>&nbsp;
 				<!-- <li><i class="pi pi-angle-right" style="font-size:small"></i> {{shortname}}</li> -->
 			</ol>
@@ -147,35 +171,7 @@
                 </div>
             </div>
         </div> -->
-		<div class="card mb-0">
-			<div class="user-profile-header d-flex flex-lg-row text-sm-start mb-2">
-				
-				<div class="flex-grow-1 mt-1 mt-lg-1">
-					<div
-						class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-3 flex-md-row flex-column gap-4">
-						<div class="user-profile-info">
-							Emp Name :<span class="fw-bold">{{userLoggedIn.FIRSTNAME}}</span>                            
-							<ul
-								class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
-								<li class="list-inline-item">
-									<i class="mdi mdi-card-account-details-outline mdi-20px"></i>Emp
-                                        Id : <span class="fw-bold">{{userLoggedIn.EMPNO}}</span>
-								</li>
-								<li class="list-inline-item">
-									<i class="mdi mdi-sitemap-outline me-1 mdi-20px"></i> Dept :
-									<span class="fw-bold">
-										{{userLoggedIn.DEPARTMENT}}</span>
-								</li>
-								<!-- <li class="list-inline-item">
-									<i class="mdi mdi-card-bulleted-outline me-1 mdi-20px"></i> PAN : 
-									<span class="fw-bold">{{userLoggedIn.PANCARDNO}}</span>
-								</li> -->
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 	</div>
 </div>
 <!--end breadcrumb-->
@@ -212,7 +208,7 @@
             class="footer-container d-flex justify-content-between py-1 flex-md-row flex-column">
             <div class="text-body mb-0 mb-md-0" >
                 <a href="https://www.neweltechnologies.com/">
-              <p class="mx-4 my-2 text-white">All Rights Reserved. Copyright Newel Technologies Pvt LTD.</p>  </a>
+              <p class="mx-4 my-2 text-black">All Rights Reserved. Copyright Newel Technologies Pvt LTD.</p>  </a>
                
             </div>
         </div> 

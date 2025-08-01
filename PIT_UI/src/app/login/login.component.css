@@ -96,7 +96,9 @@ a {
     border-right: 1px solid #f0f0f0;
 }
 
-
+.login-logo img{
+width: 166px;
+}
 .logo-icon {
 
 
@@ -107,7 +109,7 @@ a {
 
 .logo-icon-2 {
 	width: 35px;
-	
+	width: 166px;
     margin-left: 10px;
 }
 
@@ -1451,7 +1453,7 @@ ul.scroll-menu {
 
 .auth-cover-left {
     display: flex;
-    background-color: #f7f7ff;
+    background: linear-gradient(to bottom, #7e7ab8, #45c8f1);
     min-height: 100vh;
 }
 

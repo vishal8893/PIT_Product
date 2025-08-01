@@ -163,21 +163,33 @@ WHERE A."ApprovalStatus" = 'Pending for Approve'
     router.route('/Rejectdata')
         .post(function (req, res) {
             var encryptmodel = dataconn.decrypt(req.body.encryptmodel);
-
             const TBL_IRF_Approval_Data = datamodel.TBL_IRF_Approval_Data();
             var values = {
                 ApprovalStatus: encryptmodel.Status,
                 COMPLIANCECREATED_BY: encryptmodel.UserId,
                 RejectionReason: encryptmodel.RejectionReason,
-                COMPLIANCECREATED_ON: new Date()
+                COMPLIANCECREATED_ON: new Date(),
+                TradeAvailableQty: 0
             };
             var param = { ID: encryptmodel.ID };
 
-
             dataaccess.Update(TBL_IRF_Approval_Data, values, param)
-                .then(function (result) {
+                .then(async function (result) {
                     if (result != null) {
                         var EncryptLoginDetails = dataconn.encryptionAES(result);
+                        let UpdateQ = `select * from public. "TBL_DP_HOLDING_DATA" where "ISIN_CODE"='${encryptmodel.Array.ISIN}'`
+                        let Result = await connect.sequelize.query(UpdateQ);
+
+
+                        if (Result[0] && Result[0].length > 0) {
+
+                            let QRTY = Number(Result[0][0].DP_QTY)
+                            let UpQuery = `UPDATE  "TBL_DP_HOLDING_DATA"
+                         SET "ApprovalAvailableQty" = ${QRTY} , "TradeAvailableQty"= 0
+                             WHERE "ISIN_CODE"='${encryptmodel.Array.ISIN}';`
+                            let resultnew = await connect.sequelize.query(UpQuery);
+                        }
+
                         res.status(200).json({ Success: true, Message: 'Reject successfully', Data: EncryptLoginDetails });
                     }
                     else {

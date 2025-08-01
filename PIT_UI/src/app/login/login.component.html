@@ -23,12 +23,12 @@
                                 <!-- <div class="mb-3" style="text-align: center;">
                                     <img src="assets/logo/pit-image.png" width="100px" alt="">
                                 </div> -->
-                                <div class="mb-3">
+                                <div class="mb-3 login-logo">
                                     <img src="assets/logo/NewelTechnologiesextra.png" width="" alt="">
                                 </div>
                                 <div class="mb-4">
                                     <h5 class="">Prohibition of Insider Trading</h5>
-                                    <p class="mb-0">Please log in to your account</p>
+                                    <!-- <p class="mb-0">Please log in to your account</p> -->
                                 </div>
                                 <div class="form-body">
                                     <form class="row g-3" autocomplete="off" [formGroup]="Login_ExistingUser">
@@ -90,7 +90,7 @@
                                         </div> -->
                                         <div class="col-12">
                                             <div class="d-grid">
-                                                <button type="button" class="btn btn-primary" [disabled]="Login_ExistingUser.invalid"
+                                                <button type="button" class="btn btn-info text-white" [disabled]="Login_ExistingUser.invalid"
                                                     (click)="loginUser()">Login</button>
                                             </div>
                                         </div>

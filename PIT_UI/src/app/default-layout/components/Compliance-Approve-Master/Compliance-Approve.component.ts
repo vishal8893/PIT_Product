@@ -202,6 +202,7 @@ export class ComplianceApproveComponent implements OnInit {
     let model = {
       Status: 'Reject',
       ID: this.Products.ID,
+      Array: this.Products,
       UserId: this.EmployeeId,
       RejectionReason: this.remark
     }

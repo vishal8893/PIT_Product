@@ -1,6 +1,23 @@
 /* Created By Vaijanath Pawale - Team Lead (UI/UX)
 Author: Newel Technologies Pvt. Ltd.
 Author URL: https://www.neweltechnologies.com/ */
+@font-face {
+  font-family: 'DMSansRegular';
+  src: url('../fonts/DMSansRegular.eot');
+  src: url('../fonts/DMSansRegular.eot') format('embedded-opentype'),
+       url('../fonts/DMSansRegular.woff2') format('woff2'),
+       url('../fonts/DMSansRegular.woff') format('woff'),
+       url('../fonts/DMSansRegular.ttf') format('truetype'),
+       url('../fonts/DMSansRegular.svg#DMSansRegular') format('svg');
+}
+
+body {
+
+
+	font-family: 'DMSansRegular', sans-serif !important;
+
+
+}
 
 html.color-header .topbar .navbar-nav .nav-link {
 
@@ -38,24 +55,24 @@ html.color-header .search-show {
 
 html.color-header .user-info .user-name {
 
-    color: #ffffff;
+    color: #000000;
 
 }
 
 html.color-header .user-info .designattion {
 
-    color: #ffffff;
+    color: #a9a8a8;
 
 }
 
-html.color-header .user-box {
+/* html.color-header .user-box {
     border-left: 1px solid rgb(255 255 255 / .15) !important;
     border-right: 1px solid rgb(255 255 255 / .15) !important;
-}
+} */
 
 html.color-header .topbar-logo-header {
 
-    border-right: 1px solid rgb(255 255 255 / 0.35) !important;
+    border-right: 1px solid #f0f0f0 !important;
 
 }
 
@@ -67,12 +84,12 @@ html.color-header .topbar-logo-header {
 
 
 html.color-header .topbar-logo-header .logo-text {
-    color: #ffffff;
+    color: #000000;
 }
 
 html.color-header .mobile-toggle-menu {
 
-    color: #ffffff;
+    color: #000000;
 
 }
 
@@ -134,7 +151,7 @@ html.headercolor1 .topbar {
 
 html.headercolor2 .topbar {
 
-    background: #03002f;
+    background: #ffffff;
 
 }
 
@@ -166,6 +183,7 @@ html.headercolor2 .p-splitbutton.p-button-secondary>.p-button {
     color: #000000;
     background: #f8f9fa;
     border: 1px solid #f8f9fa;
+    border-radius: 50px !important;
 }
 
 html.headercolor2 .p-button.p-button-secondary:hover,
@@ -186,26 +204,26 @@ html.headercolor2 .bg-lightGray {
 }
 
 html.headercolor2 a {
-    color: #03002f;
+    color: #ffffff;
     cursor: pointer;
 }
 
 html.headercolor2 .primary-menu .navbar .navbar-nav a.nav-link:hover {
     color: #ffffff;
-    background: linear-gradient(270deg, #f04d44 0%, #f2ada9 100%);
+    background: linear-gradient(270deg, #7d7bb8 0%, #47c7f0 100%);
 }
 
 html.headercolor2 .primary-menu .navbar .navbar-nav a.nav-link:active,
 html.headercolor2 .primary-menu .navbar .navbar-nav a.nav-link:focus {
     color: #ffffff;
-    background: linear-gradient(270deg, #f04d44 0%, #f2ada9 100%);
+    background: linear-gradient(270deg, #7d7bb8 0%, #47c7f0 100%);
 }
 
 html.headercolor2 .dropdown-item.active,
 html.headercolor2 .dropdown-item:active {
     color: #fff;
     text-decoration: none;
-    background: linear-gradient(270deg, #f04d44 0%, #f2ada9 100%);
+    background: linear-gradient(270deg, #7d7bb8 0%, #47c7f0 100%);
 }
 
 html.headercolor2 .form-floating.form-floating-outline>.form-control:focus~label,
@@ -224,18 +242,19 @@ html.headercolor2 .p-paginator .p-paginator-pages .p-paginator-page.p-highlight 
 
 html.headercolor2 .btn-primary {
     color: #fff;
-    background-color: #282a42;
-    border-color: #282a42;
+    background-color: #47c5ef;
+    border-color: #46c6ef;
+    border-radius: 50px !important;
 }
 
 html.headercolor2 .btn-primary:hover {
-    color: #fff !important;
-    background-color: #0d0f20 !important;
-    border-color: #0d0f20 !important;
+   color: #fff;
+    background-color: #7d7cb9;
+    border-color: #7d7cb9;
 }
 
 html.headercolor2 .p-steps-current {
-    background: linear-gradient(270deg, #f04d44 0%, #f2ada9 100%);
+    background: linear-gradient(270deg, #7d7bb8 0%, #47c7f0 100%);
     color: #fff;
 }
 html.headercolor2 .p-steps-current::after {
@@ -245,7 +264,7 @@ html.headercolor2 .p-steps-current::after {
     top: 10px;
     border-top: 8px solid transparent;
     border-bottom: 8px solid transparent;
-    border-left: 10px solid #f04d44;
+    border-left: 10px solid #7d7bb8;
 }
 html.headercolor2 .p-steps .p-steps-item .p-menuitem-link .p-steps-title {
     color: #03002f;
@@ -275,7 +294,7 @@ html.headercolor2 .accordion-button {
 }
 
 html.headercolor2 .p-radiobutton-checked+label {
-    background: linear-gradient(270deg, #f04d44 0%, #f2ada9 100%);
+    background: linear-gradient(270deg, #7d7bb8 0%, #47c7f0 100%);
     color: #fff;
     position: relative;
 }
@@ -286,7 +305,7 @@ html.headercolor2 .p-radiobutton-checked+label::after {
     top: 10px;
     border-top: 8px solid transparent;
     border-bottom: 8px solid transparent;
-    border-left: 10px solid #f04d44;
+    border-left: 10px solid #7d7bb8;
 }
 
 
@@ -364,12 +383,12 @@ html.headercolor2 .UPSItab .nav-item .nav-link.active {
 }
 
 html.headercolor2 .dashboard-tabView .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
-    background: #080617;
-    border-color: #080617;
+    background: #7d7bb9;
+    border-color: #7e7bb9;
     color: #ffffff;
 }
 html.headercolor2 .dashboard-tabView .p-tabview .p-tabview-nav li .p-tabview-nav-link, html.headercolor2 .dashboard-tabView .p-tabview .p-tabview-nav {
-    border-color: #080617;
+    border-color: #7e7bb9;
     font-weight: bold;
 }
 
@@ -419,4 +438,8 @@ html.headercolor8 .topbar {
 
     background: #ff9800;
 
+}
+
+.dropdown-item {
+    color: #000000 !important;
 }

@@ -19,9 +19,9 @@
 
             <div class="inputText col-md-4 col-lg-4 col-xl-3 mb-2">
                 <div class="form-floating form-floating-outline">
-                    <p-dropdown [options]="finalItems" formControlName="RequestID" optionLabel="TRX_NO"
-                        (onClear)="onAssetCleared2()" (onChange)="setalldata($event)" [filter]="true" filterBy="TRX_NO"
-                        placeholder="Request ID" [showClear]="true" optionValue="TRX_NO" class="form-control px-0"
+                    <p-dropdown [options]="finalItems" formControlName="RequestID" optionLabel="ID"
+                        (onClear)="onAssetCleared2()" (onChange)="setalldata($event)" [filter]="true" filterBy="ID"
+                        placeholder="Request ID" [showClear]="true" optionValue="ID" class="form-control px-0"
                         required></p-dropdown>
                     <label for="inputText4" class="">Request ID<span class="required-asterisk">*</span></label>
                     <small style="color: red;"
@@ -120,7 +120,7 @@
             <div class="inputText col-md-4 col-lg-4 col-xl-3 mb-2">
                 <div class="form-floating form-floating-outline">
                     <input type="text" class="form-control w-100" placeholder="" formControlName="Exchange" pInputText
-                        readonly>
+                        >
                     <label for="inputText4" class="">Exchange<span class="required-asterisk">*</span></label>
                     <small style="color: red;"
                         *ngIf="TreadForm.get('Exchange').hasError('required') && (TreadForm.get('Exchange').touched || TreadForm.get('Exchange').dirty)">
@@ -187,5 +187,111 @@
 
         <button pButton pRipple type="button" (click)="cancel()" label=""
             class="p-button-secondary button-sm mx-1 py-2">Cancel</button>
+    </div>
+
+    <div class="col-12">
+        <p-table #dt [value]="products" dataKey="id"
+            styleClass="p-datatable-products p-datatable-sm p-datatable-gridlines" [rowHover]="true" [rows]="5"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,15,20]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+            [globalFilterFields]="['Segment','ENTITY_NAME','AccName','Mode','ScripName','ISIN','TotalPrice','TradeDate','TradedQuantity','StrikePrice','ExpiryDate','OptionType']">
+            <ng-template pTemplate="caption">
+                <div class="table-header">
+                    <span class="globalSearch p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                            class="p-inputtext-sm" placeholder="Global Search" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>                    
+                    <th pSortableColumn="Segment">Segment<p-sortIcon field="Segment"></p-sortIcon></th>
+                    <th pSortableColumn="ENTITY_NAME">Account Code<p-sortIcon field="country.name"></p-sortIcon></th>                    
+                    <th pSortableColumn="AccName">Account Name<p-sortIcon field="AccName"></p-sortIcon></th>
+                    <th pSortableColumn="Mode">Mode<p-sortIcon field="Mode"></p-sortIcon></th>
+                    <th pSortableColumn="ScripName">Script Name<p-sortIcon field="ScripName"></p-sortIcon></th>
+                    <th pSortableColumn="ISIN">ISIN No<p-sortIcon field="ISIN"></p-sortIcon></th>
+                    <th pSortableColumn="TotalPrice">Total Price<p-sortIcon field="TotalPrice"></p-sortIcon></th>
+                    <th pSortableColumn="TradeDate">Trade Date<p-sortIcon field="TradeDate"></p-sortIcon></th>
+                    <th pSortableColumn="TradedQuantity">Trade QTY<p-sortIcon field="TradedQuantity"></p-sortIcon></th>
+                    <th pSortableColumn="StrikePrice">Strike Price<p-sortIcon field="StrikePrice"></p-sortIcon></th>
+                    <th pSortableColumn="ExpiryDate">Expiry Date<p-sortIcon field="ExpiryDate"></p-sortIcon></th>
+                    <th pSortableColumn="OptionType">Option Type<p-sortIcon field="OptionType"></p-sortIcon></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr class="p-selectable-row">
+                    <td>
+                
+                        {{product.Segment}}
+                    </td>
+                    <td>
+                        
+                        <span class="image-text">{{product.AccCode
+                            }}</span>
+                    </td>
+                    <td>
+                 
+                        <span class="image-text">{{product.AccName
+                            }}</span>
+                    </td>
+                    <td>
+                    
+                        <span class="image-text">{{product.Mode
+                            }}</span>
+                    </td>
+                    <td>
+         
+                        <span class="image-text">{{product.ScripName
+                            }}</span>
+                    </td>
+                    <td>
+            
+                        <span class="image-text">{{product.ISIN
+                            }}</span>
+                    </td>
+                    
+                    <td>
+
+                        <span class="image-text">{{product.TotalPrice
+                            }}</span>
+                    </td>
+                    <td>
+                  
+                        <span class="image-text">{{product.TradeDate | date:'yyyy-MM-dd'
+                            }}</span>
+                    </td>
+                    <td>
+              
+                        <span class="image-text">{{product.TradedQuantity
+                            }}</span>
+                    </td>
+                    <td>
+                       
+                        <span class="image-text">{{product.StrikePrice
+                            }}</span>
+                    </td>
+                    <td>
+
+                        <span class="image-text">{{product.ExpiryDate | date:'yyyy-MM-dd'
+                            }}</span>
+                    </td>
+                    <td>
+                        
+                        <span class="image-text">{{product.OptionType
+                            }}</span>
+                    </td>
+
+
+                  
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">No products found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
     </div>
 </div>

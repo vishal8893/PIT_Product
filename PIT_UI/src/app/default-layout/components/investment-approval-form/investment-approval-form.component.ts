@@ -468,77 +468,29 @@ export class InvestmentApprovalFormComponent {
     })
   }
 
+  canAddTransaction(newTransaction: 'BUY' | 'SELL') {
+    const hasOpposite = this.formDataArray.some(item =>
+      item.Transaction !== newTransaction
+    );
+
+    return hasOpposite;
+  }
+
   AddToList() {
     if (this.Transaction?.value == 'SELL') {
       let subdata = Number(this.AVQTYFINAL) - Number(this.Quantity?.value);
       this.AVQTYFINAL = subdata
     }
 
-    if (this.selectedValue3 !== 'PrimaryIssue') {
-      let B: any = this.SearchSecurity.value
-      if (this.PANNo) {
-        if (this.Transaction?.value === 'BUY') {
-          if (this.selectedValue3 !== 'Future' && this.selectedValue3 !== 'Option') {
-            this.showtablegrid = true;
-            var model: any = {
-              Id: this.oid++,
-              id: this.userId,
-              TRX_NO: this.TRX_NO,
-              LOCATION: this.LOCATION,
-              COMPANY: this.COMPANY,
-              CREATED_BY: this.userId,
-              Requestfor: this.selectedValue1,
-              NatureofTrade: this.selectedValue3,
-              AccountCode: this.PANNo.AccountCode,
-              AccountName: this.PANNo.AccountName,
-              CRE_USER: this.userLoggedIn.FIRSTNAME,
-              UPD_USER: this.userLoggedIn.FIRSTNAME,
-              EmployeeNumber: this.userLoggedIn.EMPNO,
-              DependentName: (this.selectedValue1 == 'Self') ? null : this.PANNo.AccountName,
-              DateofEarlierTransaction: (this.SelltransactionDate?.value == undefined || this.SelltransactionDate?.value == "") ? null : this.SelltransactionDate?.value,
-              Primary_Issue_Type: (this.PrimaryIssueType?.value == undefined || this.PrimaryIssueType?.value == "") ? null : this.PrimaryIssueType?.value,
-              AcquiredType: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
-              Security: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
-              projectId: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
-              ISIN: (this.ISINNumber?.value == undefined || this.ISINNumber?.value == "") ? null : this.ISINNumber?.value,
-              Transaction: (this.Transaction?.value == undefined) ? null : this.Transaction?.value,
-              NameOfIssue: (this.NameOfIssue?.value == undefined || this.NameOfIssue?.value == "") ? null : this.NameOfIssue?.value,
-              Month: (this.Month?.value == undefined || this.Month?.value == "") ? null : moment(this.Month?.value).format('MMMM'),
-              QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
-              FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
-              Position: (this.Postion?.value == undefined || this.Postion?.value == "") ? null : this.Postion?.value,
-              EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
-              allAquiredthrough: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
-              PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
-              TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
-              BidPrice: (this.BidPrice?.value == undefined || this.BidPrice?.value == "") ? null : this.BidPrice?.value,
-              BidLotShares: (this.BidLotShares?.value == undefined || this.BidLotShares?.value == "") ? null : this.BidLotShares?.value,
-              activemodel: (this.activemodel?.value == undefined || this.activemodel?.value == "") ? null : this.activemodel?.value,
-              Price: (this.Price?.value == undefined || this.Price?.value == "") ? null : this.Price?.value,
-              Reason: (this.Reason?.value == undefined || this.Reason?.value == "") ? null : this.Reason?.value,
-              MarketPrice: (this.MarketPrice?.value == undefined || this.MarketPrice?.value == "") ? null : this.MarketPrice?.value,
-              selectedValue4: (this.selectedValue4?.value == undefined || this.selectedValue4?.value == "") ? null : this.selectedValue4?.value,
-              StrikePrice: (this.StrikePrice?.value == undefined || this.StrikePrice?.value == "") ? null : this.StrikePrice?.value,
-              OptionType: (this.optiontype?.value == undefined || this.optiontype?.value == "") ? null : this.optiontype?.value,
-              StartDate: (this.StartDate?.value == undefined || this.StartDate?.value == "") ? "" : this.StartDate?.value,
-              Aquiredthrough: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
-              CurrentTradeValue_Greater: this.isYesSelected === true ? 1 : (this.isNoSelected === true ? 0 : null),
-              PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
-              AIA: this.AIA,
-              AVQTYFINAL: this.AVQTYFINAL
-            }
-            this.formDataArray.push(model)
-            // console.log(" this.formDataArray", this.formDataArray);
-            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Data Successfully add to list.' });
-            this.irfmainForm.reset();
-            this.Tenlacsmodel = false;
-            this.isYesSelected = false;
-            this.isNoSelected = false;
-            this.checktruebox = false;
-            this.isSellNoSelected = false;
-            this.isSellYesSelected = false;
-          } else {
-            if (this.Postion?.value !== 'SquareOff') {
+    const canAdd = this.canAddTransaction(this.Transaction?.value as 'BUY' | 'SELL')
+    if (canAdd) {
+      this.messageService.add({severity: 'warn', summary: 'Warning', detail: 'Only allow the same transaction'});
+    } else
+      if (this.selectedValue3 !== 'PrimaryIssue') {
+        let B: any = this.SearchSecurity.value
+        if (this.PANNo) {
+          if (this.Transaction?.value === 'BUY') {
+            if (this.selectedValue3 !== 'Future' && this.selectedValue3 !== 'Option') {
               this.showtablegrid = true;
               var model: any = {
                 Id: this.oid++,
@@ -566,7 +518,7 @@ export class InvestmentApprovalFormComponent {
                 Month: (this.Month?.value == undefined || this.Month?.value == "") ? null : moment(this.Month?.value).format('MMMM'),
                 QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
                 FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
-                Position: (this.Postion?.value == undefined) ? null : this.Postion?.value,
+                Position: (this.Postion?.value == undefined || this.Postion?.value == "") ? null : this.Postion?.value,
                 EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
                 allAquiredthrough: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
                 PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
@@ -585,7 +537,8 @@ export class InvestmentApprovalFormComponent {
                 CurrentTradeValue_Greater: this.isYesSelected === true ? 1 : (this.isNoSelected === true ? 0 : null),
                 PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
                 AIA: this.AIA,
-                AVQTYFINAL: this.AVQTYFINAL
+                AVQTYFINAL: this.AVQTYFINAL,
+                TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
               }
               this.formDataArray.push(model)
               // console.log(" this.formDataArray", this.formDataArray);
@@ -598,18 +551,144 @@ export class InvestmentApprovalFormComponent {
               this.isSellNoSelected = false;
               this.isSellYesSelected = false;
             } else {
-              if (this.isSellYesSelected === true) {
-                const sellTransactionDate = new Date(this.StartDate?.value);
+              if (this.Postion?.value !== 'SquareOff') {
+                this.showtablegrid = true;
+                var model: any = {
+                  Id: this.oid++,
+                  id: this.userId,
+                  TRX_NO: this.TRX_NO,
+                  LOCATION: this.LOCATION,
+                  COMPANY: this.COMPANY,
+                  CREATED_BY: this.userId,
+                  Requestfor: this.selectedValue1,
+                  NatureofTrade: this.selectedValue3,
+                  AccountCode: this.PANNo.AccountCode,
+                  AccountName: this.PANNo.AccountName,
+                  CRE_USER: this.userLoggedIn.FIRSTNAME,
+                  UPD_USER: this.userLoggedIn.FIRSTNAME,
+                  EmployeeNumber: this.userLoggedIn.EMPNO,
+                  DependentName: (this.selectedValue1 == 'Self') ? null : this.PANNo.AccountName,
+                  DateofEarlierTransaction: (this.SelltransactionDate?.value == undefined || this.SelltransactionDate?.value == "") ? null : this.SelltransactionDate?.value,
+                  Primary_Issue_Type: (this.PrimaryIssueType?.value == undefined || this.PrimaryIssueType?.value == "") ? null : this.PrimaryIssueType?.value,
+                  AcquiredType: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
+                  Security: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
+                  projectId: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
+                  ISIN: (this.ISINNumber?.value == undefined || this.ISINNumber?.value == "") ? null : this.ISINNumber?.value,
+                  Transaction: (this.Transaction?.value == undefined) ? null : this.Transaction?.value,
+                  NameOfIssue: (this.NameOfIssue?.value == undefined || this.NameOfIssue?.value == "") ? null : this.NameOfIssue?.value,
+                  Month: (this.Month?.value == undefined || this.Month?.value == "") ? null : moment(this.Month?.value).format('MMMM'),
+                  QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
+                  FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
+                  Position: (this.Postion?.value == undefined) ? null : this.Postion?.value,
+                  EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                  allAquiredthrough: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
+                  PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
+                  TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
+                  BidPrice: (this.BidPrice?.value == undefined || this.BidPrice?.value == "") ? null : this.BidPrice?.value,
+                  BidLotShares: (this.BidLotShares?.value == undefined || this.BidLotShares?.value == "") ? null : this.BidLotShares?.value,
+                  activemodel: (this.activemodel?.value == undefined || this.activemodel?.value == "") ? null : this.activemodel?.value,
+                  Price: (this.Price?.value == undefined || this.Price?.value == "") ? null : this.Price?.value,
+                  Reason: (this.Reason?.value == undefined || this.Reason?.value == "") ? null : this.Reason?.value,
+                  MarketPrice: (this.MarketPrice?.value == undefined || this.MarketPrice?.value == "") ? null : this.MarketPrice?.value,
+                  selectedValue4: (this.selectedValue4?.value == undefined || this.selectedValue4?.value == "") ? null : this.selectedValue4?.value,
+                  StrikePrice: (this.StrikePrice?.value == undefined || this.StrikePrice?.value == "") ? null : this.StrikePrice?.value,
+                  OptionType: (this.optiontype?.value == undefined || this.optiontype?.value == "") ? null : this.optiontype?.value,
+                  StartDate: (this.StartDate?.value == undefined || this.StartDate?.value == "") ? "" : this.StartDate?.value,
+                  Aquiredthrough: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
+                  CurrentTradeValue_Greater: this.isYesSelected === true ? 1 : (this.isNoSelected === true ? 0 : null),
+                  PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
+                  AIA: this.AIA,
+                  AVQTYFINAL: this.AVQTYFINAL,
+                  TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                }
+                this.formDataArray.push(model)
+                // console.log(" this.formDataArray", this.formDataArray);
+                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Data Successfully add to list.' });
+                this.irfmainForm.reset();
+                this.Tenlacsmodel = false;
+                this.isYesSelected = false;
+                this.isNoSelected = false;
+                this.checktruebox = false;
+                this.isSellNoSelected = false;
+                this.isSellYesSelected = false;
+              } else {
+                if (this.isSellYesSelected === true) {
+                  const sellTransactionDate = new Date(this.StartDate?.value);
 
-                // Get the current date
-                const currentDate = new Date();
+                  // Get the current date
+                  const currentDate = new Date();
 
-                // Subtract 30 days
-                const dateBefore30Days = new Date();
-                dateBefore30Days.setDate(currentDate.getDate() - 30);
+                  // Subtract 30 days
+                  const dateBefore30Days = new Date();
+                  dateBefore30Days.setDate(currentDate.getDate() - 30);
 
-                // Now, you can compare with the SelltransactionDate
-                if (sellTransactionDate < dateBefore30Days && sellTransactionDate < currentDate) {
+                  // Now, you can compare with the SelltransactionDate
+                  if (sellTransactionDate < dateBefore30Days && sellTransactionDate < currentDate) {
+                    this.showtablegrid = true;
+                    var model: any = {
+                      Id: this.oid++,
+                      id: this.userId,
+                      TRX_NO: this.TRX_NO,
+                      LOCATION: this.LOCATION,
+                      COMPANY: this.COMPANY,
+                      CREATED_BY: this.userId,
+                      Requestfor: this.selectedValue1,
+                      NatureofTrade: this.selectedValue3,
+                      AccountCode: this.PANNo.AccountCode,
+                      AccountName: this.PANNo.AccountName,
+                      CRE_USER: this.userLoggedIn.FIRSTNAME,
+                      UPD_USER: this.userLoggedIn.FIRSTNAME,
+                      EmployeeNumber: this.userLoggedIn.EMPNO,
+                      DependentName: (this.selectedValue1 == 'Self') ? null : this.PANNo.AccountName,
+                      DateofEarlierTransaction: (this.SelltransactionDate?.value == undefined || this.SelltransactionDate?.value == "") ? null : this.SelltransactionDate?.value,
+                      Primary_Issue_Type: (this.PrimaryIssueType?.value == undefined || this.PrimaryIssueType?.value == "") ? null : this.PrimaryIssueType?.value,
+                      AcquiredType: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
+                      Security: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
+                      projectId: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
+                      ISIN: (this.ISINNumber?.value == undefined || this.ISINNumber?.value == "") ? null : this.ISINNumber?.value,
+                      Transaction: (this.Transaction?.value == undefined) ? null : this.Transaction?.value,
+                      NameOfIssue: (this.NameOfIssue?.value == undefined || this.NameOfIssue?.value == "") ? null : this.NameOfIssue?.value,
+                      Month: (this.Month?.value == undefined || this.Month?.value == "") ? null : moment(this.Month?.value).format('MMMM'),
+                      QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
+                      FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
+                      Position: (this.Postion?.value == undefined) ? null : this.Postion?.value,
+                      EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                      allAquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
+                      PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
+                      TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
+                      BidPrice: (this.BidPrice?.value == undefined || this.BidPrice?.value == "") ? null : this.BidPrice?.value,
+                      BidLotShares: (this.BidLotShares?.value == undefined || this.BidLotShares?.value == "") ? null : this.BidLotShares?.value,
+                      activemodel: (this.activemodel?.value == undefined || this.activemodel?.value == "") ? null : this.activemodel?.value,
+                      Price: (this.Price?.value == undefined || this.Price?.value == "") ? null : this.Price?.value,
+                      Reason: (this.Reason?.value == undefined || this.Reason?.value == "") ? null : this.Reason?.value,
+                      MarketPrice: (this.MarketPrice?.value == undefined || this.MarketPrice?.value == "") ? null : this.MarketPrice?.value,
+                      selectedValue4: (this.selectedValue4?.value == undefined || this.selectedValue4?.value == "") ? null : this.selectedValue4?.value,
+                      StrikePrice: (this.StrikePrice?.value == undefined || this.StrikePrice?.value == "") ? null : this.StrikePrice?.value,
+                      OptionType: (this.optiontype?.value == undefined || this.optiontype?.value == "") ? null : this.optiontype?.value,
+                      StartDate: (this.StartDate?.value == undefined || this.StartDate?.value == "") ? "" : this.StartDate?.value,
+                      Aquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
+                      CurrentTradeValue_Greater: this.isYesSelected === true ? 1 : (this.isNoSelected === true ? 0 : null),
+                      PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
+                      AIA: this.AIA,
+                      AVQTYFINAL: this.AVQTYFINAL,
+                      TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                    }
+                    this.formDataArray.push(model)
+                    // console.log(" this.formDataArray", this.formDataArray);
+                    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Data Successfully add to list.' });
+                    this.irfmainForm.reset();
+                    this.Tenlacsmodel = false;
+                    this.isYesSelected = false;
+                    this.isNoSelected = false;
+                    this.checktruebox = false;
+                    this.isSellNoSelected = false;
+                    this.isSellYesSelected = false;
+
+
+                  } else {
+                    alert("Holding Period must be more than 30 Day(s).")
+                  }
+                } else {
                   this.showtablegrid = true;
                   var model: any = {
                     Id: this.oid++,
@@ -654,9 +733,11 @@ export class InvestmentApprovalFormComponent {
                     StartDate: (this.StartDate?.value == undefined || this.StartDate?.value == "") ? "" : this.StartDate?.value,
                     Aquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
                     CurrentTradeValue_Greater: this.isYesSelected === true ? 1 : (this.isNoSelected === true ? 0 : null),
-                    PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
+                    // PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
+                    PreviousTradeValueGreater: this.isSellNoSelected === true ? 0 : null,
                     AIA: this.AIA,
-                    AVQTYFINAL: this.AVQTYFINAL
+                    AVQTYFINAL: this.AVQTYFINAL,
+                    TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
                   }
                   this.formDataArray.push(model)
                   // console.log(" this.formDataArray", this.formDataArray);
@@ -668,149 +749,13 @@ export class InvestmentApprovalFormComponent {
                   this.checktruebox = false;
                   this.isSellNoSelected = false;
                   this.isSellYesSelected = false;
-
-
-                } else {
-                  alert("Holding Period must be more than 30 Day(s).")
                 }
-              } else {
-                this.showtablegrid = true;
-                var model: any = {
-                  Id: this.oid++,
-                  id: this.userId,
-                  TRX_NO: this.TRX_NO,
-                  LOCATION: this.LOCATION,
-                  COMPANY: this.COMPANY,
-                  CREATED_BY: this.userId,
-                  Requestfor: this.selectedValue1,
-                  NatureofTrade: this.selectedValue3,
-                  AccountCode: this.PANNo.AccountCode,
-                  AccountName: this.PANNo.AccountName,
-                  CRE_USER: this.userLoggedIn.FIRSTNAME,
-                  UPD_USER: this.userLoggedIn.FIRSTNAME,
-                  EmployeeNumber: this.userLoggedIn.EMPNO,
-                  DependentName: (this.selectedValue1 == 'Self') ? null : this.PANNo.AccountName,
-                  DateofEarlierTransaction: (this.SelltransactionDate?.value == undefined || this.SelltransactionDate?.value == "") ? null : this.SelltransactionDate?.value,
-                  Primary_Issue_Type: (this.PrimaryIssueType?.value == undefined || this.PrimaryIssueType?.value == "") ? null : this.PrimaryIssueType?.value,
-                  AcquiredType: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
-                  Security: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
-                  projectId: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
-                  ISIN: (this.ISINNumber?.value == undefined || this.ISINNumber?.value == "") ? null : this.ISINNumber?.value,
-                  Transaction: (this.Transaction?.value == undefined) ? null : this.Transaction?.value,
-                  NameOfIssue: (this.NameOfIssue?.value == undefined || this.NameOfIssue?.value == "") ? null : this.NameOfIssue?.value,
-                  Month: (this.Month?.value == undefined || this.Month?.value == "") ? null : moment(this.Month?.value).format('MMMM'),
-                  QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
-                  FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
-                  Position: (this.Postion?.value == undefined) ? null : this.Postion?.value,
-                  EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
-                  allAquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
-                  PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
-                  TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
-                  BidPrice: (this.BidPrice?.value == undefined || this.BidPrice?.value == "") ? null : this.BidPrice?.value,
-                  BidLotShares: (this.BidLotShares?.value == undefined || this.BidLotShares?.value == "") ? null : this.BidLotShares?.value,
-                  activemodel: (this.activemodel?.value == undefined || this.activemodel?.value == "") ? null : this.activemodel?.value,
-                  Price: (this.Price?.value == undefined || this.Price?.value == "") ? null : this.Price?.value,
-                  Reason: (this.Reason?.value == undefined || this.Reason?.value == "") ? null : this.Reason?.value,
-                  MarketPrice: (this.MarketPrice?.value == undefined || this.MarketPrice?.value == "") ? null : this.MarketPrice?.value,
-                  selectedValue4: (this.selectedValue4?.value == undefined || this.selectedValue4?.value == "") ? null : this.selectedValue4?.value,
-                  StrikePrice: (this.StrikePrice?.value == undefined || this.StrikePrice?.value == "") ? null : this.StrikePrice?.value,
-                  OptionType: (this.optiontype?.value == undefined || this.optiontype?.value == "") ? null : this.optiontype?.value,
-                  StartDate: (this.StartDate?.value == undefined || this.StartDate?.value == "") ? "" : this.StartDate?.value,
-                  Aquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
-                  CurrentTradeValue_Greater: this.isYesSelected === true ? 1 : (this.isNoSelected === true ? 0 : null),
-                  // PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
-                  PreviousTradeValueGreater: this.isSellNoSelected === true ? 0 : null,
-                  AIA: this.AIA,
-                  AVQTYFINAL: this.AVQTYFINAL
-                }
-                this.formDataArray.push(model)
-                // console.log(" this.formDataArray", this.formDataArray);
-                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Data Successfully add to list.' });
-                this.irfmainForm.reset();
-                this.Tenlacsmodel = false;
-                this.isYesSelected = false;
-                this.isNoSelected = false;
-                this.checktruebox = false;
-                this.isSellNoSelected = false;
-                this.isSellYesSelected = false;
               }
             }
-          }
-        } else {
-          if (this.selectedValue3 !== 'Future' && this.selectedValue3 !== 'Option') {
-            if (this.designatedstatus === true) {
-              if (this.Aquiredthrough?.value === 'Primary Market') {
-                this.showtablegrid = true;
-                var model: any = {
-                  Id: this.oid++,
-                  id: this.userId,
-                  TRX_NO: this.TRX_NO,
-                  LOCATION: this.LOCATION,
-                  COMPANY: this.COMPANY,
-                  CREATED_BY: this.userId,
-                  Requestfor: this.selectedValue1,
-                  NatureofTrade: this.selectedValue3,
-                  AccountCode: this.PANNo.AccountCode,
-                  AccountName: this.PANNo.AccountName,
-                  CRE_USER: this.userLoggedIn.FIRSTNAME,
-                  UPD_USER: this.userLoggedIn.FIRSTNAME,
-                  EmployeeNumber: this.userLoggedIn.EMPNO,
-                  DependentName: (this.selectedValue1 == 'Self') ? null : this.PANNo.AccountName,
-                  DateofEarlierTransaction: (this.SelltransactionDate?.value == undefined || this.SelltransactionDate?.value == "") ? null : this.SelltransactionDate?.value,
-                  Primary_Issue_Type: (this.PrimaryIssueType?.value == undefined || this.PrimaryIssueType?.value == "") ? null : this.PrimaryIssueType?.value,
-                  AcquiredType: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
-                  Security: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
-                  projectId: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
-                  ISIN: (this.ISINNumber?.value == undefined || this.ISINNumber?.value == "") ? null : this.ISINNumber?.value,
-                  Transaction: (this.Transaction?.value == undefined) ? null : this.Transaction?.value,
-                  NameOfIssue: (this.NameOfIssue?.value == undefined || this.NameOfIssue?.value == "") ? null : this.NameOfIssue?.value,
-                  Month: (this.Month?.value == undefined || this.Month?.value == "") ? null : moment(this.Month?.value).format('MMMM'),
-                  QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
-                  FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
-                  Position: (this.Postion?.value == undefined || this.Postion?.value == "") ? null : this.Postion?.value,
-                  EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
-                  allAquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
-                  PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
-                  TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
-                  BidPrice: (this.BidPrice?.value == undefined || this.BidPrice?.value == "") ? null : this.BidPrice?.value,
-                  BidLotShares: (this.BidLotShares?.value == undefined || this.BidLotShares?.value == "") ? null : this.BidLotShares?.value,
-                  activemodel: (this.activemodel?.value == undefined || this.activemodel?.value == "") ? null : this.activemodel?.value,
-                  Price: (this.Price?.value == undefined || this.Price?.value == "") ? null : this.Price?.value,
-                  Reason: (this.Reason?.value == undefined || this.Reason?.value == "") ? null : this.Reason?.value,
-                  MarketPrice: (this.MarketPrice?.value == undefined || this.MarketPrice?.value == "") ? null : this.MarketPrice?.value,
-                  selectedValue4: (this.selectedValue4?.value == undefined || this.selectedValue4?.value == "") ? null : this.selectedValue4?.value,
-                  StrikePrice: (this.StrikePrice?.value == undefined || this.StrikePrice?.value == "") ? null : this.StrikePrice?.value,
-                  OptionType: (this.optiontype?.value == undefined || this.optiontype?.value == "") ? null : this.optiontype?.value,
-                  StartDate: (this.StartDate?.value == undefined || this.StartDate?.value == "") ? "" : this.StartDate?.value,
-                  Aquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
-                  CurrentTradeValue_Greater: this.isYesSelected === true ? 1 : (this.isNoSelected === true ? 0 : null),
-                  PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
-                  AIA: this.AIA,
-                  AVQTYFINAL: this.AVQTYFINAL
-                }
-                this.formDataArray.push(model)
-                // console.log(" this.formDataArray", this.formDataArray);
-                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Data Successfully add to list.' });
-                this.irfmainForm.reset();
-                this.Tenlacsmodel = false;
-                this.isYesSelected = false;
-                this.isNoSelected = false;
-                this.checktruebox = false;
-                this.isSellNoSelected = false;
-                this.isSellYesSelected = false;
-
-              } else {
-                const sellTransactionDate = new Date(this.SelltransactionDate?.value);
-
-                // Get the current date
-                const currentDate = new Date();
-
-                // Subtract 30 days
-                const dateBefore30Days = new Date();
-                dateBefore30Days.setDate(currentDate.getDate() - 30);
-
-                // Now, you can compare with the SelltransactionDate
-                if (sellTransactionDate < dateBefore30Days && sellTransactionDate < currentDate) {
+          } else {
+            if (this.selectedValue3 !== 'Future' && this.selectedValue3 !== 'Option') {
+              if (this.designatedstatus === true) {
+                if (this.Aquiredthrough?.value === 'Primary Market') {
                   this.showtablegrid = true;
                   var model: any = {
                     Id: this.oid++,
@@ -857,7 +802,8 @@ export class InvestmentApprovalFormComponent {
                     CurrentTradeValue_Greater: this.isYesSelected === true ? 1 : (this.isNoSelected === true ? 0 : null),
                     PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
                     AIA: this.AIA,
-                    AVQTYFINAL: this.AVQTYFINAL
+                    AVQTYFINAL: this.AVQTYFINAL,
+                    TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
                   }
                   this.formDataArray.push(model)
                   // console.log(" this.formDataArray", this.formDataArray);
@@ -870,76 +816,7 @@ export class InvestmentApprovalFormComponent {
                   this.isSellNoSelected = false;
                   this.isSellYesSelected = false;
 
-
                 } else {
-                  alert("Holding Period must be more than 30 Day(s).")
-                }
-
-              }
-            } else {
-              if (this.Aquiredthrough?.value === 'Primary Market') {
-                this.showtablegrid = true;
-                var model: any = {
-                  Id: this.oid++,
-                  id: this.userId,
-                  TRX_NO: this.TRX_NO,
-                  LOCATION: this.LOCATION,
-                  COMPANY: this.COMPANY,
-                  CREATED_BY: this.userId,
-                  Requestfor: this.selectedValue1,
-                  NatureofTrade: this.selectedValue3,
-                  AccountCode: this.PANNo.AccountCode,
-                  AccountName: this.PANNo.AccountName,
-                  CRE_USER: this.userLoggedIn.FIRSTNAME,
-                  UPD_USER: this.userLoggedIn.FIRSTNAME,
-                  EmployeeNumber: this.userLoggedIn.EMPNO,
-                  DependentName: (this.selectedValue1 == 'Self') ? null : this.PANNo.AccountName,
-                  DateofEarlierTransaction: (this.SelltransactionDate?.value == undefined || this.SelltransactionDate?.value == "") ? null : this.SelltransactionDate?.value,
-                  Primary_Issue_Type: (this.PrimaryIssueType?.value == undefined || this.PrimaryIssueType?.value == "") ? null : this.PrimaryIssueType?.value,
-                  AcquiredType: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
-                  Security: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
-                  projectId: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
-                  ISIN: (this.ISINNumber?.value == undefined || this.ISINNumber?.value == "") ? null : this.ISINNumber?.value,
-                  Transaction: (this.Transaction?.value == undefined) ? null : this.Transaction?.value,
-                  NameOfIssue: (this.NameOfIssue?.value == undefined || this.NameOfIssue?.value == "") ? null : this.NameOfIssue?.value,
-                  Month: (this.Month?.value == undefined || this.Month?.value == "") ? null : moment(this.Month?.value).format('MMMM'),
-                  QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
-                  FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
-                  Position: (this.Postion?.value == undefined || this.Postion?.value == "") ? null : this.Postion?.value,
-                  EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
-                  allAquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
-                  PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
-                  TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
-                  BidPrice: (this.BidPrice?.value == undefined || this.BidPrice?.value == "") ? null : this.BidPrice?.value,
-                  BidLotShares: (this.BidLotShares?.value == undefined || this.BidLotShares?.value == "") ? null : this.BidLotShares?.value,
-                  activemodel: (this.activemodel?.value == undefined || this.activemodel?.value == "") ? null : this.activemodel?.value,
-                  Price: (this.Price?.value == undefined || this.Price?.value == "") ? null : this.Price?.value,
-                  Reason: (this.Reason?.value == undefined || this.Reason?.value == "") ? null : this.Reason?.value,
-                  MarketPrice: (this.MarketPrice?.value == undefined || this.MarketPrice?.value == "") ? null : this.MarketPrice?.value,
-                  selectedValue4: (this.selectedValue4?.value == undefined || this.selectedValue4?.value == "") ? null : this.selectedValue4?.value,
-                  StrikePrice: (this.StrikePrice?.value == undefined || this.StrikePrice?.value == "") ? null : this.StrikePrice?.value,
-                  OptionType: (this.optiontype?.value == undefined || this.optiontype?.value == "") ? null : this.optiontype?.value,
-                  StartDate: (this.StartDate?.value == undefined || this.StartDate?.value == "") ? "" : this.StartDate?.value,
-                  Aquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
-                  CurrentTradeValue_Greater: this.isYesSelected === true ? 1 : (this.isNoSelected === true ? 0 : null),
-                  PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
-                  AIA: this.AIA,
-                  AVQTYFINAL: this.AVQTYFINAL
-                }
-                this.formDataArray.push(model)
-                // console.log(" this.formDataArray", this.formDataArray);
-                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Data Successfully add to list.' });
-                this.irfmainForm.reset();
-                this.Tenlacsmodel = false;
-                this.isYesSelected = false;
-                this.isNoSelected = false;
-                this.checktruebox = false;
-                this.isSellNoSelected = false;
-                this.isSellYesSelected = false;
-
-              } else {
-                // nondesg=this.designatedstatus;AcquiredType;this.isSellYesSelected  
-                if (this.isSellYesSelected === true) {
                   const sellTransactionDate = new Date(this.SelltransactionDate?.value);
 
                   // Get the current date
@@ -997,7 +874,8 @@ export class InvestmentApprovalFormComponent {
                       CurrentTradeValue_Greater: this.isYesSelected === true ? 1 : (this.isNoSelected === true ? 0 : null),
                       PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
                       AIA: this.AIA,
-                      AVQTYFINAL: this.AVQTYFINAL
+                      AVQTYFINAL: this.AVQTYFINAL,
+                      TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
                     }
                     this.formDataArray.push(model)
                     // console.log(" this.formDataArray", this.formDataArray);
@@ -1014,7 +892,10 @@ export class InvestmentApprovalFormComponent {
                   } else {
                     alert("Holding Period must be more than 30 Day(s).")
                   }
-                } else {
+
+                }
+              } else {
+                if (this.Aquiredthrough?.value === 'Primary Market') {
                   this.showtablegrid = true;
                   var model: any = {
                     Id: this.oid++,
@@ -1059,10 +940,10 @@ export class InvestmentApprovalFormComponent {
                     StartDate: (this.StartDate?.value == undefined || this.StartDate?.value == "") ? "" : this.StartDate?.value,
                     Aquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
                     CurrentTradeValue_Greater: this.isYesSelected === true ? 1 : (this.isNoSelected === true ? 0 : null),
-                    // PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
-                    PreviousTradeValueGreater: this.isSellNoSelected === true ? 0 : null,
+                    PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
                     AIA: this.AIA,
-                    AVQTYFINAL: this.AVQTYFINAL
+                    AVQTYFINAL: this.AVQTYFINAL,
+                    TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
                   }
                   this.formDataArray.push(model)
                   // console.log(" this.formDataArray", this.formDataArray);
@@ -1074,83 +955,289 @@ export class InvestmentApprovalFormComponent {
                   this.checktruebox = false;
                   this.isSellNoSelected = false;
                   this.isSellYesSelected = false;
+
+                } else {
+                  // nondesg=this.designatedstatus;AcquiredType;this.isSellYesSelected  
+                  if (this.isSellYesSelected === true) {
+                    const sellTransactionDate = new Date(this.SelltransactionDate?.value);
+
+                    // Get the current date
+                    const currentDate = new Date();
+
+                    // Subtract 30 days
+                    const dateBefore30Days = new Date();
+                    dateBefore30Days.setDate(currentDate.getDate() - 30);
+
+                    // Now, you can compare with the SelltransactionDate
+                    if (sellTransactionDate < dateBefore30Days && sellTransactionDate < currentDate) {
+                      this.showtablegrid = true;
+                      var model: any = {
+                        Id: this.oid++,
+                        id: this.userId,
+                        TRX_NO: this.TRX_NO,
+                        LOCATION: this.LOCATION,
+                        COMPANY: this.COMPANY,
+                        CREATED_BY: this.userId,
+                        Requestfor: this.selectedValue1,
+                        NatureofTrade: this.selectedValue3,
+                        AccountCode: this.PANNo.AccountCode,
+                        AccountName: this.PANNo.AccountName,
+                        CRE_USER: this.userLoggedIn.FIRSTNAME,
+                        UPD_USER: this.userLoggedIn.FIRSTNAME,
+                        EmployeeNumber: this.userLoggedIn.EMPNO,
+                        DependentName: (this.selectedValue1 == 'Self') ? null : this.PANNo.AccountName,
+                        DateofEarlierTransaction: (this.SelltransactionDate?.value == undefined || this.SelltransactionDate?.value == "") ? null : this.SelltransactionDate?.value,
+                        Primary_Issue_Type: (this.PrimaryIssueType?.value == undefined || this.PrimaryIssueType?.value == "") ? null : this.PrimaryIssueType?.value,
+                        AcquiredType: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
+                        Security: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
+                        projectId: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
+                        ISIN: (this.ISINNumber?.value == undefined || this.ISINNumber?.value == "") ? null : this.ISINNumber?.value,
+                        Transaction: (this.Transaction?.value == undefined) ? null : this.Transaction?.value,
+                        NameOfIssue: (this.NameOfIssue?.value == undefined || this.NameOfIssue?.value == "") ? null : this.NameOfIssue?.value,
+                        Month: (this.Month?.value == undefined || this.Month?.value == "") ? null : moment(this.Month?.value).format('MMMM'),
+                        QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
+                        FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
+                        Position: (this.Postion?.value == undefined || this.Postion?.value == "") ? null : this.Postion?.value,
+                        EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                        allAquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
+                        PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
+                        TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
+                        BidPrice: (this.BidPrice?.value == undefined || this.BidPrice?.value == "") ? null : this.BidPrice?.value,
+                        BidLotShares: (this.BidLotShares?.value == undefined || this.BidLotShares?.value == "") ? null : this.BidLotShares?.value,
+                        activemodel: (this.activemodel?.value == undefined || this.activemodel?.value == "") ? null : this.activemodel?.value,
+                        Price: (this.Price?.value == undefined || this.Price?.value == "") ? null : this.Price?.value,
+                        Reason: (this.Reason?.value == undefined || this.Reason?.value == "") ? null : this.Reason?.value,
+                        MarketPrice: (this.MarketPrice?.value == undefined || this.MarketPrice?.value == "") ? null : this.MarketPrice?.value,
+                        selectedValue4: (this.selectedValue4?.value == undefined || this.selectedValue4?.value == "") ? null : this.selectedValue4?.value,
+                        StrikePrice: (this.StrikePrice?.value == undefined || this.StrikePrice?.value == "") ? null : this.StrikePrice?.value,
+                        OptionType: (this.optiontype?.value == undefined || this.optiontype?.value == "") ? null : this.optiontype?.value,
+                        StartDate: (this.StartDate?.value == undefined || this.StartDate?.value == "") ? "" : this.StartDate?.value,
+                        Aquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
+                        CurrentTradeValue_Greater: this.isYesSelected === true ? 1 : (this.isNoSelected === true ? 0 : null),
+                        PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
+                        AIA: this.AIA,
+                        AVQTYFINAL: this.AVQTYFINAL,
+                        TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                      }
+                      this.formDataArray.push(model)
+                      // console.log(" this.formDataArray", this.formDataArray);
+                      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Data Successfully add to list.' });
+                      this.irfmainForm.reset();
+                      this.Tenlacsmodel = false;
+                      this.isYesSelected = false;
+                      this.isNoSelected = false;
+                      this.checktruebox = false;
+                      this.isSellNoSelected = false;
+                      this.isSellYesSelected = false;
+
+
+                    } else {
+                      alert("Holding Period must be more than 30 Day(s).")
+                    }
+                  } else {
+                    this.showtablegrid = true;
+                    var model: any = {
+                      Id: this.oid++,
+                      id: this.userId,
+                      TRX_NO: this.TRX_NO,
+                      LOCATION: this.LOCATION,
+                      COMPANY: this.COMPANY,
+                      CREATED_BY: this.userId,
+                      Requestfor: this.selectedValue1,
+                      NatureofTrade: this.selectedValue3,
+                      AccountCode: this.PANNo.AccountCode,
+                      AccountName: this.PANNo.AccountName,
+                      CRE_USER: this.userLoggedIn.FIRSTNAME,
+                      UPD_USER: this.userLoggedIn.FIRSTNAME,
+                      EmployeeNumber: this.userLoggedIn.EMPNO,
+                      DependentName: (this.selectedValue1 == 'Self') ? null : this.PANNo.AccountName,
+                      DateofEarlierTransaction: (this.SelltransactionDate?.value == undefined || this.SelltransactionDate?.value == "") ? null : this.SelltransactionDate?.value,
+                      Primary_Issue_Type: (this.PrimaryIssueType?.value == undefined || this.PrimaryIssueType?.value == "") ? null : this.PrimaryIssueType?.value,
+                      AcquiredType: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
+                      Security: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
+                      projectId: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
+                      ISIN: (this.ISINNumber?.value == undefined || this.ISINNumber?.value == "") ? null : this.ISINNumber?.value,
+                      Transaction: (this.Transaction?.value == undefined) ? null : this.Transaction?.value,
+                      NameOfIssue: (this.NameOfIssue?.value == undefined || this.NameOfIssue?.value == "") ? null : this.NameOfIssue?.value,
+                      Month: (this.Month?.value == undefined || this.Month?.value == "") ? null : moment(this.Month?.value).format('MMMM'),
+                      QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
+                      FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
+                      Position: (this.Postion?.value == undefined || this.Postion?.value == "") ? null : this.Postion?.value,
+                      EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                      allAquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
+                      PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
+                      TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
+                      BidPrice: (this.BidPrice?.value == undefined || this.BidPrice?.value == "") ? null : this.BidPrice?.value,
+                      BidLotShares: (this.BidLotShares?.value == undefined || this.BidLotShares?.value == "") ? null : this.BidLotShares?.value,
+                      activemodel: (this.activemodel?.value == undefined || this.activemodel?.value == "") ? null : this.activemodel?.value,
+                      Price: (this.Price?.value == undefined || this.Price?.value == "") ? null : this.Price?.value,
+                      Reason: (this.Reason?.value == undefined || this.Reason?.value == "") ? null : this.Reason?.value,
+                      MarketPrice: (this.MarketPrice?.value == undefined || this.MarketPrice?.value == "") ? null : this.MarketPrice?.value,
+                      selectedValue4: (this.selectedValue4?.value == undefined || this.selectedValue4?.value == "") ? null : this.selectedValue4?.value,
+                      StrikePrice: (this.StrikePrice?.value == undefined || this.StrikePrice?.value == "") ? null : this.StrikePrice?.value,
+                      OptionType: (this.optiontype?.value == undefined || this.optiontype?.value == "") ? null : this.optiontype?.value,
+                      StartDate: (this.StartDate?.value == undefined || this.StartDate?.value == "") ? "" : this.StartDate?.value,
+                      Aquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
+                      CurrentTradeValue_Greater: this.isYesSelected === true ? 1 : (this.isNoSelected === true ? 0 : null),
+                      // PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
+                      PreviousTradeValueGreater: this.isSellNoSelected === true ? 0 : null,
+                      AIA: this.AIA,
+                      AVQTYFINAL: this.AVQTYFINAL,
+                      TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                    }
+                    this.formDataArray.push(model)
+                    // console.log(" this.formDataArray", this.formDataArray);
+                    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Data Successfully add to list.' });
+                    this.irfmainForm.reset();
+                    this.Tenlacsmodel = false;
+                    this.isYesSelected = false;
+                    this.isNoSelected = false;
+                    this.checktruebox = false;
+                    this.isSellNoSelected = false;
+                    this.isSellYesSelected = false;
+                  }
+
                 }
-
               }
-            }
-          } else {
-            if (this.Postion?.value !== 'SquareOff') {
-              this.showtablegrid = true;
-              var model: any = {
-                Id: this.oid++,
-                id: this.userId,
-                TRX_NO: this.TRX_NO,
-                LOCATION: this.LOCATION,
-                COMPANY: this.COMPANY,
-                CREATED_BY: this.userId,
-                Requestfor: this.selectedValue1,
-                NatureofTrade: this.selectedValue3,
-                AccountCode: this.PANNo.AccountCode,
-                AccountName: this.PANNo.AccountName,
-                CRE_USER: this.userLoggedIn.FIRSTNAME,
-                UPD_USER: this.userLoggedIn.FIRSTNAME,
-                EmployeeNumber: this.userLoggedIn.EMPNO,
-                DependentName: (this.selectedValue1 == 'Self') ? null : this.PANNo.AccountName,
-                DateofEarlierTransaction: (this.SelltransactionDate?.value == undefined || this.SelltransactionDate?.value == "") ? null : this.SelltransactionDate?.value,
-                Primary_Issue_Type: (this.PrimaryIssueType?.value == undefined || this.PrimaryIssueType?.value == "") ? null : this.PrimaryIssueType?.value,
-                AcquiredType: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
-                Security: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
-                projectId: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
-                ISIN: (this.ISINNumber?.value == undefined || this.ISINNumber?.value == "") ? null : this.ISINNumber?.value,
-                Transaction: (this.Transaction?.value == undefined) ? null : this.Transaction?.value,
-                NameOfIssue: (this.NameOfIssue?.value == undefined || this.NameOfIssue?.value == "") ? null : this.NameOfIssue?.value,
-                Month: (this.Month?.value == undefined || this.Month?.value == "") ? null : moment(this.Month?.value).format('MMMM'),
-                QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
-                FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
-                Position: (this.Postion?.value == undefined) ? null : this.Postion?.value,
-                EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
-                allAquiredthrough: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
-                PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
-                TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
-                BidPrice: (this.BidPrice?.value == undefined || this.BidPrice?.value == "") ? null : this.BidPrice?.value,
-                BidLotShares: (this.BidLotShares?.value == undefined || this.BidLotShares?.value == "") ? null : this.BidLotShares?.value,
-                activemodel: (this.activemodel?.value == undefined || this.activemodel?.value == "") ? null : this.activemodel?.value,
-                Price: (this.Price?.value == undefined || this.Price?.value == "") ? null : this.Price?.value,
-                Reason: (this.Reason?.value == undefined || this.Reason?.value == "") ? null : this.Reason?.value,
-                MarketPrice: (this.MarketPrice?.value == undefined || this.MarketPrice?.value == "") ? null : this.MarketPrice?.value,
-                selectedValue4: (this.selectedValue4?.value == undefined || this.selectedValue4?.value == "") ? null : this.selectedValue4?.value,
-                StrikePrice: (this.StrikePrice?.value == undefined || this.StrikePrice?.value == "") ? null : this.StrikePrice?.value,
-                OptionType: (this.optiontype?.value == undefined || this.optiontype?.value == "") ? null : this.optiontype?.value,
-                StartDate: (this.StartDate?.value == undefined || this.StartDate?.value == "") ? "" : this.StartDate?.value,
-                Aquiredthrough: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
-                CurrentTradeValue_Greater: this.isYesSelected === true ? 1 : (this.isNoSelected === true ? 0 : null),
-                PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
-                AIA: this.AIA,
-                AVQTYFINAL: this.AVQTYFINAL
-              }
-              this.formDataArray.push(model)
-              // console.log(" this.formDataArray", this.formDataArray);
-              this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Data Successfully add to list.' });
-              this.irfmainForm.reset();
-              this.Tenlacsmodel = false;
-              this.isYesSelected = false;
-              this.isNoSelected = false;
-              this.checktruebox = false;
-              this.isSellNoSelected = false;
-              this.isSellYesSelected = false;
             } else {
-              if (this.isSellYesSelected === true) {
-                const sellTransactionDate = new Date(this.StartDate?.value);
+              if (this.Postion?.value !== 'SquareOff') {
+                this.showtablegrid = true;
+                var model: any = {
+                  Id: this.oid++,
+                  id: this.userId,
+                  TRX_NO: this.TRX_NO,
+                  LOCATION: this.LOCATION,
+                  COMPANY: this.COMPANY,
+                  CREATED_BY: this.userId,
+                  Requestfor: this.selectedValue1,
+                  NatureofTrade: this.selectedValue3,
+                  AccountCode: this.PANNo.AccountCode,
+                  AccountName: this.PANNo.AccountName,
+                  CRE_USER: this.userLoggedIn.FIRSTNAME,
+                  UPD_USER: this.userLoggedIn.FIRSTNAME,
+                  EmployeeNumber: this.userLoggedIn.EMPNO,
+                  DependentName: (this.selectedValue1 == 'Self') ? null : this.PANNo.AccountName,
+                  DateofEarlierTransaction: (this.SelltransactionDate?.value == undefined || this.SelltransactionDate?.value == "") ? null : this.SelltransactionDate?.value,
+                  Primary_Issue_Type: (this.PrimaryIssueType?.value == undefined || this.PrimaryIssueType?.value == "") ? null : this.PrimaryIssueType?.value,
+                  AcquiredType: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
+                  Security: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
+                  projectId: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
+                  ISIN: (this.ISINNumber?.value == undefined || this.ISINNumber?.value == "") ? null : this.ISINNumber?.value,
+                  Transaction: (this.Transaction?.value == undefined) ? null : this.Transaction?.value,
+                  NameOfIssue: (this.NameOfIssue?.value == undefined || this.NameOfIssue?.value == "") ? null : this.NameOfIssue?.value,
+                  Month: (this.Month?.value == undefined || this.Month?.value == "") ? null : moment(this.Month?.value).format('MMMM'),
+                  QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
+                  FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
+                  Position: (this.Postion?.value == undefined) ? null : this.Postion?.value,
+                  EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                  allAquiredthrough: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
+                  PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
+                  TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
+                  BidPrice: (this.BidPrice?.value == undefined || this.BidPrice?.value == "") ? null : this.BidPrice?.value,
+                  BidLotShares: (this.BidLotShares?.value == undefined || this.BidLotShares?.value == "") ? null : this.BidLotShares?.value,
+                  activemodel: (this.activemodel?.value == undefined || this.activemodel?.value == "") ? null : this.activemodel?.value,
+                  Price: (this.Price?.value == undefined || this.Price?.value == "") ? null : this.Price?.value,
+                  Reason: (this.Reason?.value == undefined || this.Reason?.value == "") ? null : this.Reason?.value,
+                  MarketPrice: (this.MarketPrice?.value == undefined || this.MarketPrice?.value == "") ? null : this.MarketPrice?.value,
+                  selectedValue4: (this.selectedValue4?.value == undefined || this.selectedValue4?.value == "") ? null : this.selectedValue4?.value,
+                  StrikePrice: (this.StrikePrice?.value == undefined || this.StrikePrice?.value == "") ? null : this.StrikePrice?.value,
+                  OptionType: (this.optiontype?.value == undefined || this.optiontype?.value == "") ? null : this.optiontype?.value,
+                  StartDate: (this.StartDate?.value == undefined || this.StartDate?.value == "") ? "" : this.StartDate?.value,
+                  Aquiredthrough: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
+                  CurrentTradeValue_Greater: this.isYesSelected === true ? 1 : (this.isNoSelected === true ? 0 : null),
+                  PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
+                  AIA: this.AIA,
+                  AVQTYFINAL: this.AVQTYFINAL,
+                  TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                }
+                this.formDataArray.push(model)
+                // console.log(" this.formDataArray", this.formDataArray);
+                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Data Successfully add to list.' });
+                this.irfmainForm.reset();
+                this.Tenlacsmodel = false;
+                this.isYesSelected = false;
+                this.isNoSelected = false;
+                this.checktruebox = false;
+                this.isSellNoSelected = false;
+                this.isSellYesSelected = false;
+              } else {
+                if (this.isSellYesSelected === true) {
+                  const sellTransactionDate = new Date(this.StartDate?.value);
 
-                // Get the current date
-                const currentDate = new Date();
+                  // Get the current date
+                  const currentDate = new Date();
 
-                // Subtract 30 days
-                const dateBefore30Days = new Date();
-                dateBefore30Days.setDate(currentDate.getDate() - 30);
+                  // Subtract 30 days
+                  const dateBefore30Days = new Date();
+                  dateBefore30Days.setDate(currentDate.getDate() - 30);
 
-                // Now, you can compare with the SelltransactionDate
-                if (sellTransactionDate < dateBefore30Days && sellTransactionDate < currentDate) {
+                  // Now, you can compare with the SelltransactionDate
+                  if (sellTransactionDate < dateBefore30Days && sellTransactionDate < currentDate) {
+                    this.showtablegrid = true;
+                    var model: any = {
+                      Id: this.oid++,
+                      id: this.userId,
+                      TRX_NO: this.TRX_NO,
+                      LOCATION: this.LOCATION,
+                      COMPANY: this.COMPANY,
+                      CREATED_BY: this.userId,
+                      Requestfor: this.selectedValue1,
+                      NatureofTrade: this.selectedValue3,
+                      AccountCode: this.PANNo.AccountCode,
+                      AccountName: this.PANNo.AccountName,
+                      CRE_USER: this.userLoggedIn.FIRSTNAME,
+                      UPD_USER: this.userLoggedIn.FIRSTNAME,
+                      EmployeeNumber: this.userLoggedIn.EMPNO,
+                      DependentName: (this.selectedValue1 == 'Self') ? null : this.PANNo.AccountName,
+                      DateofEarlierTransaction: (this.SelltransactionDate?.value == undefined || this.SelltransactionDate?.value == "") ? null : this.SelltransactionDate?.value,
+                      Primary_Issue_Type: (this.PrimaryIssueType?.value == undefined || this.PrimaryIssueType?.value == "") ? null : this.PrimaryIssueType?.value,
+                      AcquiredType: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
+                      Security: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
+                      projectId: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
+                      ISIN: (this.ISINNumber?.value == undefined || this.ISINNumber?.value == "") ? null : this.ISINNumber?.value,
+                      Transaction: (this.Transaction?.value == undefined) ? null : this.Transaction?.value,
+                      NameOfIssue: (this.NameOfIssue?.value == undefined || this.NameOfIssue?.value == "") ? null : this.NameOfIssue?.value,
+                      Month: (this.Month?.value == undefined || this.Month?.value == "") ? null : moment(this.Month?.value).format('MMMM'),
+                      QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
+                      FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
+                      Position: (this.Postion?.value == undefined) ? null : this.Postion?.value,
+                      EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                      allAquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
+                      PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
+                      TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
+                      BidPrice: (this.BidPrice?.value == undefined || this.BidPrice?.value == "") ? null : this.BidPrice?.value,
+                      BidLotShares: (this.BidLotShares?.value == undefined || this.BidLotShares?.value == "") ? null : this.BidLotShares?.value,
+                      activemodel: (this.activemodel?.value == undefined || this.activemodel?.value == "") ? null : this.activemodel?.value,
+                      Price: (this.Price?.value == undefined || this.Price?.value == "") ? null : this.Price?.value,
+                      Reason: (this.Reason?.value == undefined || this.Reason?.value == "") ? null : this.Reason?.value,
+                      MarketPrice: (this.MarketPrice?.value == undefined || this.MarketPrice?.value == "") ? null : this.MarketPrice?.value,
+                      selectedValue4: (this.selectedValue4?.value == undefined || this.selectedValue4?.value == "") ? null : this.selectedValue4?.value,
+                      StrikePrice: (this.StrikePrice?.value == undefined || this.StrikePrice?.value == "") ? null : this.StrikePrice?.value,
+                      OptionType: (this.optiontype?.value == undefined || this.optiontype?.value == "") ? null : this.optiontype?.value,
+                      StartDate: (this.StartDate?.value == undefined || this.StartDate?.value == "") ? "" : this.StartDate?.value,
+                      Aquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
+                      CurrentTradeValue_Greater: this.isYesSelected === true ? 1 : (this.isNoSelected === true ? 0 : null),
+                      PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
+                      AIA: this.AIA,
+                      AVQTYFINAL: this.AVQTYFINAL,
+                      TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                    }
+                    this.formDataArray.push(model)
+                    // console.log(" this.formDataArray", this.formDataArray);
+                    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Data Successfully add to list.' });
+                    this.irfmainForm.reset();
+                    this.Tenlacsmodel = false;
+                    this.isYesSelected = false;
+                    this.isNoSelected = false;
+                    this.checktruebox = false;
+                    this.isSellNoSelected = false;
+                    this.isSellYesSelected = false;
+
+
+                  } else {
+                    alert("Holding Period must be more than 30 Day(s).")
+                  }
+                } else {
                   this.showtablegrid = true;
                   var model: any = {
                     Id: this.oid++,
@@ -1195,9 +1282,11 @@ export class InvestmentApprovalFormComponent {
                     StartDate: (this.StartDate?.value == undefined || this.StartDate?.value == "") ? "" : this.StartDate?.value,
                     Aquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
                     CurrentTradeValue_Greater: this.isYesSelected === true ? 1 : (this.isNoSelected === true ? 0 : null),
-                    PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
+                    // PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
+                    PreviousTradeValueGreater: this.isSellNoSelected === true ? 0 : null,
                     AIA: this.AIA,
-                    AVQTYFINAL: this.AVQTYFINAL
+                    AVQTYFINAL: this.AVQTYFINAL,
+                    TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
                   }
                   this.formDataArray.push(model)
                   // console.log(" this.formDataArray", this.formDataArray);
@@ -1209,147 +1298,82 @@ export class InvestmentApprovalFormComponent {
                   this.checktruebox = false;
                   this.isSellNoSelected = false;
                   this.isSellYesSelected = false;
-
-
-                } else {
-                  alert("Holding Period must be more than 30 Day(s).")
                 }
-              } else {
-                this.showtablegrid = true;
-                var model: any = {
-                  Id: this.oid++,
-                  id: this.userId,
-                  TRX_NO: this.TRX_NO,
-                  LOCATION: this.LOCATION,
-                  COMPANY: this.COMPANY,
-                  CREATED_BY: this.userId,
-                  Requestfor: this.selectedValue1,
-                  NatureofTrade: this.selectedValue3,
-                  AccountCode: this.PANNo.AccountCode,
-                  AccountName: this.PANNo.AccountName,
-                  CRE_USER: this.userLoggedIn.FIRSTNAME,
-                  UPD_USER: this.userLoggedIn.FIRSTNAME,
-                  EmployeeNumber: this.userLoggedIn.EMPNO,
-                  DependentName: (this.selectedValue1 == 'Self') ? null : this.PANNo.AccountName,
-                  DateofEarlierTransaction: (this.SelltransactionDate?.value == undefined || this.SelltransactionDate?.value == "") ? null : this.SelltransactionDate?.value,
-                  Primary_Issue_Type: (this.PrimaryIssueType?.value == undefined || this.PrimaryIssueType?.value == "") ? null : this.PrimaryIssueType?.value,
-                  AcquiredType: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
-                  Security: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
-                  projectId: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
-                  ISIN: (this.ISINNumber?.value == undefined || this.ISINNumber?.value == "") ? null : this.ISINNumber?.value,
-                  Transaction: (this.Transaction?.value == undefined) ? null : this.Transaction?.value,
-                  NameOfIssue: (this.NameOfIssue?.value == undefined || this.NameOfIssue?.value == "") ? null : this.NameOfIssue?.value,
-                  Month: (this.Month?.value == undefined || this.Month?.value == "") ? null : moment(this.Month?.value).format('MMMM'),
-                  QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
-                  FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
-                  Position: (this.Postion?.value == undefined) ? null : this.Postion?.value,
-                  EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
-                  allAquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
-                  PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
-                  TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
-                  BidPrice: (this.BidPrice?.value == undefined || this.BidPrice?.value == "") ? null : this.BidPrice?.value,
-                  BidLotShares: (this.BidLotShares?.value == undefined || this.BidLotShares?.value == "") ? null : this.BidLotShares?.value,
-                  activemodel: (this.activemodel?.value == undefined || this.activemodel?.value == "") ? null : this.activemodel?.value,
-                  Price: (this.Price?.value == undefined || this.Price?.value == "") ? null : this.Price?.value,
-                  Reason: (this.Reason?.value == undefined || this.Reason?.value == "") ? null : this.Reason?.value,
-                  MarketPrice: (this.MarketPrice?.value == undefined || this.MarketPrice?.value == "") ? null : this.MarketPrice?.value,
-                  selectedValue4: (this.selectedValue4?.value == undefined || this.selectedValue4?.value == "") ? null : this.selectedValue4?.value,
-                  StrikePrice: (this.StrikePrice?.value == undefined || this.StrikePrice?.value == "") ? null : this.StrikePrice?.value,
-                  OptionType: (this.optiontype?.value == undefined || this.optiontype?.value == "") ? null : this.optiontype?.value,
-                  StartDate: (this.StartDate?.value == undefined || this.StartDate?.value == "") ? "" : this.StartDate?.value,
-                  Aquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
-                  CurrentTradeValue_Greater: this.isYesSelected === true ? 1 : (this.isNoSelected === true ? 0 : null),
-                  // PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
-                  PreviousTradeValueGreater: this.isSellNoSelected === true ? 0 : null,
-                  AIA: this.AIA,
-                  AVQTYFINAL: this.AVQTYFINAL
-                }
-                this.formDataArray.push(model)
-                // console.log(" this.formDataArray", this.formDataArray);
-                this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Data Successfully add to list.' });
-                this.irfmainForm.reset();
-                this.Tenlacsmodel = false;
-                this.isYesSelected = false;
-                this.isNoSelected = false;
-                this.checktruebox = false;
-                this.isSellNoSelected = false;
-                this.isSellYesSelected = false;
               }
             }
+
+          }
+        } else {
+          this.messageService.add({ severity: 'warn', summary: 'Warning', detail: 'Please Select Account Name' });
+        }
+      } else {
+        if (this.PANNo) {
+          this.showtablegrid = true;
+          var model: any = {
+            Id: this.oid++,
+            id: this.userId,
+            TRX_NO: this.TRX_NO,
+            LOCATION: this.LOCATION,
+            COMPANY: this.COMPANY,
+            CREATED_BY: this.userId,
+            Requestfor: this.selectedValue1,
+            NatureofTrade: this.selectedValue3,
+            AccountCode: this.PANNo.AccountCode,
+            AccountName: this.PANNo.AccountName,
+            CRE_USER: this.userLoggedIn.FIRSTNAME,
+            UPD_USER: this.userLoggedIn.FIRSTNAME,
+            EmployeeNumber: this.userLoggedIn.EMPNO,
+            DependentName: (this.selectedValue1 == 'Self') ? null : this.PANNo.AccountName,
+            DateofEarlierTransaction: (this.SelltransactionDate?.value == undefined || this.SelltransactionDate?.value == "") ? null : this.SelltransactionDate?.value,
+            Primary_Issue_Type: (this.PrimaryIssueType?.value == undefined || this.PrimaryIssueType?.value == "") ? 'IPO' : this.PrimaryIssueType?.value,
+            AcquiredType: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
+            // Security: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
+            Security: (this.NameOfIssue?.value == undefined || this.NameOfIssue?.value == "") ? null : this.NameOfIssue?.value,
+            // projectId: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
+            ISIN: (this.ISINNumber?.value == undefined || this.ISINNumber?.value == "") ? null : this.ISINNumber?.value,
+            Transaction: (this.Transaction?.value == undefined || this.Transaction?.value == "") ? null : this.Transaction?.value,
+            NameOfIssue: (this.NameOfIssue?.value == undefined || this.NameOfIssue?.value == "") ? null : this.NameOfIssue?.value,
+            Month: (this.Month?.value == undefined || this.Month?.value == "") ? null : moment(this.Month?.value).format('MMMM'),
+            QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
+            FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
+            Position: (this.Postion?.value == undefined || this.Postion?.value == "") ? null : this.Postion?.value,
+            EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+            allAquiredthrough: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
+            PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
+            TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
+            BidPrice: (this.BidPrice?.value == undefined || this.BidPrice?.value == "") ? null : this.BidPrice?.value,
+            BidLotShares: (this.BidLotShares?.value == undefined || this.BidLotShares?.value == "") ? null : this.BidLotShares?.value,
+            activemodel: (this.activemodel?.value == undefined || this.activemodel?.value == "") ? null : this.activemodel?.value,
+            Price: (this.Price?.value == undefined || this.Price?.value == "") ? null : this.Price?.value,
+            Reason: (this.Reason?.value == undefined || this.Reason?.value == "") ? null : this.Reason?.value,
+            MarketPrice: (this.MarketPrice?.value == undefined || this.MarketPrice?.value == "") ? null : this.MarketPrice?.value,
+            selectedValue4: (this.selectedValue4?.value == undefined || this.selectedValue4?.value == "") ? null : this.selectedValue4?.value,
+            StrikePrice: (this.StrikePrice?.value == undefined || this.StrikePrice?.value == "") ? null : this.StrikePrice?.value,
+            OptionType: (this.optiontype?.value == undefined || this.optiontype?.value == "") ? null : this.optiontype?.value,
+            StartDate: (this.StartDate?.value == undefined || this.StartDate?.value == "") ? "" : this.StartDate?.value,
+            Aquiredthrough: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
+            CurrentTradeValue_Greater: this.isYesSelected === true ? 1 : (this.isNoSelected === true ? 0 : null),
+            PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
+            AIA: this.AIA,
+            AVQTYFINAL: this.AVQTYFINAL,
+            TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
           }
 
+
+          this.formDataArray.push(model);
+          console.log(" this.formDataArray", this.formDataArray);
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Data Successfully add to list.' });
+          this.irfmainForm.reset();
+          this.Tenlacsmodel = false;
+          this.isYesSelected = false;
+          this.isNoSelected = false;
+          this.checktruebox = false;
+          this.isSellNoSelected = false;
+          this.isSellYesSelected = false;
+        } else {
+          this.messageService.add({ severity: 'warn', summary: 'Warning', detail: 'Please Select Account Name' });
         }
-      } else {
-        this.messageService.add({ severity: 'warn', summary: 'Warning', detail: 'Please Select Account Name' });
       }
-    } else {
-      if (this.PANNo) {
-        this.showtablegrid = true;
-        var model: any = {
-          Id: this.oid++,
-          id: this.userId,
-          TRX_NO: this.TRX_NO,
-          LOCATION: this.LOCATION,
-          COMPANY: this.COMPANY,
-          CREATED_BY: this.userId,
-          Requestfor: this.selectedValue1,
-          NatureofTrade: this.selectedValue3,
-          AccountCode: this.PANNo.AccountCode,
-          AccountName: this.PANNo.AccountName,
-          CRE_USER: this.userLoggedIn.FIRSTNAME,
-          UPD_USER: this.userLoggedIn.FIRSTNAME,
-          EmployeeNumber: this.userLoggedIn.EMPNO,
-          DependentName: (this.selectedValue1 == 'Self') ? null : this.PANNo.AccountName,
-          DateofEarlierTransaction: (this.SelltransactionDate?.value == undefined || this.SelltransactionDate?.value == "") ? null : this.SelltransactionDate?.value,
-          Primary_Issue_Type: (this.PrimaryIssueType?.value == undefined || this.PrimaryIssueType?.value == "") ? 'IPO' : this.PrimaryIssueType?.value,
-          AcquiredType: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
-          // Security: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
-          Security: (this.NameOfIssue?.value == undefined || this.NameOfIssue?.value == "") ? null : this.NameOfIssue?.value,
-          // projectId: (B.SCRIP_DESC == undefined || B.SCRIP_DESC == "") ? null : B.SCRIP_DESC,
-          ISIN: (this.ISINNumber?.value == undefined || this.ISINNumber?.value == "") ? null : this.ISINNumber?.value,
-          Transaction: (this.Transaction?.value == undefined || this.Transaction?.value == "") ? null : this.Transaction?.value,
-          NameOfIssue: (this.NameOfIssue?.value == undefined || this.NameOfIssue?.value == "") ? null : this.NameOfIssue?.value,
-          Month: (this.Month?.value == undefined || this.Month?.value == "") ? null : moment(this.Month?.value).format('MMMM'),
-          QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
-          FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
-          Position: (this.Postion?.value == undefined || this.Postion?.value == "") ? null : this.Postion?.value,
-          EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
-          allAquiredthrough: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
-          PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
-          TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
-          BidPrice: (this.BidPrice?.value == undefined || this.BidPrice?.value == "") ? null : this.BidPrice?.value,
-          BidLotShares: (this.BidLotShares?.value == undefined || this.BidLotShares?.value == "") ? null : this.BidLotShares?.value,
-          activemodel: (this.activemodel?.value == undefined || this.activemodel?.value == "") ? null : this.activemodel?.value,
-          Price: (this.Price?.value == undefined || this.Price?.value == "") ? null : this.Price?.value,
-          Reason: (this.Reason?.value == undefined || this.Reason?.value == "") ? null : this.Reason?.value,
-          MarketPrice: (this.MarketPrice?.value == undefined || this.MarketPrice?.value == "") ? null : this.MarketPrice?.value,
-          selectedValue4: (this.selectedValue4?.value == undefined || this.selectedValue4?.value == "") ? null : this.selectedValue4?.value,
-          StrikePrice: (this.StrikePrice?.value == undefined || this.StrikePrice?.value == "") ? null : this.StrikePrice?.value,
-          OptionType: (this.optiontype?.value == undefined || this.optiontype?.value == "") ? null : this.optiontype?.value,
-          StartDate: (this.StartDate?.value == undefined || this.StartDate?.value == "") ? "" : this.StartDate?.value,
-          Aquiredthrough: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
-          CurrentTradeValue_Greater: this.isYesSelected === true ? 1 : (this.isNoSelected === true ? 0 : null),
-          PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
-          AIA: this.AIA,
-          AVQTYFINAL: this.AVQTYFINAL
-        }
-
-
-        this.formDataArray.push(model);
-        console.log(" this.formDataArray", this.formDataArray);
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Data Successfully add to list.' });
-        this.irfmainForm.reset();
-        this.Tenlacsmodel = false;
-        this.isYesSelected = false;
-        this.isNoSelected = false;
-        this.checktruebox = false;
-        this.isSellNoSelected = false;
-        this.isSellYesSelected = false;
-      } else {
-        this.messageService.add({ severity: 'warn', summary: 'Warning', detail: 'Please Select Account Name' });
-      }
-    }
-
   }
 
   getFormattedReasons(rejectionReasons: string): string {

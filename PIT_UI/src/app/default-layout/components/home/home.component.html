@@ -1,15 +1,13 @@
 <p-toast></p-toast>
 <div class="grid">
-    <div class="col-7 live-feeds">
+    <div class="live-feeds">
         <div
             class="card bg-white alert border-0 border-start border-5 border-primary alert-dismissible fade show py-2 px-1">
             <div class="align-items-center">
                 <div class="ms-3">
-                    <h6 class="mb-0 text-primary">NSE/BSE Live Feed</h6>
-                    <div>
-                        <marquee direction="left" scrolldelay="85" behavior="loop">Adani Enterpris 2,176.70, Adani Ports
-                            792.25, Apollo Hospital 5,490.05 Adani Enterpris 2,176.70, Adani Ports 792.25</marquee>
-                    </div>
+                    <h6 class="mb-0 text-primary d-flex">NSE/BSE Live Feed: <small class="text-black"><marquee direction="left" scrolldelay="85" behavior="loop">Adani Enterpris 2,176.70, Adani Ports
+                            792.25, Apollo Hospital 5,490.05 Adani Enterpris 2,176.70, Adani Ports 792.25</marquee></small></h6>
+                    
                 </div>
             </div>
         </div>
@@ -575,11 +573,11 @@
                                         <div class="">{{employeeData.joindate}}</div>
                                     </td>
                                     <td class="p-0">
-                                        <!-- <div class="bg-gradient-ohhappiness text-white pl-1">Submitted</div> -->
+                                        <!-- <div class="bg-success text-black pl-1">Submitted</div> -->
                                         <div *ngIf="employeeData.jdsubmit == true"
-                                            class="bg-gradient-ohhappiness text-white p-1 border-bottom">Submitted</div>
+                                            class="bg-success text-black p-1 border-bottom">Submitted</div>
                                         <div *ngIf="employeeData.jdsubmit != true"
-                                            class="bg-gradient-ibiza text-white p-1 border-bottom">Pending</div>
+                                            class="bg-danger text-black p-1 border-bottom">Pending</div>
                                     </td>
 
                                 </tr>
@@ -590,9 +588,9 @@
                                     </td>
                                     <td class="p-0">
                                         <div *ngIf="employeeData.eahsubmit == true"
-                                            class="bg-gradient-ohhappiness text-white p-1 border-bottom">Submitted</div>
+                                            class="bg-success text-black p-1 border-bottom">Submitted</div>
                                         <div *ngIf="employeeData.eahsubmit != true"
-                                            class="bg-gradient-ibiza text-white p-1 border-bottom">Pending</div>
+                                            class="bg-danger text-black p-1 border-bottom">Pending</div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -606,13 +604,13 @@
                                     </td>
                                     <td class="p-0">
                                         <div *ngIf="employeeData.hasdatainpreviousquarter == true"
-                                            class="bg-gradient-ohhappiness text-white p-1 border-bottom">Submitted</div>
+                                            class="bg-success text-black p-1 border-bottom">Submitted</div>
                                         <div *ngIf="employeeData.hasdatainpreviousquarter != true"
-                                            class="bg-gradient-ibiza text-white p-1 border-bottom">Pending</div>
+                                            class="bg-danger text-black p-1 border-bottom">Pending</div>
                                         <div *ngIf="employeeData.hasdataincurrentquarter == true"
-                                            class="bg-gradient-ohhappiness text-white p-1 border-bottom">Submitted</div>
+                                            class="bg-success text-black p-1 border-bottom">Submitted</div>
                                         <div *ngIf="employeeData.hasdataincurrentquarter != true"
-                                            class="bg-gradient-ibiza text-white p-1 border-bottom">Pending</div>
+                                            class="bg-danger text-black p-1 border-bottom">Pending</div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -626,13 +624,13 @@
                                         <div class="border p-1">{{employeeData.currentquatname}}</div>
                                     </td>
                                     <td class="p-0">
-                                        <div class="bg-gradient-ohhappiness text-white p-1 border-bottom">Submitted
+                                        <div class="bg-success text-black p-1 border-bottom">Submitted
                                         </div>
-                                        <!-- <div *ngIf="employeeData.hasdatainpreviousquarter != true" class="bg-gradient-ibiza text-white pl-1">Pending</div> -->
+                                        <!-- <div *ngIf="employeeData.hasdatainpreviousquarter != true" class="bg-danger text-black pl-1">Pending</div> -->
                                         <div *ngIf="employeeData.hasbothscoiacceptloganddata == true"
-                                            class="bg-gradient-ohhappiness text-white p-1 border-bottom">Submitted</div>
+                                            class="bg-success text-black p-1 border-bottom">Submitted</div>
                                         <div *ngIf="employeeData.hasbothscoiacceptloganddata != true"
-                                            class="bg-gradient-ibiza text-white p-1 border-bottom">Pending</div>
+                                            class="bg-danger text-black p-1 border-bottom">Pending</div>
                                     </td>
                                 </tr>
                             </tbody>
@@ -683,10 +681,10 @@
                                     <td>{{x.ScripName}}</td>
                                     <td>{{x.CreatedDate | date}}</td>
                                     <td *ngIf="x.Status=='Clarification Provided'"
-                                        class="bg-gradient-ohhappiness text-white">
+                                        class="bg-success text-black">
                                         {{x.Status}}</td>
                                     <td *ngIf="x.Status=='Clarification Not Provided'"
-                                        class="bg-gradient-ibiza text-white">
+                                        class="bg-danger text-black">
                                         {{x.Status}}</td>
                                     <td class="text-center">
                                         <button pButton pRipple type="button" (click)="showDialog(x)" label=""
@@ -825,56 +823,56 @@
         <!-- row row-cols-1 row-cols-md-2 row-cols-xl-4;row row-cols-auto row-cols-md-auto row-cols-xl-auto -->
         <div class="row row-cols-auto row-cols-md-auto row-cols-xl-auto">
             <div class="col">
-                <div class="card radius-10 mb-2 bg-gradient-ohhappiness status-box">
+                <div class="card radius-10 mb-2 bg-default status-box">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div>
-                                <p class="mb-0 text-white text-center fw-bold">EAH Update Status</p>
+                                <p class="mb-0 text-black text-left fw-bold">EAH Update Status</p>
                                 <ul class="list-group">
                                     <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-white">
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-black">
                                         Applicable -
-                                        <span class="badge bg-gradient-ohhappiness rounded-pill"><a
-                                                class="text-white underline" (click)="showProjectData('AllEAH')">
+                                        <span class=""><a
+                                                class="text-black underline fw-bold" (click)="showProjectData('AllEAH')">
                                                 {{TotalUProjectCount}}
                                             </a></span>
                                     </li>
                                     <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-white">
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-black">
                                         Completed -
-                                        <span class="badge bg-gradient-ohhappiness rounded-pill"><a
-                                                class="text-white underline"
+                                        <span class=""><a
+                                                class="text-black underline fw-bold"
                                                 (click)="showProjectData('ActiveEAH')">{{ProjectCount}}
                                             </a></span>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="widgets-icons bg-white text-success ms-auto"><i class='bx bx-user-check'></i>
+                            <div class="widgets-icons bg-white text-default ms-auto"><i class='bx bx-user-check'></i>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col">
-                <div class="card radius-10 mb-2 bg-gradient-cosmic status-box">
+                <div class="card radius-10 mb-2 bg-default status-box">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div>
-                                <p class="mb-0 text-white text-center fw-bold">PCOI Update Status</p>
+                                <p class="mb-0 text-black text-left fw-bold">PCOI Update Status</p>
                                 <ul class="list-group">
                                     <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-white">
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-black">
                                         Applicable -
-                                        <span class="badge bg-gradient-cosmic rounded-pill"><a
-                                                class="text-white underline" (click)="showProjectData('PCOIAll')">
+                                        <span class=""><a
+                                                class="text-black underline fw-bold" (click)="showProjectData('PCOIAll')">
                                                 {{TotalUPCOICount}}
                                             </a></span>
                                     </li>
                                     <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-white">
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-black">
                                         Completed -
-                                        <span class="badge bg-gradient-cosmic rounded-pill"><a
-                                                class="text-white underline" (click)="showProjectData('PCOIActive')">
+                                        <span class=""><a
+                                                class="text-black underline fw-bold" (click)="showProjectData('PCOIActive')">
                                                 {{PCOICount}}
                                             </a> </span>
                                     </li>
@@ -888,25 +886,25 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card radius-10 mb-2 bg-gradient-ibiza status-box">
+                <div class="card radius-10 mb-2 bg-default status-box">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div>
-                                <p class="mb-0 text-white text-center fw-bold">SCOI Update Status</p>
+                                <p class="mb-0 text-black text-left fw-bold">SCOI Update Status</p>
                                 <ul class="list-group">
                                     <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-white">
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-black">
                                         Applicable -
-                                        <span class="badge bg-gradient-ibiza rounded-pill"><a
-                                                class="text-white underline" (click)="showProjectData('SCOIAll')">
+                                        <span class=""><a
+                                                class="text-black underline fw-bold" (click)="showProjectData('SCOIAll')">
                                                 {{TotalUSCOICount}}
                                             </a></span>
                                     </li>
                                     <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-white">
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-black">
                                         Completed -
-                                        <span class="badge bg-gradient-ibiza rounded-pill"><a
-                                                class="text-white underline" (click)="showProjectData('SCOIActive')">
+                                        <span class=""><a
+                                                class="text-black underline fw-bold" (click)="showProjectData('SCOIActive')">
                                                 {{SCOICount}}
                                             </a></span>
                                     </li>
@@ -924,23 +922,23 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center flex-row">
                             <div>
-                                <p class="mb-0 text-white text-center">Today's IRF Approvals</p>
+                                <p class="mb-0 text-black text-center">Today's IRF Approvals</p>
                                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span class="text-white">Total Requests -</span> <a
+                                    <span class="text-black">Total Requests -</span> <a
                                         (click)="showProjectData('TodayIRFActive')">
-                                        <h6 class="my-1 text-white">{{TotalUIRFCount}}</h6>
+                                        <h6 class="my-1 text-black">{{TotalUIRFCount}}</h6>
                                     </a>
-                                    <span class="text-white">Rejected Requests -</span> <a
+                                    <span class="text-black">Rejected Requests -</span> <a
                                         (click)="showProjectData('TodayRejectIRF')">
-                                        <h6 class="my-1 text-white">{{TotalRejectIRFCount}}</h6>
+                                        <h6 class="my-1 text-black">{{TotalRejectIRFCount}}</h6>
                                     </a>
-                                    <span class="text-white" (click)="showProjectData('ViolationReceive')">Clarification
+                                    <span class="text-black" (click)="showProjectData('ViolationReceive')">Clarification
                                         Received</span>
-                                    <span class="text-white" (click)="showProjectData('ViolationAwait')">Clarification
+                                    <span class="text-black" (click)="showProjectData('ViolationAwait')">Clarification
                                         Awaited</span>
-                                    <span class="text-white">Violations -</span><a style="margin-right: 10px;"
+                                    <span class="text-black">Violations -</span><a style="margin-right: 10px;"
                                         (click)="showProjectData('ViolationActive')">
-                                        <h6 class="my-1 text-white">{{ViolationCount}}</h6>
+                                        <h6 class="my-1 text-black">{{ViolationCount}}</h6>
                                     </a>
 
                                 </div>                               
@@ -952,26 +950,26 @@
                 </div>
             </div> -->
             <div class="col">
-                <div class="card radius-10 mb-2 bg-gradient-kyoto status-box">
-                    <div class="card-body">
+                <div class="card radius-10 mb-2 bg-default status-box">
+                    <div class="card-body pb-0">
                         <div class="d-flex align-items-center">
                             <div>
-                                <p class="mb-0 text-white text-center fw-bold">Today's IRF Approvals</p>
+                                <p class="mb-0 text-black text-left fw-bold">Today's IRF Approvals</p>
                                 <ul class="list-group">
                                     <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-white">
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-black">
                                         Total Requests -
-                                        <span class="badge bg-gradient-kyoto rounded-pill"><a
-                                                class="text-white underline"
+                                        <span class="badge bg-default rounded-pill"><a
+                                                class="text-black underline fw-bold"
                                                 (click)="showProjectData('TodayIRFActive')">
                                                 {{TotalUIRFCount}}
                                             </a></span>
                                     </li>
                                     <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-white">
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-black">
                                         Rejected Requests -
-                                        <span class="badge bg-gradient-kyoto rounded-pill"><a
-                                                class="text-white underline"
+                                        <span class="badge bg-default rounded-pill"><a
+                                                class="text-black underline fw-bold"
                                                 (click)="showProjectData('TodayRejectIRF')">
                                                 {{TotalRejectIRFCount}}
                                             </a></span>
@@ -985,28 +983,28 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card radius-10 mb-2 bg-gradient-blues status-box">
+                <div class="card radius-10 mb-2 bg-default status-box">
                     <div class="card-body pb-0">
                         <div class="d-flex align-items-center">
                             <div>
-                                <p class="mb-0 text-white fw-bold">Violations</p>
+                                <p class="mb-0 text-black fw-bold">Violations</p>
                                 <ul class="list-group">
                                     <li (click)="showProjectData('ViolationReceive')"
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-0 text-white underline cursor-pointer">
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-0 text-black underline fw-bold cursor-pointer">
                                         Clarification
                                         Received
 
                                     </li>
                                     <li (click)="showProjectData('ViolationAwait')"
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-0 text-white underline cursor-pointer">
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-0 text-black underline fw-bold cursor-pointer">
                                         Clarification
                                         Awaited
                                     </li>
                                     <li
-                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-01 text-white">
+                                        class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-01 text-black">
                                         Violations -
-                                        <span class="badge bg-gradient-blues rounded-pill"><a
-                                                class="text-white underline"
+                                        <span class=""><a
+                                                class="text-black underline fw-bold"
                                                 (click)="showProjectData('ViolationActive')">
                                                 {{ViolationCount}}
                                             </a></span>
@@ -1790,7 +1788,7 @@
                                         <td>{{product.CreatedDate | date}}</td>
                                         <td>{{product.FIRSTNAME}}</td>
                                         <td *ngIf="product.Status=='Clarification Provided'"
-                                            class="bg-gradient-ohhappiness text-white">
+                                            class="bg-success text-black">
                                             {{product.Status}}</td>
                                         <td>
                                             <ng-container *ngIf="product.Status !== 'Clarification Not Provided' ">
@@ -1881,10 +1879,10 @@
                                         <td>{{product.ScripName}}</td>
                                         <td>{{product.CreatedDate | date}}</td>
                                         <!-- <td *ngIf="product.Status=='Clarification Provided'"
-                                        class="bg-gradient-ohhappiness text-white">
+                                        class="bg-success text-black">
                                         {{product.Status}}</td> -->
                                         <td *ngIf="product.Status=='Clarification Not Provided'"
-                                            class="bg-gradient-ibiza text-white">
+                                            class="bg-danger text-black">
                                             {{product.Status}}</td>
                                         <td>
                                             <button *ngIf="product.Status=='Clarification Not Provided'" pButton pRipple
@@ -1975,10 +1973,10 @@
                                         <td>{{product.CreatedDate | date}}</td>
                                         <td>{{product.FIRSTNAME}}</td>
                                         <td *ngIf="product.Status=='Clarification Provided'"
-                                            class="bg-gradient-ohhappiness text-white">
+                                            class="bg-success text-black">
                                             {{product.Status}}</td>
                                         <td *ngIf="product.Status=='Clarification Not Provided'"
-                                            class="bg-gradient-ibiza text-white">
+                                            class="bg-danger text-black">
                                             {{product.Status}}</td>
                                         <td>
                                             <button pButton pRipple type="button" (click)="showDialog(product)" label=""
@@ -2555,3 +2553,4 @@
             </p-dialog>
         </div>
     </p-tabPanel>
+    

@@ -580,12 +580,13 @@ export class UploadsComponent implements OnInit {
           var Result = JSON.parse(this.Global.decrypt1(data.Data));
           Result.forEach((element: any) => {
             finalDataArray.push({
-              RequestID: element.TRX_NO,
-              Exch: '',
+              RequestID: element.ID,
+              Exch: element.NatureofTrade,
               AccountCode: element.AccountCode,
               AccountName: element.ACC_NAME,
               ScripName: element.Security,
               Quantity: element.EqQuantity,
+              TradeAvailableQty: element.TradeAvailableQty,
               TotalPrice: '',
               Mode: element.Transaction,
               ISIN: element.ISIN,
@@ -598,7 +599,7 @@ export class UploadsComponent implements OnInit {
           })
           this.ExcelService.exportASExcelFile(finalDataArray, 'sample_TradeDataMst_data')
           this.uploadform.reset()
-         
+
         } else {
 
 

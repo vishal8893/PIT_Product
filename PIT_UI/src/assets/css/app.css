@@ -23,6 +23,15 @@ Author URL: https://www.neweltechnologies.com/ */
 */
 
 /* General */
+@font-face {
+  font-family: 'DMSansRegular';
+  src: url('../fonts/DMSansRegular.eot');
+  src: url('../fonts/DMSansRegular.eot') format('embedded-opentype'),
+       url('../fonts/DMSansRegular.woff2') format('woff2'),
+       url('../fonts/DMSansRegular.woff') format('woff'),
+       url('../fonts/DMSansRegular.ttf') format('truetype'),
+       url('../fonts/DMSansRegular.svg#DMSansRegular') format('svg');
+}
 
 body {
 
@@ -36,10 +45,10 @@ body {
 	letter-spacing: 0.5px;
 
 
-	background-color: #f4f3ef;
+	background-color: #F8F7FA;
 
 
-	font-family: 'Roboto', sans-serif;
+	font-family: 'DMSansRegular', sans-serif !important;
 
 
 }
@@ -295,9 +304,9 @@ a {
 	justify-content: start;
 	gap: 0.5rem;
 	font-size: 13px;
-	font-weight: bold;
+	font-weight: 500;
 	border-radius: 0;
-	padding: 0.25rem 1rem;
+	padding: 0.8rem 1rem;
 	margin: 2px 0rem;
 	border-bottom: 1px solid #e3e3e3;
 
@@ -393,6 +402,7 @@ ul.scroll-menu {
 	text-overflow: ellipsis;
 	padding-right: 0px;
 	padding-left: 0px;
+	color: #000000;
 }
 
 .primary-menu .navbar .navbar-nav .dropdown-menu .dropdown-item i {
@@ -421,7 +431,7 @@ ul.scroll-menu {
 
 	.primary-menu .navbar .navbar-nav a.nav-link {
 
-		border-radius: 6px;
+		border-radius: 0px;
 		margin: 0px 0.3rem;
 		border-bottom: 0px solid #e3e3e3;
 
@@ -430,7 +440,7 @@ ul.scroll-menu {
 
 
 	.primary-menu .navbar .navbar-nav .dropdown-menu .dropdown-item {
-		border-radius: 6px;
+		border-radius: 0px;
 		text-wrap: wrap;
 	}
 
@@ -481,9 +491,9 @@ ul.scroll-menu {
 
 		box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
 
-		background: #ffffff;
+		background: linear-gradient(to right, #7e7ab8, #45c8f1);
 
-		padding: 10px 1.5rem;
+		padding: 0px 1.5rem;
 
 	}
 
@@ -491,7 +501,7 @@ ul.scroll-menu {
 
 	.primary-menu .navbar .navbar-nav .dropdown-menu {
 		width: 16rem;
-		border-radius: 10px;
+		border-radius: 0px;
 		max-height: 500px;
 		overflow: auto;
 	}
@@ -4323,10 +4333,10 @@ input::placeholder {
 
 
 	display: flex;
-	align-items: center;
-	height: 60px;
-	border-left: 1px solid #f0f0f0;
-	border-right: 1px solid #f0f0f0;
+    align-items: center;
+    height: 60px;
+    border-left: 1px solid #f0f0f0;
+    border-right: 1px solid #f0f0f0;
 
 
 }
@@ -4779,7 +4789,7 @@ input::placeholder {
 	vertical-align: middle;
 
 
-	margin-right: 10px;
+	/* margin-right: 10px; */
 
 
 }
@@ -5051,7 +5061,7 @@ input::placeholder {
 	background-color: #fff;
 	background-clip: padding-box;
 	border: 1px solid #d4d3d5;
-	border-radius: 0.375rem;
+	border-radius: 10rem;
 	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
@@ -5615,7 +5625,7 @@ input::placeholder {
 	vertical-align: middle;
 	user-select: none;
 	box-shadow: 0px 4px 8px -4px rgba(58, 53, 65, 0.2);
-    background-color: #dddddd;
+    background-color: #e7e7e7;
 	border-radius: 6px;
 	border-radius: 0.25rem;
 	transition: background-color .15s ease-out, color .15s ease-out;
@@ -5717,7 +5727,7 @@ input::placeholder {
 .NatureOfTrade label {
 	display: inline-block;
 	box-shadow: 0px 4px 8px -4px rgba(58, 53, 65, 0.2);
-    background-color: #dddddd;
+    background-color: #e7e7e7;
 	border-radius: 6px;
 	border-radius: 0.25rem;
 	transition: background-color .15s ease-out, color .15s ease-out;
@@ -5740,6 +5750,7 @@ input::placeholder {
 
 .btn {
 	--bs-btn-font-size: 0.8rem;
+	border-radius: 50px !important;
 }
 
 .p-dropdown .p-dropdown-label.p-placeholder {
@@ -5778,7 +5789,7 @@ p-autocomplete.p-autocomplete-clearable .p-inputtext {
 }
 
 .dashboard-tabView .p-tabview .p-tabview-nav li .p-tabview-nav-link {
-	padding: 1rem 0.6rem;
+	padding: 0.6rem 0.6rem;
 	margin-right: 4px;
 }
 
@@ -5833,6 +5844,7 @@ p-autocomplete.p-autocomplete-clearable .p-inputtext {
 
 .help-desk-button {
 	position: absolute;
+	top: 88px;
 	right: 23px;
 	z-index: 9;
 }
@@ -5868,9 +5880,10 @@ p-autocomplete.p-autocomplete-clearable .p-inputtext {
 @media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
 @media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ 
 	.live-feeds {
-		position: absolute;
-		top: 115px;
-		left: 220px;
+		position: fixed;
+		top: 10px;
+		left: 174px;
+		z-index: 99;
 	}
 }
 @media (min-width:1281px) { /* hi-res laptops and desktops */ }

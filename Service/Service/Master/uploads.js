@@ -464,230 +464,6 @@ var routes = function () {
 
 
 
-    // router.route('/SaveTradeMstData')
-    //     .post(upload.any(), async function (req, res) {
-    //         for (let key in req.body) {
-    //             req.body[key] = req.body[key] === '' || req.body[key] === 'undefined' ? null : req.body[key];
-    //         }
-
-    //         const requestBody = { ...req.body };
-    //         const requestFiles = req.files;
-    //         if (!requestFiles || requestFiles.length == 0) {
-    //             return res.status(400).json({ Success: false, Message: 'No file uploaded' });
-    //         }
-
-    //         const file = requestFiles[0];
-
-    //         try {
-    //             const workbook = XLSX.read(file.buffer, { type: 'buffer' });
-    //             const sheetName = workbook.SheetNames[0];
-    //             const worksheet = workbook.Sheets[sheetName];
-    //             const excelData = XLSX.utils.sheet_to_json(worksheet, { defval: '' });
-
-    //             // ✅ Header validation
-    //             const requiredHeaders = ['RequestID', 'Exch', 'AccountCode', 'AccountName', 'ScripName', 'Quantity', 'TotalPrice', 'Mode', 'ISIN', 'StrikePrice', 'ExpiryDate', 'OptionType', 'TradedQuantity', 'TradeDate'];
-
-    //             const sheetDataRaw = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-    //             const actualHeaders = sheetDataRaw[0] || [];
-
-    //             const headersMatch =
-    //                 actualHeaders.length === requiredHeaders.length &&
-    //                 requiredHeaders.every((val, idx) => val === actualHeaders[idx]);
-
-    //             if (!headersMatch) {
-
-    //                 e.Reason = 'Excel headers do not match required format'
-    //                 ErrorArray.push({ ...e });
-    //             }
-
-    //             // ✅ Parse Excel rows
-
-
-    //             const Finalarray = [];
-    //             const ErrorArray = [];
-    //             const eirf_rico_sos_emp_mapping = datamodel.eirf_rico_sos_emp_mapping();
-
-    //             const inFileDuplicates = new Set();
-
-    //             for (const e of excelData) {
-
-    //                 const requiredFields = [
-    //                     'RequestID', 'AccountCode', 'AccountName', 'ScripName', 'Quantity', 'Mode', 'ISIN', 'TradedQuantity', 'TradeDate'
-    //                 ];
-    //                 const missingFields = requiredFields.filter(
-    //                     field => !e[field] || e[field].toString().trim() === ''
-    //                 );
-
-    //                 if (missingFields.length > 0) {
-    //                     e.Reason = `Missing fields: ${missingFields.join(', ')}`
-    //                     ErrorArray.push({ ...e });
-
-    //                 }
-
-
-    //                 const CheckISIN = `select * from "TBL_DP_HOLDING_DATA"  where "ISIN_CODE"='${e.ISIN}'`
-    //                 let CheckISINs = await connect.sequelize.query(CheckISIN);
-    //                 if (CheckISINs[0].length == 0) {
-
-    //                     e.Reason = 'ISIN_CODE not available  in holding details'
-    //                     ErrorArray.push({ ...e });
-    //                 }
-
-
-    //                 if (typeof e.TradeDate === 'number') {
-    //                     e.TradeDate = convertExcelDateToJSDate(e.TradeDate);
-    //                 }
-    //                 function convertExcelDateToJSDate(serial) {
-    //                     const excelEpoch = new Date(1900, 0, 1); // Jan 1, 1900
-    //                     const jsDate = new Date(excelEpoch.getTime() + (serial - 2) * 24 * 60 * 60 * 1000); // -2 to account for Excel bug (1900 leap year)
-    //                     const yyyy = jsDate.getFullYear();
-    //                     const mm = String(jsDate.getMonth() + 1).padStart(2, '0');
-    //                     const dd = String(jsDate.getDate()).padStart(2, '0');
-    //                     return `${yyyy}-${mm}-${dd}`;
-    //                 }
-
-    //                 // ✅ TrxDate format (YYYY-MM-DD)
-    //                 const dateRegex = /^\d{4}-\d{2}-\d{2}$/
-    //                 if (!dateRegex.test(e.TradeDate)) {
-    //                     e.Reason = 'Invalid TrxDate format (YYYY-MM-DD)'
-    //                     ErrorArray.push({ ...e });
-
-    //                 }
-
-    //                 // ✅ dpqty numeric
-    //                 if (isNaN(e.Quantity)) {
-    //                     e.Reason = 'Quantity must be numeric'
-    //                     ErrorArray.push({ ...e });
-
-
-    //                 }
-
-
-    //                 // ✅ AccName only characters & spaces
-    //                 const AccountName = /^[A-Za-z\s]+$/;
-    //                 if (!AccountName.test(e.AccountName.toString().trim())) {
-    //                     e.Reason = 'AccName must contain only alphabetic characters'
-    //                     ErrorArray.push({ ...e });
-
-    //                 }
-
-    //                 // ✅ In-file duplicate check
-    //                 const duplicateKey = `${e.RequestID}|${e.ISIN}`;
-    //                 if (inFileDuplicates.has(duplicateKey)) {
-
-    //                     e.Reason = 'Duplicate row in file'
-    //                     ErrorArray.push({ ...e });
-
-    //                 }
-    //                 inFileDuplicates.add(duplicateKey);
-
-    //                 // ✅ DB duplicate check
-    //                 const query = `
-    //                   SELECT * FROM "TBL_DP_HOLDING_DATA"
-    //                   WHERE 
-    //                     AND "ISIN_CODE" = '${e.ISIN}'
-    //                     AND "IS_ACTIVE" = true
-    //                 `;
-    //                 const rows = await connect.sequelize.query(query);
-    //                 if (rows[0].length > 0) {
-    //                     let qty1 = Number(rows[0].TradeAvailableQty)
-    //                     if (qty1 < Number(e.TradedQuantity)) {
-    //                         e.Reason = 'TradedQuantity not allow greter than TradeAvailableQty'
-    //                         ErrorArray.push({ ...e });
-    //                     } else {
-    //                         let updatedqt = qty1 - Number(e.TradedQuantity)
-    //                         if (encryptmodel.Mode === 'SELL') {
-    //                             const updateQuery = `
-    //                                     UPDATE public."TBL_DP_HOLDING_DATA"
-    //                                     SET 
-    //                                       "TradeAvailableQty" = '${updatedqt}',
-    //                                       "MODIFIED_BY" = '${requestBody.UserId}'
-    //                                     WHERE "EMPID" = '${requestBody.UserId}' AND "ISIN_CODE" = '${e.ISIN}'
-    //                                   `;
-    //                             const rows = await connect.sequelize.query(updateQuery);
-    //                         }
-
-    //                     }
-
-    //                 }
-    //                 let Q = `select * FROM public."TBL_IRF_Approval_Data" where "TRX_NO"='${e.RequestID}' and "Transaction"='SELL'`
-    //                 const row = await connect.sequelize.query(Q);
-    //                 if (row[0].length == 0) {
-    //                     e.Reason = 'Trade approval pending'
-    //                     ErrorArray.push({ ...e });
-
-    //                 }
-    //                 // ✅ Final valid data
-    //                 Finalarray.push({
-    //                     EmpId: requestBody.UserId,
-    //                     TradeDate: e.TradeDate,
-    //                     Exch: e.Exch,
-    //                     AccCode: e.AccountCode,
-    //                     AccName: e.AccountName,
-    //                     ScripName: e.ScripName,
-    //                     Quantity: e.Quantity,
-    //                     TotalPrice: e.TotalPrice,
-    //                     Mode: e.Mode,
-    //                     ISIN: e.ISIN,
-    //                     StrikePrice: e.StrikePrice,
-    //                     ExpiryDate: e.ExpiryDate,
-    //                     OptionType: e.OptionType,
-    //                     TradedQuantity: e.TradedQuantity,
-    //                     CreatedBy: e
-    //                     // CreatedDate: sequelize.NOW
-    //                 });
-    //             }
-
-
-    //             const FinalarrayError = [];
-    //             ErrorArray.forEach((item) => {
-    //                 const existingEntry = FinalarrayError.find((t) => t.ISIN === item.ISIN);
-    //                 if (existingEntry) {
-    //                     // Check if the current Reason is already part of the concatenated Reason
-    //                     const remarksArray = existingEntry.Reason.split("; ").map(r => r.trim());
-    //                     if (!remarksArray.includes(item.Reason.trim())) {
-    //                         existingEntry.Reason += `; ${item.Reason}`;
-    //                     }
-    //                 } else {
-    //                     FinalarrayError.push({ ...item });
-    //                 }
-    //             });
-    //             if (FinalarrayError.length == 0 && Finalarray.length > 0) {
-    //                 const result = await dataaccess.BulkCreate(eirf_rico_sos_emp_mapping, Finalarray);
-    //                 const EncryptLoginDetails = dataconn.encryptionAES(result);
-    //                 const Folder_Path = path.join(__dirname, 'UploadFiles');
-    //                 fileDetails = req.files;
-    //                 for (let i = 0; i < fileDetails.length; i++) {
-
-    //                     let newFileName = `${fileDetails[i].originalname}`;
-
-    //                     let writeFile = util.promisify(fs.writeFile)
-
-    //                     const filePath = path.join(Folder_Path, newFileName); // Use the existing folder path
-    //                     // Use the existing folder path
-    //                     await writeFile(filePath, fileDetails[i].buffer);
-    //                 }
-    //                 return res.status(200).json({
-    //                     Success: true,
-    //                     Message: 'Excel file uploaded successfully',
-    //                     Data: EncryptLoginDetails
-    //                 });
-    //             } else {
-
-    //                 res.status(200).json({ Success: false, Message: 'Please fill the valid data', Data: ErrorArray });
-
-    //             }
-
-    //         } catch (error) {
-    //             console.error('Excel parsing error:', error);
-    //             res.status(500).json({
-    //                 Success: false,
-    //                 Message: 'Error parsing Excel file',
-    //                 Error: error.message
-    //             });
-    //         }
-    //     });
-
     router.route('/SaveTradeMstData')
         .post(upload.any(), async function (req, res) {
             for (let key in req.body) {
@@ -710,7 +486,7 @@ var routes = function () {
                 const excelData = XLSX.utils.sheet_to_json(worksheet, { defval: '' });
 
                 const requiredHeaders = [
-                    'RequestID', 'Exch', 'AccountCode', 'AccountName', 'ScripName', 'Quantity', 'TotalPrice', 'Mode',
+                    'RequestID', 'Exch', 'AccountCode', 'AccountName', 'ScripName', 'Quantity', 'TradeAvailableQty', 'TotalPrice', 'Mode',
                     'ISIN', 'StrikePrice', 'ExpiryDate', 'OptionType', 'TradedQuantity', 'TradeDate'
                 ];
                 const sheetDataRaw = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
@@ -729,147 +505,368 @@ var routes = function () {
                     ErrorArray.push({ Reason: 'Excel headers do not match required format' });
                 }
 
+
                 for (const e of excelData) {
-                    const requiredFields = [
-                        'RequestID', 'AccountCode', 'AccountName', 'ScripName', 'TotalPrice', 'StrikePrice',
-                        'Quantity', 'Mode', 'ISIN', 'TradedQuantity', 'TradeDate'
-                    ];
-                    const missingFields = requiredFields.filter(
-                        field => !e[field] || e[field].toString().trim() === ''
-                    );
 
-                    if (missingFields.length > 0) {
-                        e.Reason = `Missing fields: ${missingFields.join(', ')}`;
-                        ErrorArray.push({ ...e });
-                    }
+                    if (e.Mode == 'SELL') {
+                        if (e.Exch == 'Future' || e.Exch == 'Option') {
+                            const requiredFields = [
+                                'RequestID', 'AccountCode', 'AccountName', 'ScripName', 'TotalPrice', 'StrikePrice', 'ExpiryDate', 'ExpiryDate',
+                                'Quantity', 'TradeAvailableQty', 'Mode', 'ISIN', 'TradedQuantity', 'TradeDate'
+                            ];
+                            const missingFields = requiredFields.filter(
+                                field => !e[field] || e[field].toString().trim() === ''
+                            );
 
-                    const CheckISIN = `SELECT * FROM "TBL_DP_HOLDING_DATA" WHERE "ISIN_CODE" = '${e.ISIN}'`;
-                    const CheckISINs = await connect.sequelize.query(CheckISIN);
+                            if (missingFields.length > 0) {
+                                e.Reason = `Missing fields: ${missingFields.join(', ')}`;
+                                ErrorArray.push({ ...e });
+                            }
+                            const dateRegexs = /^\d{4}-\d{2}-\d{2}$/;
+                            if (!dateRegexs.test(e.ExpiryDate)) {
+                                e.Reason = 'Invalid e.ExpiryDate format (YYYY-MM-DD)';
+                                ErrorArray.push({ ...e });
+                            }
+                        } else {
+                            const requiredFields = [
+                                'RequestID', 'AccountCode', 'AccountName', 'ScripName', 'TotalPrice',
+                                'Quantity', 'TradeAvailableQty', 'Mode', 'ISIN', 'TradedQuantity', 'TradeDate'
+                            ];
+                            const missingFields = requiredFields.filter(
+                                field => !e[field] || e[field].toString().trim() === ''
+                            );
 
-                    if (CheckISINs[0].length === 0) {
-                        e.Reason = 'ISIN_CODE not available in holding details';
-                        ErrorArray.push({ ...e });
-                    }
+                            if (missingFields.length > 0) {
+                                e.Reason = `Missing fields: ${missingFields.join(', ')}`;
+                                ErrorArray.push({ ...e });
+                            }
+                        }
 
-                    // Convert TradeDate if in Excel date format
-                    if (typeof e.TradeDate === 'number') {
-                        e.TradeDate = convertExcelDateToJSDate(e.TradeDate);
-                    }
+                        const CheckISIN = `SELECT * FROM "TBL_DP_HOLDING_DATA" WHERE "ISIN_CODE" = '${e.ISIN}'`;
+                        const CheckISINs = await connect.sequelize.query(CheckISIN);
 
-                    function convertExcelDateToJSDate(serial) {
-                        const excelEpoch = new Date(1900, 0, 1);
-                        const jsDate = new Date(excelEpoch.getTime() + (serial - 2) * 86400000);
-                        const yyyy = jsDate.getFullYear();
-                        const mm = String(jsDate.getMonth() + 1).padStart(2, '0');
-                        const dd = String(jsDate.getDate()).padStart(2, '0');
-                        return `${yyyy}-${mm}-${dd}`;
-                    }
+                        if (CheckISINs[0].length === 0) {
+                            e.Reason = 'ISIN_CODE not available in holding details';
+                            ErrorArray.push({ ...e });
+                        }
 
-                    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-                    if (!dateRegex.test(e.TradeDate)) {
-                        e.Reason = 'Invalid TradeDate format (YYYY-MM-DD)';
-                        ErrorArray.push({ ...e });
-                    }
+                        // Convert TradeDate if in Excel date format
+                        if (typeof e.TradeDate === 'number') {
+                            e.TradeDate = convertExcelDateToJSDate(e.TradeDate);
+                        }
 
-                    // Convert TradeDate if in Excel date format
-                    if (typeof e.ExpiryDate === 'number') {
-                        e.ExpiryDate = convertExcelDateToJSDates(e.ExpiryDate);
-                    }
+                        function convertExcelDateToJSDate(serial) {
+                            const excelEpoch = new Date(1900, 0, 1);
+                            const jsDate = new Date(excelEpoch.getTime() + (serial - 2) * 86400000);
+                            const yyyy = jsDate.getFullYear();
+                            const mm = String(jsDate.getMonth() + 1).padStart(2, '0');
+                            const dd = String(jsDate.getDate()).padStart(2, '0');
+                            return `${yyyy}-${mm}-${dd}`;
+                        }
 
-                    function convertExcelDateToJSDates(serial) {
-                        const excelEpoch = new Date(1900, 0, 1);
-                        const jsDate = new Date(excelEpoch.getTime() + (serial - 2) * 86400000);
-                        const yyyy = jsDate.getFullYear();
-                        const mm = String(jsDate.getMonth() + 1).padStart(2, '0');
-                        const dd = String(jsDate.getDate()).padStart(2, '0');
-                        return `${yyyy}-${mm}-${dd}`;
-                    }
+                        const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+                        if (!dateRegex.test(e.TradeDate)) {
+                            e.Reason = 'Invalid TradeDate format (YYYY-MM-DD)';
+                            ErrorArray.push({ ...e });
+                        }
 
-                    const dateRegexs = /^\d{4}-\d{2}-\d{2}$/;
-                    if (!dateRegexs.test(e.ExpiryDate)) {
-                        e.Reason = 'Invalid e.ExpiryDate format (YYYY-MM-DD)';
-                        ErrorArray.push({ ...e });
-                    }
 
-                    if (isNaN(e.Quantity)) {
-                        e.Reason = 'Quantity must be numeric';
-                        ErrorArray.push({ ...e });
-                    }
 
-                    const nameRegex = /^[A-Za-z\s]+$/;
-                    if (!nameRegex.test(e.AccountName.toString().trim())) {
-                        e.Reason = 'AccountName must contain only alphabetic characters';
-                        ErrorArray.push({ ...e });
-                    }
+                        if (isNaN(e.Quantity)) {
+                            e.Reason = 'Quantity must be numeric';
+                            ErrorArray.push({ ...e });
+                        }
 
-                    const duplicateKey = `${e.RequestID}|${e.ISIN}`;
-                    if (inFileDuplicates.has(duplicateKey)) {
-                        e.Reason = 'Duplicate row in file';
-                        ErrorArray.push({ ...e });
-                    }
-                    inFileDuplicates.add(duplicateKey);
+                        const nameRegex = /^[A-Za-z\s]+$/;
+                        if (!nameRegex.test(e.AccountName.toString().trim())) {
+                            e.Reason = 'AccountName must contain only alphabetic characters';
+                            ErrorArray.push({ ...e });
+                        }
 
-                    // Trade Approval check
-                    const approvalQuery = `
+                        const duplicateKey = `${e.RequestID}|${e.ISIN}`;
+                        if (inFileDuplicates.has(duplicateKey)) {
+                            e.Reason = 'Duplicate row in file';
+                            ErrorArray.push({ ...e });
+                        }
+                        inFileDuplicates.add(duplicateKey);
+
+                        // Trade Approval check
+                        const approvalQuery = `
           SELECT * FROM public."TBL_IRF_Approval_Data"
-          WHERE "TRX_NO" = '${e.RequestID}' AND "Transaction" = 'SELL'
+          WHERE "ID" = '${e.RequestID}' AND "Transaction" = 'SELL'
         `;
-                    const approvalRows = await connect.sequelize.query(approvalQuery);
-                    if (approvalRows[0].length === 0) {
-                        e.Reason = 'Trade approval pending';
-                        ErrorArray.push({ ...e });
-                    }
+                        const approvalRows = await connect.sequelize.query(approvalQuery);
+                        if (approvalRows[0].length === 0) {
+                            e.Reason = 'Trade approval pending';
+                            ErrorArray.push({ ...e });
+                        }
 
-                    // DB duplicate / quantity validation
-                    const dbQuery = `
+                        // DB duplicate / quantity validation
+                        const dbQuery = `
           SELECT * FROM "TBL_DP_HOLDING_DATA"
           WHERE "ISIN_CODE" = '${e.ISIN}' AND "IS_ACTIVE" = true
         `;
-                    const rows = await connect.sequelize.query(dbQuery);
+                        const rows = await connect.sequelize.query(dbQuery);
 
-                    if (rows[0].length > 0) {
-                        const availableQty = Number(rows[0][0].TradeAvailableQty);
-                        console.log("availableQty", availableQty);
+                        if (rows[0].length > 0) {
+                            const availableQty = Number(rows[0][0].TradeAvailableQty);
+                            console.log("availableQty", availableQty);
 
-                        if (availableQty < Number(e.TradedQuantity)) {
-                            e.Reason = 'TradedQuantity exceeds available quantity';
-                            ErrorArray.push({ ...e });
-                        } else {
-                            const updatedQty = availableQty - Number(e.TradedQuantity);
-                            if (e.Mode === 'SELL' && ErrorArray.length == 0) {
-                                const updateQuery = `
+                            if (availableQty < Number(e.TradedQuantity)) {
+                                e.Reason = 'TradedQuantity exceeds available quantity';
+                                ErrorArray.push({ ...e });
+                            } else {
+                                const updatedQty = availableQty - Number(e.TradedQuantity);
+                                if (e.Mode === 'SELL' && ErrorArray.length == 0) {
+                                    const updateQuery = `
                 UPDATE public."TBL_DP_HOLDING_DATA"
                 SET "TradeAvailableQty" = '${updatedQty}',
                     "MODIFIED_BY" = '${requestBody.UserId}'
                 WHERE "EMPID" = '${requestBody.UserId}' AND "ISIN_CODE" = '${e.ISIN}'
               `;
-                                await connect.sequelize.query(updateQuery);
+                                    await connect.sequelize.query(updateQuery);
+                                }
                             }
                         }
+
+
+                        // FIX: Only error if TradeAvailableQty < TradedQuantity
+                        if (Number(e.TradeAvailableQty) < Number(e.TradedQuantity)) {
+                            e.Reason = 'TradeAvailableQty should be greater than or equal to TradedQuantity';
+                            ErrorArray.push({ ...e });
+                        }
+                        const updateQuery = `
+                                                UPDATE public."TBL_DP_HOLDING_DATA"
+                                                SET 
+                                                    "TradeAvailableQty" = :pendingQty,
+                                                    "MODIFIED_BY" = :empId
+                                                WHERE 
+                                                    "EMPID" = :empId AND "ISIN_CODE" = :isin
+                                            `;
+                        const QTYending = Number(e.TradeAvailableQty) - Number(e.TradedQuantity)
+                        await connect.sequelize.query(updateQuery, {
+                            replacements: {
+                                pendingQty: QTYending,
+                                empId: requestBody.UserId,
+                                isin: e.ISIN
+                            }
+                        });
+
+                        const IRFUpdateQuery = `
+                                                UPDATE "TBL_IRF_Approval_Data"
+                                                SET "TradeAvailableQty" = :pendingQty
+                                                WHERE "ID" = :id
+                                            `;
+                        await connect.sequelize.query(IRFUpdateQuery, {
+                            replacements: {
+                                pendingQty: QTYending,
+                                id: e.RequestID
+                            }
+                        });
+
+
+
+                    } else if (e.Mode == 'BUY') {
+                        if (e.Exch == 'Future' || e.Exch == 'Option') {
+                            const requiredFields = [
+                                'RequestID', 'AccountCode', 'AccountName', 'ScripName', 'TotalPrice', 'StrikePrice', 'ExpiryDate', 'ExpiryDate',
+                                'Quantity', 'TradeAvailableQty', 'Mode', 'ISIN', 'TradedQuantity', 'TradeDate'
+                            ];
+                            const missingFields = requiredFields.filter(
+                                field => !e[field] || e[field].toString().trim() === ''
+                            );
+
+                            if (missingFields.length > 0) {
+                                e.Reason = `Missing fields: ${missingFields.join(', ')}`;
+                                ErrorArray.push({ ...e });
+                            }
+                            const dateRegexs = /^\d{4}-\d{2}-\d{2}$/;
+                            if (!dateRegexs.test(e.ExpiryDate)) {
+                                e.Reason = 'Invalid e.ExpiryDate format (YYYY-MM-DD)';
+                                ErrorArray.push({ ...e });
+                            }
+                        } else {
+                            const requiredFields = [
+                                'RequestID', 'AccountCode', 'AccountName', 'ScripName', 'TotalPrice',
+                                'Quantity', 'TradeAvailableQty', 'Mode', 'ISIN', 'TradedQuantity', 'TradeDate'
+                            ];
+                            const missingFields = requiredFields.filter(
+                                field => !e[field] || e[field].toString().trim() === ''
+                            );
+
+                            if (missingFields.length > 0) {
+                                e.Reason = `Missing fields: ${missingFields.join(', ')}`;
+                                ErrorArray.push({ ...e });
+                            }
+                        }
+
+                        // Convert TradeDate if in Excel date format
+                        if (typeof e.TradeDate === 'number') {
+                            e.TradeDate = convertExcelDateToJSDate(e.TradeDate);
+                        }
+
+                        function convertExcelDateToJSDate(serial) {
+                            const excelEpoch = new Date(1900, 0, 1);
+                            const jsDate = new Date(excelEpoch.getTime() + (serial - 2) * 86400000);
+                            const yyyy = jsDate.getFullYear();
+                            const mm = String(jsDate.getMonth() + 1).padStart(2, '0');
+                            const dd = String(jsDate.getDate()).padStart(2, '0');
+                            return `${yyyy}-${mm}-${dd}`;
+                        }
+
+                        const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+                        if (!dateRegex.test(e.TradeDate)) {
+                            e.Reason = 'Invalid TradeDate format (YYYY-MM-DD)';
+                            ErrorArray.push({ ...e });
+                        }
+
+
+
+                        if (isNaN(e.Quantity)) {
+                            e.Reason = 'Quantity must be numeric';
+                            ErrorArray.push({ ...e });
+                        }
+
+                        const nameRegex = /^[A-Za-z\s]+$/;
+                        if (!nameRegex.test(e.AccountName.toString().trim())) {
+                            e.Reason = 'AccountName must contain only alphabetic characters';
+                            ErrorArray.push({ ...e });
+                        }
+
+                        const duplicateKey = `${e.RequestID}|${e.ISIN}`;
+                        if (inFileDuplicates.has(duplicateKey)) {
+                            e.Reason = 'Duplicate row in file';
+                            ErrorArray.push({ ...e });
+                        }
+                        inFileDuplicates.add(duplicateKey);
+
+                        // Trade Approval check
+                        const approvalQuery = `
+          SELECT * FROM public."TBL_IRF_Approval_Data"
+          WHERE "ID" = '${e.RequestID}' AND "Transaction" = 'BUY'
+        `;
+                        const approvalRows = await connect.sequelize.query(approvalQuery);
+                        if (approvalRows[0].length == 0) {
+                            e.Reason = 'Trade approval pending';
+                            ErrorArray.push({ ...e });
+                        }
+
+                        
+                        // FIX: Only error if TradeAvailableQty < TradedQuantity
+                        if (Number(e.TradeAvailableQty) < Number(e.TradedQuantity)) {
+                            e.Reason = 'TradeAvailableQty should be greater than or equal to TradedQuantity';
+                            ErrorArray.push({ ...e });
+                        }
+
+                        const empId = e.RequestID;
+                        const isin = e.ISIN;
+                        const getQuery = `
+                                                SELECT * FROM public."TBL_DP_HOLDING_DATA" 
+                                                WHERE "ISIN_CODE" = :isin AND "EMPID" = :empId
+                                            `;
+                        const getQueryResult = await connect.sequelize.query(getQuery, {
+                            replacements: { isin, empId },
+                            type: connect.sequelize.QueryTypes.SELECT
+                        });
+
+                        if (getQueryResult && getQueryResult.length > 0) {
+                            const existing = getQueryResult[0];
+
+                            const SUMQTY = Number(e.TradedQuantity) + Number(existing.TradeAvailableQty || 0);
+                            const QTY = Number(e.TradedQuantity) + Number(existing.DP_QTY || 0);
+                            const APQTY = Number(e.TradedQuantity) + Number(existing.ApprovalAvailableQty || 0);
+
+                            const updateQuery = `
+                                                    UPDATE public."TBL_DP_HOLDING_DATA"
+                                                    SET 
+                                                        "TradeAvailableQty" = :sumQty,
+                                                        "ApprovalAvailableQty"=:apqty,
+                                                        "DP_QTY" = :qty,
+                                                        "MODIFIED_BY" = :empId
+                                                    WHERE 
+                                                        "EMPID" = :empId AND "ISIN_CODE" = :isin
+                                                `;
+                            await connect.sequelize.query(updateQuery, {
+                                replacements: {
+                                    sumQty: SUMQTY,
+                                    qty: QTY,
+                                    apqty: APQTY,
+                                    empId,
+                                    isin,
+
+                                }
+                            });
+                            const QTYending = Number(e.TradeAvailableQty) - Number(e.TradedQuantity)
+                            const IRFUpdateQuery = `
+                                                    UPDATE "TBL_IRF_Approval_Data"
+                                                    SET "TradeAvailableQty" = :pendingQty
+                                                    WHERE "ID" = :id
+                                                `;
+                            await connect.sequelize.query(IRFUpdateQuery, {
+                                replacements: {
+                                    pendingQty: QTYending,
+                                    id: e.RequestID
+                                }
+                            });
+
+                        } else {
+                            // ✅ Insert new record into TBL_DP_HOLDING_DATA
+                            const TBL_DP_HOLDING_DATA = datamodel.TBL_DP_HOLDING_DATA();
+                            const valuec = {
+                                EMPID: requestBody.UserId,
+                                ACCOUNT_CODE: e.AccountCode,
+                                ACCOUNT_NAME: e.AccountName,
+                                ISIN_CODE: e.ISIN,
+                                TRX_DATE: (e.TradeDate && !isNaN(Date.parse(e.TradeDate)) && e.TradeDate !== 'Invalid date') ? e.TradeDate : null,
+                                DP_QTY: e.TradedQuantity,
+                                SEGMENT: e.Exch,
+                                IS_ACTIVE: true,
+                                CREATED_BY: requestBody.UserId,
+                                CREATED_DT: new Date(),
+                                TradeAvailableQty: 0,
+                                ApprovalAvailableQty: e.TradedQuantity
+                            };
+                            if (!valuec.TRX_DATE) {
+                                e.Reason = 'Invalid TradeDate';
+                                ErrorArray.push({ ...e });
+                                continue;
+                            }
+                            console.log("valuec", valuec);
+
+                            await dataaccess.Create(TBL_DP_HOLDING_DATA, valuec);
+
+                            const IRFUpdateQuery = `
+                                                    UPDATE "TBL_IRF_Approval_Data"
+                                                    SET "TradeAvailableQty" = 0
+                                                    WHERE "ID" = :id
+                                                `;
+                            await connect.sequelize.query(IRFUpdateQuery, {
+                                replacements: {
+                                    id: e.RequestID
+                                }
+                            });
+                        }
+
+
                     }
-
-
-
-                    // Valid data
                     Finalarray.push({
                         EmpId: requestBody.UserId,
-                        TradeDate: e.TradeDate,
+                        TradeDate: (e.TradeDate && e.TradeDate !== '' && e.TradeDate !== 'Invalid date') ? e.TradeDate : null,
                         Exch: e.Exch,
                         AccCode: e.AccountCode,
                         AccName: e.AccountName,
                         ScripName: e.ScripName,
-                        Quantity: e.Quantity,
-                        TotalPrice: e.TotalPrice,
+                        Quantity: (e.Quantity !== '' && !isNaN(e.Quantity)) ? Number(e.Quantity) : null,
+                        TotalPrice: (e.TotalPrice !== '' && !isNaN(e.TotalPrice)) ? Number(e.TotalPrice) : null,
                         Mode: e.Mode,
                         ISIN: e.ISIN,
-                        StrikePrice: e.StrikePrice,
-                        ExpiryDate: e.ExpiryDate,
+                        StrikePrice: (e.StrikePrice !== '' && !isNaN(e.StrikePrice)) ? Number(e.StrikePrice) : null,
+                        ExpiryDate: (e.ExpiryDate && e.ExpiryDate !== '' && e.ExpiryDate !== 'Invalid date') ? e.ExpiryDate : null,
                         OptionType: e.OptionType,
-                        TradedQuantity: e.TradedQuantity,
-
+                        TradedQuantity: (e.TradedQuantity !== '' && !isNaN(e.TradedQuantity)) ? Number(e.TradedQuantity) : null,
                     });
                 }
-                console.log("Finalarray", Finalarray);
+                // Valid data
 
                 // Merge reasons for same ISIN
                 const FinalarrayError = [];
@@ -884,6 +881,25 @@ var routes = function () {
                         FinalarrayError.push({ ...item });
                     }
                 });
+                const mergedErrorsMap = new Map();
+
+                ErrorArray.forEach(item => {
+                    const key = item.ISIN;
+
+                    if (!mergedErrorsMap.has(key)) {
+                        // Initialize with a copy and a Set for reasons
+                        mergedErrorsMap.set(key, { ...item, Reason: new Set([item.Reason]) });
+                    } else {
+                        // Add reason to the existing set
+                        mergedErrorsMap.get(key).Reason.add(item.Reason);
+                    }
+                });
+
+                // Convert each Reason Set into a comma-separated string
+                const mergedErrors = Array.from(mergedErrorsMap.values()).map(entry => ({
+                    ...entry,
+                    Reason: Array.from(entry.Reason).join(', ')
+                }));
 
                 // Save data if no error
                 if (FinalarrayError.length === 0 && Finalarray.length > 0) {
@@ -908,7 +924,7 @@ var routes = function () {
                     return res.status(200).json({
                         Success: false,
                         Message: 'Please fill the valid data',
-                        Data: ErrorArray
+                        Data: mergedErrors
                     });
                 }
             } catch (error) {
@@ -920,6 +936,7 @@ var routes = function () {
                 });
             }
         });
+
 
 
 
@@ -1334,7 +1351,7 @@ var routes = function () {
                     }
 
                     // ✅ In-file duplicate check
-                    const duplicateKey = `${e.AccCode}|${e.AccName}|${e.ISINCode}|${e.Segment}`;
+                    const duplicateKey = `${e.RequestID}|${e.AccCode}|${e.AccName}|${e.ISINCode}|${e.Segment}`;
                     if (inFileDuplicates.has(duplicateKey)) {
 
                         e.Reason = 'Duplicate row in file'
@@ -2070,81 +2087,7 @@ var routes = function () {
                     res.status(200).json({ Success: false, Message: 'Error deleting DP Holding Data: ' + error.message, Data: null });
                 }
             });
-    // router.route('/updateDPHoldingData')
-    //     .post(async function (req, res) {
-    //         try {
-    //             var encryptmodel = dataconn.decrypt(req.body.encryptmodel);
 
-    //             // Ensure ID and EMPID are scalar values, not objects
-    //             const id = typeof encryptmodel.ID === 'object' ? encryptmodel.ID.ID || encryptmodel.ID : encryptmodel.ID;
-    //             const empId = typeof encryptmodel.EMPID === 'object' ? encryptmodel.EMPID.EMPID || encryptmodel.EMPID : encryptmodel.EMPID;
-
-    //             console.log('Update - ID:', id, 'EMPID:', empId, 'Type of ID:', typeof id);
-
-    //             if (!id || !empId) {
-    //                 return res.status(200).json({ Success: false, Message: 'Both ID and Employee ID are required', Data: null });
-    //             }
-
-    //             const TBL_DP_HOLDING_DATA = datamodel.TBL_DP_HOLDING_DATA();
-
-    //             // First, check if the record exists and is active
-    //             const query = `SELECT * FROM "TBL_DP_HOLDING_DATA" WHERE "ID" = '${id}' AND "EMPID" = '${empId}' AND "IS_ACTIVE" = true`;
-    //             const rows = await connect.sequelize.query(query);
-    //             console.log("Found records for update:", rows[0]);
-
-    //             if (rows[0].length === 0) {
-    //                 return res.status(200).json({ Success: false, Message: 'Record not found or inactive', Data: null });
-    //             }
-
-    //             // Convert empty strings to null
-    //             for (var key in encryptmodel) {
-    //                 encryptmodel[key] = encryptmodel[key] === '' || encryptmodel[key] === 'undefined' ? null : encryptmodel[key];
-    //             }
-    //             // Record exists, proceed with update
-    //             var updateValues = {
-    //                 FIRSTNAME: encryptmodel.FIRSTNAME,
-    //                 LOGIN_ID: encryptmodel.LOGIN_ID,
-    //                 DESIGNATED: encryptmodel.DESIGNATED,
-    //                 EFSL_DESIGNATED: encryptmodel.EFSL_DESIGNATED,
-    //                 ACCOUNT_CODE: encryptmodel.ACCOUNT_CODE,
-    //                 ACCOUNT_NAME: encryptmodel.ACCOUNT_NAME,
-    //                 PAN_NO: encryptmodel.PAN_NO,
-    //                 E_BOID: encryptmodel.E_BOID,
-    //                 ISIN_CODE: encryptmodel.ISIN_CODE,
-    //                 TRX_DATE: encryptmodel.TRX_DATE,
-    //                 DP_QTY: encryptmodel.DP_QTY,
-    //                 SEGMENT: encryptmodel.SEGMENT,
-    //                 MODIFIED_BY: encryptmodel.MODIFIED_BY || encryptmodel.FIRSTNAME,
-    //                 MODIFIED_DT: new Date(),
-    //                 ApprovalAvailableQty: Number(rows[0].ApprovalAvailableQty) + Number(encryptmodel.Updatedqty)
-    //             };
-
-    //             var whereClause = {
-    //                 ID: id,
-    //                 EMPID: empId,
-    //                 IS_ACTIVE: true
-    //             };
-
-    //             const result = await dataaccess.Update(TBL_DP_HOLDING_DATA, updateValues, whereClause);
-
-    //             if (result[0] > 0) {
-    //                 // Retrieve the updated record to return in response
-    //                 const updatedRecord = await dataaccess.FindOne(TBL_DP_HOLDING_DATA, { where: { ID: id, EMPID: empId } });
-    //                 var EncryptLoginDetails = dataconn.encryptionAES(updatedRecord);
-    //                 res.status(200).json({
-    //                     Success: true,
-    //                     Message: 'DP Holding Data updated successfully',
-    //                     Data: EncryptLoginDetails
-    //                 });
-    //             } else {
-    //                 res.status(200).json({ Success: false, Message: 'Failed to update record', Data: null });
-    //             }
-    //         } catch (error) {
-    //             console.error("Error during update operation:", error);
-    //             dataconn.errorlogger('uploads', 'updateDPHoldingData', error);
-    //             res.status(200).json({ Success: false, Message: 'Error updating DP Holding Data: ' + error.message, Data: null });
-    //         }
-    //     });
     router.route('/updateDPHoldingData')
         .post(async function (req, res) {
             try {
@@ -2769,7 +2712,7 @@ LEFT JOIN public."TBL_RICO_IBEATS_MST" B
   ON A."AccountCode" = B."ACC_CODE"
 LEFT JOIN public."TBL_SCRIPT_MST" C
   ON A."ISIN" = C."ISIN_CODE"
-WHERE A."EmployeeNumber" = '${encryptmodel.EMP}' and "ApprovalStatus"='Approved'
+WHERE A."EmployeeNumber" = '${encryptmodel.EMP}' and A. "ApprovalStatus"='Approved' and A."TradeAvailableQty" > 0
   AND DATE(A."CREATED_ON") BETWEEN CURRENT_DATE - INTERVAL '7 days' AND CURRENT_DATE
 ORDER BY A."CREATED_ON" DESC;`
 

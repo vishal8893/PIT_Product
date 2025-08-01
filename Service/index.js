@@ -14,7 +14,7 @@ app.use(bodyParser.json({ limit: '200mb' }));
 
 
 // //uat server 
-const http = require('http');
+// const http = require('http');
 const https = require('https');
 
 const privateKey = fs.readFileSync('/etc/letsencrypt/live/webdev2.neweltechnologies.in/privkey.pem', 'utf8');

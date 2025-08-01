@@ -3537,7 +3537,8 @@ module.exports.TBL_IRF_Approval_Data = function () {
         MODIFIED_ON: { type: Sequelize.DATE, allowNull: true },
         Reason: { type: Sequelize.STRING(500), allowNull: true },
         COMPLIANCECREATED_BY: { type: Sequelize.BIGINT, allowNull: true },
-        COMPLIANCECREATED_ON: { type: Sequelize.DATE, allowNull: true }
+        COMPLIANCECREATED_ON: { type: Sequelize.DATE, allowNull: true },
+        TradeAvailableQty:{ type: Sequelize.BIGINT, allowNull: true },
     },
         {
             sequelize,
@@ -4905,7 +4906,8 @@ module.exports.eirf_rico_sos_emp_mapping = function () {
         CreatedDate: { type: Sequelize.DATE, allowNull: true },
         UpdatedBy: { type: Sequelize.STRING(50), allowNull: true },
         UpdatedDate: { type: Sequelize.DATE, allowNull: true },
-        TradedQuantity: { type: Sequelize.BIGINT, allowNull: true }
+        TradedQuantity: { type: Sequelize.BIGINT, allowNull: true },
+        Segment:{ type: Sequelize.STRING(100), allowNull: true },
     },
         {
             sequelize,
