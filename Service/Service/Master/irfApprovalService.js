@@ -22,12 +22,12 @@ var routes = function () {
       var encryptmodel = dataconn.decrypt(req.body.encryptmodel);
 
       const data = [...encryptmodel,];
-      console.log("datafgfgfgf", data);
+
       let finalResult = [];
       let newData = config.company.Company;
       let A = 0;
       for (let i = 0; i < data.length; i++) {
-        console.log('vishal', data.length, i + 1);
+
         const TBL_M3_UPSI_MST = datamodel.TBL_M3_UPSI_MST();
         const TBL_IRF_Approval_Data = datamodel.TBL_IRF_Approval_Data();
 
@@ -60,7 +60,7 @@ var routes = function () {
         // let futurecount;
         // let finalresult;
         if (data[i] && data[i].Security) {
-          console.log('dddddddd', data[i].Security);
+
           let upsiProjectResult = await connect.sequelize.query(`select * from public."TBL_UPSI_PROJECT_SCRIPT_DETAILS" as "A" inner join "TBL_UPSI_PROJECT_MST" as "B" ON "A"."PROJECT_ID" = "B"."ID" where "B"."IS_ACTIVE" = true AND "A"."SCRIPT_NAME" = '${data[i].Security}' AND "A"."IS_ACTIVE" = true`);
           if (upsiProjectResult[0][0] && upsiProjectResult[0][0].PROJECT_ID) {
             let projectEmpResult = await connect.sequelize.query(`select * from "TBL_PROJECT_EMPLOYEE_DETAILS" where "IS_ACTIVE" = true and "PROJECT_ID" = '${upsiProjectResult[0][0].PROJECT_ID}' and  "EMPLOYEE_ID" = '${data[i].EmployeeNumber}'`);
@@ -100,7 +100,7 @@ var routes = function () {
 
           if (userMstGreyCheck[0][0].GREYLIST == true) {
             if (data[i] && data[i].Security) {
-              console.log('dddddddd', data[i].Security);
+
               let greyListResult = await connect.sequelize.query(`select * from public."TBL_GREY_LIST_MST" where "IS_ACTIVE" = true and "SCRIPT_NAME" = '${data[i].Security}'`);
 
               // console.log('abvd', currentDate, greyListResult[0][0].STARTDATE);
@@ -108,14 +108,14 @@ var routes = function () {
 
               if (greyListResult[0][0]) {
                 let greyListResultDtls = await connect.sequelize.query(`select * from "TBL_GREY_LIST_DETAILSMST" where "IS_ACTIVE" = true and "GRELISTID" = '${greyListResult[0][0].ID}' and  "EMPNO" = '${data[i].EmployeeNumber}'`);
-                console.log("greyListResultDtls", greyListResultDtls[0][0]);
+
                 if (greyListResultDtls[0][0]) {
                   if (currentDate >= moment(greyListResult[0][0].STARTDATE).format('YYYY-MM-DD') && currentDate <= moment(greyListResult[0][0].ENDDATE).format('YYYY-MM-DD')) {
-                    console.log('grey list restricted');
+
                     greyapprovalStatus = 'Rejected'
                     greyrejectionReason = 'Grey List'
                   } else {
-                    console.log('grey list approved');
+
 
                     greyapprovalStatus = 'Approved'
                     greyrejectionReason = ' '
@@ -129,21 +129,21 @@ var routes = function () {
                 greyrejectionReason = ' '
               }
             } else {
-              console.log('25');
+
               greyapprovalStatus = 'Approved'
 
               greyrejectionReason = ' '
 
             }
           } else {
-            console.log('25');
+
             greyapprovalStatus = 'Approved'
 
             greyrejectionReason = ' '
 
           }
         } else {
-          console.log('25');
+
           greyapprovalStatus = 'Approved'
 
           greyrejectionReason = ' '
@@ -155,12 +155,12 @@ var routes = function () {
           let restrictedListResult = await connect.sequelize.query(query3);
           if (restrictedListResult[0][0]) {
             if (currentDate >= restrictedListResult[0][0].STARTDATE && currentDate <= restrictedListResult[0][0].ENDDATE) {
-              console.log('restricted list restricted');
+
 
               restrictapprovalStatus = 'Rejected'
               restrictrejectionReason = 'Restricted List'
             } else {
-              console.log('restricted list restricted');
+
 
               restrictapprovalStatus = 'Approved'
               restrictrejectionReason = ' '
@@ -198,12 +198,11 @@ var routes = function () {
         if (data[i].NatureofTrade === 'Future' && data[i].Transaction === 'ROLLOVER' && data[i].QuantityLot === 'Lot') {
           let query3 = `select "LOT_SIZE" from public."TBL_SCRIPT_MST" where "IS_ACTIVE" = true and "ISIN_CODE" = '${data[i].ISIN}'`
           let count = await connect.sequelize.query(query3);
-          console.log("count", count[0][0]);
+
 
           if (count[0][0]) {
             let futurecount = data[i].FutOpQuantityLot * count[0][0].LOT_SIZE;
-            console.log("futurecount", futurecount);
-            console.log("FutOpQuantityLot", data[i].FutOpQuantityLot);
+
 
             let query = `WITH TMPQ_CTE AS (
                           SELECT 
@@ -221,7 +220,7 @@ var routes = function () {
 
             let count1 = await connect.sequelize.query(query);
             let finalcount = count1[0][0].total_quantity;
-            console.log("finalcount", finalcount);
+
 
             if (finalcount < futurecount) {
               lotcountpprovalStatus = 'Rejected'
@@ -246,9 +245,6 @@ var routes = function () {
 
         // var filename = data[i].AccountName + currentDate;
 
-        console.log("data[i].NatureofTrade", data[i].NatureofTrade);
-        console.log("data[i].Transaction", data[i].Transaction);
-        console.log("data[i].QuantityLot", data[i].QuantityLot);
 
         if (data[i].NatureofTrade === 'Future' && data[i].Transaction === 'ROLLOVER' && data[i].QuantityLot === 'Lot') {
           if (empapprovalStatus == 'Approved' && greyapprovalStatus == 'Approved' && restrictapprovalStatus == 'Approved' && projectapprovalStatus == 'Approved' && lotcountpprovalStatus == 'Approved' && primaryapprovalStatus == 'Approved') {
@@ -282,16 +278,15 @@ var routes = function () {
         data[i].RejectionReason = rejectionReason
         data[i].CREATED_ON = currentDate
         data[i].CRE_DATE = currentDate
-        console.log("data[i123]", data[i]);
+
         await dataaccess.Create(TBL_IRF_Approval_Data, data[i])
-        console.log("data[i]", data[i]);
 
         finalResult.push(data[i])
 
         if (data[i].Transaction == 'SELL') {
           A++;
 
-          availableQTYcalculation(data[i].EmployeeNumber, data[i].AVQTYFINAL, data[i].ISIN, A, data[i].EqQuantity)
+          availableQTYcalculation(data[i].EmployeeNumber, data[i].AVQTYFINAL, data[i].ISIN, A, data[i].EqQuantity, data[i].AccountCode)
         }
       }
 
@@ -569,7 +564,7 @@ Totalqty = []
 //   let TableTradeAvailableQty = result[0].TradeAvailableQty
 
 //    console.log("result[0ghghg",result[0],result[0]?.TradeAvailableQty);
-  
+
 //   let TolaABAPrrove = Number(EqQuantity) + Number(TableTradeAvailableQty)
 //   console.log("TolaABAPrrove",TolaABAPrrove);
 //   const upadate = ` UPDATE "TBL_DP_HOLDING_DATA"
@@ -578,7 +573,7 @@ Totalqty = []
 //   let result1 = await connect.sequelize.query(upadate);
 
 // }
-async function availableQTYcalculation(empno, AVQTYFINAL, ISIN, sellLength, EqQuantity) {
+async function availableQTYcalculation(empno, AVQTYFINAL, ISIN, sellLength, EqQuantity, AccountCode) {
   try {
     const selectQuery = `
       SELECT * 
@@ -611,7 +606,7 @@ async function availableQTYcalculation(empno, AVQTYFINAL, ISIN, sellLength, EqQu
           "TradeAvailableQty" = '${TolaABAPrrove}', 
           "MODIFIED_BY" = '${empno}'
       WHERE "EMPID" = '${empno}' 
-        AND "ISIN_CODE" = '${ISIN}'
+        AND "ISIN_CODE" = '${ISIN}' AND "ACCOUNT_CODE" = '${AccountCode}'
     `;
 
     await connect.sequelize.query(updateQuery);

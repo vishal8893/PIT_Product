@@ -484,7 +484,7 @@ export class InvestmentApprovalFormComponent {
 
     const canAdd = this.canAddTransaction(this.Transaction?.value as 'BUY' | 'SELL')
     if (canAdd) {
-      this.messageService.add({severity: 'warn', summary: 'Warning', detail: 'Only allow the same transaction'});
+      this.messageService.add({ severity: 'warn', summary: 'Warning', detail: 'Only allow the same transaction' });
     } else
       if (this.selectedValue3 !== 'PrimaryIssue') {
         let B: any = this.SearchSecurity.value
@@ -2562,27 +2562,31 @@ export class InvestmentApprovalFormComponent {
     this.router.navigate(['/pit/dark-pool']);
   }
   AvailableQTY(script: any) {
-    console.log("SearchSecurity", this.SearchSecurity?.value);
 
-    var model = {
-      EMP: this.userLoggedIn.EMPNO,
-      SearchSecuritycript: this.ISINNumber?.value
-    }
-    let encryptmodel = this.Global.encryptionAES(JSON.stringify(model));
-    this.rest.postParams(this.Global.getapiendpoint() + "upload/AvailableQTY", { encryptmodel: encryptmodel }).subscribe((data: any) => {
-      if (data.Success == true) {
-        var Result = JSON.parse(this.Global.decrypt1(data.Data));
-        this.AVQTY = Number(Result[0].dpqty ?? 0);
-        this.AVQTYFINAL = this.AVQTY
-        console.log("Resulttututut", Number(Result[0].dpqty ?? 0));
-
-      } else {
-
-
-
-
+    if (this.PANNo) {
+      var model = {
+        EMP: this.userLoggedIn.EMPNO,
+        SearchSecuritycript: this.ISINNumber?.value,
+        AccountCode: this.PANNo.AccountCode
       }
-    })
+      let encryptmodel = this.Global.encryptionAES(JSON.stringify(model));
+      this.rest.postParams(this.Global.getapiendpoint() + "upload/AvailableQTY", { encryptmodel: encryptmodel }).subscribe((data: any) => {
+        if (data.Success == true) {
+          var Result = JSON.parse(this.Global.decrypt1(data.Data));
+          this.AVQTY = Number(Result[0].dpqty ?? 0);
+          this.AVQTYFINAL = this.AVQTY
+          console.log("Resulttututut", Number(Result[0].dpqty ?? 0));
+
+        } else {
+
+        }
+      })
+    } else {
+      this.irfmainForm.reset()
+      this.messageService.add({ severity: 'warn', summary: 'Warning', detail: 'Please select Account name' });
+
+
+    }
 
   }
 }

@@ -43,7 +43,7 @@ var routes = function () {
         ON A."AccountCode" = B."ACC_CODE"
       LEFT JOIN public."TBL_SCRIPT_MST" C
         ON A."ISIN" = C."ISIN_CODE"
-      WHERE A."EmployeeNumber" = '${encryptmodel.EMP}'  and "NatureofTrade"='${encryptmodel.Asset}' and "ApprovalStatus"='Approved'
+      WHERE A."EmployeeNumber" = '${encryptmodel.EMP}'  and "NatureofTrade"='${encryptmodel.Asset}' and "ApprovalStatus"='Approved' and "TradeAvailableQty" > 0 and "IS_CLOSE" is null
         AND DATE(A."CREATED_ON") BETWEEN CURRENT_DATE - INTERVAL '7 days' AND CURRENT_DATE
       ORDER BY A."CREATED_ON" DESC;`;
 
@@ -159,7 +159,7 @@ var routes = function () {
     //                     const getQueryresult = await connect.sequelize.query(getQuery);
     //                     if (getQueryresult[0] && getQueryresult[0].length > 0) {
     //                         console.log("getQueryresult[0]",Number(getQueryresult[0][0].TradeAvailableQty));
-                            
+
     //                         const SUMQTY = Number(encryptmodel.TradeQty) + Number(getQueryresult[0][0].TradeAvailableQty)
     //                         const QTY = Number(encryptmodel.TradeQty) + Number(getQueryresult[0][0].DP_QTY)
     //                         const updateQuery = `UPDATE public."TBL_DP_HOLDING_DATA"
@@ -225,121 +225,71 @@ var routes = function () {
     //             });
     //         }
     //     });
-router.route('/Singacreatetreade')
-    .post(async function (req, res) {
-        try {
-            // ✅ Decrypt request body
-            const encryptmodel = dataconn.decrypt(req.body.encryptmodel);
+    router.route('/Singacreatetreade')
+        .post(async function (req, res) {
+            try {
+                // ✅ Decrypt request body
+                const encryptmodel = dataconn.decrypt(req.body.encryptmodel);
 
-            const eirf_rico_sos_emp_mapping = datamodel.eirf_rico_sos_emp_mapping();
+                const eirf_rico_sos_emp_mapping = datamodel.eirf_rico_sos_emp_mapping();
 
-            // ✅ Prepare values for insertion
-            const values = {
-                Segment: encryptmodel.Asset,
-                EmpId: encryptmodel.EMP,
-                PanNo: encryptmodel.PAN_NO,
-                TradeDate: encryptmodel.TradeDate,
-                Exch: encryptmodel.Exch,
-                AccCode: encryptmodel.AccountCode,
-                AccName: encryptmodel.AccountName,
-                ScripCode: encryptmodel.ScripCode,
-                ScripName: encryptmodel.ScriptName,
-                Quantity: encryptmodel.Quantity,
-                TotalPrice: encryptmodel.TotalPrice,
-                Mode: encryptmodel.Mode,
-                ISIN: encryptmodel.ISIN,
-                OpenQuantity: encryptmodel.OpenQuantity,
-                TradedBy: encryptmodel.TradeBy,
-                StrikePrice: encryptmodel.StrikePrice,
-                ExpiryDate: encryptmodel.ExpiryDate,
-                OptionType: encryptmodel.OptionType,
-                CreatedBy: encryptmodel.EMP,
-                TradedQuantity: encryptmodel.TradeQty
-            };
+                // ✅ Prepare values for insertion
+                const values = {
+                    Segment: encryptmodel.Asset,
+                    EmpId: encryptmodel.EMP,
+                    PanNo: encryptmodel.PAN_NO,
+                    TradeDate: encryptmodel.TradeDate,
+                    Exch: encryptmodel.Exch,
+                    AccCode: encryptmodel.AccountCode,
+                    AccName: encryptmodel.AccountName,
+                    ScripCode: encryptmodel.ScripCode,
+                    ScripName: encryptmodel.ScriptName,
+                    Quantity: encryptmodel.Quantity,
+                    TotalPrice: encryptmodel.TotalPrice,
+                    Mode: encryptmodel.Mode,
+                    ISIN: encryptmodel.ISIN,
+                    OpenQuantity: encryptmodel.OpenQuantity,
+                    TradedBy: encryptmodel.TradeBy,
+                    StrikePrice: encryptmodel.StrikePrice,
+                    ExpiryDate: encryptmodel.ExpiryDate,
+                    OptionType: encryptmodel.OptionType,
+                    CreatedBy: encryptmodel.EMP,
+                    TradedQuantity: encryptmodel.TradeQty
+                };
 
-            console.log("Insert Values:", values);
+                console.log("Insert Values:", values);
 
-            // ✅ Insert into DB
-            const result = await dataaccess.Create(eirf_rico_sos_emp_mapping, values);
+                // ✅ Insert into DB
+                const result = await dataaccess.Create(eirf_rico_sos_emp_mapping, values);
 
-            if (result) {
-                const empId = encryptmodel.EMP;
-                const isin = encryptmodel.ISIN;
-
-                if (encryptmodel.Mode === 'SELL') {
-                    // ✅ Update TradeAvailableQty for SELL
-                    const updateQuery = `
+                if (result) {
+                    const empId = encryptmodel.EMP;
+                    const isin = encryptmodel.ISIN;
+                    const AcCode = encryptmodel.AccountCode
+                    if (encryptmodel.Mode === 'SELL') {
+                        // ✅ Update TradeAvailableQty for SELL
+                        const updateQuery = `
                         UPDATE public."TBL_DP_HOLDING_DATA"
                         SET 
                             "TradeAvailableQty" = :pendingQty,
                             "MODIFIED_BY" = :empId
                         WHERE 
-                            "EMPID" = :empId AND "ISIN_CODE" = :isin
+                            "EMPID" = :empId AND "ISIN_CODE" = :isin AND "ACCOUNT_CODE" = :AcCode
                     `;
-                    await connect.sequelize.query(updateQuery, {
-                        replacements: {
-                            pendingQty: encryptmodel.Pendingqty,
-                            empId,
-                            isin
-                        }
-                    });
-
-                    const IRFUpdateQuery = `
-                        UPDATE "TBL_IRF_Approval_Data"
-                        SET "TradeAvailableQty" = :pendingQty
-                        WHERE "ID" = :id
-                    `;
-                    await connect.sequelize.query(IRFUpdateQuery, {
-                        replacements: {
-                            pendingQty: encryptmodel.Pendingqty,
-                            id: encryptmodel.ID
-                        }
-                    });
-
-                } else if (encryptmodel.Mode === 'BUY') {
-                    // ✅ Fetch existing data
-                    const getQuery = `
-                        SELECT * FROM public."TBL_DP_HOLDING_DATA" 
-                        WHERE "ISIN_CODE" = :isin AND "EMPID" = :empId
-                    `;
-                    const getQueryResult = await connect.sequelize.query(getQuery, {
-                        replacements: { isin, empId },
-                        type: connect.sequelize.QueryTypes.SELECT
-                    });
-
-                    if (getQueryResult && getQueryResult.length > 0) {
-                        const existing = getQueryResult[0];
-
-                        const SUMQTY = Number(encryptmodel.TradeQty) + Number(existing.TradeAvailableQty || 0);
-                        const QTY = Number(encryptmodel.TradeQty) + Number(existing.DP_QTY || 0);
-                        const APQTY = Number(encryptmodel.TradeQty) + Number(existing.ApprovalAvailableQty || 0);
-
-                        const updateQuery = `
-                            UPDATE public."TBL_DP_HOLDING_DATA"
-                            SET 
-                                "TradeAvailableQty" = :sumQty,
-                                "ApprovalAvailableQty"=:apqty,
-                                "DP_QTY" = :qty,
-                                "MODIFIED_BY" = :empId
-                            WHERE 
-                                "EMPID" = :empId AND "ISIN_CODE" = :isin
-                        `;
                         await connect.sequelize.query(updateQuery, {
                             replacements: {
-                                sumQty: SUMQTY,
-                                qty: QTY,
-                                apqty:APQTY,
+                                pendingQty: encryptmodel.Pendingqty,
+                                AcCode,
                                 empId,
-                                isin,
-                                
+                                isin
                             }
                         });
 
                         const IRFUpdateQuery = `
-                            UPDATE "TBL_IRF_Approval_Data"
-                            SET "TradeAvailableQty" = :pendingQty
-                            WHERE "ID" = :id
-                        `;
+                        UPDATE "TBL_IRF_Approval_Data"
+                        SET "TradeAvailableQty" = :pendingQty
+                        WHERE "ID" = :id
+                    `;
                         await connect.sequelize.query(IRFUpdateQuery, {
                             replacements: {
                                 pendingQty: encryptmodel.Pendingqty,
@@ -347,64 +297,116 @@ router.route('/Singacreatetreade')
                             }
                         });
 
-                    } else {
-                        // ✅ Insert new record into TBL_DP_HOLDING_DATA
-                        const TBL_DP_HOLDING_DATA = datamodel.TBL_DP_HOLDING_DATA();
-                        const valuec = {
-                            EMPID: empId,
-                            ACCOUNT_CODE: encryptmodel.AccountCode,
-                            ACCOUNT_NAME: encryptmodel.AccountName,
-                            ISIN_CODE: isin,
-                            TRX_DATE: encryptmodel.TradeDate,
-                            DP_QTY: encryptmodel.TradeQty,
-                            SEGMENT: encryptmodel.Asset,
-                            IS_ACTIVE: true,
-                            CREATED_BY: empId,
-                            CREATED_DT: new Date(),
-                            TradeAvailableQty: 0,
-                            ApprovalAvailableQty: encryptmodel.TradeQty
-                        };
+                    } else if (encryptmodel.Mode === 'BUY') {
+                        // ✅ Fetch existing data
+                        const getQuery = `
+                        SELECT * FROM public."TBL_DP_HOLDING_DATA" 
+                        WHERE "ISIN_CODE" = :isin AND "EMPID" = :empId AND "ACCOUNT_CODE" = :AcCode
+                    `;
+                        const getQueryResult = await connect.sequelize.query(getQuery, {
+                            replacements: { isin, empId,AcCode },
+                            type: connect.sequelize.QueryTypes.SELECT
+                        });
 
-                        await dataaccess.Create(TBL_DP_HOLDING_DATA, valuec);
+                        if (getQueryResult && getQueryResult.length > 0) {
+                            const existing = getQueryResult[0];
 
-                        const IRFUpdateQuery = `
+                            const SUMQTY = Number(encryptmodel.TradeQty) + Number(existing.TradeAvailableQty || 0);
+                            const QTY = Number(encryptmodel.TradeQty) + Number(existing.DP_QTY || 0);
+                            const APQTY = Number(encryptmodel.TradeQty) + Number(existing.ApprovalAvailableQty || 0);
+
+                            const updateQuery = `
+                            UPDATE public."TBL_DP_HOLDING_DATA"
+                            SET 
+                                "TradeAvailableQty" = :sumQty,
+                                "ApprovalAvailableQty"=:apqty,
+                                "DP_QTY" = :qty,
+                                "MODIFIED_BY" = :empId
+                            WHERE 
+                                "EMPID" = :empId AND "ISIN_CODE" = :isin AND "ACCOUNT_CODE" = :ACCOUNT_CODE
+                        `;
+                            await connect.sequelize.query(updateQuery, {
+                                replacements: {
+                                    sumQty: SUMQTY,
+                                    qty: QTY,
+                                    apqty: APQTY,
+                                    ACCOUNT_CODE: encryptmodel.AccountCode,
+                                    empId,
+                                    isin,
+
+                                }
+                            });
+
+                            const IRFUpdateQuery = `
+                            UPDATE "TBL_IRF_Approval_Data"
+                            SET "TradeAvailableQty" = :pendingQty
+                            WHERE "ID" = :id
+                        `;
+                            await connect.sequelize.query(IRFUpdateQuery, {
+                                replacements: {
+                                    pendingQty: encryptmodel.Pendingqty,
+                                    id: encryptmodel.ID
+                                }
+                            });
+
+                        } else {
+                            // ✅ Insert new record into TBL_DP_HOLDING_DATA
+                            const TBL_DP_HOLDING_DATA = datamodel.TBL_DP_HOLDING_DATA();
+                            const valuec = {
+                                EMPID: empId,
+                                ACCOUNT_CODE: encryptmodel.AccountCode,
+                                ACCOUNT_NAME: encryptmodel.AccountName,
+                                ISIN_CODE: isin,
+                                TRX_DATE: encryptmodel.TradeDate,
+                                DP_QTY: encryptmodel.TradeQty,
+                                SEGMENT: encryptmodel.Asset,
+                                IS_ACTIVE: true,
+                                CREATED_BY: empId,
+                                CREATED_DT: new Date(),
+                                TradeAvailableQty: 0,
+                                ApprovalAvailableQty: encryptmodel.TradeQty
+                            };
+
+                            await dataaccess.Create(TBL_DP_HOLDING_DATA, valuec);
+
+                            const IRFUpdateQuery = `
                             UPDATE "TBL_IRF_Approval_Data"
                             SET "TradeAvailableQty" = 0
                             WHERE "ID" = :id
                         `;
-                        await connect.sequelize.query(IRFUpdateQuery, {
-                            replacements: {
-                                id: encryptmodel.ID
-                            }
-                        });
+                            await connect.sequelize.query(IRFUpdateQuery, {
+                                replacements: {
+                                    id: encryptmodel.ID
+                                }
+                            });
+                        }
                     }
+
+                    const EncryptLoginDetails = dataconn.encryptionAES(result);
+
+                    return res.status(200).json({
+                        Success: true,
+                        Message: 'Data saved successfully',
+                        Data: EncryptLoginDetails
+                    });
+
+                } else {
+                    return res.status(200).json({
+                        Success: false,
+                        Message: 'Error occurred while saving record',
+                        Data: null
+                    });
                 }
-
-                const EncryptLoginDetails = dataconn.encryptionAES(result);
-
-                return res.status(200).json({
-                    Success: true,
-                    Message: 'Data saved successfully',
-                    Data: EncryptLoginDetails
-                });
-
-            } else {
+            } catch (error) {
+                console.error("Error in /Singacreatetreade:", error);
+                dataconn.errorlogger('treadreportingservice', 'Singacreatetreade', error);
                 return res.status(200).json({
                     Success: false,
-                    Message: 'Error occurred while saving record',
+                    Message: 'Error occurred while saving record: ' + error.message,
                     Data: null
                 });
             }
-        } catch (error) {
-            console.error("Error in /Singacreatetreade:", error);
-            dataconn.errorlogger('treadreportingservice', 'Singacreatetreade', error);
-            return res.status(200).json({
-                Success: false,
-                Message: 'Error occurred while saving record: ' + error.message,
-                Data: null
-            });
-        }
-    });
+        });
 
 
     router.route('/Gettradevalue')
@@ -457,6 +459,32 @@ router.route('/Singacreatetreade')
                 console.error('Error in /GetTradeData:', error.message);
                 res.status(500).json({ Success: false, Message: 'Internal Server Error', Error: error.message });
             }
+        });
+
+    router.route('/Closerecord')
+        .post(function (req, res) {
+
+            var encryptmodel = dataconn.decrypt(req.body.encryptmodel);
+            const TBL_IRF_Approval_Data = datamodel.TBL_IRF_Approval_Data();
+            var values = {
+                IS_CLOSE: true,
+            };
+
+            var param = { ID: encryptmodel.ID };
+            dataaccess.Update(TBL_IRF_Approval_Data, values, param)
+                .then(function (result) {
+                    if (result != null) {
+                        var EncryptLoginDetails = dataconn.encryptionAES(result);
+                        res.status(200).json({ Success: true, Message: ' updated successfully', Data: EncryptLoginDetails });
+                    }
+                    else {
+                        dataconn.errorlogger('treadreportingService', 'Closerecord', { message: 'No object found', stack: '' });
+                        res.status(200).json({ Success: false, Message: 'Error occurred while updating record', Data: null });
+                    }
+                }, function (err) {
+                    dataconn.errorlogger('treadreportingService', 'Closerecord', err);
+                    res.status(200).json({ Success: false, Message: 'Error occurred while updating record', Data: null });
+                });
         });
 
     return router;

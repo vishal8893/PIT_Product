@@ -119,6 +119,8 @@ export class TreadReportingComponent {
       if (data.Success) {
         var Result = JSON.parse(this.Global.decrypt1(data.Data));
         this.finalItems = Result
+        this.finalItems.map((i: any) => { i.Display = i.ID + ' - ' + i.Security; return i; });
+
         console.log("finalItems", this.finalItems);
 
         // this.TradeAvailableQty = 24
@@ -154,7 +156,7 @@ export class TreadReportingComponent {
       EMP: this.EmpNo,
       Pendingqty: Pendingqty
     }
-    console.log("model", model);
+
     let encryptmodel = this.Global.encryptionAES(JSON.stringify(model));
     this.rest.postParams(this.Global.getapiendpoint() + 'tradereporting/Singacreatetreade', { encryptmodel: encryptmodel }).subscribe((data: any) => {
       if (data.Success) {
@@ -166,13 +168,16 @@ export class TreadReportingComponent {
     });
   }
   setlotandQuantity(val: any) {
-    if (parseInt(this.TradeAvailableQty) >= parseInt(val.value)) {
+    if (this.Mode?.value == "SELL") {
+      if (parseInt(this.TradeAvailableQty) >= parseInt(val.value)) {
 
-    } else {
-      this.messageService.add({ severity: 'warn', summary: 'Warning', detail: 'Please check the available QTY' });
-      this.TradeQty?.reset()
+      } else {
+        this.messageService.add({ severity: 'warn', summary: 'Warning', detail: 'Please check the available QTY' });
+        this.TradeQty?.reset()
 
+      }
     }
+
 
 
 
@@ -198,7 +203,7 @@ export class TreadReportingComponent {
         console.log("Resultghghgh", Result);
         this.PAN_NO = Result[0].PAN_NO
         this.Id?.setValue(Result[0].ID),
-        this.AccountCode?.setValue(Result[0].AccountCode)
+          this.AccountCode?.setValue(Result[0].AccountCode)
         this.AccountName?.setValue(Result[0].UPD_USER)
         this.Mode?.setValue(Result[0].Transaction)
         this.ScriptName?.setValue(Result[0].Security)
@@ -224,5 +229,23 @@ export class TreadReportingComponent {
         console.log("products", this.products);
       }
     });
+  }
+  Closerecord() {
+    if (this.Id?.value) {
+      let model = {
+        ID: this.Id?.value,
+        Asset: this.Asset?.value,
+      }
+      let encryptmodel = this.Global.encryptionAES(JSON.stringify(model));
+      this.rest.postParams(this.Global.getapiendpoint() + 'tradereporting/Closerecord', { encryptmodel: encryptmodel }).subscribe((data: any) => {
+        if (data.Success) {
+          var Result = JSON.parse(this.Global.decrypt1(data.Data));
+          this.cancel();
+        }
+      });
+
+    } else {
+      this.messageService.add({ severity: 'warn', summary: 'Warning', detail: 'Please select request id' });
+    }
   }
 }

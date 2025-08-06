@@ -3539,6 +3539,7 @@ module.exports.TBL_IRF_Approval_Data = function () {
         COMPLIANCECREATED_BY: { type: Sequelize.BIGINT, allowNull: true },
         COMPLIANCECREATED_ON: { type: Sequelize.DATE, allowNull: true },
         TradeAvailableQty:{ type: Sequelize.BIGINT, allowNull: true },
+        IS_CLOSE: { type: Sequelize.BOOLEAN, allowNull: true }
     },
         {
             sequelize,

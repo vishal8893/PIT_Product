@@ -613,8 +613,11 @@ var routes = function () {
                             console.log("availableQty", availableQty);
 
                             if (availableQty < Number(e.TradedQuantity)) {
-                                e.Reason = 'TradedQuantity exceeds available quantity';
-                                ErrorArray.push({ ...e });
+                                if (e.Mode === 'SELL') {
+                                    e.Reason = 'TradedQuantity exceeds available quantity';
+                                    ErrorArray.push({ ...e });
+                                }
+
                             } else {
                                 const updatedQty = availableQty - Number(e.TradedQuantity);
                                 if (e.Mode === 'SELL' && ErrorArray.length == 0) {
@@ -751,7 +754,7 @@ var routes = function () {
                             ErrorArray.push({ ...e });
                         }
 
-                        
+
                         // FIX: Only error if TradeAvailableQty < TradedQuantity
                         if (Number(e.TradeAvailableQty) < Number(e.TradedQuantity)) {
                             e.Reason = 'TradeAvailableQty should be greater than or equal to TradedQuantity';
@@ -760,12 +763,13 @@ var routes = function () {
 
                         const empId = e.RequestID;
                         const isin = e.ISIN;
+                        const AcCode = e.AccountCode
                         const getQuery = `
                                                 SELECT * FROM public."TBL_DP_HOLDING_DATA" 
-                                                WHERE "ISIN_CODE" = :isin AND "EMPID" = :empId
+                                                WHERE "ISIN_CODE" = :isin AND "EMPID" = :empId AND "ACCOUNT_CODE" = :AcCode
                                             `;
                         const getQueryResult = await connect.sequelize.query(getQuery, {
-                            replacements: { isin, empId },
+                            replacements: { isin, empId, AcCode },
                             type: connect.sequelize.QueryTypes.SELECT
                         });
 
@@ -784,7 +788,7 @@ var routes = function () {
                                                         "DP_QTY" = :qty,
                                                         "MODIFIED_BY" = :empId
                                                     WHERE 
-                                                        "EMPID" = :empId AND "ISIN_CODE" = :isin
+                                                        "EMPID" = :empId AND "ISIN_CODE" = :isin and "ACCOUNT_CODE" = :AcCode
                                                 `;
                             await connect.sequelize.query(updateQuery, {
                                 replacements: {
@@ -793,6 +797,7 @@ var routes = function () {
                                     apqty: APQTY,
                                     empId,
                                     isin,
+                                    AcCode,
 
                                 }
                             });
@@ -1364,7 +1369,7 @@ var routes = function () {
                     const query = `
                       SELECT * FROM "TBL_DP_HOLDING_DATA"
                       WHERE "EMPID" = '${e.EmpNO}'
-                        AND "ISIN_CODE" = '${e.ISINCode}'
+                        AND "ISIN_CODE" = '${e.ISINCode}' AND "ACCOUNT_CODE" = '${e.AccCode}'
                         AND "IS_ACTIVE" = true
                     `;
                     const rows = await connect.sequelize.query(query);
@@ -2676,7 +2681,7 @@ WHERE oth."EMPLOYEE_ID" = '${encryptmodel.loginid}'
 
         let Querys = `SELECT SUM("ApprovalAvailableQty") AS DPQTY
 FROM public."TBL_DP_HOLDING_DATA"
-WHERE "EMPID" = '${encryptmodel.EMP}' AND "IS_ACTIVE"= true and "ISIN_CODE"= '${encryptmodel.SearchSecuritycript}'
+WHERE "EMPID" = '${encryptmodel.EMP}' AND "IS_ACTIVE"= true and "ISIN_CODE"= '${encryptmodel.SearchSecuritycript}' AND "ACCOUNT_CODE"= '${encryptmodel.AccountCode}'
   AND "TRX_DATE" < CURRENT_DATE - INTERVAL '30 days' and "ApprovalAvailableQty" > 0`
         let RestData = await connect.sequelize.query(Querys)
 
