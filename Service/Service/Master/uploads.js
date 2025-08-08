@@ -764,12 +764,13 @@ var routes = function () {
                         const empId = e.RequestID;
                         const isin = e.ISIN;
                         const AcCode = e.AccountCode
+                        const UserId = requestBody.UserId
                         const getQuery = `
                                                 SELECT * FROM public."TBL_DP_HOLDING_DATA" 
-                                                WHERE "ISIN_CODE" = :isin AND "EMPID" = :empId AND "ACCOUNT_CODE" = :AcCode
+                                                WHERE "ISIN_CODE" = :isin AND "EMPID" = :UserId AND "ACCOUNT_CODE" = :AcCode
                                             `;
                         const getQueryResult = await connect.sequelize.query(getQuery, {
-                            replacements: { isin, empId, AcCode },
+                            replacements: { isin, UserId, AcCode },
                             type: connect.sequelize.QueryTypes.SELECT
                         });
 
@@ -786,16 +787,16 @@ var routes = function () {
                                                         "TradeAvailableQty" = :sumQty,
                                                         "ApprovalAvailableQty"=:apqty,
                                                         "DP_QTY" = :qty,
-                                                        "MODIFIED_BY" = :empId
+                                                        "MODIFIED_BY" = :UserId
                                                     WHERE 
-                                                        "EMPID" = :empId AND "ISIN_CODE" = :isin and "ACCOUNT_CODE" = :AcCode
+                                                        "EMPID" = :UserId AND "ISIN_CODE" = :isin and "ACCOUNT_CODE" = :AcCode
                                                 `;
                             await connect.sequelize.query(updateQuery, {
                                 replacements: {
                                     sumQty: SUMQTY,
                                     qty: QTY,
                                     apqty: APQTY,
-                                    empId,
+                                    UserId,
                                     isin,
                                     AcCode,
 
@@ -2717,7 +2718,7 @@ LEFT JOIN public."TBL_RICO_IBEATS_MST" B
   ON A."AccountCode" = B."ACC_CODE"
 LEFT JOIN public."TBL_SCRIPT_MST" C
   ON A."ISIN" = C."ISIN_CODE"
-WHERE A."EmployeeNumber" = '${encryptmodel.EMP}' and A. "ApprovalStatus"='Approved' and A."TradeAvailableQty" > 0
+WHERE A."EmployeeNumber" = '${encryptmodel.EMP}' and A. "ApprovalStatus"='Approved' and A."TradeAvailableQty" > 0 and A."IS_CLOSE" IS NULL
   AND DATE(A."CREATED_ON") BETWEEN CURRENT_DATE - INTERVAL '7 days' AND CURRENT_DATE
 ORDER BY A."CREATED_ON" DESC;`
 

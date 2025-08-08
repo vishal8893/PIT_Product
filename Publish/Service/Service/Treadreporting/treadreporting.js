@@ -304,7 +304,7 @@ var routes = function () {
                         WHERE "ISIN_CODE" = :isin AND "EMPID" = :empId AND "ACCOUNT_CODE" = :AcCode
                     `;
                         const getQueryResult = await connect.sequelize.query(getQuery, {
-                            replacements: { isin, empId,AcCode },
+                            replacements: { isin, empId, AcCode },
                             type: connect.sequelize.QueryTypes.SELECT
                         });
 
@@ -468,12 +468,20 @@ var routes = function () {
             const TBL_IRF_Approval_Data = datamodel.TBL_IRF_Approval_Data();
             var values = {
                 IS_CLOSE: true,
+                TradeAvailableQty: 0
             };
 
             var param = { ID: encryptmodel.ID };
             dataaccess.Update(TBL_IRF_Approval_Data, values, param)
-                .then(function (result) {
+                .then(async function (result) {
                     if (result != null) {
+                        let query = `
+                                      UPDATE "TBL_DP_HOLDING_DATA"
+                                      SET "TradeAvailableQty" = 0
+                                      WHERE "ISIN_CODE"='${encryptmodel.ISIN}' and "ACCOUNT_CODE"='${encryptmodel.AccountCode}' and  "EMPID"='${encryptmodel.EMP}'`;
+
+                        // Execute the query
+                        let result = await connect.sequelize.query(query);
                         var EncryptLoginDetails = dataconn.encryptionAES(result);
                         res.status(200).json({ Success: true, Message: ' updated successfully', Data: EncryptLoginDetails });
                     }

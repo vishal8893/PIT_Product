@@ -1,4 +1,4 @@
-import { Component, OnInit , ViewChild, ElementRef} from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 // import { Component, OnInit } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
@@ -18,7 +18,7 @@ import { Moment } from 'moment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 import { jwtDecode } from 'jwt-decode';
-import {  OnDestroy } from '@angular/core';
+import { OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil, finalize } from 'rxjs/operators';
 import { DarkPoolApprovalModel } from '../dark-pool/dark-pool-approval.model';
@@ -33,7 +33,7 @@ export class HomeComponent {
   @ViewChild('table', { static: false }) table: ElementRef;
   @ViewChild('table1', { static: false }) table1: ElementRef;
   @ViewChild('table2', { static: false }) table2: ElementRef;
-  
+
   userLoggedIn: any
   userId: any
   Violationdata: any = []
@@ -127,7 +127,7 @@ export class HomeComponent {
   ]
 
 
-approvalData: DarkPoolApprovalModel[] = [];
+  approvalData: DarkPoolApprovalModel[] = [];
   approvalDataLoading: boolean = false;
   userData: any;
   private destroyed$ = new Subject<void>();
@@ -220,7 +220,7 @@ approvalData: DarkPoolApprovalModel[] = [];
   // }
   // exportToPDF(): void {
   //   const pdf = new jsPDF();
-  
+
   //   // Define the headers for the table
   //   const headers = [
   //     'Scrip Name', 'DP Holding', 'LTP', 'Avg. Buy Price', 'Last Trans. Value', 'Late Trade Date',
@@ -228,7 +228,7 @@ approvalData: DarkPoolApprovalModel[] = [];
   //     'OpenQuantity', 'OptionType', 'PanNo', 'Quantity', 'ScripCode', 'StrikePrice', 'TradedBy',
   //     'TransId', 'UpdatedBy', 'UpdatedDate'
   //   ];
-  
+
   //   // Extract the data from holdingdata
   //   const data = this.holdingdata.map(item => [
   //     item.ScripName, item.AccCode, '9087', '10', item.TotalPrice, item.TradeDate,
@@ -236,29 +236,29 @@ approvalData: DarkPoolApprovalModel[] = [];
   //     item.ISIN, item.Mode, item.OpenQuantity, item.OptionType, item.PanNo, item.Quantity,
   //     item.ScripCode, item.StrikePrice, item.TradedBy, item.TransId, item.UpdatedBy, item.UpdatedDate
   //   ]);
-  
+
   //   // Configure column widths dynamically based on the number of columns
   //   const columnStyles: Record<number, { columnWidth: number }> = {};
   //   for (let i = 0; i < headers.length; i++) {
   //     columnStyles[i] = { columnWidth: 30 }; // Set the default width, adjust as needed
   //   }
-  
+
   //   // Cast the pdf instance to 'any' to avoid TypeScript errors
   //   (pdf as any).autoTable({
   //     head: [headers],
   //     body: data,
   //     columnStyles: columnStyles,
   //   });
-  
+
   //   pdf.save('holding_data.pdf');
   // }
-  
+
 
   // exportToPDF(): void {
   //   // Create a container div for the scrollable table
   //   const container = document.createElement('div');
   //   container.style.overflow = 'auto'; // Enable overflow for scrollbar
-  
+
   //   // Define the headers for the table
   //   const headers = [
   //     'Scrip Name', 'DP Holding', 'LTP', 'Avg. Buy Price', 'Last Trans. Value', 'Late Trade Date',
@@ -266,7 +266,7 @@ approvalData: DarkPoolApprovalModel[] = [];
   //     'OpenQuantity', 'OptionType', 'PanNo', 'Quantity', 'ScripCode', 'StrikePrice', 'TradedBy',
   //     'TransId', 'UpdatedBy', 'UpdatedDate'
   //   ];
-  
+
   //   // Extract the data from holdingdata
   //   const data = this.holdingdata.map(item => [
   //     item.ScripName, item.AccCode, '9087', '10', item.TotalPrice, item.TradeDate,
@@ -274,11 +274,11 @@ approvalData: DarkPoolApprovalModel[] = [];
   //     item.ISIN, item.Mode, item.OpenQuantity, item.OptionType, item.PanNo, item.Quantity,
   //     item.ScripCode, item.StrikePrice, item.TradedBy, item.TransId, item.UpdatedBy, item.UpdatedDate
   //   ]);
-  
+
   //   // Create the table element
   //   const table = document.createElement('table');
   //   table.classList.add('pdf-table');
-  
+
   //   // Create the header row
   //   const headerRow = document.createElement('tr');
   //   headers.forEach(header => {
@@ -287,7 +287,7 @@ approvalData: DarkPoolApprovalModel[] = [];
   //     headerRow.appendChild(th);
   //   });
   //   table.appendChild(headerRow);
-  
+
   //   // Create the body rows
   //   data.forEach(rowData => {
   //     const row = document.createElement('tr');
@@ -298,10 +298,10 @@ approvalData: DarkPoolApprovalModel[] = [];
   //     });
   //     table.appendChild(row);
   //   });
-  
+
   //   // Append the table to the container
   //   container.appendChild(table);
-  
+
   //   // Convert the HTML to PDF using html2pdf
   //   html2pdf(container, {
   //     margin: 10,
@@ -309,41 +309,41 @@ approvalData: DarkPoolApprovalModel[] = [];
   //     html2canvas: { scale: 2 }, // Scale for better resolution
   //   });
   // }
-  
+
   exportToPDF(): void {
     const pdf = new jsPDF();
-  
+
     // Define the headers for the table
     const headers = [
       'Scrip Name', 'DP Holding', 'LTP', 'Avg. Buy Price', 'Last Trans. Value', 'Late Trade Date',
       'AccName', 'AccCode', 'Designated', 'EmpId', 'EFSLDesignated', 'E_BOID', 'Name', 'ISIN',
       'PAN', 'Login ID'
     ];
-   
+
     // Extract the data from holdingdata
     const data = this.holdingdata.map(item => [
       item.SCRIP_DESC, item.DP_QTY, '9087', '10', item.DP_QTY, item.TRX_DATE,
       item.ACCOUNT_NAME, item.ACCOUNT_CODE, item.DESIGNATED, item.EMPID, item.EFSL_DESIGNATED, item.E_BOID,
       item.FIRSTNAME, item.ISIN_CODE, item.PAN_NO, item.LOGIN_ID
     ]);
-  
+
     // Configure column widths dynamically based on the number of columns
     const columnStyles: Record<number, { columnWidth: number | 'auto' }> = {};
     for (let i = 0; i < headers.length; i++) {
       columnStyles[i] = { columnWidth: 'auto' as const };
     }
-  
+
     // Split data into chunks (adjust chunkSize as needed)
     const chunkSize = 5;
     for (let i = 0; i < headers.length; i += chunkSize) {
       const chunkHeaders = headers.slice(i, i + chunkSize);
       const chunkData = data.map(row => row.slice(i, i + chunkSize));
-  
+
       // Add a new page for each chunk (except the first one)
       if (i > 0) {
         pdf.addPage();
       }
-  
+
       // Cast the pdf instance to 'any' to avoid TypeScript errors
       (pdf as any).autoTable({
         head: [chunkHeaders],
@@ -353,10 +353,10 @@ approvalData: DarkPoolApprovalModel[] = [];
         margin: { top: 10 },
       });
     }
-  
+
     pdf.save('holding_data.pdf');
   }
-   
+
   ngAfterViewInit() {
     (window as any).exportToExcel = this.exportToExcel.bind(this);
     (window as any).exportToPDF = this.exportToPDF.bind(this);
@@ -382,29 +382,29 @@ approvalData: DarkPoolApprovalModel[] = [];
 
   exportToPDF1(): void {
     const pdf = new jsPDF();
-  
+
     // Define the headers for the table
     const headers = [
       'Name Of Security', 'Instrument Type', 'Transaction Type', 'Quantity', 'Price Limit(Not including Brokerage)', 'Status',
-      'Rejection Reason','APP_TYPE','AccountCode','AcquiredType','AcquisitionType','CHECK_DISCLAIMER','COMPANY','CREATED_BY','CRE_DATE',
-      'CRE_USER','CommAcquiredThrough','CommDimension','CommLocationofPurchase','CommMarketName','CommNameofCounterParty','CommSource',
-      'CommTypeofTrade','CommVendorDetails',,'CurrentTradeValue_Greater','DateofEarlierTransaction','DependentName','ESOP_TRADE_CHECK',
-      'EmployeeNumber','EntityName','FutOpQuantityLot','ID','IEApprovalStatus','ISIN','IS_ACTIVE','IS_IE_COMPLIANCE_AUTOMATE','IsGWMRA',
-      'LOCATION','MODIFIED_BY','MODIFIED_ON','MarketPrice','Month','OptionType','Position','PreviousTradeValueGreater','PricePremium',
-      'PrimaryIssueCategory','Primary_Issue_Type','QuantityLot','RequestNumber','Requestfor','RightIssueType','SPECIAL_CASE_TYPE','SPNCDEntity',
-      'StrikePrice','TRX_NO','UPD_DATE','UPD_USER','VERSION'
+      'Rejection Reason', 'APP_TYPE', 'AccountCode', 'AcquiredType', 'AcquisitionType', 'CHECK_DISCLAIMER', 'COMPANY', 'CREATED_BY', 'CRE_DATE',
+      'CRE_USER', 'CommAcquiredThrough', 'CommDimension', 'CommLocationofPurchase', 'CommMarketName', 'CommNameofCounterParty', 'CommSource',
+      'CommTypeofTrade', 'CommVendorDetails', , 'CurrentTradeValue_Greater', 'DateofEarlierTransaction', 'DependentName', 'ESOP_TRADE_CHECK',
+      'EmployeeNumber', 'EntityName', 'FutOpQuantityLot', 'ID', 'IEApprovalStatus', 'ISIN', 'IS_ACTIVE', 'IS_IE_COMPLIANCE_AUTOMATE', 'IsGWMRA',
+      'LOCATION', 'MODIFIED_BY', 'MODIFIED_ON', 'MarketPrice', 'Month', 'OptionType', 'Position', 'PreviousTradeValueGreater', 'PricePremium',
+      'PrimaryIssueCategory', 'Primary_Issue_Type', 'QuantityLot', 'RequestNumber', 'Requestfor', 'RightIssueType', 'SPECIAL_CASE_TYPE', 'SPNCDEntity',
+      'StrikePrice', 'TRX_NO', 'UPD_DATE', 'UPD_USER', 'VERSION'
     ];
-   
+
     // Extract the data from holdingdata
     const data = this.irf.map(item => [
       item.Security, item.NatureofTrade, item.Transaction, item.EqQuantity, '', item.ApprovalStatus,
-      item.RejectionReason,item.APP_TYPE,item.AccountCode,item.AcquiredType,item.AcquisitionType,item.CHECK_DISCLAIMER,item.COMPANY,item.CREATED_BY,item.CRE_DATE,
-      item.CRE_USER,item.CommAcquiredThrough,item.CommDimension,item.CommLocationofPurchase,item.CommMarketName,item.CommNameofCounterParty,item.CommSource,
-      item.CommTypeofTrade,item.CommVendorDetails,item.CurrentTradeValue_Greater,item.DateofEarlierTransaction,item.DependentName,item.ESOP_TRADE_CHECK,
-      item.EmployeeNumber,item.EntityName,item.FutOpQuantityLot,item.ID,item.IEApprovalStatus,item.ISIN,item.IS_ACTIVE,item.IS_IE_COMPLIANCE_AUTOMATE,item.IsGWMRA,
-      item.LOCATION,item.MODIFIED_BY,item.MODIFIED_ON,item.MarketPrice,item.Month,item.OptionType,item.Position,item.PreviousTradeValueGreater,item.PricePremium,
-      item.PrimaryIssueCategory,item.Primary_Issue_Type,item.QuantityLot,item.RequestNumber,item.Requestfor,item.RightIssueType,item.SPECIAL_CASE_TYPE,item.SPNCDEntity,
-      item.StrikePrice,item.TRX_NO,item.UPD_DATE,item.UPD_USER,item.VERSION
+      item.RejectionReason, item.APP_TYPE, item.AccountCode, item.AcquiredType, item.AcquisitionType, item.CHECK_DISCLAIMER, item.COMPANY, item.CREATED_BY, item.CRE_DATE,
+      item.CRE_USER, item.CommAcquiredThrough, item.CommDimension, item.CommLocationofPurchase, item.CommMarketName, item.CommNameofCounterParty, item.CommSource,
+      item.CommTypeofTrade, item.CommVendorDetails, item.CurrentTradeValue_Greater, item.DateofEarlierTransaction, item.DependentName, item.ESOP_TRADE_CHECK,
+      item.EmployeeNumber, item.EntityName, item.FutOpQuantityLot, item.ID, item.IEApprovalStatus, item.ISIN, item.IS_ACTIVE, item.IS_IE_COMPLIANCE_AUTOMATE, item.IsGWMRA,
+      item.LOCATION, item.MODIFIED_BY, item.MODIFIED_ON, item.MarketPrice, item.Month, item.OptionType, item.Position, item.PreviousTradeValueGreater, item.PricePremium,
+      item.PrimaryIssueCategory, item.Primary_Issue_Type, item.QuantityLot, item.RequestNumber, item.Requestfor, item.RightIssueType, item.SPECIAL_CASE_TYPE, item.SPNCDEntity,
+      item.StrikePrice, item.TRX_NO, item.UPD_DATE, item.UPD_USER, item.VERSION
     ]);
 
     // Configure column widths dynamically based on the number of columns
@@ -412,18 +412,18 @@ approvalData: DarkPoolApprovalModel[] = [];
     for (let i = 0; i < headers.length; i++) {
       columnStyles[i] = { columnWidth: 'auto' as const };
     }
-  
+
     // Split data into chunks (adjust chunkSize as needed)
     const chunkSize = 7;
     for (let i = 0; i < headers.length; i += chunkSize) {
       const chunkHeaders = headers.slice(i, i + chunkSize);
       const chunkData = data.map(row => row.slice(i, i + chunkSize));
-  
+
       // Add a new page for each chunk (except the first one)
       if (i > 0) {
         pdf.addPage();
       }
-  
+
       // Cast the pdf instance to 'any' to avoid TypeScript errors
       (pdf as any).autoTable({
         head: [chunkHeaders],
@@ -433,7 +433,7 @@ approvalData: DarkPoolApprovalModel[] = [];
         margin: { top: 10 },
       });
     }
-  
+
     pdf.save('irf_data.pdf');
   }
 
@@ -454,12 +454,12 @@ approvalData: DarkPoolApprovalModel[] = [];
 
   exportToPDF2(): void {
     const pdf = new jsPDF();
-  
+
     // Define the headers for the table
     const headers = [
       'Trade Violation', 'Scrip Name', 'Date', 'Status'
     ];
-   
+
     // Extract the data from holdingdata
     const data = this.Violationdata.map(item => [
       item.NoApprovalVoil, item.ScripName, item.CreatedDate, item.Status
@@ -470,18 +470,18 @@ approvalData: DarkPoolApprovalModel[] = [];
     for (let i = 0; i < headers.length; i++) {
       columnStyles[i] = { columnWidth: 'auto' as const };
     }
-  
+
     // Split data into chunks (adjust chunkSize as needed)
     const chunkSize = 7;
     for (let i = 0; i < headers.length; i += chunkSize) {
       const chunkHeaders = headers.slice(i, i + chunkSize);
       const chunkData = data.map(row => row.slice(i, i + chunkSize));
-  
+
       // Add a new page for each chunk (except the first one)
       if (i > 0) {
         pdf.addPage();
       }
-  
+
       // Cast the pdf instance to 'any' to avoid TypeScript errors
       (pdf as any).autoTable({
         head: [chunkHeaders],
@@ -491,7 +491,7 @@ approvalData: DarkPoolApprovalModel[] = [];
         margin: { top: 10 },
       });
     }
-  
+
     pdf.save('violation_data.pdf');
   }
 
@@ -512,7 +512,7 @@ approvalData: DarkPoolApprovalModel[] = [];
     this.userId = this.userLoggedIn.ID;
     this.EmpNo = this.userLoggedIn.EMPNO;
     this.empname = this.userLoggedIn.FIRSTNAME;
-    this.CODE =  this.userLoggedIn.CODE;
+    this.CODE = this.userLoggedIn.CODE;
     this.getallirfdata(this.EmpNo);
     this.getRequestData();
     this.getallholdingdata(this.EmpNo);
@@ -544,7 +544,7 @@ approvalData: DarkPoolApprovalModel[] = [];
 
   }
 
-  getAllStatusData(){
+  getAllStatusData() {
 
     var model: any = {
 
@@ -554,36 +554,36 @@ approvalData: DarkPoolApprovalModel[] = [];
 
     let encryptmodel = this.Global.encryptionAES(JSON.stringify(model));
     // console.log("statusmodel",encryptmodel);
-    
-    this.rest.postParams(this.Global.getapiendpoint() + `home/getstatusforclsr`,{ encryptmodel: encryptmodel }).subscribe((data: any) => {
+
+    this.rest.postParams(this.Global.getapiendpoint() + `home/getstatusforclsr`, { encryptmodel: encryptmodel }).subscribe((data: any) => {
       if (data.Success) {
         var Result = JSON.parse(this.Global.decrypt1(data.Data));
         // console.log("employeeData",Result);
-        this.employeeData = Result[0]; 
+        this.employeeData = Result[0];
         // console.log("employeeData",this.employeeData);
       }
-    });    
+    });
   }
 
   getFormattedReasons(rejectionReasons: string): string {
     const reasonsList = rejectionReasons.split(',').map(reason => reason.trim()).filter(reason => reason !== '');
-  
+
     if (reasonsList.length > 0) {
       return reasonsList.join(', ');
     } else {
       return rejectionReasons.trim();
     }
   }
-  
 
-  getallirfdata(emp:any) {
+
+  getallirfdata(emp: any) {
     // var emp = this.EmpNo;
-    
+
     this.rest.getAll(this.Global.getapiendpoint() + `home/GetirfdataUSER/${emp}`).subscribe((data: any) => {
 
       if (data.Success) {
         var Result = JSON.parse(this.Global.decrypt1(data.Data));
-        this.irf = Result;        
+        this.irf = Result;
         this.irf.forEach((i: any, indexof: any) => {
           i.Srno = indexof + 1;
           i.FormattedRejectionReason = this.getFormattedReasons(i.RejectionReason);
@@ -593,14 +593,14 @@ approvalData: DarkPoolApprovalModel[] = [];
     });
   }
 
-  getallholdingdata(emp:any) {
+  getallholdingdata(emp: any) {
 
     this.rest.getAll(this.Global.getapiendpoint() + `home/Getholdingdata/${emp}`).subscribe((data: any) => {
 
       if (data.Success) {
         var Result = JSON.parse(this.Global.decrypt1(data.Data));
         this.holdingdata = Result;
-        // console.log("this.holdingdata", this.holdingdata)
+        console.log("this.holdingdata", this.holdingdata)
         this.holdingdata.forEach((element: any) => {
           this.labelsarray.push(element.SCRIP_DESC)
           this.pienoarray.push(element.DP_QTY)
@@ -654,7 +654,7 @@ approvalData: DarkPoolApprovalModel[] = [];
     this.VId.setValue(Id)
     this.Voilation.setValue(data.NoApprovalVoil)
     this.visible = true;
-    this.showviolationStatusData = true; 
+    this.showviolationStatusData = true;
     this.getViolationStatusData(this.VId.value);
   }
 
@@ -676,7 +676,7 @@ approvalData: DarkPoolApprovalModel[] = [];
     }
     let encryptmodel = this.Global.encryptionAES(JSON.stringify(Mode));
     // console.log("vioemp",encryptmodel);
-    
+
     this.rest.postParams(this.Global.getapiendpoint() + 'home/Violationdata', { encryptmodel: encryptmodel }).subscribe((data: any) => {
       if (data.Success) {
         var Result = JSON.parse(this.Global.decrypt1(data.Data));
@@ -724,7 +724,7 @@ approvalData: DarkPoolApprovalModel[] = [];
         // this.visible = false;        
         // this.showviolationStatusData = false;
         var Result = JSON.parse(this.Global.decrypt1(data.Data));
-        this.showviolationStatusData = true;        
+        this.showviolationStatusData = true;
         this.getViolationStatusData(this.VId.value);
         this.ViolationData();
         this.getViolationData();
@@ -737,7 +737,7 @@ approvalData: DarkPoolApprovalModel[] = [];
     });
   }
 
-  getViolationStatusData(SId:any) {
+  getViolationStatusData(SId: any) {
     this.rest.getAll(this.Global.getapiendpoint() + `home/getViolationstatusDataBYID/${SId}`).subscribe((data) => {
       var Result = JSON.parse(this.Global.decrypt1(data.Data));
       this.violationStatusData = Result;
@@ -750,13 +750,13 @@ approvalData: DarkPoolApprovalModel[] = [];
     });
   }
 
-  onEditVioStatus(product: any){
+  onEditVioStatus(product: any) {
     // console.log("oneditvioStatus",product);
     // console.log(product.TransId);
     this.visiblestatusGrid = true;
     this.showvioStatusGrid = true;
     this.getViolationStatusData(product.TransId);
-    
+
   }
 
   //new compliance code
@@ -1369,7 +1369,7 @@ approvalData: DarkPoolApprovalModel[] = [];
     this.getALLQueryData(this.statusid);
   }
 
-  oneditStatusComp(product: any){
+  oneditStatusComp(product: any) {
     this.visible3 = true;
     this.showQueryDataTable = true;
     this.statusid = product.ID;
@@ -1418,7 +1418,7 @@ approvalData: DarkPoolApprovalModel[] = [];
     this.helpdeskUpdateform.reset();
   }
 
-ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this.destroyed$.next();
     this.destroyed$.complete();
   }
@@ -1427,10 +1427,10 @@ ngOnDestroy(): void {
     try {
       const token = sessionStorage.getItem('jwt_token');
       if (!token) {
-        this.messageService.add({ 
-          severity: 'error', 
-          summary: 'Auth Error', 
-          detail: 'User token not found.' 
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Auth Error',
+          detail: 'User token not found.'
         });
         return;
       }
@@ -1514,12 +1514,12 @@ ngOnDestroy(): void {
     }
 
     // Look for Admin and Super Admin roles
-    const adminRole = this.rolesData.find(role => 
-      role.NAME && role.NAME.toLowerCase().includes('admin') && 
+    const adminRole = this.rolesData.find(role =>
+      role.NAME && role.NAME.toLowerCase().includes('admin') &&
       !role.NAME.toLowerCase().includes('super')
     );
-    const superAdminRole = this.rolesData.find(role => 
-      role.NAME && role.NAME.toLowerCase().includes('super') && 
+    const superAdminRole = this.rolesData.find(role =>
+      role.NAME && role.NAME.toLowerCase().includes('super') &&
       role.NAME.toLowerCase().includes('admin')
     );
 
@@ -1571,7 +1571,7 @@ ngOnDestroy(): void {
   // Validate user role directly
   private validateUserRole(roleCode: string) {
     const normalizedRole = roleCode.toLowerCase();
-    
+
     // Check for admin patterns
     if (normalizedRole.includes('admin') || normalizedRole.includes('super')) {
       console.log("Access granted for role:", roleCode);
@@ -1644,19 +1644,19 @@ ngOnDestroy(): void {
         console.log("Decrypted approval data string:", decryptedData);
 
         const parsedData = JSON.parse(decryptedData);
-        console.log("Parsed approval data:", parsedData);        if (Array.isArray(parsedData)) {
+        console.log("Parsed approval data:", parsedData); if (Array.isArray(parsedData)) {
           // Filter out records that are already approved (IS_ACCEPTED = true)
           const filteredData = parsedData.filter(item => {
             // Keep records that are not approved (IS_ACCEPTED is false, null, or undefined)
             return item.IS_ACCEPTED !== true;
           });
-          
+
           this.approvalData = filteredData.map(item => new DarkPoolApprovalModel(item));
-          
+
           console.log("Raw data count:", parsedData.length);
           console.log("Filtered data count (excluding approved):", filteredData.length);
           console.log("Filtered out approved records:", parsedData.length - filteredData.length);
-          
+
           // Log the approved records that were filtered out for debugging
           const approvedRecords = parsedData.filter(item => item.IS_ACCEPTED === true);
           if (approvedRecords.length > 0) {
@@ -1845,9 +1845,9 @@ ngOnDestroy(): void {
   canTakeAction(record: DarkPoolApprovalModel): boolean {
     // Allow action on pending records (not yet approved/rejected, active, and not deleted)
     // IS_ACCEPTED can be true (approved), false (rejected), or null/undefined (pending)
-    return record.isActive() && 
-           !record.isDeleted() && 
-           (record.IS_ACCEPTED === null || record.IS_ACCEPTED === undefined);
+    return record.isActive() &&
+      !record.isDeleted() &&
+      (record.IS_ACCEPTED === null || record.IS_ACCEPTED === undefined);
   }
 
   // Get status badge class
@@ -1867,7 +1867,7 @@ ngOnDestroy(): void {
   // Get request type badge class
   getRequestTypeBadgeClass(requestType: string): string {
     if (!requestType) return 'badge bg-secondary';
-    
+
     switch (requestType.toLowerCase()) {
       case 'finalize':
         return 'badge bg-primary';
@@ -1876,6 +1876,11 @@ ngOnDestroy(): void {
       default:
         return 'badge bg-info';
     }
+  }
+  navigateToDetails() {
+    this.router.navigate(['/pit/InvestmentApprovalForm']);
+
+
   }
 }
 

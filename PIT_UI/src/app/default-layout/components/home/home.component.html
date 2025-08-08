@@ -5,9 +5,12 @@
             class="card bg-white alert border-0 border-start border-5 border-primary alert-dismissible fade show py-2 px-1">
             <div class="align-items-center">
                 <div class="ms-3">
-                    <h6 class="mb-0 text-primary d-flex">NSE/BSE Live Feed: <small class="text-black"><marquee direction="left" scrolldelay="85" behavior="loop">Adani Enterpris 2,176.70, Adani Ports
-                            792.25, Apollo Hospital 5,490.05 Adani Enterpris 2,176.70, Adani Ports 792.25</marquee></small></h6>
-                    
+                    <h6 class="mb-0 text-primary d-flex">NSE/BSE Live Feed: <small class="text-black">
+                            <marquee direction="left" scrolldelay="85" behavior="loop">Adani Enterpris 2,176.70, Adani
+                                Ports
+                                792.25, Apollo Hospital 5,490.05 Adani Enterpris 2,176.70, Adani Ports 792.25</marquee>
+                        </small></h6>
+
                 </div>
             </div>
         </div>
@@ -421,8 +424,10 @@
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let item of holdingdata">
-                                        <td><a routerLink="/pit/InvestmentApprovalForm"
-                                                routerLinkActive="active">{{item.SCRIP_DESC}}</a></td>
+                                        <td  (click)="navigateToDetails()" style="color: #0b33d4;"> {{ item.SCRIP_DESC }}
+                                           
+                                        </td>
+
                                         <td>{{item.DP_QTY}}</td>
                                         <td class="text-right">9087</td>
                                         <td class="text-right">10</td>
@@ -511,7 +516,7 @@
                                 <th>Instrument Type</th>
                                 <th>Transaction Type</th>
                                 <th>Quantity</th>
-                 
+
                                 <th>Status</th>
                                 <th>Rejection Reason</th>
                             </tr>
@@ -523,7 +528,7 @@
                                 <td>{{item.NatureofTrade}}</td>
                                 <td>{{item.Transaction}}</td>
                                 <td>{{item.EqQuantity}}</td>
-                          
+
                                 <td>{{item.ApprovalStatus}}
                                 </td>
                                 <td>{{item.FormattedRejectionReason }}
@@ -680,11 +685,9 @@
                                     <td>{{x.NoApprovalVoil}}</td>
                                     <td>{{x.ScripName}}</td>
                                     <td>{{x.CreatedDate | date}}</td>
-                                    <td *ngIf="x.Status=='Clarification Provided'"
-                                        class="bg-success text-black">
+                                    <td *ngIf="x.Status=='Clarification Provided'" class="bg-success text-black">
                                         {{x.Status}}</td>
-                                    <td *ngIf="x.Status=='Clarification Not Provided'"
-                                        class="bg-danger text-black">
+                                    <td *ngIf="x.Status=='Clarification Not Provided'" class="bg-danger text-black">
                                         {{x.Status}}</td>
                                     <td class="text-center">
                                         <button pButton pRipple type="button" (click)="showDialog(x)" label=""
@@ -832,16 +835,15 @@
                                     <li
                                         class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-black">
                                         Applicable -
-                                        <span class=""><a
-                                                class="text-black underline fw-bold" (click)="showProjectData('AllEAH')">
+                                        <span class=""><a class="text-black underline fw-bold"
+                                                (click)="showProjectData('AllEAH')">
                                                 {{TotalUProjectCount}}
                                             </a></span>
                                     </li>
                                     <li
                                         class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-black">
                                         Completed -
-                                        <span class=""><a
-                                                class="text-black underline fw-bold"
+                                        <span class=""><a class="text-black underline fw-bold"
                                                 (click)="showProjectData('ActiveEAH')">{{ProjectCount}}
                                             </a></span>
                                     </li>
@@ -863,16 +865,16 @@
                                     <li
                                         class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-black">
                                         Applicable -
-                                        <span class=""><a
-                                                class="text-black underline fw-bold" (click)="showProjectData('PCOIAll')">
+                                        <span class=""><a class="text-black underline fw-bold"
+                                                (click)="showProjectData('PCOIAll')">
                                                 {{TotalUPCOICount}}
                                             </a></span>
                                     </li>
                                     <li
                                         class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-black">
                                         Completed -
-                                        <span class=""><a
-                                                class="text-black underline fw-bold" (click)="showProjectData('PCOIActive')">
+                                        <span class=""><a class="text-black underline fw-bold"
+                                                (click)="showProjectData('PCOIActive')">
                                                 {{PCOICount}}
                                             </a> </span>
                                     </li>
@@ -895,16 +897,16 @@
                                     <li
                                         class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-black">
                                         Applicable -
-                                        <span class=""><a
-                                                class="text-black underline fw-bold" (click)="showProjectData('SCOIAll')">
+                                        <span class=""><a class="text-black underline fw-bold"
+                                                (click)="showProjectData('SCOIAll')">
                                                 {{TotalUSCOICount}}
                                             </a></span>
                                     </li>
                                     <li
                                         class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-1 text-black">
                                         Completed -
-                                        <span class=""><a
-                                                class="text-black underline fw-bold" (click)="showProjectData('SCOIActive')">
+                                        <span class=""><a class="text-black underline fw-bold"
+                                                (click)="showProjectData('SCOIActive')">
                                                 {{SCOICount}}
                                             </a></span>
                                     </li>
@@ -1003,8 +1005,7 @@
                                     <li
                                         class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 px-0 py-01 text-black">
                                         Violations -
-                                        <span class=""><a
-                                                class="text-black underline fw-bold"
+                                        <span class=""><a class="text-black underline fw-bold"
                                                 (click)="showProjectData('ViolationActive')">
                                                 {{ViolationCount}}
                                             </a></span>
@@ -2553,4 +2554,3 @@
             </p-dialog>
         </div>
     </p-tabPanel>
-    

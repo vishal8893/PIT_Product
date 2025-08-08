@@ -235,7 +235,11 @@ export class TreadReportingComponent {
       let model = {
         ID: this.Id?.value,
         Asset: this.Asset?.value,
+        ISIN: this.ISIN,
+        EMP: this.EmpNo,
+        AccountCode: this.AccountCode?.value,
       }
+      
       let encryptmodel = this.Global.encryptionAES(JSON.stringify(model));
       this.rest.postParams(this.Global.getapiendpoint() + 'tradereporting/Closerecord', { encryptmodel: encryptmodel }).subscribe((data: any) => {
         if (data.Success) {
