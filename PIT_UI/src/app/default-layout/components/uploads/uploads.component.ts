@@ -560,52 +560,52 @@ export class UploadsComponent implements OnInit {
 
     } else if (this.uploadtypecontroller.value === 'Trade Data Master') {
 
-      // const data = [
-      //   ['EmpId', 'PanNo.', 'Trade Date', 'Exch', 'Account Code', 'Account Name', 'Scrip Code', 'Scrip Name', 'Quantity',
-      //     'Total Price', 'Mode', 'ISIN', 'Open Quantity', 'Trade By', 'Strike Price', 'Expiry Date', 'Option Type']
-      // ];
+    
+      const data = [[
+  'RequestID',
+  'Exch',
+  'AccountCode',
+  'AccountName',
+  'ScripName',
+  'Quantity',
+  'TradeAvailableQty',
+  'TotalPrice',
+  'Mode',
+  'ISIN',
+  'StrikePrice',
+  'ExpiryDate',
+  'OptionType',
+  'TradedQuantity',
+  'TradeDate'
+]];
 
+      // Create a worksheet and workbook
+      const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(data);
+      const wb: XLSX.WorkBook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'SampleData');
 
-      // console.log("mod", encryptmodel)
-      let finalDataArray = []
-
-      let model = {
-        EMP: this.EmpNo
+      const range = XLSX.utils.decode_range(ws['!ref']);
+      for (let col = range.s.c; col <= range.e.c; col++) {
+        const cell = XLSX.utils.encode_cell({ r: range.s.r, c: col });
+        if (data[0][col].includes('*')) {
+          ws[cell].s = { fill: { fgColor: { rgb: "FF0000" } } };  // Set red background for mandatory fields
+        }
       }
 
-      let encryptmodel = this.Global.encryptionAES(JSON.stringify(model));
+      // Generate the Excel file as a data URI (Base64)
+      const excelBlob = XLSX.write(wb, { bookType: 'xlsx', type: 'base64' as 'base64' });
+      const dataUri = 'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,' + excelBlob;
 
-      this.rest.postParams(this.Global.getapiendpoint() + 'upload/GetTradeapproverrecord', { encryptmodel: encryptmodel }).subscribe((data: any) => {
-        if (data.Success) {
-          var Result = JSON.parse(this.Global.decrypt1(data.Data));
-          Result.forEach((element: any) => {
-            finalDataArray.push({
-              RequestID: element.ID,
-              Exch: element.NatureofTrade,
-              AccountCode: element.AccountCode,
-              AccountName: element.ACC_NAME,
-              ScripName: element.Security,
-              Quantity: element.EqQuantity,
-              TradeAvailableQty: element.TradeAvailableQty,
-              TotalPrice: '',
-              Mode: element.Transaction,
-              ISIN: element.ISIN,
-              StrikePrice: element.StrikePrice,
-              ExpiryDate: '',
-              OptionType: element.OptionType,
-              TradedQuantity: '',
-              TradeDate: '',
-            })
-          })
-          this.ExcelService.exportASExcelFile(finalDataArray, 'sample_TradeDataMst_data')
-          this.uploadform.reset()
+      // Create a download link
+      const link = document.createElement('a');
+      link.href = dataUri;
+      link.target = '_blank'; // Open the link in a new tab
+      link.download = 'sample_TradeDataMst_data.xlsx';
 
-        } else {
+      // Trigger the download
+      link.click();
 
-
-        }
-      });
-
+      this.uploadform.reset();
 
     } else if (this.uploadtypecontroller.value === 'F&O RollOver Expiry Data') {
       const data = [
@@ -784,6 +784,47 @@ export class UploadsComponent implements OnInit {
         this.messageService.add({ severity: 'warn', summary: 'Warning', detail: 'Upload Type Required' });
       }
     }
+  }
+
+  downloadTradeData() {
+    let finalDataArray = []
+
+    let model = {
+      EMP: this.EmpNo
+    }
+
+    let encryptmodel = this.Global.encryptionAES(JSON.stringify(model));
+
+    this.rest.postParams(this.Global.getapiendpoint() + 'upload/GetTradeapproverrecord', { encryptmodel: encryptmodel }).subscribe((data: any) => {
+      if (data.Success) {
+        var Result = JSON.parse(this.Global.decrypt1(data.Data));
+        Result.forEach((element: any) => {
+          finalDataArray.push({
+            RequestID: element.ID,
+            Exch: element.NatureofTrade,
+            AccountCode: element.AccountCode,
+            AccountName: element.ACC_NAME,
+            ScripName: element.Security,
+            Quantity: element.EqQuantity,
+            TradeAvailableQty: element.TradeAvailableQty,
+            TotalPrice: '',
+            Mode: element.Transaction,
+            ISIN: element.ISIN,
+            StrikePrice: element.StrikePrice,
+            ExpiryDate: '',
+            OptionType: element.OptionType,
+            TradedQuantity: '',
+            TradeDate: '',
+          })
+        })
+        this.ExcelService.exportASExcelFile(finalDataArray, 'Approved_TradeDataMst_data')
+        this.uploadform.reset()
+
+      } else {
+        this.messageService.add({ severity: 'warn', summary: 'Warning', detail: 'No approved records are available.' });
+
+      }
+    });
   }
 
   latestdataDownload() {

@@ -4,8 +4,8 @@
 }
 
 :host ::ng-deep .p-button-info:enabled:hover {
-  background: #025183;
-  border-color: #025183;
+  background: #806CAE;
+  border-color: #806CAE;
 }
 
 ::ng-deep .p-button.p-button-info.p-button-outlined {

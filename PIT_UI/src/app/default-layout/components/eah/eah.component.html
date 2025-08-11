@@ -1,6 +1,6 @@
 <html>
 <div class="grid">
-	<div class="col-12 mt-n1">
+	<div class="col-12 mt-n1 d-none">
 		<!-- <h6 class="text-muted">Employee Annual Holdings Details</h6> -->
 		<div class="demo-vertical-spacing demo-only-element mb-2">
 			<div class="progress">
@@ -12,11 +12,21 @@
 	<div class="col-12 md:col-2 lg:col-2">
 		<p-steps class="my-4" [model]="items" [readonly]="false" [activeIndex]="activeIndex1"
 			(activeIndexChange)="handleTabChange($event)"></p-steps>
+		<div class="col-12 d-flex justify-content-center">
+			<div class="progress-circle" [style.background]="
+       'conic-gradient(#967BDC ' + eachtabcount * 3.6 + 'deg, transparent 0deg)'
+     ">
+				<div class="progress-inner">
+					{{eachtabcount}}%
+				</div>
+			</div>
+		</div>
+
 	</div>
 
 	<div class="col-12 md:col-10 lg:col-10">
 		<div header="Basic Info" *ngIf="activeIndex1 == 0" [ngClass]="{ 'step-disabled': isdis }">
-			<div class="card w-100 mb-2">
+			<div class="w-100 mb-2">
 				<div class="card-header bg-lightGray d-none">
 					<div class="d-flex align-items-center">
 						<div>
@@ -26,311 +36,338 @@
 				</div>
 				<div class="card-body">
 
-					<div class="grid">
-						<div class="col-12 md:col-6 lg:col-4">
-							<label for="inputText4" class="">Business
-								Designated<span class="required-asterisk">*</span></label>
-							<div class="inputText pt-1">
-								<p-radioButton name="groupname" [value]="true" [(ngModel)]="selectedValueSingle"
-									(ngModelChange)="handleChangeSingle()">
-								</p-radioButton>
-								<label for="inputText4" class="pl-2 pr-4" style="font-size: small;">Single</label>
-								<p-radioButton name="groupname" [value]="true" [(ngModel)]="selectedValueMarried"
-									(ngModelChange)="handleChangeMarried()">
-								</p-radioButton>
-								<label class="pl-2 pr-4" style="font-size: small;">Married</label>
-							</div>
-						</div>
-						<div class="col-12 md:col-6 lg:col-4">
-							<div class="form-floating form-floating-outline">
-								<input type="text" class="form-control" placeholder="" [disabled]="spousenamedisable"
-									[(ngModel)]="spouseName" name="spouseName" pInputText required>
-								<label for="inputText4" class="">Spouse
-									Name</label>
-							</div>
-							<span class="text-red-500 text-xs" *ngIf="selectedValueMarried && !spouseName">
-								Spouse Name is required
-							</span>
-						</div>
-						<div class="col-12 md:col-6 lg:col-4">
-							<div class="alert-warning alert-dismissible mb-0 pt-2" role="alert">
-								<h6 class="right-align alert-heading d-flex align-items-center mb-0"><a
-										class="custom-link" (click)="linkshow()">Why should I provide the
-										information?</a></h6>
-							</div>
-							<!-- <p class="right-align"><a class="custom-link" (click)="linkshow()">Why should I provide the
-								information?</a></p>-->
-							<div *ngIf="showAlert4">
-								<div class="overlay">
-									<div class="alert4">
 
-										<div class="alert-header4"></div>
-										<div class="alert-msg4">
-											<p class="pclass">"The information is required as per Clause 14 of Schedule
-												B(Listed
-												Entity) and Clause 12 of<br>
-												Schedule C(Intermediary) of SEBI(PIT)(Amendment)Regulations,2018"</p>
-											Reported as
-											Follows<br>
-											"Persons shall be required to disclose names and Permanent
-											Account Number or
-											any<br>
-											other identifier authorized by low of the following persons to the company
-											on an annual
-											basis and<br>
-											as and when the information changes<br>
-											->immediate relatives<br>
-											<!-- ->persons with whom such designated person(s) shares a material financial
+
+					<div class="grid my-0 pt-0 mx-0 shadow-0">
+						<div class="col-12">
+							<div class="grid">
+								<div class="col-12 md:col-6 lg:col-4">
+									<label for="inputText4" class="">Business
+										Designated<span class="required-asterisk">*</span></label>
+									<div class="inputText pt-1">
+										<p-radioButton name="groupname" [value]="true" [(ngModel)]="selectedValueSingle"
+											(ngModelChange)="handleChangeSingle()">
+										</p-radioButton>
+										<label for="inputText4" class="pl-2 pr-4"
+											style="font-size: small;">Single</label>
+										<p-radioButton name="groupname" [value]="true"
+											[(ngModel)]="selectedValueMarried" (ngModelChange)="handleChangeMarried()">
+										</p-radioButton>
+										<label class="pl-2 pr-4" style="font-size: small;">Married</label>
+									</div>
+								</div>
+								<div class="col-12 md:col-6 lg:col-4">
+									<div class="form-floating form-floating-outline">
+										<input type="text" class="form-control" placeholder=""
+											[disabled]="spousenamedisable" [(ngModel)]="spouseName" name="spouseName"
+											pInputText required>
+										<label for="inputText4" class="">Spouse
+											Name</label>
+									</div>
+									<span class="text-red-500 text-xs" *ngIf="selectedValueMarried && !spouseName">
+										Spouse Name is required
+									</span>
+								</div>
+								<div class="col-12 md:col-6 lg:col-4">
+									<div class="alert-warning alert-dismissible mb-0 pt-2" role="alert">
+										<h6 class="right-align alert-heading d-flex align-items-center mb-0"><a
+												class="custom-link" (click)="linkshow()">Why should I provide the
+												information?</a></h6>
+									</div>
+									<!-- <p class="right-align"><a class="custom-link" (click)="linkshow()">Why should I provide the
+								information?</a></p>-->
+									<div *ngIf="showAlert4">
+										<div class="overlay">
+											<div class="alert4">
+
+												<div class="alert-header4"></div>
+												<div class="alert-msg4">
+													<p class="pclass">"The information is required as per Clause 14 of
+														Schedule
+														B(Listed
+														Entity) and Clause 12 of<br>
+														Schedule C(Intermediary) of
+														SEBI(PIT)(Amendment)Regulations,2018"</p>
+													Reported as
+													Follows<br>
+													"Persons shall be required to disclose names and Permanent
+													Account Number or
+													any<br>
+													other identifier authorized by low of the following persons to the
+													company
+													on an annual
+													basis and<br>
+													as and when the information changes<br>
+													->immediate relatives<br>
+													<!-- ->persons with whom such designated person(s) shares a material financial
 											relationship<br> -->
-											->Phone,mobile and cell numbers which are used by them<br>
-											In addition,the names of educational institutions from which
-											persons have
-											graduated<br>
-											and names of their past employers shall also be disclosed on a one time
-											basis."
-										</div>
-										<div class="btn-container4">
-											<button class="btn-authorize4" (click)="onOKClick()">OK</button>
+													->Phone,mobile and cell numbers which are used by them<br>
+													In addition,the names of educational institutions from which
+													persons have
+													graduated<br>
+													and names of their past employers shall also be disclosed on a one
+													time
+													basis."
+												</div>
+												<div class="btn-container4">
+													<button class="btn-authorize4" (click)="onOKClick()">OK</button>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="grid">
 						<div class="col-12">
-							<h6 class="my-2">Educational Institutions<span class="required-asterisk">*</span></h6>
-							<hr class="m-0">
-						</div>
-						<div class="col-12 md:col-6 lg:col-3">
-							<div class="form-floating form-floating-outline">
-								<input type="text" class="form-control" placeholder="" [(ngModel)]="Institution"
-									pInputText required>
-								<label for="inputText4" class="">Institution</label>
-							</div>
-						</div>
-						<div class="col-12 md:col-6 lg:col-3">
-							<div class="form-floating form-floating-outline">
-								<input type="text" class="form-control" placeholder="" [(ngModel)]="Qualification"
-									pInputText required>
-								<label for="inputText4" class="">Qualification</label>
-								<span class="text-red-500 text-xs" *ngIf="Institution && !Qualification">
-									Qualification is required
-								</span>
-							</div>
-						</div>
-						<div class="col-12 md:col-6 lg:col-3">
-							<div class="form-floating form-floating-outline">
-								<input type="text" class="form-control" placeholder="" [(ngModel)]="Sub_Qualification"
-									pInputText required>
-								<label for="inputText4" class="">Sub
-									Qualification</label>
-								<span class="text-red-500 text-xs" *ngIf="Qualification && !Sub_Qualification">
-									Sub Qualification is required
-								</span>
-							</div>
-						</div>
-						<div class="col-12 md:col-6 lg:col-3">
-							<button pButton pRipple type="button" *ngIf="onadd"
-								class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2" (click)="createEdu()"
-								label=" "> <i class="bx bx-plus"></i>
-							</button>
-							<button pButton pRipple type="button" *ngIf="oneditbtn"
-								class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2" (click)="updateEdu()"
-								label=" "><span class="fadeIn animated bx bx-reset"></span>
-							</button>
-							<button pButton pRipple type="button" *ngIf="oncancel"
-								class="p-button-secondary button-sm mx-1 py-2" (click)="clearEdu()" label=" "><span
-									class="fadeIn animated bx bx-reset"></span>
-							</button>
-						</div>
-					</div>
-					<div class="grid border-rounded14" *ngIf="products && products.length > 0">
-						<div class="col-12">
-							<div class="">
-								<p-table [value]="products"
-									styleClass="p-datatable-sm p-datatable-gridlines table table-bordered  table table-bordered"
-									[scrollable]="true" scrollHeight="400px" [tableStyle]="{'min-width': '100%'}">
-									<ng-template pTemplate="header">
-										<tr>
-											<th>Institution</th>
-											<th>Qualification</th>
-											<th>Sub Qualification</th>
-											<th>Activity</th>
-										</tr>
-									</ng-template>
-									<ng-template pTemplate="body" let-product>
-										<tr>
-											<td class="fw-medium">{{product.INSTITUTION}}</td>
-											<td>{{product.QUALIFICATION}}</td>
-											<td>{{product.SUB_QUALIFICATION}}</td>
+							<div class="card">
+								<div class="card-body">
+									<h6 class="card-title">Educational Institutions<span
+											class="required-asterisk">*</span></h6>
+									<hr class="pb-2 m-0">
+									<div class="grid">
+										<div class="col-12 md:col-6 lg:col-3">
+											<div class="form-floating form-floating-outline">
+												<input type="text" class="form-control" placeholder=""
+													[(ngModel)]="Institution" pInputText required>
+												<label for="inputText4" class="">Institution</label>
+											</div>
+										</div>
+										<div class="col-12 md:col-6 lg:col-3">
+											<div class="form-floating form-floating-outline">
+												<input type="text" class="form-control" placeholder=""
+													[(ngModel)]="Qualification" pInputText required>
+												<label for="inputText4" class="">Qualification</label>
+												<span class="text-red-500 text-xs"
+													*ngIf="Institution && !Qualification">
+													Qualification is required
+												</span>
+											</div>
+										</div>
+										<div class="col-12 md:col-6 lg:col-3">
+											<div class="form-floating form-floating-outline">
+												<input type="text" class="form-control" placeholder=""
+													[(ngModel)]="Sub_Qualification" pInputText required>
+												<label for="inputText4" class="">Sub
+													Qualification</label>
+												<span class="text-red-500 text-xs"
+													*ngIf="Qualification && !Sub_Qualification">
+													Sub Qualification is required
+												</span>
+											</div>
+										</div>
+										<div class="col-12 md:col-6 lg:col-3">
+											<button pButton pRipple type="button" *ngIf="onadd"
+												class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"
+												(click)="createEdu()" label=" "> <i class="bx bx-plus"></i>
+											</button>
+											<button pButton pRipple type="button" *ngIf="oneditbtn"
+												class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"
+												(click)="updateEdu()" label=" "><span
+													class="fadeIn animated bx bx-reset"></span>
+											</button>
+											<button pButton pRipple type="button" *ngIf="oncancel"
+												class="p-button-secondary button-sm mx-1 py-2" (click)="clearEdu()"
+												label=" "><span class="fadeIn animated bx bx-reset"></span>
+											</button>
+										</div>
+									</div>
+									<div class="grid border-rounded14" *ngIf="products && products.length > 0">
+										<div class="col-12">
+											<div class="">
+												<p-table [value]="products"
+													styleClass="p-datatable-sm p-datatable-gridlines table table-bordered  table table-bordered"
+													[scrollable]="true" scrollHeight="400px"
+													[tableStyle]="{'min-width': '100%'}">
+													<ng-template pTemplate="header">
+														<tr>
+															<th>Institution</th>
+															<th>Qualification</th>
+															<th>Sub Qualification</th>
+															<th>Activity</th>
+														</tr>
+													</ng-template>
+													<ng-template pTemplate="body" let-product>
+														<tr>
+															<td class="fw-medium">{{product.INSTITUTION}}</td>
+															<td>{{product.QUALIFICATION}}</td>
+															<td>{{product.SUB_QUALIFICATION}}</td>
 
-											<td>
-												<!-- <button pButton type="button" icon="pi pi-pencil" (click)="onEditEdu(product)"
+															<td>
+																<!-- <button pButton type="button" icon="pi pi-pencil edit-btn" (click)="onEditEdu(product)"
 											iconPos="left"
 											class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary mr-2">
 										</button>
-										<button pButton type=" button" icon="pi pi-trash" (click)="deleteEdu(product)"
+										<button pButton type=" button" icon="pi pi-trash delete-btn" (click)="deleteEdu(product)"
 											iconPos="left"
 											class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary">
 										</button> -->
-												<i class="pi pi-pencil" (click)="onEditEdu(product)"></i>&nbsp;&nbsp;
-												<i class="pi pi-trash" (click)="deleteEdu(product)"></i>
-											</td>
-										</tr>
-									</ng-template>
-								</p-table>
+																<i class="pi pi-pencil edit-btn"
+																	(click)="onEditEdu(product)"></i>&nbsp;&nbsp;
+																<i class="pi pi-trash delete-btn"
+																	(click)="deleteEdu(product)"></i>
+															</td>
+														</tr>
+													</ng-template>
+												</p-table>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="grid my-0 pt-0 mx-0 shadow-0">
 						<div class="col-12 md:col-6 lg:col-6">
-							<div class="grid bg-white my-0 pt-0 mx-0 shadow-1">
-								<div class="col-12 bg-lightGray">
-									<h6 class="mb-0 text-dark">
-										Contact Details<span class="required-asterisk">*</span>
-									</h6>
-								</div>
-								<div class="inputText col-12 md:col-6 lg:col-6">
+							<div class="card">
+								<div class="card-body">
+									<h6 class="card-title">Contact Details<span class="required-asterisk">*</span></h6>
+									<hr class="pb-2 m-0">
+									<div class="grid">
+										<div class="inputText col-12 md:col-4 lg:col-4">
 
-									<div class="form-floating form-floating-outline">
-										<p-dropdown [options]="contid" [(ngModel)]="contNgmodel" optionLabel="NAME"
-											[filter]="true" filterBy="NAME" [showClear]="true" placeholder="Select Type"
-											class="form-control px-0" required>
-										</p-dropdown>
-										<label for="" class="">Contact Type</label>
-									</div>
-								</div>
-								<div class="inputText col-12 md:col-6 lg:col-6">
+											<div class="form-floating form-floating-outline">
+												<p-dropdown [options]="contid" [(ngModel)]="contNgmodel"
+													optionLabel="NAME" [filter]="true" filterBy="NAME"
+													[showClear]="true" placeholder="Select Type"
+													class="form-control px-0" required>
+												</p-dropdown>
+												<label for="" class="">Contact Type</label>
+											</div>
+										</div>
+										<div class="inputText col-12 md:col-4 lg:col-4">
 
-									<div class="form-floating form-floating-outline">
-										<input type="text" class="form-control" placeholder="" name="Contact_noInput"
-											[(ngModel)]="Contact_no" pattern="[0-9]{10}"
-											title="Enter a 10-digit mobile number" #Contact_noInput="ngModel" pInputText
-											required>
-										<label for="" class="">Contact No.</label>
-										<span class="text-red-500 text-xs"
-											*ngIf="contNgmodel && Contact_noInput.dirty && Contact_noInput.invalid">
-											Contact No. is required and should be a valid 10-digit number.
-										</span>
-									</div>
-								</div>
-								<div class="col-12 md:col-4 lg:col-4 text-center">
-									<button pButton pRipple type="button" *ngIf="onadd1"
-										class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"
-										(click)="createCont()" label=""><i class="bx bx-plus"></i>
-									</button>
-									<button pButton pRipple type="button" *ngIf="oneditbtn1"
-										class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"
-										(click)="updateCont()" label=""><span
-											class="fadeIn animated bx bx-reset"></span>
-									</button>
-									<button pButton pRipple type="button" *ngIf="oncancel"
-										class="p-button-secondary p-button-sm mx-1 py-2" (click)="clearCont()"
-										label=""><span class="fadeIn animated bx bx-reset"></span>
-									</button>
-								</div>
-								<div class="col-12 border-rounded14 px-2 pb-2 mx-0"
-									*ngIf="contacts && contacts.length > 0">
-									<div class="table-responsive text-nowrap">
-										<p-table [value]="contacts"
-											styleClass="p-datatable-sm p-datatable-gridlines table table-bordered table table-bordered"
-											[scrollable]="true" scrollHeight="400px"
-											[tableStyle]="{'min-width': '100%'}">
-											<ng-template pTemplate="header">
-												<tr>
-													<th>Contact Type</th>
-													<th>Contact No.</th>
-													<th>Activity</th>
-												</tr>
-											</ng-template>
-											<ng-template pTemplate="body" let-contact>
-												<tr>
-													<td>{{contact.TBL_GENERIC_MST?.NAME}}</td>
-													<td>{{contact.CONATCT_NUMBER}}</td>
+											<div class="form-floating form-floating-outline">
+												<input type="text" class="form-control" placeholder=""
+													name="Contact_noInput" [(ngModel)]="Contact_no" pattern="[0-9]{10}"
+													title="Enter a 10-digit mobile number" #Contact_noInput="ngModel"
+													pInputText required>
+												<label for="" class="">Contact No.</label>
+												<span class="text-red-500 text-xs"
+													*ngIf="contNgmodel && Contact_noInput.dirty && Contact_noInput.invalid">
+													Contact No. is required and should be a valid 10-digit number.
+												</span>
+											</div>
+										</div>
+										<div class="col-12 md:col-4 lg:col-4 text-center">
+											<button pButton pRipple type="button" *ngIf="onadd1"
+												class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"
+												(click)="createCont()" label=""><i class="bx bx-plus"></i>
+											</button>
+											<button pButton pRipple type="button" *ngIf="oneditbtn1"
+												class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"
+												(click)="updateCont()" label=""><span
+													class="fadeIn animated bx bx-reset"></span>
+											</button>
+											<button pButton pRipple type="button" *ngIf="oncancel"
+												class="p-button-secondary p-button-sm mx-1 py-2" (click)="clearCont()"
+												label=""><span class="fadeIn animated bx bx-reset"></span>
+											</button>
+										</div>
+										<div class="col-12 border-rounded14 px-2 pb-2 mx-0"
+											*ngIf="contacts && contacts.length > 0">
+											<div class="table-responsive text-nowrap">
+												<p-table [value]="contacts"
+													styleClass="p-datatable-sm p-datatable-gridlines table table-bordered table table-bordered"
+													[scrollable]="true" scrollHeight="400px"
+													[tableStyle]="{'min-width': '100%'}">
+													<ng-template pTemplate="header">
+														<tr>
+															<th>Contact Type</th>
+															<th>Contact No.</th>
+															<th>Activity</th>
+														</tr>
+													</ng-template>
+													<ng-template pTemplate="body" let-contact>
+														<tr>
+															<td>{{contact.TBL_GENERIC_MST?.NAME}}</td>
+															<td>{{contact.CONATCT_NUMBER}}</td>
 
-													<td>
-														<!-- <button pButton type="button" icon="pi pi-pencil"
+															<td>
+																<!-- <button pButton type="button" icon="pi pi-pencil edit-btn"
 														(click)="onEditCont(contact)" iconPos="left"
 														class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary mr-2">
 													</button>
-													<button pButton type=" button" icon="pi pi-trash"
+													<button pButton type=" button" icon="pi pi-trash delete-btn"
 														(click)="deleteCont(contact)" iconPos="left"
 														class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary">
 													</button> -->
-														<i class="pi pi-pencil"
-															(click)="onEditCont(contact)"></i>&nbsp;&nbsp;
-														<i class="pi pi-trash" (click)="deleteCont(contact)"></i>
-													</td>
-												</tr>
-											</ng-template>
-										</p-table>
+																<i class="pi pi-pencil edit-btn"
+																	(click)="onEditCont(contact)"></i>&nbsp;&nbsp;
+																<i class="pi pi-trash delete-btn"
+																	(click)="deleteCont(contact)"></i>
+															</td>
+														</tr>
+													</ng-template>
+												</p-table>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="col-12 md:col-6 lg:col-6">
-							<div class="grid bg-white my-0 pt-0 mx-0 shadow-1">
-								<div class="col-12 bg-lightGray">
-									<h6 class="mb-0 text-dark">
-										Past Employers<span class="required-asterisk">*</span>
-									</h6>
-								</div>
-								<div class="inputText col-12 md:col-8 lg:col-8">
-									<div class="form-floating form-floating-outline">
+							<div class="card">
+								<div class="card-body">
+									<h6 class="card-title">Past Employers<span class="required-asterisk">*</span></h6>
+									<hr class="pb-2 m-0">
+									<div class="grid">
+										<div class="inputText col-12 md:col-8 lg:col-8">
+											<div class="form-floating form-floating-outline">
 
-										<input type="text" class="form-control" placeholder="" [(ngModel)]="Past_Emp"
-											pInputText required>
-										<label>Past Employer</label>
-									</div>
-								</div>
-								<div class="col-12 md:col-4 lg:col-4 text-center">
-									<button pButton pRipple type="button" *ngIf="onadd2"
-										class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"
-										(click)="createPastEmp()" label=""> <i class="bx bx-plus"></i>
-									</button>
-									<button pButton pRipple type="button" *ngIf="oneditbtn2"
-										class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"
-										(click)="updatePastEmp()" label=""><span
-											class="fadeIn animated bx bx-reset"></span>
-									</button>
-									<button pButton pRipple type="button" *ngIf="oncancel"
-										class="p-button-secondary p-button-sm mx-1 py-2" (click)="clearPastEmp()"
-										label=""><span class="fadeIn animated bx bx-reset"></span>
-									</button>
-								</div>
-								<div class="col-12 border-rounded14 px-2 pb-2 mx-0"
-									*ngIf="pastEmployees && pastEmployees.length > 0">
-									<div class="table-responsive text-nowrap">
-										<p-table [value]="pastEmployees"
-											styleClass="p-datatable-sm p-datatable-gridlines table table-bordered table table-bordered"
-											[scrollable]="true" scrollHeight="400px"
-											[tableStyle]="{'min-width': '100%'}">
-											<ng-template pTemplate="header">
-												<tr>
-													<th>Past Employers</th>
-													<th>Activity</th>
-												</tr>
-											</ng-template>
-											<ng-template pTemplate="body" let-pastEmp>
-												<tr>
-													<td>{{pastEmp.PAST_EMPLOYERS}}</td>
-													<td>
-														<!-- <button pButton type="button" icon="pi pi-pencil"
+												<input type="text" class="form-control" placeholder=""
+													[(ngModel)]="Past_Emp" pInputText required>
+												<label>Past Employer</label>
+											</div>
+										</div>
+										<div class="col-12 md:col-4 lg:col-4 text-center">
+											<button pButton pRipple type="button" *ngIf="onadd2"
+												class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"
+												(click)="createPastEmp()" label=""> <i class="bx bx-plus"></i>
+											</button>
+											<button pButton pRipple type="button" *ngIf="oneditbtn2"
+												class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"
+												(click)="updatePastEmp()" label=""><span
+													class="fadeIn animated bx bx-reset"></span>
+											</button>
+											<button pButton pRipple type="button" *ngIf="oncancel"
+												class="p-button-secondary p-button-sm mx-1 py-2"
+												(click)="clearPastEmp()" label=""><span
+													class="fadeIn animated bx bx-reset"></span>
+											</button>
+										</div>
+										<div class="col-12 border-rounded14 px-2 pb-2 mx-0"
+											*ngIf="pastEmployees && pastEmployees.length > 0">
+											<div class="table-responsive text-nowrap">
+												<p-table [value]="pastEmployees"
+													styleClass="p-datatable-sm p-datatable-gridlines table table-bordered table table-bordered"
+													[scrollable]="true" scrollHeight="400px"
+													[tableStyle]="{'min-width': '100%'}">
+													<ng-template pTemplate="header">
+														<tr>
+															<th>Past Employers</th>
+															<th>Activity</th>
+														</tr>
+													</ng-template>
+													<ng-template pTemplate="body" let-pastEmp>
+														<tr>
+															<td>{{pastEmp.PAST_EMPLOYERS}}</td>
+															<td>
+																<!-- <button pButton type="button" icon="pi pi-pencil edit-btn"
 														(click)="onEditPastEmp(pastEmp)" iconPos="left"
 														class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary">
 													</button>
-													<button pButton type=" button" icon="pi pi-trash"
+													<button pButton type=" button" icon="pi pi-trash delete-btn"
 														(click)="deletePastEmp(pastEmp)" iconPos="left"
 														class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary">
 													</button> -->
-														<i class="pi pi-pencil"
-															(click)="onEditPastEmp(pastEmp)"></i>&nbsp;&nbsp;
-														<i class="pi pi-trash" (click)="deletePastEmp(pastEmp)"></i>
-													</td>
-												</tr>
-											</ng-template>
-										</p-table>
+																<i class="pi pi-pencil edit-btn"
+																	(click)="onEditPastEmp(pastEmp)"></i>&nbsp;&nbsp;
+																<i class="pi pi-trash delete-btn"
+																	(click)="deletePastEmp(pastEmp)"></i>
+															</td>
+														</tr>
+													</ng-template>
+												</p-table>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -345,7 +382,7 @@
 			</div>
 		</div>
 		<div header="Account Info" *ngIf="activeIndex1 == 1" [ngClass]="{ 'step-disabled': isdis,'wrap': true}">
-			<div class="card w-100 mb-2">
+			<div class="w-100 mb-2">
 				<div class="card-header bg-lightGray d-none">
 					<div class="d-flex align-items-center">
 						<div>
@@ -354,208 +391,218 @@
 					</div>
 				</div>
 				<div class="card-body p-0">
-					<div class="grid bg-white my-0 pt-0 mx-0 shadow-0">
-						<div class="col-12 lg:col-12 xl:col-6">
-							<div class="grid bg-white my-0 pt-0 mx-0 shadow-1">
-								<div class="col-12 bg-lightGray">
-									<h6 class="mb-0 text-dark">
-										Trading Accounts
-									</h6>
-								</div>
-								<div class="col-12 md:col-12">
-									<table class="table table-bordered">
-										<thead>
-											<tr>
-												<th scope="col">Broker/PMS name</th>
-												<th scope="col">UCC/Trading Code/PMS Code</th>
-												<th scope="col">Action</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>
-													<div class="white-space-nowrap mb-2">
-														<p-radioButton name="groupname" value="true"
-															[(ngModel)]="rdoSelfBroker"
-															(ngModelChange)="changeSelfBroker()">
-														</p-radioButton>
-														<label for="city1" class="pl-2 pr-4"
-															style="font-size: small;">Entity</label>
-														<p-radioButton name="groupname" value="true"
-															(ngModelChange)="changeSelfBrokerOther()"
-															[(ngModel)]="rdoSelfBrokerOther">
-														</p-radioButton>
-														<label for="city1" class="pl-2 pr-4"
-															style="font-size: small;">Others</label>
-													</div>
-													<div class="form-floating form-floating-outline">
+					<div class="grid">
+						<div class="col-12 md:col-6 lg:col-6">
+							<div class="card">
+								<div class="card-body">
+									<h6 class="card-title">Trading Accounts</h6>
+									<hr class="pb-2 m-0">
+									<div class="grid">
+										<div class="col-12 md:col-12">
+											<table class="table table-bordered">
+												<thead>
+													<tr>
+														<th scope="col">Broker/PMS name</th>
+														<th scope="col">UCC/Trading Code/PMS Code</th>
+														<th scope="col">Action</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>
+															<div class="white-space-nowrap mb-2">
+																<p-radioButton name="groupname" value="true"
+																	[(ngModel)]="rdoSelfBroker"
+																	(ngModelChange)="changeSelfBroker()">
+																</p-radioButton>
+																<label for="city1" class="pl-2 pr-4"
+																	style="font-size: small;">Entity</label>
+																<p-radioButton name="groupname" value="true"
+																	(ngModelChange)="changeSelfBrokerOther()"
+																	[(ngModel)]="rdoSelfBrokerOther">
+																</p-radioButton>
+																<label for="city1" class="pl-2 pr-4"
+																	style="font-size: small;">Others</label>
+															</div>
+															<div class="form-floating form-floating-outline">
 
-														<p-dropdown [options]="entity1id" [(ngModel)]="ent1Ngmodel"
-															optionLabel="ENTITY_NAME" [filter]="true"
-															filterBy="ENTITY_NAME" [showClear]="true"
-															placeholder="Select Base Entity" class="form-control px-0"
-															*ngIf="showEntDropdown3" required>
-														</p-dropdown>
+																<p-dropdown [options]="entity1id"
+																	[(ngModel)]="ent1Ngmodel" optionLabel="ENTITY_NAME"
+																	[filter]="true" filterBy="ENTITY_NAME"
+																	[showClear]="true" placeholder="Select Base Entity"
+																	class="form-control px-0" *ngIf="showEntDropdown3"
+																	required>
+																</p-dropdown>
 
-													</div>
-													<div class="form-floating form-floating-outline">
-														<input type="text" class="form-control" placeholder=""
-															*ngIf="showOtherTextbox3" [(ngModel)]="EBL" pInputText
-															required>
+															</div>
+															<div class="form-floating form-floating-outline">
+																<input type="text" class="form-control" placeholder=""
+																	*ngIf="showOtherTextbox3" [(ngModel)]="EBL"
+																	pInputText required>
 
-													</div>
-												</td>
-												<td>
-													<div class="form-floating form-floating-outline">
-														<input type="text" class="form-control"
-															[(ngModel)]="selftrdCode" placeholder="" pInputText
-															required>
-													</div>
-												</td>
-												<td>
-													<button pButton pRipple type="button"
-														class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"
-														label="" (click)="addselfOther()"> <i class="bx bx-plus"></i>
-													</button>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-									<div class="grid bg-white border-rounded14 my-0 px-0 pb-0 mx-0"
-										*ngIf="SelfOthers && SelfOthers.length > 0">
-										<div class="col-12 p-0">
-											<div class="table-responsive text-nowrap">
-												<p-table [value]="SelfOthers"
-													styleClass="p-datatable-sm p-datatable-gridlines table table-bordered"
-													[scrollable]="true" scrollHeight="400px"
-													[tableStyle]="{'min-width': '10rem'}">
-													<ng-template pTemplate="header">
-														<tr>
-															<th>Broker/PMS name</th>
-															<th>UCC/Trading Code/PMS Code</th>
-															<th>Activity</th>
-														</tr>
-													</ng-template>
-													<ng-template pTemplate="body" let-SelfOther>
-														<tr>
-															<td>{{SelfOther.BROKER_NAME}}</td>
-															<td>{{SelfOther.TRADING_ACCOUNT_NUMBER}}</td>
-															<td>
-																<!-- <button pButton type=" button" icon="pi pi-trash"
+															</div>
+														</td>
+														<td>
+															<div class="form-floating form-floating-outline">
+																<input type="text" class="form-control"
+																	[(ngModel)]="selftrdCode" placeholder="" pInputText
+																	required>
+															</div>
+														</td>
+														<td>
+															<button pButton pRipple type="button"
+																class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"
+																label="" (click)="addselfOther()"> <i
+																	class="bx bx-plus"></i>
+															</button>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+											<div class="grid bg-white border-rounded14 my-0 px-0 pb-0 mx-0"
+												*ngIf="SelfOthers && SelfOthers.length > 0">
+												<div class="col-12 p-0">
+													<div class="table-responsive text-nowrap">
+														<p-table [value]="SelfOthers"
+															styleClass="p-datatable-sm p-datatable-gridlines table table-bordered"
+															[scrollable]="true" scrollHeight="400px"
+															[tableStyle]="{'min-width': '10rem'}">
+															<ng-template pTemplate="header">
+																<tr>
+																	<th>Broker/PMS name</th>
+																	<th>UCC/Trading Code/PMS Code</th>
+																	<th>Activity</th>
+																</tr>
+															</ng-template>
+															<ng-template pTemplate="body" let-SelfOther>
+																<tr>
+																	<td>{{SelfOther.BROKER_NAME}}</td>
+																	<td>{{SelfOther.TRADING_ACCOUNT_NUMBER}}</td>
+																	<td>
+																		<!-- <button pButton type=" button" icon="pi pi-trash delete-btn"
 																	(click)="deleteSelfOther(SelfOther)" iconPos="left"
 																	class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary">
 																</button> -->
-																<i class="pi pi-trash"
-																	(click)="deleteSelfOther(SelfOther)"></i>
-															</td>
-														</tr>
-													</ng-template>
-												</p-table>
+																		<i class="pi pi-trash delete-btn"
+																			(click)="deleteSelfOther(SelfOther)"></i>
+																	</td>
+																</tr>
+															</ng-template>
+														</p-table>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-12 lg:col-12 xl:col-6">
-							<div class="grid bg-white my-0 pt-0 mx-0 shadow-1">
-								<div class="col-12 bg-lightGray">
-									<h6 class="mb-0 text-dark">
-										Demat Accounts
-									</h6>
-								</div>
-								<div class="col-12 table-responsive text-nowrap">
-									<table class="table table-bordered">
-										<thead>
-											<tr>
-												<th scope="col">DP Name</th>
-												<th scope="col">DP ID and Client ID</th>
-												<th scope="col">Action</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>
-													<div class="white-space-nowrap mb-2">
-														<p-radioButton class="ps-0 ms-0" name="groupname" value="true"
-															[(ngModel)]="rdoSelfDPEBL"
-															(ngModelChange)="changeSelfEBL()">
-														</p-radioButton>
-														<label for="city1" class="pl-2 pr-4"
-															style="font-size: small;">Entity</label>
-														<p-radioButton name="groupname" value="true"
-															(ngModelChange)="changeSelfOther()"
-															[(ngModel)]="rdoSelfDPOther">
-														</p-radioButton>
-														<label for="city1" class="pl-2 pr-4"
-															style="font-size: small;">Others</label>
-													</div>
-													<div class="form-floating form-floating-outline">
-														<p-dropdown [options]="allentid" [(ngModel)]="allentNgmodel"
-															optionLabel="ENTITY_NAME" [filter]="true"
-															filterBy="ENTITY_NAME" [showClear]="true" appendTo="body"
-															placeholder="Select Entity" class="form-control px-0"
-															*ngIf="showEntDropdown" required>
-														</p-dropdown>
-													</div>
-													<div class="form-floating form-floating-outline">
-														<input type="text" class="form-control"
-															[(ngModel)]="otherngModel" *ngIf="showOtherTextbox1"
-															pInputText required>
-													</div>
-												</td>
-												<td>
-													<div class="form-floating form-floating-outline">
-														<input type="text" class="form-control" placeholder=""
-															[(ngModel)]="selfDPtradeNo" pattern="[0-9]{16}"
-															title="Enter a 16-digit number" pInputText
-															name="selfDPtradeNoInput" #selfDPtradeNoInput="ngModel"
-															required>
-														<span *ngIf="selfDPtradeNoInput.invalid && selfDPtradeNoInput.touched && !dataSaved"
-															class="text-red-500 text-xs">
-															Please enter a valid 16-digit number.
-														</span>														
-													</div>
-												</td>
-												<td>
-													<button pButton pRipple type="button"
-														class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"
-														label="" (click)="addSelfDP()"> <i class="bx bx-plus"></i>
-													</button>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-									<div class="grid bg-white border-rounded14 my-0 px-0 pb-0 mx-0"
-										*ngIf="SelfDPs && SelfDPs.length > 0">
-										<div class="col-12 p-0">
-											<div class="table-responsive text-nowrap">
-												<p-table [value]="SelfDPs"
-													styleClass="p-datatable-sm p-datatable-gridlines table table-bordered"
-													[scrollable]="true" scrollHeight="400px"
-													[tableStyle]="{'min-width': '10rem'}">
-													<ng-template pTemplate="header">
-														<tr>
-															<th>DP Name</th>
-															<th>DP ID and Client ID</th>
-															<th>Activity</th>
-														</tr>
-													</ng-template>
-													<ng-template pTemplate="body" let-SelfDP>
-														<tr>
-															<td>{{SelfDP.DP_BROKER_NAME || SelfDP.DP_BROKER_NAME}}</td>
-															<td>{{SelfDP.DP_ACCOUNT_NO || SelfDP.DP_ACCOUNT}}</td>
-															<td>
-																<!-- <button pButton type=" button" icon="pi pi-trash"
+						<div class="col-12 md:col-6 lg:col-6">
+							<div class="card">
+								<div class="card-body">
+									<h6 class="card-title">Demat Accounts</h6>
+									<hr class="pb-2 m-0">
+									<div class="grid">
+										<div class="col-12 table-responsive text-nowrap">
+											<table class="table table-bordered">
+												<thead>
+													<tr>
+														<th scope="col">DP Name</th>
+														<th scope="col">DP ID and Client ID</th>
+														<th scope="col">Action</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>
+															<div class="white-space-nowrap mb-2">
+																<p-radioButton class="ps-0 ms-0" name="groupname"
+																	value="true" [(ngModel)]="rdoSelfDPEBL"
+																	(ngModelChange)="changeSelfEBL()">
+																</p-radioButton>
+																<label for="city1" class="pl-2 pr-4"
+																	style="font-size: small;">Entity</label>
+																<p-radioButton name="groupname" value="true"
+																	(ngModelChange)="changeSelfOther()"
+																	[(ngModel)]="rdoSelfDPOther">
+																</p-radioButton>
+																<label for="city1" class="pl-2 pr-4"
+																	style="font-size: small;">Others</label>
+															</div>
+															<div class="form-floating form-floating-outline">
+																<p-dropdown [options]="allentid"
+																	[(ngModel)]="allentNgmodel"
+																	optionLabel="ENTITY_NAME" [filter]="true"
+																	filterBy="ENTITY_NAME" [showClear]="true"
+																	appendTo="body" placeholder="Select Entity"
+																	class="form-control px-0" *ngIf="showEntDropdown"
+																	required>
+																</p-dropdown>
+															</div>
+															<div class="form-floating form-floating-outline">
+																<input type="text" class="form-control"
+																	[(ngModel)]="otherngModel" *ngIf="showOtherTextbox1"
+																	pInputText required>
+															</div>
+														</td>
+														<td>
+															<div class="form-floating form-floating-outline">
+																<input type="text" class="form-control" placeholder=""
+																	[(ngModel)]="selfDPtradeNo" pattern="[0-9]{16}"
+																	title="Enter a 16-digit number" pInputText
+																	name="selfDPtradeNoInput"
+																	#selfDPtradeNoInput="ngModel" required>
+																<span
+																	*ngIf="selfDPtradeNoInput.invalid && selfDPtradeNoInput.touched && !dataSaved"
+																	class="text-red-500 text-xs">
+																	Please enter a valid 16-digit number.
+																</span>
+															</div>
+														</td>
+														<td>
+															<button pButton pRipple type="button"
+																class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"
+																label="" (click)="addSelfDP()"> <i
+																	class="bx bx-plus"></i>
+															</button>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+											<div class="grid bg-white border-rounded14 my-0 px-0 pb-0 mx-0"
+												*ngIf="SelfDPs && SelfDPs.length > 0">
+												<div class="col-12 p-0">
+													<div class="table-responsive text-nowrap">
+														<p-table [value]="SelfDPs"
+															styleClass="p-datatable-sm p-datatable-gridlines table table-bordered"
+															[scrollable]="true" scrollHeight="400px"
+															[tableStyle]="{'min-width': '10rem'}">
+															<ng-template pTemplate="header">
+																<tr>
+																	<th>DP Name</th>
+																	<th>DP ID and Client ID</th>
+																	<th>Activity</th>
+																</tr>
+															</ng-template>
+															<ng-template pTemplate="body" let-SelfDP>
+																<tr>
+																	<td>{{SelfDP.DP_BROKER_NAME ||
+																		SelfDP.DP_BROKER_NAME}}</td>
+																	<td>{{SelfDP.DP_ACCOUNT_NO || SelfDP.DP_ACCOUNT}}
+																	</td>
+																	<td>
+																		<!-- <button pButton type=" button" icon="pi pi-trash delete-btn"
 																	(click)="deleteSelfDP(SelfDP)" iconPos="left"
 																	class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary">
 																</button> -->
-																<i class="pi pi-trash"
-																	(click)="deleteSelfDP(SelfDP)"></i>
-															</td>
-														</tr>
-													</ng-template>
-												</p-table>
+																		<i class="pi pi-trash delete-btn"
+																			(click)="deleteSelfDP(SelfDP)"></i>
+																	</td>
+																</tr>
+															</ng-template>
+														</p-table>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -563,9 +610,10 @@
 							</div>
 						</div>
 					</div>
-					<div class="grid justify-content-between m-2">
+					<div class="grid justify-content-end m-2">
 						<button pButton pRipple type="button" icon="pi pi-angle-double-left"
-							class="btn btn-outline-secondary px-4 py-1" label="Previous" (click)="activeIndex1 = 0">
+							class="btn btn-outline-secondary px-4 py-1 me-2" label="Previous"
+							(click)="activeIndex1 = 0">
 						</button>
 						<button pButton pRipple type="button" icon="pi pi-angle-double-right" iconPos="right"
 							class="btn btn-info px-4 py-1" label="Next" (click)="handleNext2Click()">
@@ -576,7 +624,7 @@
 
 		</div>
 		<div header="Dependent Account Details" *ngIf="activeIndex1 == 2" [ngClass]="{ 'step-disabled': isdis }">
-			<div class="card w-100 mb-2">
+			<div class="w-100 mb-2">
 				<div class="card-header bg-lightGray d-none">
 					<div class="d-flex align-items-center">
 						<div>
@@ -585,75 +633,89 @@
 					</div>
 				</div>
 				<div class="card-body p-0">
+					<div class="grid">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-body">
 
-					<p-toolbar styleClass="mb-2 p-2">
-						<ng-template pTemplate="left">
-							<!-- <button pButton pRipple  icon="pi pi-plus" 
+									<div class="grid">
+										<div class="col-12"><p-toolbar styleClass="mb-2 p-2">
+												<ng-template pTemplate="left">
+													<!-- <button pButton pRipple  icon="pi pi-plus" 
 					class="p-button-info py-0 mr-2" style="font-size: smaller;" (click)="addDependentAcDetails()">
 				</button> -->
-							<button pButton pRipple type="button"
-								class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"
-								(click)="addDependentAcDetails()"> <i class="bx bx-plus"></i>
-							</button>
+													<button pButton pRipple type="button"
+														class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"
+														(click)="addDependentAcDetails()"> <i class="bx bx-plus"></i>
+													</button>
 
-							<span class="hidden-text"></span>
+													<span class="hidden-text"></span>
 
-						</ng-template>
-					</p-toolbar>
-					<div class="col-12 table-responsive text-nowrap">
-						<p-table #dt [value]="dependents" [rows]="10" [paginator]="true"
-							styleClass="p-datatable-sm p-datatable-gridlines table table-bordered"
-							[tableStyle]="{'min-width': '75rem'}" [rowHover]="true" dataKey="id"
-							currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-							[showCurrentPageReport]="true">
-							<ng-template pTemplate="header">
-								<tr>
-									<th style="min-width:14rem">Dependants Name</th>
-									<th>Relationship</th>
-									<th>Entity Trade Code Details</th>
-									<th>Other Trade Code Details</th>
-									<th>DP Account Details</th>
-									<th style="min-width:10rem">PAN</th>
-									<th style="min-width:7rem">Action</th>
-								</tr>
-							</ng-template>
-							<ng-template pTemplate="body" let-dependent>
-								<tr>
-									<td>{{dependent.RELATIVE_NAME}}</td>
-									<td>{{dependent.REL_OTHER_NAME}}</td>
-									<td>{{dependent.ENTITY_ACCOUNT_NUMBERS}}</td>
-									<td>{{dependent.TRADING_ACCOUNT_NUMBERS}}</td>
-									<td>{{dependent.DP_ACCOUNT_NUMBERS}}</td>
-									<td>{{dependent.PAN_NO}}</td>
-									<td>
-										<!-- <button pButton type=" button" icon="pi pi-pencil"
+												</ng-template>
+											</p-toolbar></div>
+
+										<div class="col-12 table-responsive text-nowrap">
+											<p-table #dt [value]="dependents" [rows]="10" [paginator]="true"
+												styleClass="p-datatable-sm p-datatable-gridlines table table-bordered"
+												[tableStyle]="{'min-width': '75rem'}" [rowHover]="true" dataKey="id"
+												currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+												[showCurrentPageReport]="true">
+												<ng-template pTemplate="header">
+													<tr>
+														<th style="min-width:14rem">Dependants Name</th>
+														<th>Relationship</th>
+														<th>Entity Trade Code Details</th>
+														<th>Other Trade Code Details</th>
+														<th>DP Account Details</th>
+														<th style="min-width:10rem">PAN</th>
+														<th style="min-width:7rem">Action</th>
+													</tr>
+												</ng-template>
+												<ng-template pTemplate="body" let-dependent>
+													<tr>
+														<td>{{dependent.RELATIVE_NAME}}</td>
+														<td>{{dependent.REL_OTHER_NAME}}</td>
+														<td>{{dependent.ENTITY_ACCOUNT_NUMBERS}}</td>
+														<td>{{dependent.TRADING_ACCOUNT_NUMBERS}}</td>
+														<td>{{dependent.DP_ACCOUNT_NUMBERS}}</td>
+														<td>{{dependent.PAN_NO}}</td>
+														<td>
+															<!-- <button pButton type=" button" icon="pi pi-pencil edit-btn"
 									class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary mr-2"
 									(click)="oneditDependent(dependent)">
 								</button> -->
-										<i class="pi pi-pencil" (click)="oneditDependent(dependent)"></i>
+															<i class="pi pi-pencil edit-btn"
+																(click)="oneditDependent(dependent)"></i>
 
-										<ng-container *ngIf="dependent.RELATIONSHIP_NAME !== 'Spouse' ">
-											<!-- <button pButton type=" button" icon="pi pi-trash" iconPos="left"
+															<ng-container
+																*ngIf="dependent.RELATIONSHIP_NAME !== 'Spouse' ">
+																<!-- <button pButton type=" button" icon="pi pi-trash delete-btn" iconPos="left"
 										class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"
 										(click)="deleteDependent(dependent)">
 									</button> -->
-											<i class="pi pi-trash" (click)="deleteDependent(dependent)"></i>
-										</ng-container>
-									</td>
-								</tr>
-							</ng-template>
-							<!-- <ng-template pTemplate="summary">
+																<i class="pi pi-trash delete-btn"
+																	(click)="deleteDependent(dependent)"></i>
+															</ng-container>
+														</td>
+													</tr>
+												</ng-template>
+												<!-- <ng-template pTemplate="summary">
 				<div class="flex align-items-center justify-content-between">
 					In total there are {{dependents ? dependents.length : 0 }} products.
 				</div>
 			</ng-template> -->
-						</p-table>
+											</p-table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-					<div class="grid justify-content-between m-2"></div>
+					<div class="grid justify-content-end m-2"></div>
 
-					<div class="grid justify-content-between m-2">
+					<div class="grid justify-content-end m-2">
 						<button pButton pRipple type="button" icon="pi pi-angle-double-left"
-							class="btn btn-outline-secondary px-4 py-1" label="Previous" (click)="DeptPrevBtn()">
+							class="btn btn-outline-secondary px-4 py-1 me-2" label="Previous" (click)="DeptPrevBtn()">
 						</button>
 						<button pButton pRipple type="button" icon="pi pi-angle-double-right" iconPos="right"
 							class="btn btn-info px-4 py-1" label="Next" (click)="handleNext3Click()">
@@ -664,7 +726,7 @@
 		</div>
 		<div header="Material Fin Rel" *ngIf="activeIndex1 == 3" [ngClass]="{ 'step-disabled': isdis }">
 
-			<div class="card w-100 mb-2">
+			<div class="w-100 mb-2">
 				<div class="card-header bg-lightGray d-none">
 					<div class="d-flex align-items-center">
 						<div>
@@ -673,66 +735,85 @@
 					</div>
 				</div>
 				<div class="card-body p-0">
+					<div class="grid">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-body">
 
-					<p-toolbar styleClass="mb-2 p-2">
-						<ng-template pTemplate="left">
-							<!-- <button pButton pRipple label="Add Material Fin Rel" icon="pi pi-plus" class="p-button-info py-0 mr-2"
+									<div class="grid">
+										<div class="col-12">
+											<p-toolbar styleClass="mb-2 p-2">
+												<ng-template pTemplate="left">
+													<!-- <button pButton pRipple label="Add Material Fin Rel" icon="pi pi-plus" class="p-button-info py-0 mr-2"
 					style="font-size: smaller;" (click)="addMaterialFinRelDetails()">
 				</button> -->
-							<button pButton pRipple type="button"
-								class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"
-								(click)="addMaterialFinRelDetails()"><i class="bx bx-plus"></i>
-							</button>
-							<span class="hidden-text"></span>
-						</ng-template>
-					</p-toolbar>
-					<div class="col-12 table-responsive text-nowrap">
-						<p-table #dt [value]="FinRels" [rows]="10" [paginator]="true"
-							styleClass="p-datatable-sm p-datatable-gridlines table table-bordered"
-							[tableStyle]="{'min-width': '75rem'}" [rowHover]="true" dataKey="id"
-							currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-							[showCurrentPageReport]="true">
-							<ng-template pTemplate="header">
-								<tr>
-									<th style="min-width:14rem">Name</th>
-									<th>PAN</th>
-									<th>Phone No.</th>
-									<th>Mobile No.</th>
-									<th>Property Type</th>
-									<th style="min-width:7rem">Action</th>
-								</tr>
-							</ng-template>
-							<ng-template pTemplate="body" let-FinRel>
-								<tr>
-									<td>{{FinRel.MATERIAL_FIN_REL_NAME}}</td>
-									<td>{{FinRel.MATERIAL_FIN_REL_PAN}}</td>
-									<td>{{FinRel.MATERIAL_FIN_REL_PHONE}}</td>
-									<td>{{FinRel.MATERIAL_FIN_REL_MOBILE}}</td>
-									<td>{{FinRel.TBL_GENERIC_MST?.NAME}}</td>
-									<td>
-										<!-- <button pButton type=" button" icon="pi pi-pencil"
+													<button pButton pRipple type="button"
+														class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"
+														(click)="addMaterialFinRelDetails()"><i class="bx bx-plus"></i>
+													</button>
+													<span class="hidden-text"></span>
+												</ng-template>
+											</p-toolbar>
+										</div>
+
+
+										<div class="col-12 table-responsive text-nowrap">
+											<p-table #dt [value]="FinRels" [rows]="10" [paginator]="true"
+												styleClass="p-datatable-sm p-datatable-gridlines table table-bordered"
+												[tableStyle]="{'min-width': '75rem'}" [rowHover]="true" dataKey="id"
+												currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+												[showCurrentPageReport]="true">
+												<ng-template pTemplate="header">
+													<tr>
+														<th style="min-width:14rem">Name</th>
+														<th>PAN</th>
+														<th>Phone No.</th>
+														<th>Mobile No.</th>
+														<th>Property Type</th>
+														<th style="min-width:7rem">Action</th>
+													</tr>
+												</ng-template>
+												<ng-template pTemplate="body" let-FinRel>
+													<tr>
+														<td>{{FinRel.MATERIAL_FIN_REL_NAME}}</td>
+														<td>{{FinRel.MATERIAL_FIN_REL_PAN}}</td>
+														<td>{{FinRel.MATERIAL_FIN_REL_PHONE}}</td>
+														<td>{{FinRel.MATERIAL_FIN_REL_MOBILE}}</td>
+														<td>{{FinRel.TBL_GENERIC_MST?.NAME}}</td>
+														<td>
+															<!-- <button pButton type=" button" icon="pi pi-pencil edit-btn"
 									class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary mr-2"
 									(click)="oneditFinRel(FinRel)">
 								</button>
-								<button pButton type=" button" icon="pi pi-trash" iconPos="left"
+								<button pButton type=" button" icon="pi pi-trash delete-btn" iconPos="left"
 									class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"
 									(click)="deleteFinRel(FinRel)">
 								</button> -->
-										<i class="pi pi-pencil" (click)="oneditFinRel(FinRel)"></i>&nbsp;&nbsp;
-										<i class="pi pi-trash" (click)="deleteFinRel(FinRel)"></i>
-									</td>
-								</tr>
-							</ng-template>
-							<!-- <ng-template pTemplate="summary">
+															<i class="pi pi-pencil edit-btn"
+																(click)="oneditFinRel(FinRel)"></i>&nbsp;&nbsp;
+															<i class="pi pi-trash delete-btn"
+																(click)="deleteFinRel(FinRel)"></i>
+														</td>
+													</tr>
+												</ng-template>
+												<!-- <ng-template pTemplate="summary">
 				<div class="flex align-items-center justify-content-between">
 					In total there are {{FinRels ? FinRels.length : 0 }} products.
 				</div>
 			</ng-template> -->
-						</p-table>
+											</p-table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
 					</div>
-					<div class="grid justify-content-between m-2">
+
+					<div class="grid justify-content-end m-2">
 						<button pButton pRipple type="button" icon="pi pi-angle-double-left"
-							class="btn btn-outline-secondary px-4 py-1" label="Previous" (click)="activeIndex1 = 2">
+							class="btn btn-outline-secondary px-4 py-1 me-2" label="Previous"
+							(click)="activeIndex1 = 2">
 						</button>
 						<button pButton pRipple type="button" icon="pi pi-angle-double-right" iconPos="right"
 							class="btn btn-info px-4 py-1" label="Next" (click)="handleNext4Click()">
@@ -743,7 +824,7 @@
 		</div>
 		<div header="10% Stake Holding Details" *ngIf="activeIndex1 == 4" [ngClass]="{ 'step-disabled': isdis }">
 
-			<div class="card w-100 mb-2">
+			<div class="w-100 mb-2">
 				<div class="card-header bg-lightGray d-none">
 					<div class="d-flex align-items-center">
 						<div>
@@ -752,75 +833,94 @@
 					</div>
 				</div>
 				<div class="card-body p-0">
+					<div class="grid">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-body">
 
-					<p-toolbar styleClass="mb-2 p-2">
-						<p class="mb-0 text-sm">If you or your immediate relative's (jointly and/or severally) holds
-							more than 10% stake in any of firms / companies / HUF / trust / association of persons,
-							kindly add the
-							details by
-							clicking on Add Button.
-						</p>
-						<ng-template pTemplate="left">
-							<!-- <button pButton pRipple label="Add Additional 10% stake" icon="pi pi-plus" style="font-size: smaller;"
+									<div class="grid">
+										<div class="col-12">
+											<p-toolbar styleClass="mb-2 p-2">
+												<p class="mb-0 text-sm">If you or your immediate relative's (jointly
+													and/or severally) holds
+													more than 10% stake in any of firms / companies / HUF / trust /
+													association of persons,
+													kindly add the
+													details by
+													clicking on Add Button.
+												</p>
+												<ng-template pTemplate="left">
+													<!-- <button pButton pRipple label="Add Additional 10% stake" icon="pi pi-plus" style="font-size: smaller;"
 					class="p-button-info py-0 mr-2" (click)="addAdditionalStake()">
 				</button> -->
-							<button pButton pRipple type="button"
-								class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"
-								(click)="addAdditionalStake()"><i class="bx bx-plus"></i>
-							</button>
-							<span class="hidden-text"></span>
-						</ng-template>
-					</p-toolbar>
+													<button pButton pRipple type="button"
+														class="btn-light btn-primary p-button-info p-button-sm mx-1 py-2"
+														(click)="addAdditionalStake()"><i class="bx bx-plus"></i>
+													</button>
+													<span class="hidden-text"></span>
+												</ng-template>
+											</p-toolbar>
+										</div>
 
-					<div class="col-12 table-responsive text-nowrap">
-						<p-table #dt [value]="Concerns" [rows]="10" [paginator]="true"
-							styleClass="p-datatable-sm p-datatable-gridlines table table-bordered"
-							[tableStyle]="{'min-width': '75rem'}" [rowHover]="true" dataKey="id"
-							currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-							[showCurrentPageReport]="true">
-							<ng-template pTemplate="header">
-								<tr>
-									<th style="min-width:14rem">Name of Concern</th>
-									<th>Type of Concern</th>
-									<th>Entity Trading Code Details</th>
-									<th>Other Trade Code Details</th>
-									<th>DP Account Details</th>
-									<th style="min-width:10rem">PAN</th>
-									<th style="min-width:7rem">Action</th>
-								</tr>
-							</ng-template>
-							<ng-template pTemplate="body" let-Concern>
-								<tr>
-									<td>{{Concern.NAME_OF_CONCERN}}</td>
-									<td>{{Concern.CONCERN_OTHER_NAME}}</td>
-									<td>{{Concern.ENTITY_CODE_10PERCENT}}</td>
-									<td>{{Concern.TRADING_CODE_10PERCENT}}</td>
-									<td>{{Concern.DP_ACCOUNT}}</td>
-									<td>{{Concern.PAN_NO}}</td>
-									<td>
-										<!-- <button pButton type=" button" icon="pi pi-pencil"
+
+										<div class="col-12 table-responsive text-nowrap">
+											<p-table #dt [value]="Concerns" [rows]="10" [paginator]="true"
+												styleClass="p-datatable-sm p-datatable-gridlines table table-bordered"
+												[tableStyle]="{'min-width': '75rem'}" [rowHover]="true" dataKey="id"
+												currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+												[showCurrentPageReport]="true">
+												<ng-template pTemplate="header">
+													<tr>
+														<th style="min-width:14rem">Name of Concern</th>
+														<th>Type of Concern</th>
+														<th>Entity Trading Code Details</th>
+														<th>Other Trade Code Details</th>
+														<th>DP Account Details</th>
+														<th style="min-width:10rem">PAN</th>
+														<th style="min-width:7rem">Action</th>
+													</tr>
+												</ng-template>
+												<ng-template pTemplate="body" let-Concern>
+													<tr>
+														<td>{{Concern.NAME_OF_CONCERN}}</td>
+														<td>{{Concern.CONCERN_OTHER_NAME}}</td>
+														<td>{{Concern.ENTITY_CODE_10PERCENT}}</td>
+														<td>{{Concern.TRADING_CODE_10PERCENT}}</td>
+														<td>{{Concern.DP_ACCOUNT}}</td>
+														<td>{{Concern.PAN_NO}}</td>
+														<td>
+															<!-- <button pButton type=" button" icon="pi pi-pencil edit-btn"
 									class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary mr-2"
 									(click)="oneditConcer(Concern)">
 								</button>
-								<button pButton type=" button" icon="pi pi-trash" iconPos="left"
+								<button pButton type=" button" icon="pi pi-trash delete-btn" iconPos="left"
 									class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"
 									(click)="deleteConcern(Concern)">
 								</button> -->
-										<i class="pi pi-pencil" (click)="oneditConcer(Concern)"></i>&nbsp;&nbsp;
-										<i class="pi pi-trash" (click)="deleteConcern(Concern)"></i>
-									</td>
-								</tr>
-							</ng-template>
-							<!-- <ng-template pTemplate="summary">
+															<i class="pi pi-pencil edit-btn"
+																(click)="oneditConcer(Concern)"></i>&nbsp;&nbsp;
+															<i class="pi pi-trash delete-btn"
+																(click)="deleteConcern(Concern)"></i>
+														</td>
+													</tr>
+												</ng-template>
+												<!-- <ng-template pTemplate="summary">
 				<div class="flex align-items-center justify-content-between">
 					In total there are {{Concerns ? Concerns.length : 0 }} products.
 				</div>
 			</ng-template> -->
-						</p-table>
+											</p-table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
 					</div>
-					<div class="grid justify-content-between m-2">
+
+					<div class="grid justify-content-end m-2">
 						<button pButton pRipple type="button" icon="pi pi-angle-double-left"
-							class="btn btn-outline-secondary px-4 py-1" label="Previous" (click)="StackPrevBtn()">
+							class="btn btn-outline-secondary px-4 py-1 me-2" label="Previous" (click)="StackPrevBtn()">
 						</button>
 						<button pButton pRipple type="button" icon="pi pi-angle-double-right" iconPos="right"
 							class="btn btn-info px-4 py-1" label="Next" (click)="handleNext5Click()">
@@ -831,7 +931,7 @@
 		</div>
 		<div header="Security Holding Details" *ngIf="activeIndex1 == 5" [ngClass]="{ 'step-disabled': isdis }">
 
-			<div class="card w-100 mb-2">
+			<div class="w-100 mb-2">
 				<div class="card-header bg-lightGray d-none">
 					<div class="d-flex align-items-center">
 						<div>
@@ -840,217 +940,232 @@
 					</div>
 				</div>
 				<div class="card-body p-0">
+					<div class="grid">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-body">
+									<h6 class="card-title">Securities Holdings - Details of securities held in demat
+										accounts as on today</h6>
+									<hr class="pb-2 m-0">
+									<div class="grid">
+										<div class="col-12 md:col-12">
+											<p-table #dt [value]="allDPs" [rows]="10" [paginator]="true"
+												styleClass="p-datatable-sm p-datatable-gridlines table table-bordered"
+												[tableStyle]="{'min-width': '60rem'}" [rowHover]="true" [dataKey]="'id'"
+												currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+												[showCurrentPageReport]="true">
+												<ng-template pTemplate="header">
+													<tr>
+														<th style="min-width: 14rem">Name</th>
+														<th>Relation</th>
+														<th>DP Name</th>
+														<th>DP Client ID</th>
+														<th>Proofs / Authorisation<br><span
+																style="font-size: 10px; color: gray;">(Maximum file
+																size: 5 MB)</span></th>
+														<th>Status</th>
+													</tr>
+												</ng-template>
+												<ng-template pTemplate="body" let-allDP>
+													<tr>
+														<td>{{ allDP.name }}</td>
+														<td>{{ allDP.relation }}</td>
+														<td>{{ allDP.brokername }}</td>
+														<td>{{ allDP.dpaccount }}</td>
+														<td>
+															<div class="upload-container">
+																<div class="attachment-icon-container"
+																	*ngIf="(allDP.uploadedFile || allDP.uploadedfile) && (!allDP.authorize || !allDP.isAuthorized) && (!allDP.isProvide || !allDP.isprovide) "
+																	(mouseenter)="allDP.showFileName = true"
+																	(mouseleave)="allDP.showFileName = false">
+																	<i class="pi pi-paperclip"></i>
+																	<a (click)="downloadFileEMP(allDP)"><i
+																			class="fas fa-download"></i>Download</a>
+																	<div class="file-name" *ngIf="allDP.showFileName">{{
+																		allDP.uploadedFile ||
+																		allDP.uploadedfile }}</div>
+																	<span class="change-link"
+																		*ngIf="allDP.uploadedFile || allDP.uploadedfile"
+																		maxFileSize="5242880"
+																		(click)="fileInput.click()">Click to
+																		Change</span>
+																	<input #fileInput type="file" style="display: none"
+																		(change)="handleFileChange($event, allDP)">
+																</div>
+																<div class="attachment-icon-container"
+																	*ngIf="allDP.authorize || allDP.isAuthorized">
+																	{{'Authorize Compliance'}}
+																</div>
+																<div class="attachment-icon-container"
+																	*ngIf="allDP.isProvide || allDP.isprovide">
+																	{{'Will Provide Later'}}
+																</div>
+																<div class="upload-button"
+																	*ngIf="shouldDisplayUploadButton(allDP.brokername) && !allDP.uploadedFile && !allDP.uploadedfile && !allDP.isAuthorized && !allDP.authorize ">
+																	<div class="button-container">
+																		<button pButton type="button"
+																			maxFileSize="5242880"
+																			class="btn btn-primary p-button-info p-button-sm mx-1"
+																			(click)="fileInput.click()">Upload</button>
 
-					<div class="col-12 lg:col-12 xl:col-12">
-						<div class="grid bg-white my-0 pt-0 mx-0 shadow-1">
-							<div class="col-12 bg-lightGray">
-								<p-toolbar styleClass="border-noround p-1 bg-lightGray">
-									<h6 class="mb-0 text-dark">
-										Securities Holdings - Details of securities held in demat accounts as on today
-									</h6>
-								</p-toolbar>
-							</div>
-							<div class="col-12 md:col-12">
-								<p-table #dt [value]="allDPs" [rows]="10" [paginator]="true"
-									styleClass="p-datatable-sm p-datatable-gridlines table table-bordered"
-									[tableStyle]="{'min-width': '60rem'}" [rowHover]="true" [dataKey]="'id'"
-									currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-									[showCurrentPageReport]="true">
-									<ng-template pTemplate="header">
-										<tr>
-											<th style="min-width: 14rem">Name</th>
-											<th>Relation</th>
-											<th>DP Name</th>
-											<th>DP Client ID</th>
-											<th>Proofs / Authorisation<br><span
-													style="font-size: 10px; color: gray;">(Maximum file
-													size: 5 MB)</span></th>
-											<th>Status</th>
-										</tr>
-									</ng-template>
-									<ng-template pTemplate="body" let-allDP>
-										<tr>
-											<td>{{ allDP.name }}</td>
-											<td>{{ allDP.relation }}</td>
-											<td>{{ allDP.brokername }}</td>
-											<td>{{ allDP.dpaccount }}</td>
-											<td>
-												<div class="upload-container">
-													<div class="attachment-icon-container"
-														*ngIf="(allDP.uploadedFile || allDP.uploadedfile) && (!allDP.authorize || !allDP.isAuthorized) && (!allDP.isProvide || !allDP.isprovide) "
-														(mouseenter)="allDP.showFileName = true"
-														(mouseleave)="allDP.showFileName = false">
-														<i class="pi pi-paperclip"></i>
-														<a (click)="downloadFileEMP(allDP)"><i
-																class="fas fa-download"></i>Download</a>
-														<div class="file-name" *ngIf="allDP.showFileName">{{
-															allDP.uploadedFile ||
-															allDP.uploadedfile }}</div>
-														<span class="change-link"
-															*ngIf="allDP.uploadedFile || allDP.uploadedfile"
-															maxFileSize="5242880" (click)="fileInput.click()">Click to
-															Change</span>
-														<input #fileInput type="file" style="display: none"
-															(change)="handleFileChange($event, allDP)">
-													</div>
-													<div class="attachment-icon-container"
-														*ngIf="allDP.authorize || allDP.isAuthorized">
-														{{'Authorize Compliance'}}
-													</div>
-													<div class="attachment-icon-container"
-														*ngIf="allDP.isProvide || allDP.isprovide">
-														{{'Will Provide Later'}}
-													</div>
-													<div class="upload-button"
-														*ngIf="shouldDisplayUploadButton(allDP.brokername) && !allDP.uploadedFile && !allDP.uploadedfile && !allDP.isAuthorized && !allDP.authorize ">
-														<div class="button-container">
-															<button pButton type="button" maxFileSize="5242880"
-																class="btn btn-primary p-button-info p-button-sm mx-1"
-																(click)="fileInput.click()">Upload</button>
-
-															<button pButton type="button"
-																class="btn btn-primary p-button-info p-button-sm mx-1"
-																*ngIf="!allDP.isAuthorized "
-																(click)="onAuthorizeClick(allDP)">Authorize</button>
-														</div>
-														<input #fileInput type="file" style="display: none"
-															(change)="handleFileChange($event, allDP)">
-													</div>
-													<div class="upload-button"
-														*ngIf="!allDP.uploadedFile && !allDP.uploadedfile && !allDP.isProvide && !allDP.isprovide && !shouldDisplayUploadButton(allDP.brokername) ">
-														<div class="button-container">
-															<button pButton type="button" maxFileSize="5242880"
-																class="btn btn-primary p-button-info p-button-sm mx-1"
-																(click)="fileInput.click()">Upload</button>
-															<button pButton type="button"
-																class="btn btn-primary p-button-info p-button-sm mx-1"
-																*ngIf="!allDP.isProvide "
-																(click)="btnEmailLater_Click(allDP)">Provide
-																Later</button>
-														</div>
-														<input #fileInput type="file" style="display: none"
-															(change)="handleFileChange($event, allDP)">
-													</div>
-												</div>
-												<div *ngIf="showAlert">
-													<div class="alert">
-														<div class="alert-header">Authorize</div>
-														<div class="alert-msg">
-															I hereby authorize the compliance team to obtain my annual
-															holding
-															account statement
-															with Newel as DP,
-															until such time as I am in employment with Newel.
-														</div>
-														<div class="btn-container">
-															<button class="btn-authorize"
-																(click)="onAlertAuthorizeClick()">Authorize</button>
-														</div>
-														<span class="btn-close" (click)="onCloseClick()">&#x2715;</span>
-													</div>
-												</div>
-											</td>
+																		<button pButton type="button"
+																			class="btn btn-primary p-button-info p-button-sm mx-1"
+																			*ngIf="!allDP.isAuthorized "
+																			(click)="onAuthorizeClick(allDP)">Authorize</button>
+																	</div>
+																	<input #fileInput type="file" style="display: none"
+																		(change)="handleFileChange($event, allDP)">
+																</div>
+																<div class="upload-button"
+																	*ngIf="!allDP.uploadedFile && !allDP.uploadedfile && !allDP.isProvide && !allDP.isprovide && !shouldDisplayUploadButton(allDP.brokername) ">
+																	<div class="button-container">
+																		<button pButton type="button"
+																			maxFileSize="5242880"
+																			class="btn btn-primary p-button-info p-button-sm mx-1"
+																			(click)="fileInput.click()">Upload</button>
+																		<button pButton type="button"
+																			class="btn btn-primary p-button-info p-button-sm mx-1"
+																			*ngIf="!allDP.isProvide "
+																			(click)="btnEmailLater_Click(allDP)">Provide
+																			Later</button>
+																	</div>
+																	<input #fileInput type="file" style="display: none"
+																		(change)="handleFileChange($event, allDP)">
+																</div>
+															</div>
+															<div *ngIf="showAlert">
+																<div class="alert">
+																	<div class="alert-header">Authorize</div>
+																	<div class="alert-msg">
+																		I hereby authorize the compliance team to obtain
+																		my annual
+																		holding
+																		account statement
+																		with Newel as DP,
+																		until such time as I am in employment with
+																		Newel.
+																	</div>
+																	<div class="btn-container">
+																		<button class="btn-authorize"
+																			(click)="onAlertAuthorizeClick()">Authorize</button>
+																	</div>
+																	<span class="btn-close"
+																		(click)="onCloseClick()">&#x2715;</span>
+																</div>
+															</div>
+														</td>
 
 
-											<td>{{ allDP.uploadedFile || allDP.uploadedfile || allDP.authorize === true
-												||
-												allDP.isAuthorized ||
-												allDP.isProvide || allDP.isprovide === true ? 'Submitted' : 'Mandatory'
-												}}</td>
-										</tr>
-									</ng-template>
-								</p-table>
+														<td>{{ allDP.uploadedFile || allDP.uploadedfile ||
+															allDP.authorize === true
+															||
+															allDP.isAuthorized ||
+															allDP.isProvide || allDP.isprovide === true ? 'Submitted' :
+															'Mandatory'
+															}}</td>
+													</tr>
+												</ng-template>
+											</p-table>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-12 lg:col-12 xl:col-12">
-						<div class="grid bg-white my-0 pt-0 mx-0 shadow-1">
-							<div class="col-12 bg-lightGray">
-								<p-toolbar styleClass="border-noround p-1 bg-lightGray">
-									<h6 class="mb-0 text-dark">
-										Physical Share Holdings
-									</h6>
-								</p-toolbar>
-							</div>
-							<div class="col-12 md:col-12">
-								<p-table #dt [value]="PSHolds" [rows]="10" [paginator]="true"
-									styleClass="p-datatable-sm p-datatable-gridlines table table-bordered"
-									[tableStyle]="{'width': '100%'}" [rowHover]="true" dataKey="id"
-									currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-									[showCurrentPageReport]="true">
-									<ng-template pTemplate="header">
-										<tr>
-											<th>Physical Share Holdings</th>
-											<th>Proofs<br><span style="font-size: 10px; color: gray;">(Maximum file
-													size: 5
-													MB)</span></th>
-											<th>Action</th>
-										</tr>
-									</ng-template>
-									<ng-template pTemplate="body" let-rowData>
-										<tr>
-											<td>{{rowData.name}}</td>
-											<td>
-												<div class="upload-container">
-													<div class="attachment-icon-container"
-														*ngIf="rowData.uploadedFile || rowData.UPLOAD_PATH "
-														(mouseenter)="rowData.showFileName = true"
-														(mouseleave)="rowData.showFileName = false">
-														<i class="pi pi-paperclip"></i>
-														<div class="file-name" *ngIf="rowData.showFileName">{{
-															rowData.uploadedFile ||
-															rowData.UPLOAD_PATH }}</div>
-														<a (click)="downloadFileREL(rowData)"><i
-																class="fas fa-download"></i>Download</a>
-														<span class="change-link"
-															*ngIf="rowData.uploadedFile || rowData.UPLOAD_PATH"
-															maxFileSize="5242880" (click)="fileInput.click()">Click to
-															Change</span>
-														<input #fileInput type="file" style="display: none"
-															(change)="uploadFile1($event, rowData)">
-													</div>
-													<div class="upload-button"
-														*ngIf="!rowData.uploadedFile && !rowData.UPLOAD_PATH">
-														<div class="button-container">
-															<button pButton type="button" maxFileSize="5242880"
-																class="btn btn-primary p-button-info p-button-sm mx-1"
-																(click)="fileInput.click()">Upload</button>
-														</div>
-														<input #fileInput type="file" style="display: none"
-															(change)="uploadFile($event, rowData)">
-													</div>
-												</div>
-											</td>
-											<td>
-												<!-- <button pButton type="button" icon="pi pi-trash" iconPos="left"
+						<div class="col-12">
+							<div class="card">
+								<div class="card-body">
+									<h6 class="card-title">Physical Share Holdings</h6>
+									<hr class="pb-2 m-0">
+									<div class="grid">
+										<div class="col-12 md:col-12">
+											<p-table #dt [value]="PSHolds" [rows]="10" [paginator]="true"
+												styleClass="p-datatable-sm p-datatable-gridlines table table-bordered"
+												[tableStyle]="{'width': '100%'}" [rowHover]="true" dataKey="id"
+												currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+												[showCurrentPageReport]="true">
+												<ng-template pTemplate="header">
+													<tr>
+														<th>Physical Share Holdings</th>
+														<th>Proofs<br><span
+																style="font-size: 10px; color: gray;">(Maximum file
+																size: 5
+																MB)</span></th>
+														<th>Action</th>
+													</tr>
+												</ng-template>
+												<ng-template pTemplate="body" let-rowData>
+													<tr>
+														<td>{{rowData.name}}</td>
+														<td>
+															<div class="upload-container">
+																<div class="attachment-icon-container"
+																	*ngIf="rowData.uploadedFile || rowData.UPLOAD_PATH "
+																	(mouseenter)="rowData.showFileName = true"
+																	(mouseleave)="rowData.showFileName = false">
+																	<i class="pi pi-paperclip"></i>
+																	<div class="file-name" *ngIf="rowData.showFileName">
+																		{{
+																		rowData.uploadedFile ||
+																		rowData.UPLOAD_PATH }}</div>
+																	<a (click)="downloadFileREL(rowData)"><i
+																			class="fas fa-download"></i>Download</a>
+																	<span class="change-link"
+																		*ngIf="rowData.uploadedFile || rowData.UPLOAD_PATH"
+																		maxFileSize="5242880"
+																		(click)="fileInput.click()">Click to
+																		Change</span>
+																	<input #fileInput type="file" style="display: none"
+																		(change)="uploadFile1($event, rowData)">
+																</div>
+																<div class="upload-button"
+																	*ngIf="!rowData.uploadedFile && !rowData.UPLOAD_PATH">
+																	<div class="button-container">
+																		<button pButton type="button"
+																			maxFileSize="5242880"
+																			class="btn btn-primary p-button-info p-button-sm mx-1"
+																			(click)="fileInput.click()">Upload</button>
+																	</div>
+																	<input #fileInput type="file" style="display: none"
+																		(change)="uploadFile($event, rowData)">
+																</div>
+															</div>
+														</td>
+														<td>
+															<!-- <button pButton type="button" icon="pi pi-trash delete-btn" iconPos="left"
 										class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"
 										(click)="deleteRow(rowData)">
 									</button> -->
-												<i class="pi pi-trash" (click)="deleteRow(rowData)"></i>
-											</td>
-										</tr>
-									</ng-template>
-									<ng-template pTemplate="footer">
-										<tr>
-											<td style="font-size: smaller;">Physical Share Holdings</td>
-											<td><button pButton type="button" label="Upload"
-													class="btn btn-primary p-button-info p-button-sm mx-1"
-													(click)="addRow()"></button></td>
-											<td></td>
-										</tr>
-									</ng-template>
-									<!-- <ng-template pTemplate="summary">
+															<i class="pi pi-trash delete-btn"
+																(click)="deleteRow(rowData)"></i>
+														</td>
+													</tr>
+												</ng-template>
+												<ng-template pTemplate="footer">
+													<tr>
+														<td style="font-size: smaller;">Physical Share Holdings</td>
+														<td><button pButton type="button" label="Upload"
+																class="btn btn-primary p-button-info p-button-sm mx-1"
+																(click)="addRow()"></button></td>
+														<td></td>
+													</tr>
+												</ng-template>
+												<!-- <ng-template pTemplate="summary">
 								<div class="flex align-items-center justify-content-between">
 									In total there are {{ PSHolds ? PSHolds.length : 0 }} products.
 								</div>
 							</ng-template> -->
-								</p-table>
+											</p-table>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
+
 					</div>
-					<div class="grid justify-content-between m-2">
+					<div class="grid justify-content-end m-2">
 						<button pButton pRipple type="button" icon="pi pi-angle-double-left"
-							class="btn btn-outline-secondary px-4 py-1" label="Previous" (click)="activeIndex1 = 4">
+							class="btn btn-outline-secondary px-4 py-1 me-2" label="Previous"
+							(click)="activeIndex1 = 4">
 						</button>
 						<button pButton pRipple type="button" icon="pi pi-angle-double-right" iconPos="right"
 							class="btn btn-info px-4 py-1" label="Next" (click)="handleNext6Click(allDPs)">
@@ -1062,7 +1177,7 @@
 		<div header="Commodities" class="grid bg-white my-0 pt-0 mx-0 shadow-0" *ngIf="activeIndex1 == 6"
 			[ngClass]="{ 'step-disabled': isdis }">
 
-			<div class="card w-100 mb-2">
+			<div class="w-100 mb-2">
 				<div class="card-header bg-lightGray d-none">
 					<div class="d-flex align-items-center">
 						<div>
@@ -1071,298 +1186,307 @@
 					</div>
 				</div>
 				<div class="card-body p-0">
+					<div class="col-12">
+						<div class="card">
+							<div class="card-body">
+								<h6 class="card-title">Commodity Share Holdings</h6>
+								<hr class="pb-2 m-0">
+								<div class="grid">
+									<div class="col-12 md:col-12">
+										<p-table #dt [value]="Commodities" [rows]="10" [paginator]="true"
+											styleClass="p-datatable-sm p-datatable-gridlines table table-bordered"
+											[tableStyle]="{'min-width': '60rem'}" [rowHover]="true" [dataKey]="'id'"
+											currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+											[showCurrentPageReport]="true">
 
-					<div class="col-12 lg:col-12 xl:col-12">
-						<div class="grid bg-white my-0 pt-0 mx-0 shadow-1">
-							<div class="col-12 bg-lightGray">
-								<p-toolbar styleClass="border-noround p-1 bg-lightGray">
-									<h6 class="mb-0 text-dark">
-										Commodity Share Holdings
-									</h6>
-								</p-toolbar>
-							</div>
-							<div class="col-12 md:col-12">
-								<p-table #dt [value]="Commodities" [rows]="10" [paginator]="true"
-									styleClass="p-datatable-sm p-datatable-gridlines table table-bordered"
-									[tableStyle]="{'min-width': '60rem'}" [rowHover]="true" [dataKey]="'id'"
-									currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-									[showCurrentPageReport]="true">
+											<ng-template pTemplate="header">
+												<tr>
+													<th>Client Name</th>
+													<th>Comtrade Participant Name</th>
+													<th>Comtrade ID</th>
+													<th>Proofs/Authorisation<br><span
+															style="font-size: 10px; color: gray;">(Maximum file
+															size: 5 MB)</span></th>
+													<th>Action</th>
+												</tr>
+											</ng-template>
 
-									<ng-template pTemplate="header">
-										<tr>
-											<th>Client Name</th>
-											<th>Comtrade Participant Name</th>
-											<th>Comtrade ID</th>
-											<th>Proofs/Authorisation<br><span
-													style="font-size: 10px; color: gray;">(Maximum file
-													size: 5 MB)</span></th>
-											<th>Action</th>
-										</tr>
-									</ng-template>
-
-									<ng-template pTemplate="body" let-Commoditie>
-										<tr>
-											<td>{{Commoditie.CLIENTNAME}}</td>
-											<td>{{Commoditie.DP_BROKER_NAME}}</td>
-											<td>{{Commoditie.DP_ACCOUNT_NO}}</td>
-											<td>
-												<div class="upload-container">
-													<div class="attachment-icon-container"
-														*ngIf="Commoditie.UPLOAD_PATH"
-														(mouseenter)="Commoditie.showFileName = true"
-														(mouseleave)="Commoditie.showFileName = false">
-														<i class="pi pi-paperclip"></i>
-														<div class="file-name" *ngIf="Commoditie.showFileName">{{
-															Commoditie.UPLOAD_PATH}}</div>
-														<a (click)="downloadFileCOMM(Commoditie)"><i
-																class="fas fa-download"></i>Download</a>
-														<span class="change-link" *ngIf="Commoditie.UPLOAD_PATH"
-															maxFileSize="5242880" (click)="fileInput.click()">Click to
-															Change</span>
-														<input #fileInput type="file" style="display: none"
-															(change)="uploadComm($event, Commoditie)">
-													</div>
-													<div class="attachment-icon-container"
-														*ngIf="Commoditie.PROVIDE_DEMAT === true ">
-														<div *ngFor="let entityName of entityNames">
-															<div *ngIf="Commoditie.DP_BROKER_NAME === entityName">
-																Authorize Compliance
+											<ng-template pTemplate="body" let-Commoditie>
+												<tr>
+													<td>{{Commoditie.CLIENTNAME}}</td>
+													<td>{{Commoditie.DP_BROKER_NAME}}</td>
+													<td>{{Commoditie.DP_ACCOUNT_NO}}</td>
+													<td>
+														<div class="upload-container">
+															<div class="attachment-icon-container"
+																*ngIf="Commoditie.UPLOAD_PATH"
+																(mouseenter)="Commoditie.showFileName = true"
+																(mouseleave)="Commoditie.showFileName = false">
+																<i class="pi pi-paperclip"></i>
+																<div class="file-name" *ngIf="Commoditie.showFileName">
+																	{{
+																	Commoditie.UPLOAD_PATH}}</div>
+																<a (click)="downloadFileCOMM(Commoditie)"><i
+																		class="fas fa-download"></i>Download</a>
+																<span class="change-link" *ngIf="Commoditie.UPLOAD_PATH"
+																	maxFileSize="5242880"
+																	(click)="fileInput.click()">Click to
+																	Change</span>
+																<input #fileInput type="file" style="display: none"
+																	(change)="uploadComm($event, Commoditie)">
+															</div>
+															<div class="attachment-icon-container"
+																*ngIf="Commoditie.PROVIDE_DEMAT === true ">
+																<div *ngFor="let entityName of entityNames">
+																	<div
+																		*ngIf="Commoditie.DP_BROKER_NAME === entityName">
+																		Authorize Compliance
+																	</div>
+																</div>
+																<div
+																	*ngIf="!entityNames.includes(Commoditie.DP_BROKER_NAME)">
+																	Will Provide Later
+																</div>
 															</div>
 														</div>
-														<div *ngIf="!entityNames.includes(Commoditie.DP_BROKER_NAME)">
-															Will Provide Later
-														</div>
-													</div>
-												</div>
-											</td>
-											<td>
-												<!-- <button pButton type=" button" icon="pi pi-trash" iconPos="left"
+													</td>
+													<td>
+														<!-- <button pButton type=" button" icon="pi pi-trash delete-btn" iconPos="left"
 									class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary"
 									(click)="deleteCommRow(Commoditie)">
 								</button> -->
-												<i class="pi pi-trash" (click)="deleteCommRow(Commoditie)"></i>
-											</td>
-										</tr>
-									</ng-template>
+														<i class="pi pi-trash delete-btn"
+															(click)="deleteCommRow(Commoditie)"></i>
+													</td>
+												</tr>
+											</ng-template>
 
-									<ng-template pTemplate="footer">
-										<tr>
-											<td style="width: 20%;">
-												<!-- Dropdown for Client Name -->
-												<!-- <div style="width: 70%;"> -->
-												<div class="form-floating form-floating-outline">
-													<p-dropdown [options]="clientid" [(ngModel)]="clientmodel"
-														optionLabel="name" [filter]="false" filterBy="name"
-														[showClear]="true" placeholder="Select Name"
-														class="form-control px-0 w-70" required appendTo="body">
-														<!-- [style]="{ 'height': '50px', 'width': '60%', 'overflow-y': 'auto' }"> -->
-													</p-dropdown>
-												</div>
-												<!-- </div> -->
-
-											</td>
-											<td>
-												<!-- Radio buttons for Comtrack Participant Name -->
-												<div class="white-space-nowrap mb-2">
-													<p-radioButton name="groupname" [value]="true"
-														[(ngModel)]="ecommodel"
-														(ngModelChange)="changeECComm()"></p-radioButton>
-													<label for="city1" class="pl-2 pr-4"
-														style="font-size: small;">Entity</label>
-													<p-radioButton name="groupname" [value]="true" [(ngModel)]="otmodel"
-														(ngModelChange)="changeCommOther()"></p-radioButton>
-													<label for="city1" class="pl-2 pr-4"
-														style="font-size: small;">Others</label>
-
-												</div>
-												<div class="form-floating form-floating-outline">
-													<input type="text" class="form-control px-0"
-														[(ngModel)]="otextngmodel" *ngIf="isSDisable" placeholder=""
-														pInputText required>
-													<span class="text-red-500 text-xs"
-														*ngIf="otmodel && !otextngmodel">required</span>
-													<p-dropdown [options]="allentid" [(ngModel)]="allentNgmodel"
-														optionLabel="ENTITY_NAME" [filter]="false"
-														filterBy="ENTITY_NAME" [showClear]="true"
-														placeholder="Select Entity" class="form-control px-0"
-														*ngIf="showEntDropdown5" required appendTo="body">
-														<!-- [style]="{ 'height': '50px', 'width': '60%', 'overflow-y': 'auto' }"> -->
-													</p-dropdown>
-													<span class="text-red-500 text-xs"
-														*ngIf="ecommodel && !allentNgmodel">
-														required
-													</span>
-												</div>
-
-											</td>
-											<td>
-												<div class="form-floating form-floating-outline">
-													<input type="text" class="form-control px-0"
-														[(ngModel)]="commidmodel" placeholder="" pInputText required>
-												</div>
-											</td>
-											<td>
-												<div class="upload-container">
-													<div class="upload-button" *ngIf="showAuthBtn">
-														<div class="button-container">
-															<button pButton type="button" maxFileSize="5242880"
-																class="btn btn-primary p-button-info p-button-sm mx-1"
-																(click)="fileInput.click()">Upload</button>
-
-															<button pButton type="button"
-																class="btn btn-primary p-button-info p-button-sm mx-1"
-																(click)="onCommAuthorizeClick(Commoditie)">Authorize</button>
+											<ng-template pTemplate="footer">
+												<tr>
+													<td style="width: 20%;">
+														<!-- Dropdown for Client Name -->
+														<!-- <div style="width: 70%;"> -->
+														<div class="form-floating form-floating-outline">
+															<p-dropdown [options]="clientid" [(ngModel)]="clientmodel"
+																optionLabel="name" [filter]="false" filterBy="name"
+																[showClear]="true" placeholder="Select Name"
+																class="form-control px-0 w-70" required appendTo="body">
+																<!-- [style]="{ 'height': '50px', 'width': '60%', 'overflow-y': 'auto' }"> -->
+															</p-dropdown>
 														</div>
-														<input #fileInput type="file" style="display: none"
-															(change)="handleCommFileChange($event, Commoditie)">
-													</div>
-													<div class="upload-button" *ngIf="showProvideBtn">
-														<div class="button-container">
-															<button pButton type="button" maxFileSize="5242880"
-																class="btn btn-primary p-button-info p-button-sm mx-1"
-																(click)="fileInput.click()">Upload</button>
-															<button pButton type="button"
-																class="btn btn-primary p-button-info p-button-sm mx-1"
-																(click)="btnCommEmailLater_Click(Commoditie)">Provide
-																Later</button>
-														</div>
-														<input #fileInput type="file" style="display: none"
-															(change)="handleCommFileChange($event, Commoditie)">
+														<!-- </div> -->
 
-													</div>
-												</div>
-												<div *ngIf="showAlert1">
-													<div class="alert">
-														<div class="alert-header">Authorize</div>
-														<div class="alert-msg">
-															I hereby authorize the compliance team to obtain my annual
-															holding
-															account statement
-															with Newel as DP,
-															until such time as I am in employment with Newel.
-														</div>
-														<div class="btn-container">
-															<button class="btn-authorize"
-																(click)="onCommAlertAuthorizeClick()">Authorize</button>
-														</div>
-														<span class="btn-close"
-															(click)="onCloseClick1()">&#x2715;</span>
-													</div>
-												</div>
-											</td>
-											<td></td>
-										</tr>
-									</ng-template>
+													</td>
+													<td>
+														<!-- Radio buttons for Comtrack Participant Name -->
+														<div class="white-space-nowrap mb-2">
+															<p-radioButton name="groupname" [value]="true"
+																[(ngModel)]="ecommodel"
+																(ngModelChange)="changeECComm()"></p-radioButton>
+															<label for="city1" class="pl-2 pr-4"
+																style="font-size: small;">Entity</label>
+															<p-radioButton name="groupname" [value]="true"
+																[(ngModel)]="otmodel"
+																(ngModelChange)="changeCommOther()"></p-radioButton>
+															<label for="city1" class="pl-2 pr-4"
+																style="font-size: small;">Others</label>
 
-									<!-- <ng-template pTemplate="summary">
+														</div>
+														<div class="form-floating form-floating-outline">
+															<input type="text" class="form-control px-0"
+																[(ngModel)]="otextngmodel" *ngIf="isSDisable"
+																placeholder="" pInputText required>
+															<span class="text-red-500 text-xs"
+																*ngIf="otmodel && !otextngmodel">required</span>
+															<p-dropdown [options]="allentid" [(ngModel)]="allentNgmodel"
+																optionLabel="ENTITY_NAME" [filter]="false"
+																filterBy="ENTITY_NAME" [showClear]="true"
+																placeholder="Select Entity" class="form-control px-0"
+																*ngIf="showEntDropdown5" required appendTo="body">
+																<!-- [style]="{ 'height': '50px', 'width': '60%', 'overflow-y': 'auto' }"> -->
+															</p-dropdown>
+															<span class="text-red-500 text-xs"
+																*ngIf="ecommodel && !allentNgmodel">
+																required
+															</span>
+														</div>
+
+													</td>
+													<td>
+														<div class="form-floating form-floating-outline">
+															<input type="text" class="form-control px-0"
+																[(ngModel)]="commidmodel" placeholder="" pInputText
+																required>
+														</div>
+													</td>
+													<td>
+														<div class="upload-container">
+															<div class="upload-button" *ngIf="showAuthBtn">
+																<div class="button-container">
+																	<button pButton type="button" maxFileSize="5242880"
+																		class="btn btn-primary p-button-info p-button-sm mx-1"
+																		(click)="fileInput.click()">Upload</button>
+
+																	<button pButton type="button"
+																		class="btn btn-primary p-button-info p-button-sm mx-1"
+																		(click)="onCommAuthorizeClick(Commoditie)">Authorize</button>
+																</div>
+																<input #fileInput type="file" style="display: none"
+																	(change)="handleCommFileChange($event, Commoditie)">
+															</div>
+															<div class="upload-button" *ngIf="showProvideBtn">
+																<div class="button-container">
+																	<button pButton type="button" maxFileSize="5242880"
+																		class="btn btn-primary p-button-info p-button-sm mx-1"
+																		(click)="fileInput.click()">Upload</button>
+																	<button pButton type="button"
+																		class="btn btn-primary p-button-info p-button-sm mx-1"
+																		(click)="btnCommEmailLater_Click(Commoditie)">Provide
+																		Later</button>
+																</div>
+																<input #fileInput type="file" style="display: none"
+																	(change)="handleCommFileChange($event, Commoditie)">
+
+															</div>
+														</div>
+														<div *ngIf="showAlert1">
+															<div class="alert">
+																<div class="alert-header">Authorize</div>
+																<div class="alert-msg">
+																	I hereby authorize the compliance team to obtain my
+																	annual
+																	holding
+																	account statement
+																	with Newel as DP,
+																	until such time as I am in employment with Newel.
+																</div>
+																<div class="btn-container">
+																	<button class="btn-authorize"
+																		(click)="onCommAlertAuthorizeClick()">Authorize</button>
+																</div>
+																<span class="btn-close"
+																	(click)="onCloseClick1()">&#x2715;</span>
+															</div>
+														</div>
+													</td>
+													<td></td>
+												</tr>
+											</ng-template>
+
+											<!-- <ng-template pTemplate="summary">
 				<div class="flex align-items-center justify-content-between">
 					In total there are {{ Commodities ? Commodities.length : 0 }} products.
 				</div>
 			</ng-template> -->
 
-								</p-table>
+										</p-table>
+									</div>
+									<div class="col-12 lg:col-12 xl:col-12">
+										<p class="right-align1">If you do not have Comtrack account.Please continue for
+											further
+											submission.</p>
+									</div>
+								</div>
 							</div>
 						</div>
-						<div class="col-12 lg:col-12 xl:col-12">
-							<p class="right-align1">If you do not have Comtrack account.Please continue for further
-								submission.</p>
-						</div>
 					</div>
-
-					<div class="grid bg-white my-0 pt-0 mx-0 shadow-0">
-						<div class="col-12 lg:col-12 xl:col-12">
-							<div class="grid bg-white my-0 pt-0 mx-0 shadow-1">
-								<div class="col-12 bg-lightGray">
-									<p-toolbar styleClass="border-noround p-1 bg-lightGray">
-										<h6 class="mb-0 text-dark">
-											Other than exchnage
-										</h6>
-									</p-toolbar>
-								</div>
-								<div class="col-12 md:col-12">
-									<p-table #dt [value]="secGrids" [rows]="10" [paginator]="true"
-										styleClass="p-datatable-sm p-datatable-gridlines table table-bordered"
-										[tableStyle]="{}" [rowHover]="true" dataKey="id"
-										currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-										[showCurrentPageReport]="true">
-										<ng-template pTemplate="header">
-											<tr>
-												<th>Client Name</th>
-												<th>Have you done any trade/s in Commodities(other than Future Exchange)
-												</th>
-												<th>Proofs<br><span style="font-size: 10px; color: gray;">(Maximum file
-														size: 5
-														MB)</span></th>
-											</tr>
-										</ng-template>
-										<ng-template pTemplate="body" let-secGrid let-i="rowIndex">
-											<tr>
-												<td>{{ secGrid.CLIENT_ID }}</td>
-												<td>
-													<p-radioButton name="groupname-{{i}}" [value]="true"
-														[(ngModel)]="selectedValuesYes[i]"
-														(ngModelChange)="selectYes(i)"
-														[ngModel]="secGrid.IS_ANY_TRADE === true"></p-radioButton>
-													<label for="city1" class="pl-2 pr-4">Yes</label>
-													<p-radioButton name="groupname-{{i}}" [value]="true"
-														[(ngModel)]="selectedValuesNo[i]"
-														(ngModelChange)="selectNo(i,secGrid)"
-														[ngModel]="secGrid.IS_ANY_TRADE === false"></p-radioButton>
-													<label for="city1" class="pl-2 pr-4">No</label>
-												</td>
-												<td>
-													<div class="upload-container">
-														<div class="attachment-icon-container"
-															*ngIf="secGrid.uploadedFile || secGrid.UPLOAD_PATH"
-															(mouseenter)="secGrid.showFileName = true"
-															(mouseleave)="secGrid.showFileName = false">
-															<i class="pi pi-paperclip"></i>
-															<div class="file-name" *ngIf="secGrid.showFileName">{{
-																secGrid.uploadedFile ||
-																secGrid.UPLOAD_PATH }}</div>
-															<a (click)="downloadFileCOMMAnother(secGrid)"><i
-																	class="fas fa-download"></i>Download</a>
-															<span class="change-link"
+					<div class="col-12">
+						<div class="card">
+							<div class="card-body">
+								<h6 class="card-title">Other than exchnage</h6>
+								<hr class="pb-2 m-0">
+								<div class="grid">
+									<div class="col-12 md:col-12">
+										<p-table #dt [value]="secGrids" [rows]="10" [paginator]="true"
+											styleClass="p-datatable-sm p-datatable-gridlines table table-bordered"
+											[tableStyle]="{}" [rowHover]="true" dataKey="id"
+											currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+											[showCurrentPageReport]="true">
+											<ng-template pTemplate="header">
+												<tr>
+													<th>Client Name</th>
+													<th>Have you done any trade/s in Commodities(other than Future
+														Exchange)
+													</th>
+													<th>Proofs<br><span style="font-size: 10px; color: gray;">(Maximum
+															file
+															size: 5
+															MB)</span></th>
+												</tr>
+											</ng-template>
+											<ng-template pTemplate="body" let-secGrid let-i="rowIndex">
+												<tr>
+													<td>{{ secGrid.CLIENT_ID }}</td>
+													<td>
+														<p-radioButton name="groupname-{{i}}" [value]="true"
+															[(ngModel)]="selectedValuesYes[i]"
+															(ngModelChange)="selectYes(i)"
+															[ngModel]="secGrid.IS_ANY_TRADE === true"></p-radioButton>
+														<label for="city1" class="pl-2 pr-4">Yes</label>
+														<p-radioButton name="groupname-{{i}}" [value]="true"
+															[(ngModel)]="selectedValuesNo[i]"
+															(ngModelChange)="selectNo(i,secGrid)"
+															[ngModel]="secGrid.IS_ANY_TRADE === false"></p-radioButton>
+														<label for="city1" class="pl-2 pr-4">No</label>
+													</td>
+													<td>
+														<div class="upload-container">
+															<div class="attachment-icon-container"
 																*ngIf="secGrid.uploadedFile || secGrid.UPLOAD_PATH"
-																maxFileSize="5242880" (click)="fileInput.click()">Click
-																to
-																Change</span>
-															<input #fileInput type="file" style="display: none"
-																(change)="uploadCommOther($event, secGrid, i)">
-														</div>
-														<div class="upload-button"
-															*ngIf="shouldShowUploadButton(i) && (!secGrid.uploadedFile && !secGrid.UPLOAD_PATH)">
-															<div class="button-container">
-																<button pButton type="button" maxFileSize="5242880"
-																	class="btn btn-primary p-button-info p-button-sm mx-1"
-																	(click)="fileInput.click()">Upload</button>
+																(mouseenter)="secGrid.showFileName = true"
+																(mouseleave)="secGrid.showFileName = false">
+																<i class="pi pi-paperclip"></i>
+																<div class="file-name" *ngIf="secGrid.showFileName">{{
+																	secGrid.uploadedFile ||
+																	secGrid.UPLOAD_PATH }}</div>
+																<a (click)="downloadFileCOMMAnother(secGrid)"><i
+																		class="fas fa-download"></i>Download</a>
+																<span class="change-link"
+																	*ngIf="secGrid.uploadedFile || secGrid.UPLOAD_PATH"
+																	maxFileSize="5242880"
+																	(click)="fileInput.click()">Click
+																	to
+																	Change</span>
+																<input #fileInput type="file" style="display: none"
+																	(change)="uploadCommOther($event, secGrid, i)">
 															</div>
-															<input #fileInput type="file" style="display: none"
-																(change)="uploadCommOther($event, secGrid, i)">
+															<div class="upload-button"
+																*ngIf="shouldShowUploadButton(i) && (!secGrid.uploadedFile && !secGrid.UPLOAD_PATH)">
+																<div class="button-container">
+																	<button pButton type="button" maxFileSize="5242880"
+																		class="btn btn-primary p-button-info p-button-sm mx-1"
+																		(click)="fileInput.click()">Upload</button>
+																</div>
+																<input #fileInput type="file" style="display: none"
+																	(change)="uploadCommOther($event, secGrid, i)">
+															</div>
 														</div>
-													</div>
-												</td>
-											</tr>
-										</ng-template>
-										<!-- <ng-template pTemplate="summary">
+													</td>
+												</tr>
+											</ng-template>
+											<!-- <ng-template pTemplate="summary">
 					<div class="flex align-items-center justify-content-between">
 						In total there are {{ secGrids ? secGrids.length : 0 }} products.
 					</div>
 				</ng-template> -->
-									</p-table>
-								</div>
-								<div class="col-12 md:col-12">
-									<div class="grid justify-content-between m-2">
-										<button pButton pRipple type="button" icon="pi pi-angle-double-left"
-											class="btn btn-outline-secondary px-4 py-1" label="Previous"
-											(click)="activeIndex1 = 5">
-										</button>
-										<button pButton pRipple type="button" icon="pi pi-angle-double-right"
-											iconPos="right" class="btn btn-info px-4 py-1" label="Next"
-											(click)="handleNext7Click()">
-										</button>
+										</p-table>
 									</div>
 								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="grid bg-white my-0 pt-0 mx-0 shadow-0">
+						<div class="col-12 md:col-12">
+							<div class="grid justify-content-end m-2">
+								<button pButton pRipple type="button" icon="pi pi-angle-double-left"
+									class="btn btn-outline-secondary px-4 py-1 me-2" label="Previous"
+									(click)="activeIndex1 = 5">
+								</button>
+								<button pButton pRipple type="button" icon="pi pi-angle-double-right" iconPos="right"
+									class="btn btn-info px-4 py-1" label="Next" (click)="handleNext7Click()">
+								</button>
 							</div>
 						</div>
 					</div>
@@ -2051,8 +2175,10 @@
 				</div>
 			</div>
 		</div>
+
 	</div>
 </div>
+
 </html>
 
 
@@ -2248,11 +2374,11 @@
 										<td>{{DeptOther.BROKER_NAME}}</td>
 										<td>{{DeptOther.TRADING_ACCOUNT_NUMBER}}</td>
 										<td>
-											<!-- <button pButton type=" button" icon="pi pi-trash"
+											<!-- <button pButton type=" button" icon="pi pi-trash delete-btn"
 												(click)="deleteDeptOther(DeptOther)" iconPos="left"
 												class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary">
 											</button> -->
-											<i class="pi pi-trash" (click)="deleteDeptOther(DeptOther)"></i>
+											<i class="pi pi-trash delete-btn" (click)="deleteDeptOther(DeptOther)"></i>
 										</td>
 									</tr>
 								</ng-template>
@@ -2307,7 +2433,8 @@
 										name="deptDPAccNoInput" #deptDPAccNoInput="ngModel" required>
 
 								</div>
-								<span *ngIf="deptDPAccNoInput.invalid && deptDPAccNoInput.touched && !dataSaved" class="error-message">
+								<span *ngIf="deptDPAccNoInput.invalid && deptDPAccNoInput.touched && !dataSaved"
+									class="error-message">
 									Please enter a valid 16-digit number.
 								</span>
 							</td>
@@ -2338,11 +2465,11 @@
 										<td>{{DeptDP.DP_BROKER_NAME}}</td>
 										<td>{{DeptDP.DP_ACCOUNT_NO}}</td>
 										<td>
-											<!-- <button pButton type=" button" icon="pi pi-trash"
+											<!-- <button pButton type=" button" icon="pi pi-trash delete-btn"
 												(click)="deleteDeptDP(DeptDP)" iconPos="left"
 												class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary">
 											</button> -->
-											<i class="pi pi-trash" (click)="deleteDeptDP(DeptDP)"></i>
+											<i class="pi pi-trash delete-btn" (click)="deleteDeptDP(DeptDP)"></i>
 										</td>
 									</tr>
 								</ng-template>
@@ -2528,11 +2655,12 @@
 										<td>{{StackOther.BROKER_NAME_10PERCENT}}</td>
 										<td>{{StackOther.TRADING_CODE_10PERCENT}}</td>
 										<td>
-											<!-- <button pButton type=" button" icon="pi pi-trash"
+											<!-- <button pButton type=" button" icon="pi pi-trash delete-btn"
 												(click)="deleteStackOther(StackOther)" iconPos="left"
 												class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary">
 											</button> -->
-											<i class="pi pi-trash" (click)="deleteStackOther(StackOther)"></i>
+											<i class="pi pi-trash delete-btn"
+												(click)="deleteStackOther(StackOther)"></i>
 										</td>
 									</tr>
 								</ng-template>
@@ -2615,11 +2743,11 @@
 										<td>{{StackDP.DP_BROKER_NAME}}</td>
 										<td>{{StackDP.DP_ACCOUNT_NO}}</td>
 										<td>
-											<!-- <button pButton type=" button" icon="pi pi-trash"
+											<!-- <button pButton type=" button" icon="pi pi-trash delete-btn"
 												(click)="deleteStackDP(StackDP)" iconPos="left"
 												class="w-2rem h-2rem p-button-rounded p-button-outlined p-button-secondary">
 											</button> -->
-											<i class="pi pi-trash" (click)="deleteStackDP(StackDP)"></i>
+											<i class="pi pi-trash delete-btn" (click)="deleteStackDP(StackDP)"></i>
 										</td>
 									</tr>
 								</ng-template>
@@ -2671,7 +2799,8 @@
 				<input type="text" class="form-control" [(ngModel)]="panNgModel" placeholder="" name="panNgModelInput"
 					pattern="[A-Za-z]{5}[0-9]{4}[A-Za-z]" #panNgModelInput="ngModel" pInputText required>
 				<label>PAN<span class="required-asterisk">*</span></label>
-				<span class="text-red-500 text-xs" *ngIf="panNgModelInput.invalid && panNgModelInput.touched && !dataSaved">
+				<span class="text-red-500 text-xs"
+					*ngIf="panNgModelInput.invalid && panNgModelInput.touched && !dataSaved">
 					have a length of 10 characters and valid format AAAAA1111A
 				</span>
 			</div>
@@ -2682,7 +2811,8 @@
 				<input type="text" class="form-control" [(ngModel)]="phoneModel" name="phoneModelInput" placeholder=""
 					#phoneModelInput="ngModel" pattern="^\d{10}$" pInputText required>
 				<label>Phone No.</label>
-				<span class="text-red-500 text-xs" *ngIf="phoneModelInput.invalid && phoneModelInput.touched && !dataSaved1">
+				<span class="text-red-500 text-xs"
+					*ngIf="phoneModelInput.invalid && phoneModelInput.touched && !dataSaved1">
 					Phone No. should be a valid 10-digit number.
 				</span>
 			</div>
@@ -2694,7 +2824,8 @@
 					#mobileModelInput="ngModel" pattern="[0-9]{10}" title="Enter a 10-digit mobile number" pInputText
 					required>
 				<label>Mobile No.</label>
-				<span class="text-red-500 text-xs" *ngIf="mobileModelInput.invalid && mobileModelInput.touched && !dataSaved2">
+				<span class="text-red-500 text-xs"
+					*ngIf="mobileModelInput.invalid && mobileModelInput.touched && !dataSaved2">
 					Mobile No. should be a valid 10-digit number.
 				</span>
 			</div>

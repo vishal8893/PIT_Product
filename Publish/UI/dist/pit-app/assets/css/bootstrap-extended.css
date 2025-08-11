@@ -418,16 +418,15 @@ a {
 
 .progress-bar {
 	/* background-color: #ffe6e6; */
-    background-color: #038f03;
+	background-color: #1d4ed8;
 	/* background-color: rgba(0, 0, 0, .0); */
-    /* background-image: linear-gradient(to right,
-        #ffffff 0%,#26d326 100%
-    ); */
-	/* background-image: linear-gradient(to right, rgba(255, 255, 255, 0.925) 0%, #26d326 100%); */
-	background-image: linear-gradient(to right, rgba(255, 255, 255, 0.925) 0%, #038f03 100%);	
-    position: relative;
-    overflow: hidden;
+	background-image: linear-gradient(to right, #ffffff 0%, #1d4ed8 100%);
+	background-image: linear-gradient(to right, rgba(255, 255, 255, 0.925) 0%, #1d4ed8 100%);
+	background-image: linear-gradient(to right, rgba(255, 255, 255, 0.925) 0%, #1d4ed8 100%);
+	position: relative;
+	overflow: hidden;
 }
+
 
 .progress-bar::before,
 .progress-bar::after {
@@ -655,7 +654,7 @@ a {
 	color: #15ca20!important
 }
 .text-info {
-	color: #0dcaf0!important
+	color: #6374D4!important
 }
 .text-warning {
 	color: #ffc107!important
@@ -667,7 +666,8 @@ a {
 	color: #f8f9fa!important
 }
 .text-dark {
-	color: #212529!important
+	color: #292663!important;
+	font-weight: bold;
 }
 .text-white {
 	color: #fff!important
@@ -810,19 +810,19 @@ a {
 
 
 .form-check-info .form-check-input:checked {
-	background-color: #0dcaf0;
-	border-color: #0dcaf0
+	background-color: #6374D4;
+	border-color: #6374D4
 }
 
 .form-check-info .form-check-input[type=checkbox]:indeterminate {
-	background-color: #0dcaf0;
-	border-color: #0dcaf0;
+	background-color: #6374D4;
+	border-color: #6374D4;
 	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e")
 }
 
 
 .form-check-info .form-check-input:focus {
-	border-color: #0dcaf0;
+	border-color: #6374D4;
 	outline: 0;
 	box-shadow: 0 0 0 .25rem rgba(13, 202, 240, 0.25)
 }

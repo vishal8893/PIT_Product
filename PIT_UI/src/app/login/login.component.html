@@ -5,30 +5,40 @@
         <div class="">
             <div class="row g-0">
 
-                <div class="col-7 auth-cover-left align-items-center justify-content-center d-none d-xl-flex">
+                <div class="col-12 md:col-7 lg:col-7 auth-cover-left align-items-center justify-content-center d-none d-xl-flex">
                     
                     <div class="card border-transparent shadow-none bg-transparent shadow-none rounded-0 mb-0">
-                        <div class="card-body">
-                            <img src="assets/images/login-images/login-cover.png"
-                                class="img-fluid auth-img-cover-login" width="650" alt="" />
+                        <div class="card-body text-center">
+                            <div class="mb-3 login-logo">
+                                    <img src="assets/logo/NewelTechnologiesextra-login.png" width="" alt="">
+                                </div>
+                                <div class="mb-4">
+                                    <h5 class="fw-bold">Prohibition of Insider Trading</h5>
+                                    <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
+                                </div>
+                            <img src="assets/images/login-images/login-cover.svg"
+                                class="img-fluid auth-img-cover-login" width="450" alt="" />
                         </div>
                     </div>
 
                 </div>
 
-                <div class="col-5 auth-cover-right align-items-center justify-content-center">
+                <div class="col-12 md:col-5 lg:col-5 auth-cover-right align-items-center justify-content-center">
                     <div class="card border-transparent rounded-0 m-3 shadow-none bg-transparent mb-0">
-                        <div class="card-body p-sm-5">
+                        <div class="card-body p-sm-5 bg-white shadow mb-5 bg-white rounded">
                             <div class="">
-                                <!-- <div class="mb-3" style="text-align: center;">
-                                    <img src="assets/logo/pit-image.png" width="100px" alt="">
-                                </div> -->
-                                <div class="mb-3 login-logo">
-                                    <img src="assets/logo/NewelTechnologiesextra.png" width="" alt="">
+                                <div class="mb-4 text-center">
+                                    <div class="mb-3 login-logo d-lg-none">
+                                    <img src="assets/logo/NewelTechnologiesextra-login.png" width="" alt="">
                                 </div>
-                                <div class="mb-4">
-                                    <h5 class="">Prohibition of Insider Trading</h5>
-                                    <!-- <p class="mb-0">Please log in to your account</p> -->
+                                <div class="mb-4 d-lg-none">
+                                    <h5 class="fw-bold">Prohibition of Insider Trading</h5>
+                                    <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
+                                </div>
+                                <div class="mb-4 d-lg-block d-none">
+                                    <h5 class="fw-bold">Sign IN</h5>
+                                    <p class="mb-0">Sign in to your account to start using</p>
+                                </div>
                                 </div>
                                 <div class="form-body">
                                     <form class="row g-3" autocomplete="off" [formGroup]="Login_ExistingUser">
@@ -101,7 +111,9 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="col-12 text-center">
+                    <p class="mx-4 my-2 text-black">All Rights Reserved. Copyright Newel Technologies Pvt LTD.</p>
+                </div>
             </div>
             <!--end row-->
         </div>

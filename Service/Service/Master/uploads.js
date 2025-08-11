@@ -623,7 +623,7 @@ var routes = function () {
                                 if (e.Mode === 'SELL' && ErrorArray.length == 0) {
                                     const updateQuery = `
                 UPDATE public."TBL_DP_HOLDING_DATA"
-                SET "TradeAvailableQty" = '${updatedQty}',
+                SET "TradeAvailableQty" = '${updatedQty}', "TRX_DATE" = '${e.TradeDate}',
                     "MODIFIED_BY" = '${requestBody.UserId}'
                 WHERE "EMPID" = '${requestBody.UserId}' AND "ISIN_CODE" = '${e.ISIN}'
               `;
@@ -641,7 +641,7 @@ var routes = function () {
                         const updateQuery = `
                                                 UPDATE public."TBL_DP_HOLDING_DATA"
                                                 SET 
-                                                    "TradeAvailableQty" = :pendingQty,
+                                                    "TradeAvailableQty" = :pendingQty,"TRX_DATE" = :TradeDate,
                                                     "MODIFIED_BY" = :empId
                                                 WHERE 
                                                     "EMPID" = :empId AND "ISIN_CODE" = :isin
@@ -651,7 +651,8 @@ var routes = function () {
                             replacements: {
                                 pendingQty: QTYending,
                                 empId: requestBody.UserId,
-                                isin: e.ISIN
+                                isin: e.ISIN,
+                                TradeDate: e.TradeDate,
                             }
                         });
 
@@ -787,6 +788,7 @@ var routes = function () {
                                                         "TradeAvailableQty" = :sumQty,
                                                         "ApprovalAvailableQty"=:apqty,
                                                         "DP_QTY" = :qty,
+                                                        "TRX_DATE" = :TradeDate,
                                                         "MODIFIED_BY" = :UserId
                                                     WHERE 
                                                         "EMPID" = :UserId AND "ISIN_CODE" = :isin and "ACCOUNT_CODE" = :AcCode
@@ -799,6 +801,7 @@ var routes = function () {
                                     UserId,
                                     isin,
                                     AcCode,
+                                    TradeDate: e.TradeDate
 
                                 }
                             });
@@ -2733,6 +2736,28 @@ ORDER BY A."CREATED_ON" DESC;`
             }
 
         });
+
+
+    router.post('/Datofaposittransaction', async (req, res) => {
+        const encryptmodel = dataconn.decrypt(req.body.encryptmodel);
+
+        let Querys = `SELECT * 
+FROM public."TBL_DP_HOLDING_DATA"
+WHERE "EMPID" = '${encryptmodel.EMP}' AND "IS_ACTIVE"= true and "ISIN_CODE"= '${encryptmodel.ISINNumber}' AND "ACCOUNT_CODE"= '${encryptmodel.AccountCode}'
+  AND "TRX_DATE" < CURRENT_DATE - INTERVAL '30 days' and "ApprovalAvailableQty" > 0`
+  console.log("dsfddfdfd",Querys);
+  
+        let RestData = await connect.sequelize.query(Querys)
+
+        if (RestData[0].length > 0) {
+
+
+            var EncryptLoginDetails = dataconn.encryptionAES(RestData[0]);
+            res.status(200).json({ Success: true, Message: 'QTY Accesable', Data: EncryptLoginDetails });
+        } else {
+            res.status(200).json({ Success: false, Message: '', Data: '' });
+        }
+    })
 
     return router;
 

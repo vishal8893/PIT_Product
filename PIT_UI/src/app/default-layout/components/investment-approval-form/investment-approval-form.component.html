@@ -454,10 +454,10 @@
                 <div class="form-floating form-floating-outline">
                   <p-calendar class="ui-timepicker ui-widget-header ui-corner-all ng-tns-c9-1 ng-star-inserted"
                     formControlName="SelltransactionDate" [showIcon]="true" inputId="icon"
-                    class="form-control p-0 calendarIcon" styleClass="w-100"></p-calendar>
+                    class="form-control p-0 calendarIcon" styleClass="w-100" disabled="true"></p-calendar>
                   <!-- [maxDate]="minDatenew" -->
                   <label class="">Date of earlier opposite
-                    transaction<span class="required-asterisk">*</span></label>
+                    transaction 1<span class="required-asterisk">*</span></label>
                   <small style="color: red;"
                     *ngIf="SelltransactionDate?.hasError('required') && SelltransactionDate?.touched">
                     Date is Required.

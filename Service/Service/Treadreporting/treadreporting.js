@@ -265,6 +265,7 @@ var routes = function () {
                 if (result) {
                     const empId = encryptmodel.EMP;
                     const isin = encryptmodel.ISIN;
+                    const TradeDates = encryptmodel.TradeDate;
                     const AcCode = encryptmodel.AccountCode
                     if (encryptmodel.Mode === 'SELL') {
                         // ✅ Update TradeAvailableQty for SELL
@@ -272,7 +273,8 @@ var routes = function () {
                         UPDATE public."TBL_DP_HOLDING_DATA"
                         SET 
                             "TradeAvailableQty" = :pendingQty,
-                            "MODIFIED_BY" = :empId
+                            "MODIFIED_BY" = :empId,
+                            "TRX_DATE" = :TradeDates
                         WHERE 
                             "EMPID" = :empId AND "ISIN_CODE" = :isin AND "ACCOUNT_CODE" = :AcCode
                     `;
@@ -281,7 +283,8 @@ var routes = function () {
                                 pendingQty: encryptmodel.Pendingqty,
                                 AcCode,
                                 empId,
-                                isin
+                                isin,
+                                TradeDates
                             }
                         });
 
@@ -321,7 +324,8 @@ var routes = function () {
                                 "TradeAvailableQty" = :sumQty,
                                 "ApprovalAvailableQty"=:apqty,
                                 "DP_QTY" = :qty,
-                                "MODIFIED_BY" = :empId
+                                "MODIFIED_BY" = :empId,
+                                "TRX_DATE" = :TradeDates
                             WHERE 
                                 "EMPID" = :empId AND "ISIN_CODE" = :isin AND "ACCOUNT_CODE" = :ACCOUNT_CODE
                         `;
@@ -333,6 +337,7 @@ var routes = function () {
                                     ACCOUNT_CODE: encryptmodel.AccountCode,
                                     empId,
                                     isin,
+                                    TradeDates
 
                                 }
                             });

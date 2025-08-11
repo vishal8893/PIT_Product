@@ -67,7 +67,10 @@ a {
 
 }
 
-
+.shadow {
+    box-shadow: 0px 6px 40px 0px rgba(0, 0, 0, 0.1) !important;
+	border-radius: 24px !important;
+	}
 .wrapper {
 
 
@@ -1453,7 +1456,7 @@ ul.scroll-menu {
 
 .auth-cover-left {
     display: flex;
-    background: linear-gradient(to bottom, #7e7ab8, #45c8f1);
+    background: #ffffff;
     min-height: 100vh;
 }
 
@@ -1462,7 +1465,11 @@ ul.scroll-menu {
     background-color: #ffffff;
     min-height: 100vh;
 }
-
+.btn:hover {
+    color: #fff;
+    background-color: #4b5dbe;
+    border-color: #4b5dbe;
+}
 
 
 form select.error, form textarea.error, form input.error, form input.error:focus, form textarea.error:focus, form select.error:focus {
@@ -5140,11 +5147,12 @@ input::placeholder {
     line-height: 1.47;
     color: #544f5a;
     appearance: none;
-    background-color: #fff;
+    background: #FFFFFF;
+	border: 1px solid #E6E6E6;
+	border-radius: 12px;
     background-clip: padding-box;
-    border: 1px solid #d4d3d5;
-    border-radius: 0.375rem;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
 }
 .form-floating>.form-control, .form-floating>.form-control-plaintext, .form-floating>.form-select {
     height: calc(2.5rem + calc(var(--bs-border-width) * 2));
@@ -5187,7 +5195,16 @@ input::placeholder {
     padding-bottom: 0.625rem;
 }
 
-
+.btn-info {
+    color: #000;
+    background-color: #967BDC;
+    border-color: #967BDC;
+}
+.btn-info:hover {
+	color: #000;
+    background-color: #806CAE;
+    border-color: #806CAE;
+}
 /* Responsive */
 
 
@@ -5373,7 +5390,7 @@ input::placeholder {
 
 	}
 
-
+	
 	/* chat toggled css */
 
 

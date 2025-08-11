@@ -1393,6 +1393,7 @@ export class InvestmentApprovalFormComponent {
   }
 
   finalsave() {
+    this.lastbtn = true
     let encryptmodel = this.Global.encryptionAES(JSON.stringify(this.formDataArray));
 
     this.rest.postParams(this.Global.getapiendpoint() + "irf/SubmitApproval", { encryptmodel: encryptmodel }).subscribe((data: any) => {
@@ -1413,7 +1414,7 @@ export class InvestmentApprovalFormComponent {
         this.messageService.add({ severity: 'success', summary: 'Success', detail: data.Message });
         // this.checkDigitalPlatformData(this.products);
 
-
+        this.lastbtn = false;
 
       } else {
         this.formDataArray = []
@@ -2050,6 +2051,29 @@ export class InvestmentApprovalFormComponent {
 
       // Update validity for the entire form
       this.irfmainForm.updateValueAndValidity();
+    }
+    if (this.Transaction?.value == 'SELL') {
+
+      var model = {
+        EMP: this.userLoggedIn.EMPNO,
+        ISINNumber: this.ISINNumber?.value,
+        AccountCode: this.PANNo.AccountCode
+      }
+      let encryptmodel = this.Global.encryptionAES(JSON.stringify(model));
+      this.rest.postParams(this.Global.getapiendpoint() + "upload/Datofaposittransaction", { encryptmodel: encryptmodel }).subscribe((data: any) => {
+        if (data.Success == true) {
+          var Result = JSON.parse(this.Global.decrypt1(data.Data));
+          let dt = moment(Result[0].TRX_DATE).format('MM/DD/YYYY');
+          this.SelltransactionDate?.setValue(dt);
+
+
+        } else {
+
+        }
+      })
+
+    } else {
+
     }
   }
 

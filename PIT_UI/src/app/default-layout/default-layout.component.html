@@ -3,10 +3,10 @@
     <!--start header -->
     <header>
         <div class="topbar d-flex align-items-center">
-            <nav class="navbar navbar-expand gap-3">
+            <nav class="navbar navbar-expand gap-1">
                 <div class="topbar-logo-header d-none d-lg-flex">
                     <div class="">
-                       <img [src]="'assets/logo/NewelTechnologiesextra.png'" class="logo-icon-1" alt="logo icon">
+                        <img [src]="'assets/logo/NewelTechnologiesextra.png'" class="logo-icon-1" alt="logo icon">
 
                     </div>
 
@@ -17,6 +17,10 @@
                     <a href="avascript:;" class="btn d-flex align-items-center"><i
                             class='bx bx-search'></i>Search</a>
                 </div> -->
+                <div class="search-bar d-lg-block d-none" data-bs-toggle="modal" data-bs-target="#SearchModal">
+                    <a href="avascript:;" class="btn d-flex align-items-center"><i class='bx bx-search'></i>Search</a>
+                </div>
+
                 <div class="top-menu ms-auto">
                     <ul class="navbar-nav align-items-center gap-1">
                         <li class="nav-item mobile-search-icon d-flex d-lg-none" data-bs-toggle="modal"
@@ -24,19 +28,116 @@
                             <a class="nav-link" href="avascript:;"><i class='bx bx-search'></i>
                             </a>
                         </li>
+
+                        <li class="nav-item dark-mode d-none d-sm-flex">
+                            <a class="nav-link dark-mode-icon" href="javascript:;"><i class='bx bx-moon'></i>
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown dropdown-large">
+                            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#"
+                                data-bs-toggle="dropdown"><span class="alert-count">7</span>
+                                <i class='bx bx-bell'></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a href="javascript:;">
+                                    <div class="msg-header">
+                                        <p class="msg-header-title">Notifications</p>
+                                        <p class="msg-header-badge">2 New</p>
+                                    </div>
+                                </a>
+                                <div class="header-notifications-list">
+
+                                    <a class="dropdown-item" href="javascript:;">
+                                        <div class="d-flex align-items-center">
+                                            <div class="notify bg-light-danger text-danger">dc
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h6 class="msg-name">New Notification <span class="msg-time float-end">2
+                                                        min
+                                                        ago</span></h6>
+                                                <p class="msg-info">You have recived new Notification</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item" href="javascript:;">
+                                        <div class="d-flex align-items-center">
+                                            <div class="user-online">
+                                                <img src="assets/images/avatars/avatar-2.png" class="msg-avatar"
+                                                    alt="user avatar">
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h6 class="msg-name">New Notification <span
+                                                        class="msg-time float-end">14
+                                                        sec ago</span></h6>
+                                                <p class="msg-info">You have recived new Notification</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <a href="javascript:;">
+                                    <div class="text-center msg-footer">
+                                        <button class="btn btn-primary w-100">View All Notifications</button>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown dropdown-large">
+                            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span
+                                    class="alert-count">8</span>
+                                <i class='bx bx-message'></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a href="javascript:;">
+                                    <div class="msg-header">
+                                        <p class="msg-header-title">My Messages</p>
+                                        <p class="msg-header-badge">2 Items</p>
+                                    </div>
+                                </a>
+                                <div class="header-message-list">
+                                    <a class="dropdown-item" href="javascript:;">
+                                        <div class="d-flex align-items-center">
+                                            <div class="notify bg-light-danger text-danger">dc
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h6 class="msg-name">New Messages <span class="msg-time float-end">2
+                                                        min
+                                                        ago</span></h6>
+                                                <p class="msg-info">You have recived new Messages</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item" href="javascript:;">
+                                        <div class="d-flex align-items-center">
+                                            <div class="user-online">
+                                                <img src="assets/images/avatars/avatar-2.png" class="msg-avatar"
+                                                    alt="user avatar">
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h6 class="msg-name">New Messages <span
+                                                        class="msg-time float-end">14
+                                                        sec ago</span></h6>
+                                                <p class="msg-info">You have recived new Messages</p>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+                                <a href="javascript:;">
+                                    <div class="text-center msg-footer">
+                                        <button class="btn btn-primary w-100">View All Messages</button>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
-                <div class="top-menu ms-auto">
-							
-						</div>
                 <div class="user-box dropdown px-3">
                     <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret" href="#"
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="assets/images/avatars/avatar-2.png" class="user-img" alt="user avatar">
-                        <div class="user-info">
-                            <p class="user-name mb-0"><b>{{userLoggedIn.FIRSTNAME}}</b></p>  
-                            <p class="designattion mb-0"><b>{{userLoggedIn.CODE}}</b></p>
-                        </div>
+                        
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <!-- <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
@@ -50,27 +151,41 @@
                             <div class="dropdown-divider mb-0"></div>
                         </li> -->
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-							Emp Name: <span class="fw-bold">{{userLoggedIn.FIRSTNAME}}</span>                            
-							<ul
-								class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
-								
-							</ul>
-						</a>
+                            <div class="user-info dropdown-item align-items-center">
+                            <p class="user-name mb-0"><b>{{userLoggedIn.FIRSTNAME}}</b></p>
+                            <p class="designattion mb-0"><b>{{userLoggedIn.CODE}}</b></p>
+                        </div>
+                            </li>
+                             <li>
+                            <div class="dropdown-divider mb-0"></div>
                         </li>
-                        <li><a class="dropdown-item d-flex align-items-center" href="#">
-									<i class="mdi mdi-card-account-details-outline mdi-20px ms-0"></i>Emp Id: <span class="fw-bold">{{userLoggedIn.EMPNO}}</span>
-								</a></li>
-								<li><a class="dropdown-item d-flex align-items-center" href="#">
-									<i class="mdi mdi-sitemap-outline me-1 mdi-20px ms-0"></i>Dept: 
-									<span class="fw-bold">
-										{{userLoggedIn.DEPARTMENT}}</span></a>
-								</li>
-								<!-- <li class="list-inline-item">
+                        <li>
+                            <div class="dropdown-item align-items-center">
+                                Emp Name: <span class="fw-bold">{{userLoggedIn.FIRSTNAME}}</span>
+                                <ul
+                                    class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li><div class="dropdown-item align-items-center">
+                                <i class="mdi mdi-card-account-details-outline mdi-20px ms-0"></i>Emp Id: <span
+                                    class="fw-bold">{{userLoggedIn.EMPNO}}</span>
+                            </div></li>
+                        <li><div class="dropdown-item align-items-center">
+                                <i class="mdi mdi-sitemap-outline mdi-20px ms-0"></i>Dept:
+                                <span class="fw-bold">
+                                    {{userLoggedIn.DEPARTMENT}}</span></div>
+                        </li>
+                        <!-- <li class="list-inline-item">
 									<i class="mdi mdi-card-bulleted-outline me-1 mdi-20px"></i> PAN : 
 									<span class="fw-bold">{{userLoggedIn.PANCARDNO}}</span>
 								</li> -->
-                        <li><a class="dropdown-item d-flex align-items-center" href="#">Logout</a></li>
+                        <li>
+                            <div class="dropdown-divider mb-0"></div>
+                        </li>
+                        <li><a class="dropdown-item d-flex align-items-center" href="#"><i
+                                    class="bx bx-log-out-circle me-1"></i><span>Logout</span></a></li>
                     </ul>
                 </div>
             </nav>
@@ -125,19 +240,20 @@
                                 <div class="{{item.ICON}}">
                                 </div>
                                 <div class="menu-title d-flex align-items-center">{{item.TITLE}}</div>
-                                <div class="ms-auto dropy-icon"><i class='pi pi-caret-down'></i></div>
+                                <div class="ms-auto dropy-icon"><i class='bx bx-chevron-down'></i></div>
                             </a>
                             <ul class="dropdown-menu" style="overflow-x: hidden;">
                                 <ng-container *ngFor="let item2 of menuItems">
-                                  <li (click)="onSubMenuClick(item2)">
-                                    <a class="dropdown-item" style="font-size: 12px; white-space: normal; overflow: visible;"
-                                       *ngIf="item.ID == item2.PARENETID && item2.ISCHILD == false && item2.IS_ACTIVE == true">
-                                      <i style="font-size: 12px;" class='{{item2.ICON}}'></i> {{item2.TITLE}}
-                                    </a>
-                                  </li>
+                                    <li (click)="onSubMenuClick(item2)">
+                                        <a class="dropdown-item"
+                                            style="font-size: 0.9rem; white-space: normal; overflow: visible;"
+                                            *ngIf="item.ID == item2.PARENETID && item2.ISCHILD == false && item2.IS_ACTIVE == true">
+                                            <i style="font-size: 0.9rem;" class='{{item2.ICON}}'></i> {{item2.TITLE}}
+                                        </a>
+                                    </li>
                                 </ng-container>
-                              </ul>
-                              
+                            </ul>
+
                         </li>
                     </ul>
                 </div>
@@ -150,20 +266,23 @@
 
 <div class="page-wrapper">
     <div class="page-content pt-0 pb-2">
-    <!--breadcrumb-->
-<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-	<div class="breadcrumb-title fw-bold pe-3"><h6>{{PageName}}</h6></div>
-	<div class="ps-3">
-		<nav aria-label="breadcrumb">
-			<ol class="breadcrumb mb-0 p-0">
-		<li class="breadcrumb-item"><a  routerLink="/pit/Home" routerLinkActive="active"><i class="bx bx-home-alt text-black"></i></a>
-				</li>&nbsp;
-				<!-- <li><i class="pi pi-angle-right" style="font-size:small"></i> {{shortname}}</li> -->
-			</ol>
-		</nav>
-	</div>
-	<div class="ms-auto">
-        <!-- <div class="alert border-0 border-start border-5 border-primary alert-dismissible fade show py-2 px-1">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center py-2">
+            <div class="breadcrumb-title fw-bold pe-3">
+                <h6>{{PageName}}</h6>
+            </div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a routerLink="/pit/Home" routerLinkActive="active"><i
+                                    class="bx bx-home-alt text-black"></i></a>
+                        </li>&nbsp;
+                        <!-- <li><i class="pi pi-angle-right" style="font-size:small"></i> {{shortname}}</li> -->
+                    </ol>
+                </nav>
+            </div>
+            <div class="ms-auto">
+                <!-- <div class="alert border-0 border-start border-5 border-primary alert-dismissible fade show py-2 px-1">
             <div class="d-flex align-items-center">
                 <div class="ms-3">
                     <h6 class="mb-0 text-primary">NSE/BSE Live Feed</h6>
@@ -171,10 +290,10 @@
                 </div>
             </div>
         </div> -->
-		
-	</div>
-</div>
-<!--end breadcrumb-->
+
+            </div>
+        </div>
+        <!--end breadcrumb-->
         <router-outlet></router-outlet>
     </div>
 </div>
@@ -204,14 +323,14 @@
 </p-sidebar> -->
 <footer class="content-footer footer bg-footer-theme start-0">
     <div class="container-xxl" class="footer">
-        <div 
-            class="footer-container d-flex justify-content-between py-1 flex-md-row flex-column">
-            <div class="text-body mb-0 mb-md-0" >
+        <div class="footer-container d-flex justify-content-between py-1 flex-md-row flex-column">
+            <div class="text-body mb-0 mb-md-0">
                 <a href="https://www.neweltechnologies.com/">
-              <p class="mx-4 my-2 text-black">All Rights Reserved. Copyright Newel Technologies Pvt LTD.</p>  </a>
-               
+                    <p class="mx-4 my-2 text-black">All Rights Reserved. Copyright Newel Technologies Pvt LTD.</p>
+                </a>
+
             </div>
-        </div> 
+        </div>
     </div>
 </footer>
 <!-- / Footer -->
