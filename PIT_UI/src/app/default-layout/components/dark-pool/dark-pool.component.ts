@@ -576,10 +576,10 @@ export class DarkPoolComponent implements OnInit, OnDestroy {
       this.rest.postParams(this.Global.getapiendpoint() + "eirf/SCRIPDESC", { encryptmodel: encryptmodel }).subscribe((data: any) => {
         if (data.Success == true) {
           var Result = JSON.parse(this.Global.decrypt1(data.Data));
-          const result = Result.filter((a1: { ISIN_CODE: any; }) =>
-            !this.holdingData.some((a2: { ISIN_CODE: any; }) => a2.ISIN_CODE == a1.ISIN_CODE)
-          );
-          this.securityList = result;
+          // const result = Result.filter((a1: { ISIN_CODE: any; }) =>
+          //   !this.holdingData.some((a2: { ISIN_CODE: any; }) => a2.ISIN_CODE == a1.ISIN_CODE)
+          // );
+          this.securityList = Result;
         }
       })
     } else {

@@ -556,67 +556,127 @@ let v4 = ''
 let v5 = ''
 let v6 = ''
 
-Totalqty = []
 
-// async function availableQTYcalculation(empno, AVQTYFINAL, ISIN, selllenth, EqQuantity) {
-//   const selectQuerys = `select * From public."TBL_DP_HOLDING_DATA" where "EMPID"='${empno}' and "ISIN_CODE"='${ISIN}' and "IS_ACTIVE"=true`
-//   let result = await connect.sequelize.query(selectQuerys);
-//   let TableTradeAvailableQty = result[0].TradeAvailableQty
-
-//    console.log("result[0ghghg",result[0],result[0]?.TradeAvailableQty);
-
-//   let TolaABAPrrove = Number(EqQuantity) + Number(TableTradeAvailableQty)
-//   console.log("TolaABAPrrove",TolaABAPrrove);
-//   const upadate = ` UPDATE "TBL_DP_HOLDING_DATA"
-//   SET "ApprovalAvailableQty" = '${AVQTYFINAL}',"TradeAvailableQty"='${TolaABAPrrove}', "MODIFIED_BY"='${empno}'
-//   WHERE "EMPID"='${empno}' and "ISIN_CODE"='${ISIN}'`
-//   let result1 = await connect.sequelize.query(upadate);
-
-// }
 async function availableQTYcalculation(empno, AVQTYFINAL, ISIN, sellLength, EqQuantity, AccountCode) {
   try {
-    const selectQuery = `
-      SELECT * 
-      FROM public."TBL_DP_HOLDING_DATA" 
-      WHERE "EMPID" = '${empno}' 
-        AND "ISIN_CODE" = '${ISIN}' 
-        AND "IS_ACTIVE" = true
+    // 1. Summary data (grouped)
+    const summaryQuery = `
+      SELECT 
+          h."ISIN_CODE",
+          h."ACCOUNT_CODE",
+          h."EMPID",
+          MAX(h."ID") AS "ID",
+          MAX(h."FIRSTNAME") AS "FIRSTNAME",
+          MAX(h."LOGIN_ID") AS "LOGIN_ID",
+          MAX(h."DESIGNATED") AS "DESIGNATED",
+          MAX(h."EFSL_DESIGNATED") AS "EFSL_DESIGNATED",
+          MAX(h."ACCOUNT_NAME") AS "ACCOUNT_NAME",
+          MAX(h."PAN_NO") AS "PAN_NO",
+          MAX(h."E_BOID") AS "E_BOID",
+          MAX(h."TRX_DATE") AS "TRX_DATE",
+          SUM(h."DP_QTY") AS "DP_QTY",
+          MAX(h."SEGMENT") AS "SEGMENT",
+          MAX(h."CREATED_DT") AS "CREATED_DT",
+          SUM(h."TradeAvailableQty") AS "TradeAvailableQty",
+          SUM(h."ApprovalAvailableQty") AS "ApprovalAvailableQty",
+          MAX(s."SCRIP_DESC") AS "SCRIP_DESC"
+      FROM 
+          "TBL_DP_HOLDING_DATA" h
+      LEFT JOIN 
+          "TBL_SCRIPT_MST" s ON s."ISIN_CODE" = h."ISIN_CODE"
+      WHERE 
+          h."EMPID" = :empno
+          AND h."ISIN_CODE" = :isin
+          AND h."ACCOUNT_CODE" = :accountCode
+          AND h."IS_ACTIVE" = true
+          AND h."TRX_DATE" < CURRENT_DATE - INTERVAL '30 days'
+      GROUP BY 
+          h."ISIN_CODE", h."ACCOUNT_CODE", h."EMPID", h."IS_ACTIVE"
+      ORDER BY 
+          MAX(h."CREATED_DT") DESC
     `;
 
-    const [rows] = await connect.sequelize.query(selectQuery);
+    const [summaryRows] = await connect.sequelize.query(summaryQuery, {
+      replacements: { empno, isin: ISIN, accountCode: AccountCode },
+    });
 
-    // Check if a record was found
-    if (rows.length === 0) {
-      console.log("No matching record found.");
+    if (!summaryRows.length) {
+      console.log("No matching summary record found.");
       return;
     }
 
-    // Get TradeAvailableQty
-    const TableTradeAvailableQty = Number(rows[0].TradeAvailableQty || 0);
-    console.log("TradeAvailableQty from DB:", TableTradeAvailableQty);
+    const {
+      TradeAvailableQty: tradeQtyFromDB,
+      ApprovalAvailableQty: approvalQtyFromDB,
+    } = summaryRows[0];
 
-    // Calculate updated value
-    const TolaABAPrrove = Number(EqQuantity || 0) + TableTradeAvailableQty;
-    console.log("Calculated TradeAvailableQty:", TolaABAPrrove);
+    const updatedTradeQty = Number(EqQuantity || 0) + Number(tradeQtyFromDB || 0);
+    const updatedApprovalQty = Number(approvalQtyFromDB || 0) - Number(EqQuantity || 0);
 
-    // Update query
-    const updateQuery = `
-      UPDATE public."TBL_DP_HOLDING_DATA"
-      SET "ApprovalAvailableQty" = '${AVQTYFINAL}', 
-          "TradeAvailableQty" = '${TolaABAPrrove}', 
-          "MODIFIED_BY" = '${empno}'
-      WHERE "EMPID" = '${empno}' 
-        AND "ISIN_CODE" = '${ISIN}' AND "ACCOUNT_CODE" = '${AccountCode}'
+    // 2. Fetch all older entries (more than 30 days)
+    const selectOldRecordsQuery = `
+      SELECT * 
+      FROM public."TBL_DP_HOLDING_DATA" 
+      WHERE 
+          "EMPID" = :empno
+          AND "ISIN_CODE" = :isin
+          AND "ACCOUNT_CODE" = :accountCode
+          AND "TRX_DATE" < CURRENT_DATE - INTERVAL '30 days'
+          AND "IS_ACTIVE" = true
+      ORDER BY "TRX_DATE" DESC;
     `;
 
-    await connect.sequelize.query(updateQuery);
+    const [oldRows] = await connect.sequelize.query(selectOldRecordsQuery, {
+      replacements: { empno, isin: ISIN, accountCode: AccountCode },
+    });
 
-    console.log("Update successful for EMPID:", empno, "ISIN:", ISIN);
+    if (!oldRows.length) {
+      console.log("No old records found.");
+      return;
+    }
+
+    // 3. Reset all ApprovalAvailableQty and TradeAvailableQty to 0
+    for (const row of oldRows) {
+      const resetQuery = `
+        UPDATE public."TBL_DP_HOLDING_DATA"
+        SET 
+          "ApprovalAvailableQty" = 0,
+          "TradeAvailableQty" = 0,
+          "MODIFIED_BY" = :empno
+        WHERE "ID" = :id
+      `;
+
+      await connect.sequelize.query(resetQuery, {
+        replacements: { empno, id: row.ID },
+      });
+    }
+
+    // 4. Update the most recent record with calculated quantities
+    const latestRowId = oldRows[0].ID;
+
+    const updateLatestQuery = `
+      UPDATE public."TBL_DP_HOLDING_DATA"
+      SET 
+        "ApprovalAvailableQty" = :approvalQty,
+        "TradeAvailableQty" = :tradeQty,
+        "MODIFIED_BY" = :empno
+      WHERE "ID" = :id
+    `;
+
+    await connect.sequelize.query(updateLatestQuery, {
+      replacements: {
+        approvalQty: updatedApprovalQty,
+        tradeQty: updatedTradeQty,
+        empno,
+        id: latestRowId,
+      },
+    });
+
+
   } catch (error) {
-    console.error("Error in availableQTYcalculation:", error);
+    console.error("❌ Error in availableQTYcalculation:", error);
   }
 }
-
 
 
 function generateAndDownloadPDF(filename, data, newData) {

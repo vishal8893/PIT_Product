@@ -41,7 +41,7 @@
                 <button type="button" class="btn btn-danger waves-effect waves-light mx-1" 
                     (click)="latestdataDownload()"><i class="bx bx-arrow-to-right me-2"></i>Latest Data</button>
 
-                    <button type="button" class="btn btn-secondary waves-effect waves-light mx-1"
+                    <button type="button"  *ngIf="uploadform.get('uploadtypecontroller')?.value == 'Trade Data Master'" class="btn btn-secondary waves-effect waves-light mx-1"
                     (click)="downloadTradeData()"><i class="bx bx-file me-2"></i>Approved Trade Data</button>
                     
             </div>

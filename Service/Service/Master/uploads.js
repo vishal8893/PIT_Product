@@ -1946,52 +1946,131 @@ var routes = function () {
         });
 
 
-    router.route('/getDPHoldingDataByEmpId')
-        .get(function (req, res) {
-            const empId = req.query.empId;
+    // router.route('/getDPHoldingDataByEmpId')
+    //     .get(function (req, res) {
+    //         const empId = req.query.empId;
 
-            //var encryptmodel = dataconn.decrypt(req.body.encryptmodel);
+    //         //var encryptmodel = dataconn.decrypt(req.body.encryptmodel);
+
+    //         if (!empId) {
+    //             return res.status(200).json({ Success: false, Message: 'Employee ID is required', Data: null });
+    //         }
+
+    //         const TBL_DP_HOLDING_DATA = datamodel.TBL_DP_HOLDING_DATA();
+    //         const TBL_SCRIPT_MST = datamodel.TBL_SCRIPT_MST();
+    //         var param = {
+    //             attributes: ['ID', 'EMPID', 'FIRSTNAME', 'LOGIN_ID', 'DESIGNATED', 'EFSL_DESIGNATED',
+    //                 'ACCOUNT_CODE', 'ACCOUNT_NAME', 'PAN_NO', 'E_BOID', 'ISIN_CODE', 'TRX_DATE',
+    //                 'DP_QTY', 'IS_ACTIVE', 'SEGMENT', 'CREATED_DT', 'TradeAvailableQty', 'ApprovalAvailableQty'],
+    //             where: {
+    //                 EMPID: empId,
+    //                 IS_ACTIVE: true
+    //             },
+    //             include: [{
+    //                 model: TBL_SCRIPT_MST,
+    //                 as: 'Script',
+    //                 attributes: ['SCRIP_DESC'],
+    //                 required: false
+    //             }],
+    //             order: [['CREATED_DT', 'DESC']]
+    //         };
+
+    //         console.log("param", param);
+
+    //         dataaccess.FindAll(TBL_DP_HOLDING_DATA, param)
+    //             .then(function (result) {
+    //                 console.log("resultkhi;lari", result);
+    //                 if (result != null && result.length > 0) {
+    //                     var EncryptLoginDetails = dataconn.encryptionAES(result);
+    //                     res.status(200).json({ Success: true, Message: 'DP Holding Data retrieved successfully', Data: EncryptLoginDetails });
+    //                 }
+    //                 else {
+    //                     res.status(200).json({ Success: false, Message: 'No records found for the employee', Data: null });
+    //                 }
+    //             }, function (err) {
+    //                 dataconn.errorlogger('uploads', 'getDPHoldingDataByEmpId', err);
+    //                 res.status(200).json({ Success: false, Message: 'Error retrieving DP Holding Data', Data: null });
+    //             });
+    //     });
+
+    router.route('/getDPHoldingDataByEmpId')
+        .get(async function (req, res) {
+            const empId = String(req.query.empId);
 
             if (!empId) {
                 return res.status(200).json({ Success: false, Message: 'Employee ID is required', Data: null });
             }
 
-            const TBL_DP_HOLDING_DATA = datamodel.TBL_DP_HOLDING_DATA();
-            const TBL_SCRIPT_MST = datamodel.TBL_SCRIPT_MST();
-            var param = {
-                attributes: ['ID', 'EMPID', 'FIRSTNAME', 'LOGIN_ID', 'DESIGNATED', 'EFSL_DESIGNATED',
-                    'ACCOUNT_CODE', 'ACCOUNT_NAME', 'PAN_NO', 'E_BOID', 'ISIN_CODE', 'TRX_DATE',
-                    'DP_QTY', 'IS_ACTIVE', 'SEGMENT', 'CREATED_DT', 'TradeAvailableQty', 'ApprovalAvailableQty'],
-                where: {
-                    EMPID: empId,
-                    IS_ACTIVE: true
-                },
-                include: [{
-                    model: TBL_SCRIPT_MST,
-                    as: 'Script',
-                    attributes: ['SCRIP_DESC'],
-                    required: false
-                }],
-                order: [['CREATED_DT', 'DESC']]
-            };
+            const sqlQuery = `
+          		 SELECT 
+    h."ISIN_CODE",
+    h."ACCOUNT_CODE",
+    h."EMPID",
+    MAX(h."ID") AS "ID",
+    MAX(h."FIRSTNAME") AS "FIRSTNAME",
+    MAX(h."LOGIN_ID") AS "LOGIN_ID",
+    MAX(h."DESIGNATED") AS "DESIGNATED",
+    MAX(h."EFSL_DESIGNATED") AS "EFSL_DESIGNATED",
+    MAX(h."ACCOUNT_NAME") AS "ACCOUNT_NAME",
+    MAX(h."PAN_NO") AS "PAN_NO",
+    MAX(h."E_BOID") AS "E_BOID",
+    MAX(h."TRX_DATE") AS "TRX_DATE",
+    SUM(h."DP_QTY") AS "DP_QTY",
+   
+    MAX(h."SEGMENT") AS "SEGMENT",
+    MAX(h."CREATED_DT") AS "CREATED_DT",
+    SUM(h."TradeAvailableQty") AS "TradeAvailableQty",
+    SUM(h."ApprovalAvailableQty") AS "ApprovalAvailableQty",
+    MAX(s."SCRIP_DESC") AS "SCRIP_DESC"
+FROM 
+    "TBL_DP_HOLDING_DATA" h
+LEFT JOIN 
+    "TBL_SCRIPT_MST" s ON s."ISIN_CODE" = h."ISIN_CODE"
+WHERE 
+    h."EMPID" = :empId
+    AND h."IS_ACTIVE" = true
+    AND "TRX_DATE" < CURRENT_DATE - INTERVAL '30 days'
+GROUP BY 
+    h."ISIN_CODE", h."ACCOUNT_CODE", h."EMPID", h."IS_ACTIVE"
+ORDER BY 
+    MAX(h."CREATED_DT") DESC;
 
-            console.log("param", param);
+        `;
 
-            dataaccess.FindAll(TBL_DP_HOLDING_DATA, param)
-                .then(function (result) {
-                    console.log("resultkhi;lari", result);
-                    if (result != null && result.length > 0) {
-                        var EncryptLoginDetails = dataconn.encryptionAES(result);
-                        res.status(200).json({ Success: true, Message: 'DP Holding Data retrieved successfully', Data: EncryptLoginDetails });
-                    }
-                    else {
-                        res.status(200).json({ Success: false, Message: 'No records found for the employee', Data: null });
-                    }
-                }, function (err) {
-                    dataconn.errorlogger('uploads', 'getDPHoldingDataByEmpId', err);
-                    res.status(200).json({ Success: false, Message: 'Error retrieving DP Holding Data', Data: null });
+            try {
+                const [results] = await connect.sequelize.query(sqlQuery, {
+                    replacements: { empId: empId },
+
                 });
+
+                if (results && results.length > 0) {
+                    const encryptedData = dataconn.encryptionAES(results);
+                    return res.status(200).json({
+                        Success: true,
+                        Message: 'DP Holding Data retrieved successfully',
+                        Data: encryptedData
+                    });
+                } else {
+                    return res.status(200).json({
+                        Success: false,
+                        Message: 'No records found for the employee',
+                        Data: null
+                    });
+                }
+            } catch (err) {
+                console.log('Error retrieving DP Holding Data:', err);
+
+                dataconn.errorlogger('uploads', 'getDPHoldingDataByEmpId', err);
+                return res.status(200).json({
+                    Success: false,
+                    Message: 'Error retrieving DP Holding Data',
+                    Data: null
+                });
+            }
         });
+
+
+
     router.route('/addDPHoldingData')
         .post(function (req, res) {
             var encryptmodel = dataconn.decrypt(req.body.encryptmodel);
@@ -2743,10 +2822,18 @@ ORDER BY A."CREATED_ON" DESC;`
 
         let Querys = `SELECT * 
 FROM public."TBL_DP_HOLDING_DATA"
-WHERE "EMPID" = '${encryptmodel.EMP}' AND "IS_ACTIVE"= true and "ISIN_CODE"= '${encryptmodel.ISINNumber}' AND "ACCOUNT_CODE"= '${encryptmodel.AccountCode}'
-  AND "TRX_DATE" < CURRENT_DATE - INTERVAL '30 days' and "ApprovalAvailableQty" > 0`
-  console.log("dsfddfdfd",Querys);
-  
+WHERE 
+    "EMPID" = '${encryptmodel.EMP}' 
+    AND "IS_ACTIVE" = true 
+    AND "ISIN_CODE" = '${encryptmodel.ISINNumber}' 
+    AND "ACCOUNT_CODE" = '${encryptmodel.AccountCode}'
+    AND "TRX_DATE" < CURRENT_DATE - INTERVAL '30 days'
+    AND "ApprovalAvailableQty" > 0
+ORDER BY 
+    "TRX_DATE" DESC;
+`
+        console.log("dsfddfdfd", Querys);
+
         let RestData = await connect.sequelize.query(Querys)
 
         if (RestData[0].length > 0) {
