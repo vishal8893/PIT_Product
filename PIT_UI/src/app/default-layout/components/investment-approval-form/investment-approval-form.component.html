@@ -254,7 +254,7 @@
 
               <div class="col-12 md:col-6 lg:col-4" *ngIf="isvisibleonql">
                 <div class="form-floating form-floating-outline">
-                  <input type="text" class="form-control" placeholder="" formControlName="Lot" pInputText>
+                  <input type="text" class="form-control" placeholder="" #lot formControlName="Lot" pInputText (keyup)="setlotandQuantity1(lot)">
                   <label class=" pt-2">Lot<span class="required-asterisk">*</span></label>
 
                   <small style="color: red;"
@@ -328,9 +328,9 @@
                     formControlName="Quantity" pInputText>
                   <label class=" pt-2">Quantity<span class="required-asterisk">*</span></label>
 
-                  <span *ngIf="show1" class="text-red-500 text-xs">
+                  <!-- <span *ngIf="show1" class="text-red-500 text-xs">
                     Quantity size invalid
-                  </span>
+                  </span> -->
                   <small style="color: red;"
                     *ngIf="irfmainForm.get('Quantity').hasError('required') && irfmainForm.get('Quantity').touched">
                     Quantity is Required.
@@ -341,8 +341,7 @@
                   </small>
                 </div>
               </div>
-              <div class="col-12 md:col-6 lg:col-2"
-                *ngIf="isVisibleEquity || isVisibleDebt || isVisiblePMS || isVisibleSpecialCase || isVisibleqty">
+              <div class="col-12 md:col-6 lg:col-2">
                 <div class="form-floating form-floating-outline">
                   <input type="number" style="color: rgb(202, 67, 14);" class="form-control" placeholder="" value="{{AVQTYFINAL}}" pInputText readonly>
                       <label class=" pt-2">Available QTY<span class="required-asterisk"></span></label>
@@ -457,7 +456,7 @@
                     class="form-control p-0 calendarIcon" styleClass="w-100" disabled="true"></p-calendar>
                   <!-- [maxDate]="minDatenew" -->
                   <label class="">Date of earlier opposite
-                    transaction 1<span class="required-asterisk">*</span></label>
+                    transaction <span class="required-asterisk">*</span></label>
                   <small style="color: red;"
                     *ngIf="SelltransactionDate?.hasError('required') && SelltransactionDate?.touched">
                     Date is Required.

@@ -477,8 +477,15 @@ export class InvestmentApprovalFormComponent {
   }
 
   AddToList() {
-    if (this.Transaction?.value == 'SELL') {
+    if (this.Transaction?.value == 'SELL' && (this.selectedValue3 == 'Equity' || this.selectedValue3 == 'SpecialCase')) {
       let subdata = Number(this.AVQTYFINAL) - Number(this.Quantity?.value);
+      this.AVQTYFINAL = subdata
+    }
+
+    if (this.Transaction?.value == 'SELL' && (this.selectedValue3 == 'Future' || this.selectedValue3 == 'Option')) {
+      let mul = Number(this.Lot?.value) * 10
+      let subdata = Number(this.AVQTYFINAL) - (mul);
+
       this.AVQTYFINAL = subdata
     }
 
@@ -519,7 +526,9 @@ export class InvestmentApprovalFormComponent {
                 QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
                 FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
                 Position: (this.Postion?.value == undefined || this.Postion?.value == "") ? null : this.Postion?.value,
-                EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+              EqQuantity: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value,
                 allAquiredthrough: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
                 PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
                 TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
@@ -538,7 +547,9 @@ export class InvestmentApprovalFormComponent {
                 PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
                 AIA: this.AIA,
                 AVQTYFINAL: this.AVQTYFINAL,
-                TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                  TradeAvailableQty: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value
               }
               this.formDataArray.push(model)
               // console.log(" this.formDataArray", this.formDataArray);
@@ -580,7 +591,9 @@ export class InvestmentApprovalFormComponent {
                   QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
                   FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
                   Position: (this.Postion?.value == undefined) ? null : this.Postion?.value,
-                  EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                 EqQuantity: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value,
                   allAquiredthrough: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
                   PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
                   TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
@@ -599,7 +612,9 @@ export class InvestmentApprovalFormComponent {
                   PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
                   AIA: this.AIA,
                   AVQTYFINAL: this.AVQTYFINAL,
-                  TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                    TradeAvailableQty: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value
                 }
                 this.formDataArray.push(model)
                 // console.log(" this.formDataArray", this.formDataArray);
@@ -652,7 +667,9 @@ export class InvestmentApprovalFormComponent {
                       QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
                       FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
                       Position: (this.Postion?.value == undefined) ? null : this.Postion?.value,
-                      EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                     EqQuantity: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value,
                       allAquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
                       PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
                       TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
@@ -671,7 +688,9 @@ export class InvestmentApprovalFormComponent {
                       PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
                       AIA: this.AIA,
                       AVQTYFINAL: this.AVQTYFINAL,
-                      TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                        TradeAvailableQty: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value
                     }
                     this.formDataArray.push(model)
                     // console.log(" this.formDataArray", this.formDataArray);
@@ -717,7 +736,9 @@ export class InvestmentApprovalFormComponent {
                     QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
                     FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
                     Position: (this.Postion?.value == undefined) ? null : this.Postion?.value,
-                    EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                   EqQuantity: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value,
                     allAquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
                     PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
                     TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
@@ -737,7 +758,9 @@ export class InvestmentApprovalFormComponent {
                     PreviousTradeValueGreater: this.isSellNoSelected === true ? 0 : null,
                     AIA: this.AIA,
                     AVQTYFINAL: this.AVQTYFINAL,
-                    TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                      TradeAvailableQty: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value
                   }
                   this.formDataArray.push(model)
                   // console.log(" this.formDataArray", this.formDataArray);
@@ -784,7 +807,9 @@ export class InvestmentApprovalFormComponent {
                     QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
                     FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
                     Position: (this.Postion?.value == undefined || this.Postion?.value == "") ? null : this.Postion?.value,
-                    EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                   EqQuantity: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value,
                     allAquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
                     PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
                     TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
@@ -803,7 +828,9 @@ export class InvestmentApprovalFormComponent {
                     PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
                     AIA: this.AIA,
                     AVQTYFINAL: this.AVQTYFINAL,
-                    TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                      TradeAvailableQty: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value
                   }
                   this.formDataArray.push(model)
                   // console.log(" this.formDataArray", this.formDataArray);
@@ -856,7 +883,9 @@ export class InvestmentApprovalFormComponent {
                       QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
                       FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
                       Position: (this.Postion?.value == undefined || this.Postion?.value == "") ? null : this.Postion?.value,
-                      EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                     EqQuantity: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value,
                       allAquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
                       PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
                       TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
@@ -875,7 +904,9 @@ export class InvestmentApprovalFormComponent {
                       PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
                       AIA: this.AIA,
                       AVQTYFINAL: this.AVQTYFINAL,
-                      TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                        TradeAvailableQty: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value
                     }
                     this.formDataArray.push(model)
                     // console.log(" this.formDataArray", this.formDataArray);
@@ -924,7 +955,9 @@ export class InvestmentApprovalFormComponent {
                     QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
                     FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
                     Position: (this.Postion?.value == undefined || this.Postion?.value == "") ? null : this.Postion?.value,
-                    EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                   EqQuantity: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value,
                     allAquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
                     PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
                     TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
@@ -943,7 +976,9 @@ export class InvestmentApprovalFormComponent {
                     PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
                     AIA: this.AIA,
                     AVQTYFINAL: this.AVQTYFINAL,
-                    TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                      TradeAvailableQty: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value
                   }
                   this.formDataArray.push(model)
                   // console.log(" this.formDataArray", this.formDataArray);
@@ -998,7 +1033,9 @@ export class InvestmentApprovalFormComponent {
                         QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
                         FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
                         Position: (this.Postion?.value == undefined || this.Postion?.value == "") ? null : this.Postion?.value,
-                        EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                       EqQuantity: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value,
                         allAquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
                         PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
                         TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
@@ -1017,7 +1054,9 @@ export class InvestmentApprovalFormComponent {
                         PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
                         AIA: this.AIA,
                         AVQTYFINAL: this.AVQTYFINAL,
-                        TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                          TradeAvailableQty: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value
                       }
                       this.formDataArray.push(model)
                       // console.log(" this.formDataArray", this.formDataArray);
@@ -1063,7 +1102,9 @@ export class InvestmentApprovalFormComponent {
                       QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
                       FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
                       Position: (this.Postion?.value == undefined || this.Postion?.value == "") ? null : this.Postion?.value,
-                      EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                     EqQuantity: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value,
                       allAquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
                       PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
                       TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
@@ -1083,7 +1124,9 @@ export class InvestmentApprovalFormComponent {
                       PreviousTradeValueGreater: this.isSellNoSelected === true ? 0 : null,
                       AIA: this.AIA,
                       AVQTYFINAL: this.AVQTYFINAL,
-                      TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                        TradeAvailableQty: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value
                     }
                     this.formDataArray.push(model)
                     // console.log(" this.formDataArray", this.formDataArray);
@@ -1129,7 +1172,9 @@ export class InvestmentApprovalFormComponent {
                   QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
                   FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
                   Position: (this.Postion?.value == undefined) ? null : this.Postion?.value,
-                  EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                 EqQuantity: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value,
                   allAquiredthrough: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
                   PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
                   TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
@@ -1148,7 +1193,9 @@ export class InvestmentApprovalFormComponent {
                   PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
                   AIA: this.AIA,
                   AVQTYFINAL: this.AVQTYFINAL,
-                  TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                    TradeAvailableQty: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value
                 }
                 this.formDataArray.push(model)
                 // console.log(" this.formDataArray", this.formDataArray);
@@ -1201,7 +1248,9 @@ export class InvestmentApprovalFormComponent {
                       QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
                       FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
                       Position: (this.Postion?.value == undefined) ? null : this.Postion?.value,
-                      EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                     EqQuantity: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value,
                       allAquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
                       PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
                       TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
@@ -1220,7 +1269,9 @@ export class InvestmentApprovalFormComponent {
                       PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
                       AIA: this.AIA,
                       AVQTYFINAL: this.AVQTYFINAL,
-                      TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                        TradeAvailableQty: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value
                     }
                     this.formDataArray.push(model)
                     // console.log(" this.formDataArray", this.formDataArray);
@@ -1266,7 +1317,9 @@ export class InvestmentApprovalFormComponent {
                     QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
                     FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
                     Position: (this.Postion?.value == undefined) ? null : this.Postion?.value,
-                    EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                   EqQuantity: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value,
                     allAquiredthrough: (this.Aquiredthrough?.value == undefined) ? null : this.Aquiredthrough?.value,
                     PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
                     TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
@@ -1286,7 +1339,9 @@ export class InvestmentApprovalFormComponent {
                     PreviousTradeValueGreater: this.isSellNoSelected === true ? 0 : null,
                     AIA: this.AIA,
                     AVQTYFINAL: this.AVQTYFINAL,
-                    TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+                      TradeAvailableQty: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value
                   }
                   this.formDataArray.push(model)
                   // console.log(" this.formDataArray", this.formDataArray);
@@ -1337,7 +1392,9 @@ export class InvestmentApprovalFormComponent {
             QuantityLot: (this.QuantityLot?.value == undefined || this.QuantityLot?.value == "") ? null : this.QuantityLot?.value,
             FutOpQuantityLot: (this.Lot?.value == undefined || this.Lot?.value == "") ? null : this.Lot?.value,
             Position: (this.Postion?.value == undefined || this.Postion?.value == "") ? null : this.Postion?.value,
-            EqQuantity: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+           EqQuantity: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value,
             allAquiredthrough: (this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "") ? null : this.Aquiredthrough?.value,
             PricePremium: (this.Premium?.value == undefined || this.Premium?.value == "") ? null : this.Premium?.value,
             TypeofDebt: (this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "") ? null : this.TypeofDebt?.value,
@@ -1356,7 +1413,9 @@ export class InvestmentApprovalFormComponent {
             PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : (this.isSellNoSelected === true ? 0 : null),
             AIA: this.AIA,
             AVQTYFINAL: this.AVQTYFINAL,
-            TradeAvailableQty: (this.Quantity?.value == undefined || this.Quantity?.value == "") ? null : this.Quantity?.value,
+            TradeAvailableQty: (this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "")
+  ? Number(this.Lot?.value ?? 0) * 10
+  : this.Quantity?.value
           }
 
 
@@ -1900,8 +1959,16 @@ export class InvestmentApprovalFormComponent {
   }
 
   SettAvQTY() {
+
+    this.Quantity?.reset()
+    this.Lot?.reset()
+
+  }
+
+  SettAvlot() {
     if (this.Transaction?.value == 'SELL') {
       this.Quantity?.reset()
+      this.Lot?.reset()
     }
   }
   Showoppositetransaction(event: any) {
@@ -1956,7 +2023,7 @@ export class InvestmentApprovalFormComponent {
       this.irfmainForm.updateValueAndValidity();
 
     } else if (this.Transaction?.value == 'SELL' && this.selectedValue3 == 'Equity') {
-      this
+
       // this.isVisiblebuy = false;
       // // this.isVisiblesell = true;
       // this.byredio = false
@@ -2338,6 +2405,22 @@ export class InvestmentApprovalFormComponent {
     }
 
   }
+  setlotandQuantity1(event: any) {
+    console.log("Value", event.value);
+    let Value = parseInt(event.value) * 10
+
+
+    if (this.Transaction?.value == 'SELL') {
+      if (parseInt(this.AVQTYFINAL) < Value) {
+        this.messageService.add({ severity: 'warn', summary: 'Warning', detail: 'Please check the available QTY' });
+        this.Lot?.reset()
+      } else {
+
+      }
+
+    }
+  }
+
 
   setlotandQuantity(val: any) {
     if (this.selectedValue3 == 'Option' || this.selectedValue3 == 'Future') {

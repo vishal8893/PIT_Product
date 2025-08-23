@@ -268,39 +268,7 @@ var routes = function () {
                     const TradeDates = encryptmodel.TradeDate;
                     const AcCode = encryptmodel.AccountCode
                     if (encryptmodel.Mode === 'SELL') {
-                        // ✅ Update TradeAvailableQty for SELL
-                        //     const updateQuery = `
-                        //     UPDATE public."TBL_DP_HOLDING_DATA"
-                        //     SET 
-                        //         "TradeAvailableQty" = :pendingQty,
-                        //         "MODIFIED_BY" = :empId,
-                        //         "TRX_DATE" = :TradeDates
-                        //     WHERE 
-                        //         "EMPID" = :empId AND "ISIN_CODE" = :isin AND "ACCOUNT_CODE" = :AcCode
-                        // `;
-                        //     await connect.sequelize.query(updateQuery, {
-                        //         replacements: {
-                        //             pendingQty: encryptmodel.Pendingqty,
-                        //             AcCode,
-                        //             empId,
-                        //             isin,
-                        //             TradeDates
-                        //         }
-                        //     });
-
-                        //     const IRFUpdateQuery = `
-                        //     UPDATE "TBL_IRF_Approval_Data"
-                        //     SET "TradeAvailableQty" = :pendingQty
-                        //     WHERE "ID" = :id
-                        // `;
-                        //     await connect.sequelize.query(IRFUpdateQuery, {
-                        //         replacements: {
-                        //             pendingQty: encryptmodel.Pendingqty,
-                        //             id: encryptmodel.ID
-                        //         }
-                        //     });
-
-
+                       
 
                         const selectOldRecordsQuery = `
                               SELECT * 
@@ -371,16 +339,7 @@ var routes = function () {
                             });
 
                     } else if (encryptmodel.Mode === 'BUY') {
-                        // ✅ Fetch existing data
-                        //     const getQuery = `
-                        //     SELECT * FROM public."TBL_DP_HOLDING_DATA" 
-                        //     WHERE "ISIN_CODE" = :isin AND "EMPID" = :empId AND "ACCOUNT_CODE" = :AcCode
-                        // `;
-                        //     const getQueryResult = await connect.sequelize.query(getQuery, {
-                        //         replacements: { isin, empId, AcCode },
-                        //         type: connect.sequelize.QueryTypes.SELECT
-                        //     });
-
+                       
                         const selectOldRecordsQuery = `
       SELECT * 
       FROM public."TBL_DP_HOLDING_DATA" 
@@ -404,68 +363,24 @@ var routes = function () {
                             const QTY = Number(encryptmodel.TradeQty) + Number(existing.DP_QTY || 0);
                             const APQTY = Number(encryptmodel.TradeQty) + Number(existing.ApprovalAvailableQty || 0);
 
-                            //     const updateQuery = `
-                            //     UPDATE public."TBL_DP_HOLDING_DATA"
-                            //     SET 
-                            //         "TradeAvailableQty" = :sumQty,
-                            //         "ApprovalAvailableQty"=:apqty,
-                            //         "DP_QTY" = :qty,
-                            //         "MODIFIED_BY" = :empId,
-                            //         "TRX_DATE" = :TradeDates
-                            //     WHERE 
-                            //         "EMPID" = :empId AND "ISIN_CODE" = :isin AND "ACCOUNT_CODE" = :ACCOUNT_CODE
-                            // `;
-                            //     await connect.sequelize.query(updateQuery, {
-                            //         replacements: {
-                            //             sumQty: SUMQTY,
-                            //             qty: QTY,
-                            //             apqty: APQTY,
-                            //             ACCOUNT_CODE: encryptmodel.AccountCode,
-                            //             empId,
-                            //             isin,
-                            //             TradeDates
+                            const TBL_DP_HOLDING_DATA = datamodel.TBL_DP_HOLDING_DATA();
+                            const valuec = {
+                                EMPID: empId,
+                                ACCOUNT_CODE: encryptmodel.AccountCode,
+                                ACCOUNT_NAME: encryptmodel.AccountName,
+                                ISIN_CODE: isin,
+                                TRX_DATE: encryptmodel.TradeDate,
+                                DP_QTY: encryptmodel.TradeQty,
+                                SEGMENT: encryptmodel.Asset,
+                                IS_ACTIVE: true,
+                                CREATED_BY: empId,
+                                CREATED_DT: new Date(),
+                                TradeAvailableQty: 0,
+                                ApprovalAvailableQty: encryptmodel.TradeQty
+                            };
 
-                            //         }
-                            //     });
-
-                            // for (const row of getQueryResult) {
-                            //     const resetQuery = `
-                            //     UPDATE public."TBL_DP_HOLDING_DATA"
-                            //     SET 
-                            //     "ApprovalAvailableQty" = 0,
-                            //     "TradeAvailableQty" = 0,
-                            //     "DP_QTY" = 0,
-                            //     "MODIFIED_BY" = :empno
-                            //     WHERE "ID" = :id
-                            //                     `;
-
-                            //     await connect.sequelize.query(resetQuery, {
-                            //         replacements: { empno: empId, id: row.ID },
-                            //     });
-                            // }
-
-
-                            const latestRowId = getQueryResult[0].ID;
-                            
-                                const updateLatestQuery = `
-                                  UPDATE public."TBL_DP_HOLDING_DATA"
-                                  SET 
-                                    "ApprovalAvailableQty" = :approvalQty,
-                                    "TradeAvailableQty" = :tradeQty,
-                                    "DP_QTY" = :qty,
-                                    "MODIFIED_BY" = :empno
-                                  WHERE "ID" = :id
-                                `;
-                            
-                                await connect.sequelize.query(updateLatestQuery, {
-                                  replacements: {
-                                    approvalQty: APQTY,
-                                    tradeQty: SUMQTY,
-                                    qty: QTY,
-                                    empno: empId,
-                                     id: latestRowId
-                                  },
-                                });
+                            await dataaccess.Create(TBL_DP_HOLDING_DATA, valuec);
+                           
 
                             const IRFUpdateQuery = `
                             UPDATE "TBL_IRF_Approval_Data"

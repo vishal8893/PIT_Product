@@ -7605,7 +7605,7 @@ const _c3 = function () {
   return [5, 10, 20];
 };
 const _c4 = function () {
-  return ["ACCCODE", "ACCNAME", "PANNO", "E_BOID", "Script.SCRIP_DESC", "TRX_DATE", "ISIN_CODE", "SEGMENT", "QTY", "ApprovalAvailableQty", "TradeAvailableQty"];
+  return ["ACCCODE", "ACCNAME", "PANNO", "E_BOID", "SCRIP_DESC", "TRX_DATE", "ISIN_CODE", "SEGMENT", "QTY", "ApprovalAvailableQty", "TradeAvailableQty"];
 };
 const _c5 = function () {
   return {
@@ -31523,28 +31523,28 @@ const _c0 = function () {
 };
 function InvestmentApprovalFormComponent_div_19_div_21_Template(rf, ctx) {
   if (rf & 1) {
-    const _r38 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33)(2, "p-autoComplete", 43);
+    const _r37 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33)(2, "p-autoComplete", 46);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("completeMethod", function InvestmentApprovalFormComponent_div_19_div_21_Template_p_autoComplete_completeMethod_2_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r38);
-      const ctx_r37 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r37.getallirfdata($event));
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r37);
+      const ctx_r36 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r36.getallirfdata($event));
     })("onSelect", function InvestmentApprovalFormComponent_div_19_div_21_Template_p_autoComplete_onSelect_2_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r38);
-      const ctx_r39 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r39.setisin($event));
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r37);
+      const ctx_r38 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r38.setisin($event));
     })("paste", function InvestmentApprovalFormComponent_div_19_div_21_Template_p_autoComplete_paste_2_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r38);
-      const ctx_r40 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r40.onPaste($event));
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r37);
+      const ctx_r39 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r39.onPaste($event));
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 47);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Search Security");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_21_small_7_Template, 2, 0, "small", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_21_small_7_Template, 2, 0, "small", 48);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
   if (rf & 2) {
@@ -31565,13 +31565,13 @@ function InvestmentApprovalFormComponent_div_19_div_22_small_7_Template(rf, ctx)
 function InvestmentApprovalFormComponent_div_19_div_22_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "p-dropdown", 46);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "p-dropdown", 49);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 47);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Search Security");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_22_small_7_Template, 2, 0, "small", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_22_small_7_Template, 2, 0, "small", 48);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
   if (rf & 2) {
@@ -31585,8 +31585,8 @@ function InvestmentApprovalFormComponent_div_19_div_22_Template(rf, ctx) {
 function InvestmentApprovalFormComponent_div_19_div_23_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "input", 47);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "input", 50);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 47);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "ISIN Number");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
@@ -31611,20 +31611,20 @@ function InvestmentApprovalFormComponent_div_19_div_24_small_4_Template(rf, ctx)
 }
 function InvestmentApprovalFormComponent_div_19_div_24_Template(rf, ctx) {
   if (rf & 1) {
-    const _r45 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33)(2, "p-dropdown", 48);
+    const _r44 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33)(2, "p-dropdown", 51);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("onChange", function InvestmentApprovalFormComponent_div_19_div_24_Template_p_dropdown_onChange_2_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r45);
-      const ctx_r44 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r44.Showoppositetransaction($event));
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r44);
+      const ctx_r43 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r43.Showoppositetransaction($event));
     })("onChange", function InvestmentApprovalFormComponent_div_19_div_24_Template_p_dropdown_onChange_2_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r45);
-      const ctx_r46 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r46.SettAvQTY());
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r44);
+      const ctx_r45 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r45.SettAvQTY());
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](3, InvestmentApprovalFormComponent_div_19_div_24_label_3_Template, 4, 0, "label", 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](4, InvestmentApprovalFormComponent_div_19_div_24_small_4_Template, 2, 0, "small", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](4, InvestmentApprovalFormComponent_div_19_div_24_small_4_Template, 2, 0, "small", 48);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
   if (rf & 2) {
@@ -31639,56 +31639,56 @@ function InvestmentApprovalFormComponent_div_19_div_24_Template(rf, ctx) {
 }
 function InvestmentApprovalFormComponent_div_19_div_25_div_11_Template(rf, ctx) {
   if (rf & 1) {
-    const _r49 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div")(1, "div", 53)(2, "p-checkbox", 54);
+    const _r48 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div")(1, "div", 56)(2, "p-checkbox", 57);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function InvestmentApprovalFormComponent_div_19_div_25_div_11_Template_p_checkbox_ngModelChange_2_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r49);
-      const ctx_r48 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r48.Tenlacsmodel = $event);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r48);
+      const ctx_r47 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r47.Tenlacsmodel = $event);
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "span", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "span", 47);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, " I accept the investment made above for minimum period of 30 days or expiry whichever is earlier. ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
   }
   if (rf & 2) {
-    const ctx_r47 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
+    const ctx_r46 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngModel", ctx_r47.Tenlacsmodel);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngModel", ctx_r46.Tenlacsmodel);
   }
 }
 function InvestmentApprovalFormComponent_div_19_div_25_Template(rf, ctx) {
   if (rf & 1) {
-    const _r51 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    const _r50 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33)(2, "h7");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](3, "Trade Value :");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](4, "div", 44)(5, "p-radioButton", 49);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](4, "div", 47)(5, "p-radioButton", 52);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function InvestmentApprovalFormComponent_div_19_div_25_Template_p_radioButton_ngModelChange_5_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r51);
-      const ctx_r50 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r50.isNoSelected = $event);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r50);
+      const ctx_r49 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r49.isNoSelected = $event);
     })("ngModelChange", function InvestmentApprovalFormComponent_div_19_div_25_Template_p_radioButton_ngModelChange_5_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r51);
-      const ctx_r52 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r52.noradioselect());
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r50);
+      const ctx_r51 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r51.noradioselect());
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](6, "label", 50);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](6, "label", 53);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](7, " <10 Lacs");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](8, "p-radioButton", 51);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](8, "p-radioButton", 54);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function InvestmentApprovalFormComponent_div_19_div_25_Template_p_radioButton_ngModelChange_8_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r51);
-      const ctx_r53 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r53.isYesSelected = $event);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r50);
+      const ctx_r52 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r52.isYesSelected = $event);
     })("ngModelChange", function InvestmentApprovalFormComponent_div_19_div_25_Template_p_radioButton_ngModelChange_8_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r51);
-      const ctx_r54 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r54.yesradioselect());
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r50);
+      const ctx_r53 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r53.yesradioselect());
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](9, "label", 52);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](9, "label", 55);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](10, ">=10 Lacs");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](11, InvestmentApprovalFormComponent_div_19_div_25_div_11_Template, 5, 1, "div", 15);
@@ -31706,36 +31706,36 @@ function InvestmentApprovalFormComponent_div_19_div_25_Template(rf, ctx) {
 }
 function InvestmentApprovalFormComponent_div_19_div_26_Template(rf, ctx) {
   if (rf & 1) {
-    const _r56 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 44)(2, "span", 55);
+    const _r55 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 47)(2, "span", 58);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](3, " Sold share consist of any prior purchase lot worth more than 10 lacs. ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](4, "p-radioButton", 56);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](4, "p-radioButton", 59);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function InvestmentApprovalFormComponent_div_19_div_26_Template_p_radioButton_ngModelChange_4_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r56);
-      const ctx_r55 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r55.isSellNoSelected = $event);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r55);
+      const ctx_r54 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r54.isSellNoSelected = $event);
     })("ngModelChange", function InvestmentApprovalFormComponent_div_19_div_26_Template_p_radioButton_ngModelChange_4_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r56);
-      const ctx_r57 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r57.noSellradioselect());
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r55);
+      const ctx_r56 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r56.noSellradioselect());
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "label", 57);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "label", 60);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "No");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](7, "p-radioButton", 58);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](7, "p-radioButton", 61);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function InvestmentApprovalFormComponent_div_19_div_26_Template_p_radioButton_ngModelChange_7_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r56);
-      const ctx_r58 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r58.isSellYesSelected = $event);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r55);
+      const ctx_r57 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r57.isSellYesSelected = $event);
     })("ngModelChange", function InvestmentApprovalFormComponent_div_19_div_26_Template_p_radioButton_ngModelChange_7_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r56);
-      const ctx_r59 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r59.yesSellradioselect());
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r55);
+      const ctx_r58 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r58.yesSellradioselect());
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](8, "label", 59);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](8, "label", 62);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](9, "Yes");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
   }
@@ -31765,16 +31765,16 @@ function InvestmentApprovalFormComponent_div_19_div_27_small_4_Template(rf, ctx)
 }
 function InvestmentApprovalFormComponent_div_19_div_27_Template(rf, ctx) {
   if (rf & 1) {
-    const _r63 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33)(2, "p-dropdown", 48);
+    const _r62 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33)(2, "p-dropdown", 51);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("onChange", function InvestmentApprovalFormComponent_div_19_div_27_Template_p_dropdown_onChange_2_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r63);
-      const ctx_r62 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r62.Showoppositetransaction($event));
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r62);
+      const ctx_r61 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r61.Showoppositetransaction($event));
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](3, InvestmentApprovalFormComponent_div_19_div_27_label_3_Template, 4, 0, "label", 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](4, InvestmentApprovalFormComponent_div_19_div_27_small_4_Template, 2, 0, "small", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](4, InvestmentApprovalFormComponent_div_19_div_27_small_4_Template, 2, 0, "small", 48);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
   if (rf & 2) {
@@ -31796,20 +31796,20 @@ function InvestmentApprovalFormComponent_div_19_div_28_small_7_Template(rf, ctx)
 }
 function InvestmentApprovalFormComponent_div_19_div_28_Template(rf, ctx) {
   if (rf & 1) {
-    const _r66 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33)(2, "p-dropdown", 60);
+    const _r65 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33)(2, "p-dropdown", 63);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("onChange", function InvestmentApprovalFormComponent_div_19_div_28_Template_p_dropdown_onChange_2_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r66);
-      const ctx_r65 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r65.VetReason($event.value));
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r65);
+      const ctx_r64 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r64.VetReason($event.value));
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 61);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Special Case");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_28_small_7_Template, 2, 0, "small", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_28_small_7_Template, 2, 0, "small", 48);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
   if (rf & 2) {
@@ -31830,13 +31830,13 @@ function InvestmentApprovalFormComponent_div_19_div_29_small_7_Template(rf, ctx)
 function InvestmentApprovalFormComponent_div_19_div_29_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "p-calendar", 62);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 61);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "p-calendar", 64);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Month");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_29_small_7_Template, 2, 0, "small", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_29_small_7_Template, 2, 0, "small", 48);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
   if (rf & 2) {
@@ -31857,13 +31857,13 @@ function InvestmentApprovalFormComponent_div_19_div_30_small_7_Template(rf, ctx)
 function InvestmentApprovalFormComponent_div_19_div_30_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "p-dropdown", 63);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 61);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "p-dropdown", 65);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Option Type");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_30_small_7_Template, 2, 0, "small", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_30_small_7_Template, 2, 0, "small", 48);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
   if (rf & 2) {
@@ -31892,16 +31892,16 @@ function InvestmentApprovalFormComponent_div_19_div_31_small_4_Template(rf, ctx)
 }
 function InvestmentApprovalFormComponent_div_19_div_31_Template(rf, ctx) {
   if (rf & 1) {
-    const _r72 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33)(2, "p-dropdown", 64);
+    const _r71 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33)(2, "p-dropdown", 66);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("onChange", function InvestmentApprovalFormComponent_div_19_div_31_Template_p_dropdown_onChange_2_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r72);
-      const ctx_r71 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r71.setquantitylot());
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r71);
+      const ctx_r70 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r70.setquantitylot());
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](3, InvestmentApprovalFormComponent_div_19_div_31_label_3_Template, 4, 0, "label", 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](4, InvestmentApprovalFormComponent_div_19_div_31_small_4_Template, 2, 0, "small", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](4, InvestmentApprovalFormComponent_div_19_div_31_small_4_Template, 2, 0, "small", 48);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
   if (rf & 2) {
@@ -31916,7 +31916,7 @@ function InvestmentApprovalFormComponent_div_19_div_31_Template(rf, ctx) {
 }
 function InvestmentApprovalFormComponent_div_19_div_32_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "label", 65);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "label", 67);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
@@ -31926,14 +31926,14 @@ function InvestmentApprovalFormComponent_div_19_div_32_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate1"]("Lot Size: ", ctx_r13.LotSize, "");
   }
 }
-function InvestmentApprovalFormComponent_div_19_div_33_small_7_Template(rf, ctx) {
+function InvestmentApprovalFormComponent_div_19_div_33_small_8_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Lot is required ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
   }
 }
-function InvestmentApprovalFormComponent_div_19_div_33_small_8_Template(rf, ctx) {
+function InvestmentApprovalFormComponent_div_19_div_33_small_9_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Please Enter Valid Lot ");
@@ -31942,20 +31942,27 @@ function InvestmentApprovalFormComponent_div_19_div_33_small_8_Template(rf, ctx)
 }
 function InvestmentApprovalFormComponent_div_19_div_33_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "input", 66);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 61);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Lot");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
+    const _r76 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33)(2, "input", 68, 69);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("keyup", function InvestmentApprovalFormComponent_div_19_div_33_Template_input_keyup_2_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r76);
+      const _r72 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵreference"](3);
+      const ctx_r75 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r75.setlotandQuantity1(_r72));
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](4, "label", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](5, "Lot");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](6, "span", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](7, "*");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_33_small_7_Template, 2, 0, "small", 45);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](8, InvestmentApprovalFormComponent_div_19_div_33_small_8_Template, 2, 0, "small", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](8, InvestmentApprovalFormComponent_div_19_div_33_small_8_Template, 2, 0, "small", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](9, InvestmentApprovalFormComponent_div_19_div_33_small_9_Template, 2, 0, "small", 48);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
   if (rf & 2) {
     const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](8);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r14.irfmainForm.get("Lot").hasError("required") && (ctx_r14.irfmainForm.get("Lot").touched || ctx_r14.irfmainForm.get("Lot").dirty));
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", (ctx_r14.Lot == null ? null : ctx_r14.Lot.hasError("pattern")) && !(ctx_r14.Lot == null ? null : ctx_r14.Lot.hasError("required")));
@@ -31970,20 +31977,20 @@ function InvestmentApprovalFormComponent_div_19_div_34_small_7_Template(rf, ctx)
 }
 function InvestmentApprovalFormComponent_div_19_div_34_Template(rf, ctx) {
   if (rf & 1) {
-    const _r77 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33)(2, "p-dropdown", 67);
+    const _r79 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33)(2, "p-dropdown", 70);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("onChange", function InvestmentApprovalFormComponent_div_19_div_34_Template_p_dropdown_onChange_2_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r77);
-      const ctx_r76 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r76.setdrops($event));
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r79);
+      const ctx_r78 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r78.setdrops($event));
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 61);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Position");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_34_small_7_Template, 2, 0, "small", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_34_small_7_Template, 2, 0, "small", 48);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
   if (rf & 2) {
@@ -31996,56 +32003,56 @@ function InvestmentApprovalFormComponent_div_19_div_34_Template(rf, ctx) {
 }
 function InvestmentApprovalFormComponent_div_19_div_35_div_11_Template(rf, ctx) {
   if (rf & 1) {
-    const _r80 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div")(1, "div", 53)(2, "p-checkbox", 54);
+    const _r82 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div")(1, "div", 56)(2, "p-checkbox", 57);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function InvestmentApprovalFormComponent_div_19_div_35_div_11_Template_p_checkbox_ngModelChange_2_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r80);
-      const ctx_r79 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r79.Tenlacsmodel = $event);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r82);
+      const ctx_r81 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r81.Tenlacsmodel = $event);
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "span", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "span", 47);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, " I accept the investment made above for minimum period of 30 days or expiry whichever is earlier. ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
   }
   if (rf & 2) {
-    const ctx_r78 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
+    const ctx_r80 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngModel", ctx_r78.Tenlacsmodel);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngModel", ctx_r80.Tenlacsmodel);
   }
 }
 function InvestmentApprovalFormComponent_div_19_div_35_Template(rf, ctx) {
   if (rf & 1) {
-    const _r82 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    const _r84 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33)(2, "h7");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](3, "Trade Value :");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](4, "div", 44)(5, "p-radioButton", 49);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](4, "div", 47)(5, "p-radioButton", 52);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function InvestmentApprovalFormComponent_div_19_div_35_Template_p_radioButton_ngModelChange_5_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r82);
-      const ctx_r81 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r81.isNoSelected = $event);
-    })("ngModelChange", function InvestmentApprovalFormComponent_div_19_div_35_Template_p_radioButton_ngModelChange_5_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r82);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r84);
       const ctx_r83 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r83.noradioselect());
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r83.isNoSelected = $event);
+    })("ngModelChange", function InvestmentApprovalFormComponent_div_19_div_35_Template_p_radioButton_ngModelChange_5_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r84);
+      const ctx_r85 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r85.noradioselect());
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](6, "label", 50);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](6, "label", 53);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](7, " <10 Lacs");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](8, "p-radioButton", 51);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](8, "p-radioButton", 54);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function InvestmentApprovalFormComponent_div_19_div_35_Template_p_radioButton_ngModelChange_8_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r82);
-      const ctx_r84 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r84.isYesSelected = $event);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r84);
+      const ctx_r86 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r86.isYesSelected = $event);
     })("ngModelChange", function InvestmentApprovalFormComponent_div_19_div_35_Template_p_radioButton_ngModelChange_8_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r82);
-      const ctx_r85 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r85.yesradioselect());
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r84);
+      const ctx_r87 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r87.yesradioselect());
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](9, "label", 52);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](9, "label", 55);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](10, ">=10 Lacs");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](11, InvestmentApprovalFormComponent_div_19_div_35_div_11_Template, 5, 1, "div", 15);
@@ -32063,36 +32070,36 @@ function InvestmentApprovalFormComponent_div_19_div_35_Template(rf, ctx) {
 }
 function InvestmentApprovalFormComponent_div_19_div_36_Template(rf, ctx) {
   if (rf & 1) {
-    const _r87 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 44)(2, "span", 55);
+    const _r89 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 47)(2, "span", 58);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](3, " Sold share consist of any prior purchase lot worth more than 10 lacs. ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](4, "p-radioButton", 56);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](4, "p-radioButton", 59);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function InvestmentApprovalFormComponent_div_19_div_36_Template_p_radioButton_ngModelChange_4_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r87);
-      const ctx_r86 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r86.isSellNoSelected = $event);
-    })("ngModelChange", function InvestmentApprovalFormComponent_div_19_div_36_Template_p_radioButton_ngModelChange_4_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r87);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r89);
       const ctx_r88 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r88.noSellradioselect());
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r88.isSellNoSelected = $event);
+    })("ngModelChange", function InvestmentApprovalFormComponent_div_19_div_36_Template_p_radioButton_ngModelChange_4_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r89);
+      const ctx_r90 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r90.noSellradioselect());
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "label", 57);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "label", 60);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "No");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](7, "p-radioButton", 58);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](7, "p-radioButton", 61);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function InvestmentApprovalFormComponent_div_19_div_36_Template_p_radioButton_ngModelChange_7_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r87);
-      const ctx_r89 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r89.isSellYesSelected = $event);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r89);
+      const ctx_r91 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r91.isSellYesSelected = $event);
     })("ngModelChange", function InvestmentApprovalFormComponent_div_19_div_36_Template_p_radioButton_ngModelChange_7_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r87);
-      const ctx_r90 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r90.yesSellradioselect());
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r89);
+      const ctx_r92 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r92.yesSellradioselect());
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](8, "label", 59);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](8, "label", 62);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](9, "Yes");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
   }
@@ -32104,21 +32111,14 @@ function InvestmentApprovalFormComponent_div_19_div_36_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("value", true)("ngModel", ctx_r17.isSellYesSelected);
   }
 }
-function InvestmentApprovalFormComponent_div_19_div_37_span_8_Template(rf, ctx) {
-  if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "span", 72);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Quantity size invalid ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-  }
-}
-function InvestmentApprovalFormComponent_div_19_div_37_small_9_Template(rf, ctx) {
+function InvestmentApprovalFormComponent_div_19_div_37_small_8_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Quantity is Required. ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
   }
 }
-function InvestmentApprovalFormComponent_div_19_div_37_small_10_Template(rf, ctx) {
+function InvestmentApprovalFormComponent_div_19_div_37_small_9_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Please Enter Valid Quantity ");
@@ -32127,379 +32127,361 @@ function InvestmentApprovalFormComponent_div_19_div_37_small_10_Template(rf, ctx
 }
 function InvestmentApprovalFormComponent_div_19_div_37_Template(rf, ctx) {
   if (rf & 1) {
-    const _r96 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 68)(1, "div", 33)(2, "input", 69, 70);
+    const _r97 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 39)(1, "div", 33)(2, "input", 71, 72);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("keyup", function InvestmentApprovalFormComponent_div_19_div_37_Template_input_keyup_2_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r96);
-      const _r91 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵreference"](3);
-      const ctx_r95 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r95.setlotandQuantity(_r91));
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r97);
+      const _r93 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵreference"](3);
+      const ctx_r96 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r96.setlotandQuantity(_r93));
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](4, "label", 61);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](4, "label", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](5, "Quantity");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](6, "span", 35);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](7, "*");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](8, InvestmentApprovalFormComponent_div_19_div_37_span_8_Template, 2, 0, "span", 71);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](9, InvestmentApprovalFormComponent_div_19_div_37_small_9_Template, 2, 0, "small", 45);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](10, InvestmentApprovalFormComponent_div_19_div_37_small_10_Template, 2, 0, "small", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](8, InvestmentApprovalFormComponent_div_19_div_37_small_8_Template, 2, 0, "small", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](9, InvestmentApprovalFormComponent_div_19_div_37_small_9_Template, 2, 0, "small", 48);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
   if (rf & 2) {
     const ctx_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r18.show1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r18.irfmainForm.get("Quantity").hasError("required") && ctx_r18.irfmainForm.get("Quantity").touched);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r18.irfmainForm.get("Quantity").hasError("pattern") && !ctx_r18.irfmainForm.get("Quantity").hasError("required"));
   }
 }
-function InvestmentApprovalFormComponent_div_19_div_38_Template(rf, ctx) {
-  if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 68)(1, "div", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "input", 73);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 61);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Available QTY");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](5, "span", 35);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
-  }
-  if (rf & 2) {
-    const ctx_r19 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpropertyInterpolate"]("value", ctx_r19.AVQTYFINAL);
-  }
-}
-function InvestmentApprovalFormComponent_div_19_div_39_small_7_Template(rf, ctx) {
-  if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Primary Issue is Required. ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-  }
-}
-function InvestmentApprovalFormComponent_div_19_div_39_Template(rf, ctx) {
-  if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "p-dropdown", 74);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 61);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Primary Issue Type");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_39_small_7_Template, 2, 0, "small", 45);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-  }
-  if (rf & 2) {
-    const ctx_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("filter", true)("showClear", true)("options", ctx_r20.PrimaryIssueTypearray1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r20.irfmainForm.get("PrimaryIssueType").hasError("required") && ctx_r20.irfmainForm.get("PrimaryIssueType").touched);
-  }
-}
-function InvestmentApprovalFormComponent_div_19_div_40_small_7_Template(rf, ctx) {
-  if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Aquiredthrough is Required. ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-  }
-}
-function InvestmentApprovalFormComponent_div_19_div_40_Template(rf, ctx) {
-  if (rf & 1) {
-    const _r100 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33)(2, "p-dropdown", 75);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("onChange", function InvestmentApprovalFormComponent_div_19_div_40_Template_p_dropdown_onChange_2_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r100);
-      const ctx_r99 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r99.setprimaryeshutype());
-    });
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 61);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Acquired through");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_40_small_7_Template, 2, 0, "small", 45);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-  }
-  if (rf & 2) {
-    const ctx_r21 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("showClear", true)("options", ctx_r21.allAquiredthrough);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", (ctx_r21.Aquiredthrough == null ? null : ctx_r21.Aquiredthrough.hasError("required")) && (ctx_r21.Aquiredthrough == null ? null : ctx_r21.Aquiredthrough.touched));
-  }
-}
-function InvestmentApprovalFormComponent_div_19_div_41_small_7_Template(rf, ctx) {
-  if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Primary Issue is Required. ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-  }
-}
-function InvestmentApprovalFormComponent_div_19_div_41_Template(rf, ctx) {
-  if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "p-dropdown", 76);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 61);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Primary Issue Type");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_41_small_7_Template, 2, 0, "small", 45);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-  }
-  if (rf & 2) {
-    const ctx_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("options", ctx_r22.PrimaryIssueTypearray)("filter", true)("showClear", true);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r22.irfmainForm.get("PrimaryIssueType").hasError("required") && ctx_r22.irfmainForm.get("PrimaryIssueType").touched);
-  }
-}
-function InvestmentApprovalFormComponent_div_19_div_42_small_7_Template(rf, ctx) {
-  if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Please Enter Valid Price ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-  }
-}
-function InvestmentApprovalFormComponent_div_19_div_42_div_8_small_7_Template(rf, ctx) {
-  if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Price is Required. ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-  }
-}
-function InvestmentApprovalFormComponent_div_19_div_42_div_8_Template(rf, ctx) {
-  if (rf & 1) {
-    const _r106 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 53)(1, "div", 44)(2, "p-checkbox", 79);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_19_div_42_div_8_Template_p_checkbox_click_2_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r106);
-      const ctx_r105 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r105.setprice($event));
-    });
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 80);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Market Price");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](5, "br");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](6, "div", 81);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_42_div_8_small_7_Template, 2, 0, "small", 45);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
-  }
-  if (rf & 2) {
-    const ctx_r103 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("binary", true);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", (ctx_r103.Price == null ? null : ctx_r103.Price.hasError("required")) && (ctx_r103.Price == null ? null : ctx_r103.Price.touched));
-  }
-}
-function InvestmentApprovalFormComponent_div_19_div_42_Template(rf, ctx) {
-  if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "input", 77);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 61);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Price");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_42_small_7_Template, 2, 0, "small", 45);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](8, InvestmentApprovalFormComponent_div_19_div_42_div_8_Template, 8, 2, "div", 78);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-  }
-  if (rf & 2) {
-    const ctx_r23 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", (ctx_r23.Price == null ? null : ctx_r23.Price.hasError("pattern")) && !(ctx_r23.Price == null ? null : ctx_r23.Price.hasError("required")));
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r23.isVisibleEquity || ctx_r23.isVisibleFuture || ctx_r23.isVisibleDebt || ctx_r23.isVisiblePMS);
-  }
-}
-function InvestmentApprovalFormComponent_div_19_div_43_small_7_Template(rf, ctx) {
-  if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Reason is Required. ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-  }
-}
-function InvestmentApprovalFormComponent_div_19_div_43_div_8_small_7_Template(rf, ctx) {
-  if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Price is Required. ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-  }
-}
-function InvestmentApprovalFormComponent_div_19_div_43_div_8_Template(rf, ctx) {
-  if (rf & 1) {
-    const _r111 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 53)(1, "div", 44)(2, "p-checkbox", 79);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_19_div_43_div_8_Template_p_checkbox_click_2_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r111);
-      const ctx_r110 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r110.setprice($event));
-    });
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 80);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Market Price");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](5, "br");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](6, "div", 81);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_43_div_8_small_7_Template, 2, 0, "small", 45);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
-  }
-  if (rf & 2) {
-    const ctx_r108 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("binary", true);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", (ctx_r108.Price == null ? null : ctx_r108.Price.hasError("required")) && (ctx_r108.Price == null ? null : ctx_r108.Price.touched));
-  }
-}
-function InvestmentApprovalFormComponent_div_19_div_43_Template(rf, ctx) {
-  if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "input", 82);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 61);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Reason");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_43_small_7_Template, 2, 0, "small", 45);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](8, InvestmentApprovalFormComponent_div_19_div_43_div_8_Template, 8, 2, "div", 78);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-  }
-  if (rf & 2) {
-    const ctx_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r24.irfmainForm.get("Reason").hasError("required") && ctx_r24.irfmainForm.get("Reason").touched);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r24.isVisibleEquity || ctx_r24.isVisibleFuture || ctx_r24.isVisibleDebt || ctx_r24.isVisiblePMS);
-  }
-}
 function InvestmentApprovalFormComponent_div_19_div_44_small_7_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Date is Required. ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Primary Issue is Required. ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
   }
 }
 function InvestmentApprovalFormComponent_div_19_div_44_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "p-calendar", 83);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 44);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Date of earlier opposite transaction 1");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "p-dropdown", 73);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Primary Issue Type");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_44_small_7_Template, 2, 0, "small", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_44_small_7_Template, 2, 0, "small", 48);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
   if (rf & 2) {
-    const ctx_r25 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+    const ctx_r19 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("showIcon", true);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("filter", true)("showClear", true)("options", ctx_r19.PrimaryIssueTypearray1);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", (ctx_r25.SelltransactionDate == null ? null : ctx_r25.SelltransactionDate.hasError("required")) && (ctx_r25.SelltransactionDate == null ? null : ctx_r25.SelltransactionDate.touched));
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r19.irfmainForm.get("PrimaryIssueType").hasError("required") && ctx_r19.irfmainForm.get("PrimaryIssueType").touched);
   }
 }
 function InvestmentApprovalFormComponent_div_19_div_45_small_7_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Aquiredthrough is Required. ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+  }
+}
+function InvestmentApprovalFormComponent_div_19_div_45_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r101 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33)(2, "p-dropdown", 74);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("onChange", function InvestmentApprovalFormComponent_div_19_div_45_Template_p_dropdown_onChange_2_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r101);
+      const ctx_r100 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r100.setprimaryeshutype());
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Acquired through");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_45_small_7_Template, 2, 0, "small", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+  }
+  if (rf & 2) {
+    const ctx_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("showClear", true)("options", ctx_r20.allAquiredthrough);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", (ctx_r20.Aquiredthrough == null ? null : ctx_r20.Aquiredthrough.hasError("required")) && (ctx_r20.Aquiredthrough == null ? null : ctx_r20.Aquiredthrough.touched));
+  }
+}
+function InvestmentApprovalFormComponent_div_19_div_46_small_7_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Primary Issue is Required. ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+  }
+}
+function InvestmentApprovalFormComponent_div_19_div_46_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "p-dropdown", 75);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Primary Issue Type");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_46_small_7_Template, 2, 0, "small", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+  }
+  if (rf & 2) {
+    const ctx_r21 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("options", ctx_r21.PrimaryIssueTypearray)("filter", true)("showClear", true);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r21.irfmainForm.get("PrimaryIssueType").hasError("required") && ctx_r21.irfmainForm.get("PrimaryIssueType").touched);
+  }
+}
+function InvestmentApprovalFormComponent_div_19_div_47_small_7_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Please Enter Valid Price ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+  }
+}
+function InvestmentApprovalFormComponent_div_19_div_47_div_8_small_7_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Price is Required. ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+  }
+}
+function InvestmentApprovalFormComponent_div_19_div_47_div_8_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r107 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 56)(1, "div", 47)(2, "p-checkbox", 78);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_19_div_47_div_8_Template_p_checkbox_click_2_listener($event) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r107);
+      const ctx_r106 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r106.setprice($event));
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 79);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Market Price");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](5, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](6, "div", 80);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_47_div_8_small_7_Template, 2, 0, "small", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
+  }
+  if (rf & 2) {
+    const ctx_r104 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("binary", true);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", (ctx_r104.Price == null ? null : ctx_r104.Price.hasError("required")) && (ctx_r104.Price == null ? null : ctx_r104.Price.touched));
+  }
+}
+function InvestmentApprovalFormComponent_div_19_div_47_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "input", 76);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Price");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_47_small_7_Template, 2, 0, "small", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](8, InvestmentApprovalFormComponent_div_19_div_47_div_8_Template, 8, 2, "div", 77);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+  }
+  if (rf & 2) {
+    const ctx_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", (ctx_r22.Price == null ? null : ctx_r22.Price.hasError("pattern")) && !(ctx_r22.Price == null ? null : ctx_r22.Price.hasError("required")));
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r22.isVisibleEquity || ctx_r22.isVisibleFuture || ctx_r22.isVisibleDebt || ctx_r22.isVisiblePMS);
+  }
+}
+function InvestmentApprovalFormComponent_div_19_div_48_small_7_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Reason is Required. ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+  }
+}
+function InvestmentApprovalFormComponent_div_19_div_48_div_8_small_7_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Price is Required. ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+  }
+}
+function InvestmentApprovalFormComponent_div_19_div_48_div_8_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r112 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 56)(1, "div", 47)(2, "p-checkbox", 78);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_19_div_48_div_8_Template_p_checkbox_click_2_listener($event) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r112);
+      const ctx_r111 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r111.setprice($event));
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 79);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Market Price");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](5, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](6, "div", 80);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_48_div_8_small_7_Template, 2, 0, "small", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
+  }
+  if (rf & 2) {
+    const ctx_r109 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("binary", true);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", (ctx_r109.Price == null ? null : ctx_r109.Price.hasError("required")) && (ctx_r109.Price == null ? null : ctx_r109.Price.touched));
+  }
+}
+function InvestmentApprovalFormComponent_div_19_div_48_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "input", 81);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Reason");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_48_small_7_Template, 2, 0, "small", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](8, InvestmentApprovalFormComponent_div_19_div_48_div_8_Template, 8, 2, "div", 77);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+  }
+  if (rf & 2) {
+    const ctx_r23 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r23.irfmainForm.get("Reason").hasError("required") && ctx_r23.irfmainForm.get("Reason").touched);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r23.isVisibleEquity || ctx_r23.isVisibleFuture || ctx_r23.isVisibleDebt || ctx_r23.isVisiblePMS);
+  }
+}
+function InvestmentApprovalFormComponent_div_19_div_49_small_7_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Date is Required. ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
+  }
+}
+function InvestmentApprovalFormComponent_div_19_div_49_Template(rf, ctx) {
+  if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "p-calendar", 82);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 47);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Date of earlier opposite transaction ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_49_small_7_Template, 2, 0, "small", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+  }
+  if (rf & 2) {
+    const ctx_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("showIcon", true);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", (ctx_r24.SelltransactionDate == null ? null : ctx_r24.SelltransactionDate.hasError("required")) && (ctx_r24.SelltransactionDate == null ? null : ctx_r24.SelltransactionDate.touched));
+  }
+}
+function InvestmentApprovalFormComponent_div_19_div_50_small_7_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " StartDate is Required. ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
   }
 }
-function InvestmentApprovalFormComponent_div_19_div_45_Template(rf, ctx) {
+function InvestmentApprovalFormComponent_div_19_div_50_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "p-calendar", 84);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "p-calendar", 83);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 47);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Date of earlier opposite transaction");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_45_small_7_Template, 2, 0, "small", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_50_small_7_Template, 2, 0, "small", 48);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
   if (rf & 2) {
-    const ctx_r26 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+    const ctx_r25 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("showIcon", true)("maxDate", ctx_r26.today);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("showIcon", true)("maxDate", ctx_r25.today);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", (ctx_r26.StartDate == null ? null : ctx_r26.StartDate.hasError("required")) && (ctx_r26.StartDate == null ? null : ctx_r26.StartDate.touched));
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", (ctx_r25.StartDate == null ? null : ctx_r25.StartDate.hasError("required")) && (ctx_r25.StartDate == null ? null : ctx_r25.StartDate.touched));
   }
 }
-function InvestmentApprovalFormComponent_div_19_div_46_Template(rf, ctx) {
+function InvestmentApprovalFormComponent_div_19_div_51_Template(rf, ctx) {
   if (rf & 1) {
-    const _r115 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 44)(2, "label", 85)(3, "span", 55);
+    const _r116 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 47)(2, "label", 84)(3, "span", 58);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, " Have you done opposite transaction earlier in this scrip? ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "p-radioButton", 86);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_19_div_46_Template_p_radioButton_click_5_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r115);
-      const ctx_r114 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r114.hotein("val1"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "p-radioButton", 85);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_19_div_51_Template_p_radioButton_click_5_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r116);
+      const ctx_r115 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r115.hotein("val1"));
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](6, "label", 57);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](6, "label", 60);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](7, "No");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](8, "p-radioButton", 87);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_19_div_46_Template_p_radioButton_click_8_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r115);
-      const ctx_r116 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r116.hotein("val2"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](8, "p-radioButton", 86);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_19_div_51_Template_p_radioButton_click_8_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r116);
+      const ctx_r117 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r117.hotein("val2"));
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](9, "label", 59);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](9, "label", 62);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](10, "Yes");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
   }
 }
-function InvestmentApprovalFormComponent_div_19_div_47_small_7_Template(rf, ctx) {
+function InvestmentApprovalFormComponent_div_19_div_52_small_7_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Premium is Required. ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
   }
 }
-function InvestmentApprovalFormComponent_div_19_div_47_Template(rf, ctx) {
+function InvestmentApprovalFormComponent_div_19_div_52_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "input", 88);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "input", 87);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 47);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Premium");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_47_small_7_Template, 2, 0, "small", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_52_small_7_Template, 2, 0, "small", 48);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
   if (rf & 2) {
-    const ctx_r28 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+    const ctx_r27 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", (ctx_r28.Premium == null ? null : ctx_r28.Premium.hasError("required")) && (ctx_r28.Premium == null ? null : ctx_r28.Premium.touched));
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", (ctx_r27.Premium == null ? null : ctx_r27.Premium.hasError("required")) && (ctx_r27.Premium == null ? null : ctx_r27.Premium.touched));
   }
 }
-function InvestmentApprovalFormComponent_div_19_div_48_Template(rf, ctx) {
+function InvestmentApprovalFormComponent_div_19_div_53_Template(rf, ctx) {
   if (rf & 1) {
-    const _r119 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 44)(2, "p-checkbox", 89);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_19_div_48_Template_p_checkbox_click_2_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r119);
-      const ctx_r118 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r118.setpremium());
+    const _r120 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 47)(2, "p-checkbox", 88);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_19_div_53_Template_p_checkbox_click_2_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r120);
+      const ctx_r119 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r119.setpremium());
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 90);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 89);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Market Price");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
   }
@@ -32508,73 +32490,73 @@ function InvestmentApprovalFormComponent_div_19_div_48_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("binary", true);
   }
 }
-function InvestmentApprovalFormComponent_div_19_div_49_Template(rf, ctx) {
+function InvestmentApprovalFormComponent_div_19_div_54_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "p-dropdown", 91);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "p-dropdown", 90);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 47);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Type of Debt");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()()();
   }
   if (rf & 2) {
-    const ctx_r30 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+    const ctx_r29 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("options", ctx_r30.cities);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("options", ctx_r29.cities);
   }
 }
-function InvestmentApprovalFormComponent_div_19_div_50_small_7_Template(rf, ctx) {
+function InvestmentApprovalFormComponent_div_19_div_55_small_7_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " StrikePrice is Required. ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
   }
 }
-function InvestmentApprovalFormComponent_div_19_div_50_small_8_Template(rf, ctx) {
+function InvestmentApprovalFormComponent_div_19_div_55_small_8_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "small", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, " Please Enter Valid StrikePrice ");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
   }
 }
-function InvestmentApprovalFormComponent_div_19_div_50_Template(rf, ctx) {
+function InvestmentApprovalFormComponent_div_19_div_55_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "input", 92);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "input", 91);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 47);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Strike Price");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "span", 35);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](6, "*");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_50_small_7_Template, 2, 0, "small", 45);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](8, InvestmentApprovalFormComponent_div_19_div_50_small_8_Template, 2, 0, "small", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](7, InvestmentApprovalFormComponent_div_19_div_55_small_7_Template, 2, 0, "small", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](8, InvestmentApprovalFormComponent_div_19_div_55_small_8_Template, 2, 0, "small", 48);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
   if (rf & 2) {
-    const ctx_r31 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+    const ctx_r30 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", (ctx_r31.StrikePrice == null ? null : ctx_r31.StrikePrice.hasError("required")) && (ctx_r31.StrikePrice == null ? null : ctx_r31.StrikePrice.touched));
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", (ctx_r30.StrikePrice == null ? null : ctx_r30.StrikePrice.hasError("required")) && (ctx_r30.StrikePrice == null ? null : ctx_r30.StrikePrice.touched));
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", (ctx_r31.StrikePrice == null ? null : ctx_r31.StrikePrice.hasError("pattern")) && !(ctx_r31.StrikePrice == null ? null : ctx_r31.StrikePrice.hasError("required")));
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", (ctx_r30.StrikePrice == null ? null : ctx_r30.StrikePrice.hasError("pattern")) && !(ctx_r30.StrikePrice == null ? null : ctx_r30.StrikePrice.hasError("required")));
   }
 }
-function InvestmentApprovalFormComponent_div_19_div_51_Template(rf, ctx) {
+function InvestmentApprovalFormComponent_div_19_div_56_Template(rf, ctx) {
   if (rf & 1) {
-    const _r123 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    const _r124 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "input", 93);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "input", 92);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 47);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Bid Price");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "p-checkbox", 94);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_19_div_51_Template_p_checkbox_click_5_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r123);
-      const ctx_r122 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r122.setBidPrice());
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "p-checkbox", 93);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_19_div_56_Template_p_checkbox_click_5_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r124);
+      const ctx_r123 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r123.setBidPrice());
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](6, "label", 90);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](6, "label", 89);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](7, "Cut Off");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
@@ -32583,32 +32565,32 @@ function InvestmentApprovalFormComponent_div_19_div_51_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("binary", true);
   }
 }
-function InvestmentApprovalFormComponent_div_19_div_52_Template(rf, ctx) {
+function InvestmentApprovalFormComponent_div_19_div_57_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 27)(1, "div", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "input", 95);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](2, "input", 94);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "label", 47);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Bid Lot/Shares");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
   }
 }
-function InvestmentApprovalFormComponent_div_19_button_54_Template(rf, ctx) {
+function InvestmentApprovalFormComponent_div_19_button_59_Template(rf, ctx) {
   if (rf & 1) {
-    const _r125 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "button", 96);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_19_button_54_Template_button_click_0_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r125);
-      const ctx_r124 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r124.AddToList());
+    const _r126 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "button", 95);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_19_button_59_Template_button_click_0_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r126);
+      const ctx_r125 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r125.AddToList());
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
   }
   if (rf & 2) {
-    const ctx_r34 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("disabled", ctx_r34.irfmainForm.invalid);
+    const ctx_r33 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("disabled", ctx_r33.irfmainForm.invalid);
   }
 }
-function InvestmentApprovalFormComponent_div_19_div_56_ng_template_3_Template(rf, ctx) {
+function InvestmentApprovalFormComponent_div_19_div_61_ng_template_3_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "tr")(1, "th");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](2, "Action");
@@ -32663,15 +32645,15 @@ function InvestmentApprovalFormComponent_div_19_div_56_ng_template_3_Template(rf
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
 }
-function InvestmentApprovalFormComponent_div_19_div_56_ng_template_4_Template(rf, ctx) {
+function InvestmentApprovalFormComponent_div_19_div_61_ng_template_4_Template(rf, ctx) {
   if (rf & 1) {
-    const _r133 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "tr")(1, "td")(2, "i", 103);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_19_div_56_ng_template_4_Template_i_click_2_listener() {
-      const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r133);
-      const formDataArray_r131 = restoredCtx.$implicit;
-      const ctx_r132 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r132.deletetabledata(formDataArray_r131));
+    const _r134 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "tr")(1, "td")(2, "i", 102);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_19_div_61_ng_template_4_Template_i_click_2_listener() {
+      const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r134);
+      const formDataArray_r132 = restoredCtx.$implicit;
+      const ctx_r133 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r133.deletetabledata(formDataArray_r132));
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "td");
@@ -32725,80 +32707,80 @@ function InvestmentApprovalFormComponent_div_19_div_56_ng_template_4_Template(rf
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
   if (rf & 2) {
-    const formDataArray_r131 = ctx.$implicit;
+    const formDataArray_r132 = ctx.$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r131.NatureofTrade);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r132.NatureofTrade);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r131.Requestfor);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r132.Requestfor);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r131.AccountCode);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r132.AccountCode);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r131.Security || formDataArray_r131.NameOfIssue);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r132.Security || formDataArray_r132.NameOfIssue);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r131.ISIN);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r132.ISIN);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r131.Transaction);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r132.Transaction);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r131.QuantityLot);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r132.QuantityLot);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r131.EqQuantity);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r132.EqQuantity);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r131.FutOpQuantityLot);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r132.FutOpQuantityLot);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r131.Price);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r132.Price);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r131.Month);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r132.Month);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r131.OptionType);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r132.OptionType);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r131.StrikePrice);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r132.StrikePrice);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r131.Position);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r132.Position);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](33, 16, formDataArray_r131.StartDate));
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](33, 16, formDataArray_r132.StartDate));
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r131.Primary_Issue_Type);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](formDataArray_r132.Primary_Issue_Type);
   }
 }
-function InvestmentApprovalFormComponent_div_19_div_56_div_6_Template(rf, ctx) {
+function InvestmentApprovalFormComponent_div_19_div_61_div_6_Template(rf, ctx) {
   if (rf & 1) {
-    const _r135 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div")(1, "p-checkbox", 104);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function InvestmentApprovalFormComponent_div_19_div_56_div_6_Template_p_checkbox_ngModelChange_1_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r135);
-      const ctx_r134 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r134.IAgreeDisclaimer = $event);
-    })("onChange", function InvestmentApprovalFormComponent_div_19_div_56_div_6_Template_p_checkbox_onChange_1_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r135);
-      const ctx_r136 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r136.oniagreebtn($event));
+    const _r136 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div")(1, "p-checkbox", 103);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function InvestmentApprovalFormComponent_div_19_div_61_div_6_Template_p_checkbox_ngModelChange_1_listener($event) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r136);
+      const ctx_r135 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r135.IAgreeDisclaimer = $event);
+    })("onChange", function InvestmentApprovalFormComponent_div_19_div_61_div_6_Template_p_checkbox_onChange_1_listener($event) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r136);
+      const ctx_r137 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r137.oniagreebtn($event));
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](2, "label", 90);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](2, "label", 89);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](3, "I Agree Disclaimer");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-  }
-  if (rf & 2) {
-    const ctx_r129 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngModel", ctx_r129.IAgreeDisclaimer);
-  }
-}
-function InvestmentApprovalFormComponent_div_19_div_56_div_8_Template(rf, ctx) {
-  if (rf & 1) {
-    const _r138 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div")(1, "button", 105);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_19_div_56_div_8_Template_button_click_1_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r138);
-      const ctx_r137 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r137.finalsave());
-    });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
   if (rf & 2) {
     const ctx_r130 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("disabled", ctx_r130.lastbtn == true);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngModel", ctx_r130.IAgreeDisclaimer);
+  }
+}
+function InvestmentApprovalFormComponent_div_19_div_61_div_8_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r139 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div")(1, "button", 104);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_19_div_61_div_8_Template_button_click_1_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r139);
+      const ctx_r138 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r138.finalsave());
+    });
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
+  }
+  if (rf & 2) {
+    const ctx_r131 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("disabled", ctx_r131.lastbtn == true);
   }
 }
 const _c1 = function () {
@@ -32806,43 +32788,43 @@ const _c1 = function () {
     "min-width": "75rem"
   };
 };
-function InvestmentApprovalFormComponent_div_19_div_56_Template(rf, ctx) {
+function InvestmentApprovalFormComponent_div_19_div_61_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 97)(1, "p-table", 98, 99);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](3, InvestmentApprovalFormComponent_div_19_div_56_ng_template_3_Template, 35, 0, "ng-template", 100);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](4, InvestmentApprovalFormComponent_div_19_div_56_ng_template_4_Template, 36, 18, "ng-template", 101);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 96)(1, "p-table", 97, 98);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](3, InvestmentApprovalFormComponent_div_19_div_61_ng_template_3_Template, 35, 0, "ng-template", 99);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](4, InvestmentApprovalFormComponent_div_19_div_61_ng_template_4_Template, 36, 18, "ng-template", 100);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "div", 102);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](6, InvestmentApprovalFormComponent_div_19_div_56_div_6_Template, 4, 1, "div", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "div", 101);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](6, InvestmentApprovalFormComponent_div_19_div_61_div_6_Template, 4, 1, "div", 15);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](7, "\u00A0 ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](8, InvestmentApprovalFormComponent_div_19_div_56_div_8_Template, 2, 1, "div", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](8, InvestmentApprovalFormComponent_div_19_div_61_div_8_Template, 2, 1, "div", 15);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
   if (rf & 2) {
-    const ctx_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+    const ctx_r34 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("value", ctx_r35.formDataArray)("rows", 5)("paginator", true)("totalRecords", ctx_r35.formDataArray.length)("tableStyle", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpureFunction0"](9, _c1))("rowHover", true)("showCurrentPageReport", true);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("value", ctx_r34.formDataArray)("rows", 5)("paginator", true)("totalRecords", ctx_r34.formDataArray.length)("tableStyle", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpureFunction0"](9, _c1))("rowHover", true)("showCurrentPageReport", true);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r35.showtablegrid);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r34.showtablegrid);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r35.showtablegrid);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r34.showtablegrid);
   }
 }
 function InvestmentApprovalFormComponent_div_19_Template(rf, ctx) {
   if (rf & 1) {
-    const _r140 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    const _r141 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 26)(1, "div", 0)(2, "div", 27)(3, "label", 28);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Request For");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "div", 29)(6, "p-radioButton", 30);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_19_Template_p_radioButton_click_6_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r140);
-      const ctx_r139 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r139.getallEmployeeAccountCode());
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r141);
+      const ctx_r140 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r140.getallEmployeeAccountCode());
     })("ngModelChange", function InvestmentApprovalFormComponent_div_19_Template_p_radioButton_ngModelChange_6_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r140);
-      const ctx_r141 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r141.selectedValue1 = $event);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r141);
+      const ctx_r142 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r142.selectedValue1 = $event);
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](7, "label", 31);
@@ -32850,13 +32832,13 @@ function InvestmentApprovalFormComponent_div_19_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](9, "p-radioButton", 32);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_19_Template_p_radioButton_click_9_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r140);
-      const ctx_r142 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r142.getallEmployeeAccountCode());
-    })("ngModelChange", function InvestmentApprovalFormComponent_div_19_Template_p_radioButton_ngModelChange_9_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r140);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r141);
       const ctx_r143 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r143.selectedValue1 = $event);
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r143.getallEmployeeAccountCode());
+    })("ngModelChange", function InvestmentApprovalFormComponent_div_19_Template_p_radioButton_ngModelChange_9_listener($event) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r141);
+      const ctx_r144 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r144.selectedValue1 = $event);
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](10, "label", 31);
@@ -32864,9 +32846,9 @@ function InvestmentApprovalFormComponent_div_19_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](12, "div", 27)(13, "div", 33)(14, "p-dropdown", 34);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("ngModelChange", function InvestmentApprovalFormComponent_div_19_Template_p_dropdown_ngModelChange_14_listener($event) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r140);
-      const ctx_r144 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r144.PANNo = $event);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r141);
+      const ctx_r145 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r145.PANNo = $event);
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](15, "label", 28);
@@ -32888,37 +32870,42 @@ function InvestmentApprovalFormComponent_div_19_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](30, InvestmentApprovalFormComponent_div_19_div_30_Template, 8, 2, "div", 37);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](31, InvestmentApprovalFormComponent_div_19_div_31_Template, 5, 3, "div", 37);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](32, InvestmentApprovalFormComponent_div_19_div_32_Template, 3, 1, "div", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](33, InvestmentApprovalFormComponent_div_19_div_33_Template, 9, 2, "div", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](33, InvestmentApprovalFormComponent_div_19_div_33_Template, 10, 2, "div", 37);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](34, InvestmentApprovalFormComponent_div_19_div_34_Template, 8, 2, "div", 37);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](35, InvestmentApprovalFormComponent_div_19_div_35_Template, 12, 5, "div", 37);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](36, InvestmentApprovalFormComponent_div_19_div_36_Template, 10, 4, "div", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](37, InvestmentApprovalFormComponent_div_19_div_37_Template, 11, 3, "div", 38);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](38, InvestmentApprovalFormComponent_div_19_div_38_Template, 6, 1, "div", 38);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](39, InvestmentApprovalFormComponent_div_19_div_39_Template, 8, 4, "div", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](40, InvestmentApprovalFormComponent_div_19_div_40_Template, 8, 3, "div", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](41, InvestmentApprovalFormComponent_div_19_div_41_Template, 8, 4, "div", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](42, InvestmentApprovalFormComponent_div_19_div_42_Template, 9, 2, "div", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](43, InvestmentApprovalFormComponent_div_19_div_43_Template, 9, 2, "div", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](44, InvestmentApprovalFormComponent_div_19_div_44_Template, 8, 2, "div", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](37, InvestmentApprovalFormComponent_div_19_div_37_Template, 10, 2, "div", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](38, "div", 39)(39, "div", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](40, "input", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](41, "label", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](42, "Available QTY");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](43, "span", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](44, InvestmentApprovalFormComponent_div_19_div_44_Template, 8, 4, "div", 37);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](45, InvestmentApprovalFormComponent_div_19_div_45_Template, 8, 3, "div", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](46, InvestmentApprovalFormComponent_div_19_div_46_Template, 11, 0, "div", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](47, InvestmentApprovalFormComponent_div_19_div_47_Template, 8, 1, "div", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](48, InvestmentApprovalFormComponent_div_19_div_48_Template, 5, 1, "div", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](49, InvestmentApprovalFormComponent_div_19_div_49_Template, 7, 1, "div", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](50, InvestmentApprovalFormComponent_div_19_div_50_Template, 9, 2, "div", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](51, InvestmentApprovalFormComponent_div_19_div_51_Template, 8, 1, "div", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](52, InvestmentApprovalFormComponent_div_19_div_52_Template, 5, 0, "div", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](46, InvestmentApprovalFormComponent_div_19_div_46_Template, 8, 4, "div", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](47, InvestmentApprovalFormComponent_div_19_div_47_Template, 9, 2, "div", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](48, InvestmentApprovalFormComponent_div_19_div_48_Template, 9, 2, "div", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](49, InvestmentApprovalFormComponent_div_19_div_49_Template, 8, 2, "div", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](50, InvestmentApprovalFormComponent_div_19_div_50_Template, 8, 3, "div", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](51, InvestmentApprovalFormComponent_div_19_div_51_Template, 11, 0, "div", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](52, InvestmentApprovalFormComponent_div_19_div_52_Template, 8, 1, "div", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](53, InvestmentApprovalFormComponent_div_19_div_53_Template, 5, 1, "div", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](54, InvestmentApprovalFormComponent_div_19_div_54_Template, 7, 1, "div", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](55, InvestmentApprovalFormComponent_div_19_div_55_Template, 9, 2, "div", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](56, InvestmentApprovalFormComponent_div_19_div_56_Template, 8, 1, "div", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](57, InvestmentApprovalFormComponent_div_19_div_57_Template, 5, 0, "div", 37);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementContainerEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](53, "div", 39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](54, InvestmentApprovalFormComponent_div_19_button_54_Template, 1, 1, "button", 40);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](55, "button", 41);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_19_Template_button_click_55_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r140);
-      const ctx_r145 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r145.ResetMainform());
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](58, "div", 42);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](59, InvestmentApprovalFormComponent_div_19_button_59_Template, 1, 1, "button", 43);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](60, "button", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_19_Template_button_click_60_listener() {
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r141);
+      const ctx_r146 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r146.ResetMainform());
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](56, InvestmentApprovalFormComponent_div_19_div_56_Template, 9, 10, "div", 42);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](61, InvestmentApprovalFormComponent_div_19_div_61_Template, 9, 10, "div", 45);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
   if (rf & 2) {
@@ -32965,9 +32952,9 @@ function InvestmentApprovalFormComponent_div_19_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", (ctx_r0.selectedValue3 == "Future" || ctx_r0.selectedValue3 == "Option") && ctx_r0.irfmainForm.get("Postion").value === "SquareOff");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r0.isVisibleEquity || ctx_r0.isVisibleDebt || ctx_r0.isVisiblePMS || ctx_r0.isVisibleSpecialCase || ctx_r0.isVisibleqty);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r0.isVisibleEquity || ctx_r0.isVisibleDebt || ctx_r0.isVisiblePMS || ctx_r0.isVisibleSpecialCase || ctx_r0.isVisibleqty);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpropertyInterpolate"]("value", ctx_r0.AVQTYFINAL);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r0.isVisiblePrimaryIssue);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx_r0.isVisiblesell);
@@ -33075,30 +33062,30 @@ function InvestmentApprovalFormComponent_div_20_ng_template_3_Template(rf, ctx) 
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
   if (rf & 2) {
-    const product_r148 = ctx.$implicit;
-    const ctx_r147 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
+    const product_r149 = ctx.$implicit;
+    const ctx_r148 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](product_r148.NatureofTrade);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](product_r149.NatureofTrade);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](product_r148.Security);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](product_r149.Security);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](product_r148.Transaction);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](product_r149.Transaction);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](product_r148.QuantityLot);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](product_r149.QuantityLot);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](product_r148.EqQuantity);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](product_r149.EqQuantity);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](product_r148.PricePremium);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](product_r149.PricePremium);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](product_r148.Month);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](product_r149.Month);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](product_r148.OptionType);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](product_r149.OptionType);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](product_r148.StrikePrice);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](product_r149.StrikePrice);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](product_r148.ApprovalStatus);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](product_r149.ApprovalStatus);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](ctx_r147.getFormattedReasons(product_r148.RejectionReason));
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](ctx_r148.getFormattedReasons(product_r149.RejectionReason));
   }
 }
 const _c2 = function () {
@@ -33108,17 +33095,17 @@ const _c2 = function () {
 };
 function InvestmentApprovalFormComponent_div_20_Template(rf, ctx) {
   if (rf & 1) {
-    const _r150 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div")(1, "p-table", 106);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](2, InvestmentApprovalFormComponent_div_20_ng_template_2_Template, 23, 0, "ng-template", 100);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](3, InvestmentApprovalFormComponent_div_20_ng_template_3_Template, 23, 11, "ng-template", 101);
+    const _r151 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div")(1, "p-table", 105);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](2, InvestmentApprovalFormComponent_div_20_ng_template_2_Template, 23, 0, "ng-template", 99);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](3, InvestmentApprovalFormComponent_div_20_ng_template_3_Template, 23, 11, "ng-template", 100);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "\u00A0 ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "div", 102)(6, "button", 107);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](5, "div", 101)(6, "button", 106);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵlistener"]("click", function InvestmentApprovalFormComponent_div_20_Template_button_click_6_listener() {
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r150);
-      const ctx_r149 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
-      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r149.Back());
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵrestoreView"](_r151);
+      const ctx_r150 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
+      return _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵresetView"](ctx_r150.Back());
     });
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
   }
@@ -33640,8 +33627,13 @@ class InvestmentApprovalFormComponent {
     return hasOpposite;
   }
   AddToList() {
-    if (this.Transaction?.value == 'SELL') {
+    if (this.Transaction?.value == 'SELL' && (this.selectedValue3 == 'Equity' || this.selectedValue3 == 'SpecialCase')) {
       let subdata = Number(this.AVQTYFINAL) - Number(this.Quantity?.value);
+      this.AVQTYFINAL = subdata;
+    }
+    if (this.Transaction?.value == 'SELL' && (this.selectedValue3 == 'Future' || this.selectedValue3 == 'Option')) {
+      let mul = Number(this.Lot?.value) * 10;
+      let subdata = Number(this.AVQTYFINAL) - mul;
       this.AVQTYFINAL = subdata;
     }
     const canAdd = this.canAddTransaction(this.Transaction?.value);
@@ -33684,7 +33676,7 @@ class InvestmentApprovalFormComponent {
               QuantityLot: this.QuantityLot?.value == undefined || this.QuantityLot?.value == "" ? null : this.QuantityLot?.value,
               FutOpQuantityLot: this.Lot?.value == undefined || this.Lot?.value == "" ? null : this.Lot?.value,
               Position: this.Postion?.value == undefined || this.Postion?.value == "" ? null : this.Postion?.value,
-              EqQuantity: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value,
+              EqQuantity: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value,
               allAquiredthrough: this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "" ? null : this.Aquiredthrough?.value,
               PricePremium: this.Premium?.value == undefined || this.Premium?.value == "" ? null : this.Premium?.value,
               TypeofDebt: this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "" ? null : this.TypeofDebt?.value,
@@ -33703,7 +33695,7 @@ class InvestmentApprovalFormComponent {
               PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : this.isSellNoSelected === true ? 0 : null,
               AIA: this.AIA,
               AVQTYFINAL: this.AVQTYFINAL,
-              TradeAvailableQty: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value
+              TradeAvailableQty: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value
             };
             this.formDataArray.push(model);
             // console.log(" this.formDataArray", this.formDataArray);
@@ -33749,7 +33741,7 @@ class InvestmentApprovalFormComponent {
                 QuantityLot: this.QuantityLot?.value == undefined || this.QuantityLot?.value == "" ? null : this.QuantityLot?.value,
                 FutOpQuantityLot: this.Lot?.value == undefined || this.Lot?.value == "" ? null : this.Lot?.value,
                 Position: this.Postion?.value == undefined ? null : this.Postion?.value,
-                EqQuantity: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value,
+                EqQuantity: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value,
                 allAquiredthrough: this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "" ? null : this.Aquiredthrough?.value,
                 PricePremium: this.Premium?.value == undefined || this.Premium?.value == "" ? null : this.Premium?.value,
                 TypeofDebt: this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "" ? null : this.TypeofDebt?.value,
@@ -33768,7 +33760,7 @@ class InvestmentApprovalFormComponent {
                 PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : this.isSellNoSelected === true ? 0 : null,
                 AIA: this.AIA,
                 AVQTYFINAL: this.AVQTYFINAL,
-                TradeAvailableQty: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value
+                TradeAvailableQty: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value
               };
               this.formDataArray.push(model);
               // console.log(" this.formDataArray", this.formDataArray);
@@ -33822,7 +33814,7 @@ class InvestmentApprovalFormComponent {
                     QuantityLot: this.QuantityLot?.value == undefined || this.QuantityLot?.value == "" ? null : this.QuantityLot?.value,
                     FutOpQuantityLot: this.Lot?.value == undefined || this.Lot?.value == "" ? null : this.Lot?.value,
                     Position: this.Postion?.value == undefined ? null : this.Postion?.value,
-                    EqQuantity: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value,
+                    EqQuantity: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value,
                     allAquiredthrough: this.Aquiredthrough?.value == undefined ? null : this.Aquiredthrough?.value,
                     PricePremium: this.Premium?.value == undefined || this.Premium?.value == "" ? null : this.Premium?.value,
                     TypeofDebt: this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "" ? null : this.TypeofDebt?.value,
@@ -33841,7 +33833,7 @@ class InvestmentApprovalFormComponent {
                     PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : this.isSellNoSelected === true ? 0 : null,
                     AIA: this.AIA,
                     AVQTYFINAL: this.AVQTYFINAL,
-                    TradeAvailableQty: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value
+                    TradeAvailableQty: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value
                   };
                   this.formDataArray.push(model);
                   // console.log(" this.formDataArray", this.formDataArray);
@@ -33889,7 +33881,7 @@ class InvestmentApprovalFormComponent {
                   QuantityLot: this.QuantityLot?.value == undefined || this.QuantityLot?.value == "" ? null : this.QuantityLot?.value,
                   FutOpQuantityLot: this.Lot?.value == undefined || this.Lot?.value == "" ? null : this.Lot?.value,
                   Position: this.Postion?.value == undefined ? null : this.Postion?.value,
-                  EqQuantity: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value,
+                  EqQuantity: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value,
                   allAquiredthrough: this.Aquiredthrough?.value == undefined ? null : this.Aquiredthrough?.value,
                   PricePremium: this.Premium?.value == undefined || this.Premium?.value == "" ? null : this.Premium?.value,
                   TypeofDebt: this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "" ? null : this.TypeofDebt?.value,
@@ -33909,7 +33901,7 @@ class InvestmentApprovalFormComponent {
                   PreviousTradeValueGreater: this.isSellNoSelected === true ? 0 : null,
                   AIA: this.AIA,
                   AVQTYFINAL: this.AVQTYFINAL,
-                  TradeAvailableQty: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value
+                  TradeAvailableQty: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value
                 };
                 this.formDataArray.push(model);
                 // console.log(" this.formDataArray", this.formDataArray);
@@ -33960,7 +33952,7 @@ class InvestmentApprovalFormComponent {
                   QuantityLot: this.QuantityLot?.value == undefined || this.QuantityLot?.value == "" ? null : this.QuantityLot?.value,
                   FutOpQuantityLot: this.Lot?.value == undefined || this.Lot?.value == "" ? null : this.Lot?.value,
                   Position: this.Postion?.value == undefined || this.Postion?.value == "" ? null : this.Postion?.value,
-                  EqQuantity: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value,
+                  EqQuantity: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value,
                   allAquiredthrough: this.Aquiredthrough?.value == undefined ? null : this.Aquiredthrough?.value,
                   PricePremium: this.Premium?.value == undefined || this.Premium?.value == "" ? null : this.Premium?.value,
                   TypeofDebt: this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "" ? null : this.TypeofDebt?.value,
@@ -33979,7 +33971,7 @@ class InvestmentApprovalFormComponent {
                   PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : this.isSellNoSelected === true ? 0 : null,
                   AIA: this.AIA,
                   AVQTYFINAL: this.AVQTYFINAL,
-                  TradeAvailableQty: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value
+                  TradeAvailableQty: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value
                 };
                 this.formDataArray.push(model);
                 // console.log(" this.formDataArray", this.formDataArray);
@@ -34032,7 +34024,7 @@ class InvestmentApprovalFormComponent {
                     QuantityLot: this.QuantityLot?.value == undefined || this.QuantityLot?.value == "" ? null : this.QuantityLot?.value,
                     FutOpQuantityLot: this.Lot?.value == undefined || this.Lot?.value == "" ? null : this.Lot?.value,
                     Position: this.Postion?.value == undefined || this.Postion?.value == "" ? null : this.Postion?.value,
-                    EqQuantity: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value,
+                    EqQuantity: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value,
                     allAquiredthrough: this.Aquiredthrough?.value == undefined ? null : this.Aquiredthrough?.value,
                     PricePremium: this.Premium?.value == undefined || this.Premium?.value == "" ? null : this.Premium?.value,
                     TypeofDebt: this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "" ? null : this.TypeofDebt?.value,
@@ -34051,7 +34043,7 @@ class InvestmentApprovalFormComponent {
                     PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : this.isSellNoSelected === true ? 0 : null,
                     AIA: this.AIA,
                     AVQTYFINAL: this.AVQTYFINAL,
-                    TradeAvailableQty: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value
+                    TradeAvailableQty: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value
                   };
                   this.formDataArray.push(model);
                   // console.log(" this.formDataArray", this.formDataArray);
@@ -34101,7 +34093,7 @@ class InvestmentApprovalFormComponent {
                   QuantityLot: this.QuantityLot?.value == undefined || this.QuantityLot?.value == "" ? null : this.QuantityLot?.value,
                   FutOpQuantityLot: this.Lot?.value == undefined || this.Lot?.value == "" ? null : this.Lot?.value,
                   Position: this.Postion?.value == undefined || this.Postion?.value == "" ? null : this.Postion?.value,
-                  EqQuantity: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value,
+                  EqQuantity: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value,
                   allAquiredthrough: this.Aquiredthrough?.value == undefined ? null : this.Aquiredthrough?.value,
                   PricePremium: this.Premium?.value == undefined || this.Premium?.value == "" ? null : this.Premium?.value,
                   TypeofDebt: this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "" ? null : this.TypeofDebt?.value,
@@ -34120,7 +34112,7 @@ class InvestmentApprovalFormComponent {
                   PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : this.isSellNoSelected === true ? 0 : null,
                   AIA: this.AIA,
                   AVQTYFINAL: this.AVQTYFINAL,
-                  TradeAvailableQty: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value
+                  TradeAvailableQty: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value
                 };
                 this.formDataArray.push(model);
                 // console.log(" this.formDataArray", this.formDataArray);
@@ -34175,7 +34167,7 @@ class InvestmentApprovalFormComponent {
                       QuantityLot: this.QuantityLot?.value == undefined || this.QuantityLot?.value == "" ? null : this.QuantityLot?.value,
                       FutOpQuantityLot: this.Lot?.value == undefined || this.Lot?.value == "" ? null : this.Lot?.value,
                       Position: this.Postion?.value == undefined || this.Postion?.value == "" ? null : this.Postion?.value,
-                      EqQuantity: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value,
+                      EqQuantity: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value,
                       allAquiredthrough: this.Aquiredthrough?.value == undefined ? null : this.Aquiredthrough?.value,
                       PricePremium: this.Premium?.value == undefined || this.Premium?.value == "" ? null : this.Premium?.value,
                       TypeofDebt: this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "" ? null : this.TypeofDebt?.value,
@@ -34194,7 +34186,7 @@ class InvestmentApprovalFormComponent {
                       PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : this.isSellNoSelected === true ? 0 : null,
                       AIA: this.AIA,
                       AVQTYFINAL: this.AVQTYFINAL,
-                      TradeAvailableQty: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value
+                      TradeAvailableQty: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value
                     };
                     this.formDataArray.push(model);
                     // console.log(" this.formDataArray", this.formDataArray);
@@ -34242,7 +34234,7 @@ class InvestmentApprovalFormComponent {
                     QuantityLot: this.QuantityLot?.value == undefined || this.QuantityLot?.value == "" ? null : this.QuantityLot?.value,
                     FutOpQuantityLot: this.Lot?.value == undefined || this.Lot?.value == "" ? null : this.Lot?.value,
                     Position: this.Postion?.value == undefined || this.Postion?.value == "" ? null : this.Postion?.value,
-                    EqQuantity: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value,
+                    EqQuantity: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value,
                     allAquiredthrough: this.Aquiredthrough?.value == undefined ? null : this.Aquiredthrough?.value,
                     PricePremium: this.Premium?.value == undefined || this.Premium?.value == "" ? null : this.Premium?.value,
                     TypeofDebt: this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "" ? null : this.TypeofDebt?.value,
@@ -34262,7 +34254,7 @@ class InvestmentApprovalFormComponent {
                     PreviousTradeValueGreater: this.isSellNoSelected === true ? 0 : null,
                     AIA: this.AIA,
                     AVQTYFINAL: this.AVQTYFINAL,
-                    TradeAvailableQty: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value
+                    TradeAvailableQty: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value
                   };
                   this.formDataArray.push(model);
                   // console.log(" this.formDataArray", this.formDataArray);
@@ -34311,7 +34303,7 @@ class InvestmentApprovalFormComponent {
                 QuantityLot: this.QuantityLot?.value == undefined || this.QuantityLot?.value == "" ? null : this.QuantityLot?.value,
                 FutOpQuantityLot: this.Lot?.value == undefined || this.Lot?.value == "" ? null : this.Lot?.value,
                 Position: this.Postion?.value == undefined ? null : this.Postion?.value,
-                EqQuantity: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value,
+                EqQuantity: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value,
                 allAquiredthrough: this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "" ? null : this.Aquiredthrough?.value,
                 PricePremium: this.Premium?.value == undefined || this.Premium?.value == "" ? null : this.Premium?.value,
                 TypeofDebt: this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "" ? null : this.TypeofDebt?.value,
@@ -34330,7 +34322,7 @@ class InvestmentApprovalFormComponent {
                 PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : this.isSellNoSelected === true ? 0 : null,
                 AIA: this.AIA,
                 AVQTYFINAL: this.AVQTYFINAL,
-                TradeAvailableQty: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value
+                TradeAvailableQty: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value
               };
               this.formDataArray.push(model);
               // console.log(" this.formDataArray", this.formDataArray);
@@ -34384,7 +34376,7 @@ class InvestmentApprovalFormComponent {
                     QuantityLot: this.QuantityLot?.value == undefined || this.QuantityLot?.value == "" ? null : this.QuantityLot?.value,
                     FutOpQuantityLot: this.Lot?.value == undefined || this.Lot?.value == "" ? null : this.Lot?.value,
                     Position: this.Postion?.value == undefined ? null : this.Postion?.value,
-                    EqQuantity: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value,
+                    EqQuantity: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value,
                     allAquiredthrough: this.Aquiredthrough?.value == undefined ? null : this.Aquiredthrough?.value,
                     PricePremium: this.Premium?.value == undefined || this.Premium?.value == "" ? null : this.Premium?.value,
                     TypeofDebt: this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "" ? null : this.TypeofDebt?.value,
@@ -34403,7 +34395,7 @@ class InvestmentApprovalFormComponent {
                     PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : this.isSellNoSelected === true ? 0 : null,
                     AIA: this.AIA,
                     AVQTYFINAL: this.AVQTYFINAL,
-                    TradeAvailableQty: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value
+                    TradeAvailableQty: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value
                   };
                   this.formDataArray.push(model);
                   // console.log(" this.formDataArray", this.formDataArray);
@@ -34451,7 +34443,7 @@ class InvestmentApprovalFormComponent {
                   QuantityLot: this.QuantityLot?.value == undefined || this.QuantityLot?.value == "" ? null : this.QuantityLot?.value,
                   FutOpQuantityLot: this.Lot?.value == undefined || this.Lot?.value == "" ? null : this.Lot?.value,
                   Position: this.Postion?.value == undefined ? null : this.Postion?.value,
-                  EqQuantity: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value,
+                  EqQuantity: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value,
                   allAquiredthrough: this.Aquiredthrough?.value == undefined ? null : this.Aquiredthrough?.value,
                   PricePremium: this.Premium?.value == undefined || this.Premium?.value == "" ? null : this.Premium?.value,
                   TypeofDebt: this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "" ? null : this.TypeofDebt?.value,
@@ -34471,7 +34463,7 @@ class InvestmentApprovalFormComponent {
                   PreviousTradeValueGreater: this.isSellNoSelected === true ? 0 : null,
                   AIA: this.AIA,
                   AVQTYFINAL: this.AVQTYFINAL,
-                  TradeAvailableQty: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value
+                  TradeAvailableQty: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value
                 };
                 this.formDataArray.push(model);
                 // console.log(" this.formDataArray", this.formDataArray);
@@ -34529,7 +34521,7 @@ class InvestmentApprovalFormComponent {
           QuantityLot: this.QuantityLot?.value == undefined || this.QuantityLot?.value == "" ? null : this.QuantityLot?.value,
           FutOpQuantityLot: this.Lot?.value == undefined || this.Lot?.value == "" ? null : this.Lot?.value,
           Position: this.Postion?.value == undefined || this.Postion?.value == "" ? null : this.Postion?.value,
-          EqQuantity: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value,
+          EqQuantity: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value,
           allAquiredthrough: this.Aquiredthrough?.value == undefined || this.Aquiredthrough?.value == "" ? null : this.Aquiredthrough?.value,
           PricePremium: this.Premium?.value == undefined || this.Premium?.value == "" ? null : this.Premium?.value,
           TypeofDebt: this.TypeofDebt?.value == undefined || this.TypeofDebt?.value == "" ? null : this.TypeofDebt?.value,
@@ -34548,7 +34540,7 @@ class InvestmentApprovalFormComponent {
           PreviousTradeValueGreater: this.isSellYesSelected === true ? 1 : this.isSellNoSelected === true ? 0 : null,
           AIA: this.AIA,
           AVQTYFINAL: this.AVQTYFINAL,
-          TradeAvailableQty: this.Quantity?.value == undefined || this.Quantity?.value == "" ? null : this.Quantity?.value
+          TradeAvailableQty: this.Quantity?.value === undefined || this.Quantity?.value === null || this.Quantity?.value === "" ? Number(this.Lot?.value ?? 0) * 10 : this.Quantity?.value
         };
         this.formDataArray.push(model);
         console.log(" this.formDataArray", this.formDataArray);
@@ -35045,8 +35037,13 @@ class InvestmentApprovalFormComponent {
   }
 
   SettAvQTY() {
+    this.Quantity?.reset();
+    this.Lot?.reset();
+  }
+  SettAvlot() {
     if (this.Transaction?.value == 'SELL') {
       this.Quantity?.reset();
+      this.Lot?.reset();
     }
   }
   Showoppositetransaction(event) {
@@ -35093,7 +35090,6 @@ class InvestmentApprovalFormComponent {
       // Update validity for the entire form
       this.irfmainForm.updateValueAndValidity();
     } else if (this.Transaction?.value == 'SELL' && this.selectedValue3 == 'Equity') {
-      this;
       // this.isVisiblebuy = false;
       // // this.isVisiblesell = true;
       // this.byredio = false
@@ -35406,6 +35402,20 @@ class InvestmentApprovalFormComponent {
       this.irfmainForm.controls["Lot"].updateValueAndValidity();
     }
   }
+  setlotandQuantity1(event) {
+    console.log("Value", event.value);
+    let Value = parseInt(event.value) * 10;
+    if (this.Transaction?.value == 'SELL') {
+      if (parseInt(this.AVQTYFINAL) < Value) {
+        this.messageService.add({
+          severity: 'warn',
+          summary: 'Warning',
+          detail: 'Please check the available QTY'
+        });
+        this.Lot?.reset();
+      } else {}
+    }
+  }
   setlotandQuantity(val) {
     if (this.selectedValue3 == 'Option' || this.selectedValue3 == 'Future') {
       this.show1 = true;
@@ -35647,7 +35657,7 @@ InvestmentApprovalFormComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPO
   features: [_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵProvidersFeature"]([primeng_api__WEBPACK_IMPORTED_MODULE_7__.MessageService, primeng_api__WEBPACK_IMPORTED_MODULE_7__.ConfirmationService])],
   decls: 47,
   vars: 19,
-  consts: [[1, "grid"], [1, "col-12", "md:col-2", "lg:col-2", "px-0"], [1, "col-12", "-mt-5"], [1, "grid", "mx-0", "py-1"], [1, "col-12", "gap-2"], [1, "NatureOfTrade"], ["name", "Equity", "value", "Equity", "label", "Equity", 3, "ngModel", "ngModelChange", "onClick"], ["name", "Future", "value", "Future", "label", "Future", 3, "ngModel", "ngModelChange", "onClick"], ["name", "Option", "value", "Option", "label", "Option", 3, "ngModel", "ngModelChange", "onClick"], ["name", "SpecialCase", "value", "SpecialCase", "label", "Special Case", 3, "ngModel", "ngModelChange", "onClick"], ["name", "PrimaryIssue", "value", "PrimaryIssue", "label", "Primary Issue", 3, "ngModel", "ngModelChange", "onClick"], [1, "col-12", "md:col-10", "lg:col-10"], [1, "card"], [1, "card-body"], ["class", "row", 4, "ngIf"], [4, "ngIf"], [1, "card", "flex", "justify-content-center"], ["header", "Disclaimer", 3, "visible", "visibleChange"], [2, "font-size", "12px"], [2, "font-weight", "bold"], [2, "color", "red"], ["pButton", "", "pRipple", "", "type", "button", "label", "Continue", 1, "p-button-info", "p-button-sm", 2, "margin-right", "auto", 3, "click"], ["header", "Warning !", 3, "visible", "closable", "visibleChange"], [1, "p-text-secondary", "block", 2, "color", "rgb(212, 16, 16)", "margin-bottom", "8px"], [1, "flex", "justify-end", "gap-4"], ["label", "Ok", 3, "click"], [1, "row"], [1, "col-12", "md:col-6", "lg:col-4"], ["for", "inputText4", 1, ""], [1, "inputText"], ["name", "groupname", "value", "Self", 3, "ngModel", "click", "ngModelChange"], ["for", "city1", 1, "pl-2", "pr-4", 2, "font-size", "small"], ["name", "groupname", "value", "Dependent", 3, "ngModel", "click", "ngModelChange"], [1, "form-floating", "form-floating-outline"], ["optionLabel", "Display", "filterBy", "Display", "placeholder", "Account Name", 1, "form-control", "px-0", 3, "options", "ngModel", "filter", "showClear", "ngModelChange"], [1, "required-asterisk"], [3, "formGroup"], ["class", "col-12 md:col-6 lg:col-4", 4, "ngIf"], ["class", "col-12 md:col-6 lg:col-2", 4, "ngIf"], [1, "col-12", "text-center"], ["pButton", "", "pRipple", "", "type", "button", "class", "btn btn-primary p-button-info p-button-sm mx-1", "label", "Add To List", 3, "disabled", "click", 4, "ngIf"], ["pButton", "", "pRipple", "", "type", "button", "label", "Reset", 1, "p-button-secondary", "p-button-sm", "mx-2", 3, "click"], ["class", "col-12", 4, "ngIf"], ["placeholder", "--Write--", "field", "SCRIP_DESC", "formControlName", "SearchSecurity", 1, "form-control", "px-0", 3, "inputStyle", "showClear", "suggestions", "completeMethod", "onSelect", "paste"], [1, ""], ["style", "color: red;", 4, "ngIf"], ["filterBy", "NAME_OF_ISSUE", "optionValue", "NAME_OF_ISSUE", "formControlName", "NameOfIssue", "optionLabel", "NAME_OF_ISSUE", "placeholder", "--Select--", 1, "form-control", "px-0", 3, "filter", "showClear", "options"], ["type", "text", "placeholder", "", "formControlName", "ISINNumber", "readonly", "", "pInputText", "", 1, "form-control"], ["filterBy", "value", "optionValue", "value", "formControlName", "Transaction", "optionLabel", "value", "placeholder", "Select Transaction ", 1, "form-control", "px-0", 3, "filter", "showClear", "options", "onChange"], ["name", "isNoSelected", "formControlName", "isNoSelected", 3, "value", "ngModel", "ngModelChange"], ["for", "noRadio", 1, "pl-2", "mt-2"], ["name", "isYesSelected", "formControlName", "isYesSelected", 3, "value", "ngModel", "ngModelChange"], ["for", "yesRadio", 1, "pl-2", "mt-2"], [1, "pl-2", "mt-2"], ["name", "Tenlacsmodel", "value", "true", "formControlName", "Tenlacsmodel", 3, "ngModel", "ngModelChange"], [1, "pr-5"], ["name", "isSellNoSelected", "formControlName", "isSellNoSelected", 3, "value", "ngModel", "ngModelChange"], ["for", "city1", 1, "pl-2", "pr-4"], ["name", "isSellYesSelected", "formControlName", "isSellYesSelected", 3, "value", "ngModel", "ngModelChange"], ["for", "city1", 1, "pl-2"], ["filterBy", "name", "optionValue", "name", "formControlName", "SpecialCase", "optionLabel", "name", "placeholder", "Select Special Case", 1, "form-control", "px-0", 3, "filter", "showClear", "options", "onChange"], [1, "pt-2"], ["placeholder", "--Select--", "inputId", "icon", "view", "month", "dateFormat", "MM", "formControlName", "Month", "styleClass", "w-100", 1, "form-control", "calendar", "p-0", 3, "showIcon", "showClear", "minDate", "maxDate", "viewDate"], ["optionValue", "name", "placeholder", "", "formControlName", "optiontype", "optionValue", "name", "optionLabel", "name", 1, "form-control", "px-0", 3, "options"], ["formControlName", "QuantityLot", "placeholder", "Select Quantity/Lot", "optionValue", "name", "optionLabel", "name", 1, "form-control", "px-0", 3, "options", "onChange"], ["for", "city1", 1, "pl-2", "mb-1"], ["type", "text", "placeholder", "", "formControlName", "Lot", "pInputText", "", 1, "form-control"], ["optionValue", "name", "optionValue", "name", "formControlName", "Postion", "placeholder", "Select Position", "optionLabel", "name", 1, "form-control", "px-0", 3, "options", "onChange"], [1, "col-12", "md:col-6", "lg:col-2"], ["type", "text", "placeholder", "", "formControlName", "Quantity", "pInputText", "", 1, "form-control", 3, "keyup"], ["val", ""], ["class", "text-red-500 text-xs", 4, "ngIf"], [1, "text-red-500", "text-xs"], ["type", "number", "placeholder", "", "pInputText", "", "readonly", "", 1, "form-control", 2, "color", "rgb(202, 67, 14)", 3, "value"], ["filterBy", "name", "optionValue", "name", "formControlName", "PrimaryIssueType", "optionLabel", "name", "placeholder", "", 1, "form-control", "px-0", 3, "filter", "showClear", "options"], ["placeholder", "", "formControlName", "Aquiredthrough", "optionValue", "value", "optionLabel", "value", 1, "form-control", "px-0", 3, "showClear", "options", "onChange"], ["formControlName", "PrimaryIssueType", "optionValue", "name", "placeholder", "", "optionLabel", "name", "filterBy", "name", 1, "form-control", "px-0", 3, "options", "filter", "showClear"], ["type", "text", "placeholder", "", "formControlName", "Price", "pInputText", "", 1, "form-control"], ["class", "pl-2 mt-2", 4, "ngIf"], ["name", "IsActive", "formControlName", "MarketPrice", 3, "binary", "click"], ["for", "city1", 1, "pl-3", "mt-0"], [1, "mt-2"], ["type", "text", "placeholder", "", "formControlName", "Reason", "pInputText", "", 1, "form-control"], ["formControlName", "SelltransactionDate", "inputId", "icon", "styleClass", "w-100", "disabled", "true", 1, "form-control", "p-0", "calendarIcon", 3, "showIcon"], ["formControlName", "StartDate", "inputId", "icon", "styleClass", "w-100", 1, "form-control", "p-0", "calendarIcon", 3, "showIcon", "maxDate"], [1, "pt-0"], ["value", "val1", "formControlName", "selectedValue4", 3, "click"], ["value", "val2", "formControlName", "selectedValue4", 3, "click"], ["type", "text", "placeholder", "", "formControlName", "Premium", "pInputText", "", 1, "form-control"], ["name", "IsActive", "formControlName", "activemodel", 3, "binary", "click"], ["for", "city1", 1, "pl-2", "mt-2"], ["formControlName", "TypeofDebt", "optionLabel", "name", 1, "form-control", "px-0", 3, "options"], ["type", "text", "formControlName", "StrikePrice", "placeholder", "", "pInputText", "", 1, "form-control"], ["type", "text", "placeholder", "", "formControlName", "BidPrice", "pInputText", "", "oninput", "this.value = this.value.replace(/[^0-9]/g, '')", 1, "form-control"], ["name", "IsActive", "formControlName", "activemodel1", 3, "binary", "click"], ["type", "text", "placeholder", "", "formControlName", "BidLotShares", "pInputText", "", 1, "form-control"], ["pButton", "", "pRipple", "", "type", "button", "label", "Add To List", 1, "btn", "btn-primary", "p-button-info", "p-button-sm", "mx-1", 3, "disabled", "click"], [1, "col-12"], ["styleClass", "p-datatable-sm p-datatable-gridlines", "dataKey", "id", "currentPageReportTemplate", "Showing {first} to {last} of {totalRecords} entries", 1, "bg-white", 3, "value", "rows", "paginator", "totalRecords", "tableStyle", "rowHover", "showCurrentPageReport"], ["dt", ""], ["pTemplate", "header"], ["pTemplate", "body"], [1, "center-content"], [1, "pi", "pi-trash", 3, "click"], ["name", "IsActive", "value", "1", 3, "ngModel", "ngModelChange", "onChange"], ["pButton", "", "pRipple", "", "type", "button", "label", "Submit", 1, "p-button-info", "p-button-sm", "mx-1", 3, "disabled", "click"], ["styleClass", "p-datatable-sm p-datatable-gridlines", 3, "value", "tableStyle"], ["pButton", "", "pRipple", "", "type", "button", "label", "Back", 1, "p-button-info", "p-button-sm", "mx-1", 3, "click"]],
+  consts: [[1, "grid"], [1, "col-12", "md:col-2", "lg:col-2", "px-0"], [1, "col-12", "-mt-5"], [1, "grid", "mx-0", "py-1"], [1, "col-12", "gap-2"], [1, "NatureOfTrade"], ["name", "Equity", "value", "Equity", "label", "Equity", 3, "ngModel", "ngModelChange", "onClick"], ["name", "Future", "value", "Future", "label", "Future", 3, "ngModel", "ngModelChange", "onClick"], ["name", "Option", "value", "Option", "label", "Option", 3, "ngModel", "ngModelChange", "onClick"], ["name", "SpecialCase", "value", "SpecialCase", "label", "Special Case", 3, "ngModel", "ngModelChange", "onClick"], ["name", "PrimaryIssue", "value", "PrimaryIssue", "label", "Primary Issue", 3, "ngModel", "ngModelChange", "onClick"], [1, "col-12", "md:col-10", "lg:col-10"], [1, "card"], [1, "card-body"], ["class", "row", 4, "ngIf"], [4, "ngIf"], [1, "card", "flex", "justify-content-center"], ["header", "Disclaimer", 3, "visible", "visibleChange"], [2, "font-size", "12px"], [2, "font-weight", "bold"], [2, "color", "red"], ["pButton", "", "pRipple", "", "type", "button", "label", "Continue", 1, "p-button-info", "p-button-sm", 2, "margin-right", "auto", 3, "click"], ["header", "Warning !", 3, "visible", "closable", "visibleChange"], [1, "p-text-secondary", "block", 2, "color", "rgb(212, 16, 16)", "margin-bottom", "8px"], [1, "flex", "justify-end", "gap-4"], ["label", "Ok", 3, "click"], [1, "row"], [1, "col-12", "md:col-6", "lg:col-4"], ["for", "inputText4", 1, ""], [1, "inputText"], ["name", "groupname", "value", "Self", 3, "ngModel", "click", "ngModelChange"], ["for", "city1", 1, "pl-2", "pr-4", 2, "font-size", "small"], ["name", "groupname", "value", "Dependent", 3, "ngModel", "click", "ngModelChange"], [1, "form-floating", "form-floating-outline"], ["optionLabel", "Display", "filterBy", "Display", "placeholder", "Account Name", 1, "form-control", "px-0", 3, "options", "ngModel", "filter", "showClear", "ngModelChange"], [1, "required-asterisk"], [3, "formGroup"], ["class", "col-12 md:col-6 lg:col-4", 4, "ngIf"], ["class", "col-12 md:col-6 lg:col-2", 4, "ngIf"], [1, "col-12", "md:col-6", "lg:col-2"], ["type", "number", "placeholder", "", "pInputText", "", "readonly", "", 1, "form-control", 2, "color", "rgb(202, 67, 14)", 3, "value"], [1, "pt-2"], [1, "col-12", "text-center"], ["pButton", "", "pRipple", "", "type", "button", "class", "btn btn-primary p-button-info p-button-sm mx-1", "label", "Add To List", 3, "disabled", "click", 4, "ngIf"], ["pButton", "", "pRipple", "", "type", "button", "label", "Reset", 1, "p-button-secondary", "p-button-sm", "mx-2", 3, "click"], ["class", "col-12", 4, "ngIf"], ["placeholder", "--Write--", "field", "SCRIP_DESC", "formControlName", "SearchSecurity", 1, "form-control", "px-0", 3, "inputStyle", "showClear", "suggestions", "completeMethod", "onSelect", "paste"], [1, ""], ["style", "color: red;", 4, "ngIf"], ["filterBy", "NAME_OF_ISSUE", "optionValue", "NAME_OF_ISSUE", "formControlName", "NameOfIssue", "optionLabel", "NAME_OF_ISSUE", "placeholder", "--Select--", 1, "form-control", "px-0", 3, "filter", "showClear", "options"], ["type", "text", "placeholder", "", "formControlName", "ISINNumber", "readonly", "", "pInputText", "", 1, "form-control"], ["filterBy", "value", "optionValue", "value", "formControlName", "Transaction", "optionLabel", "value", "placeholder", "Select Transaction ", 1, "form-control", "px-0", 3, "filter", "showClear", "options", "onChange"], ["name", "isNoSelected", "formControlName", "isNoSelected", 3, "value", "ngModel", "ngModelChange"], ["for", "noRadio", 1, "pl-2", "mt-2"], ["name", "isYesSelected", "formControlName", "isYesSelected", 3, "value", "ngModel", "ngModelChange"], ["for", "yesRadio", 1, "pl-2", "mt-2"], [1, "pl-2", "mt-2"], ["name", "Tenlacsmodel", "value", "true", "formControlName", "Tenlacsmodel", 3, "ngModel", "ngModelChange"], [1, "pr-5"], ["name", "isSellNoSelected", "formControlName", "isSellNoSelected", 3, "value", "ngModel", "ngModelChange"], ["for", "city1", 1, "pl-2", "pr-4"], ["name", "isSellYesSelected", "formControlName", "isSellYesSelected", 3, "value", "ngModel", "ngModelChange"], ["for", "city1", 1, "pl-2"], ["filterBy", "name", "optionValue", "name", "formControlName", "SpecialCase", "optionLabel", "name", "placeholder", "Select Special Case", 1, "form-control", "px-0", 3, "filter", "showClear", "options", "onChange"], ["placeholder", "--Select--", "inputId", "icon", "view", "month", "dateFormat", "MM", "formControlName", "Month", "styleClass", "w-100", 1, "form-control", "calendar", "p-0", 3, "showIcon", "showClear", "minDate", "maxDate", "viewDate"], ["optionValue", "name", "placeholder", "", "formControlName", "optiontype", "optionValue", "name", "optionLabel", "name", 1, "form-control", "px-0", 3, "options"], ["formControlName", "QuantityLot", "placeholder", "Select Quantity/Lot", "optionValue", "name", "optionLabel", "name", 1, "form-control", "px-0", 3, "options", "onChange"], ["for", "city1", 1, "pl-2", "mb-1"], ["type", "text", "placeholder", "", "formControlName", "Lot", "pInputText", "", 1, "form-control", 3, "keyup"], ["lot", ""], ["optionValue", "name", "optionValue", "name", "formControlName", "Postion", "placeholder", "Select Position", "optionLabel", "name", 1, "form-control", "px-0", 3, "options", "onChange"], ["type", "text", "placeholder", "", "formControlName", "Quantity", "pInputText", "", 1, "form-control", 3, "keyup"], ["val", ""], ["filterBy", "name", "optionValue", "name", "formControlName", "PrimaryIssueType", "optionLabel", "name", "placeholder", "", 1, "form-control", "px-0", 3, "filter", "showClear", "options"], ["placeholder", "", "formControlName", "Aquiredthrough", "optionValue", "value", "optionLabel", "value", 1, "form-control", "px-0", 3, "showClear", "options", "onChange"], ["formControlName", "PrimaryIssueType", "optionValue", "name", "placeholder", "", "optionLabel", "name", "filterBy", "name", 1, "form-control", "px-0", 3, "options", "filter", "showClear"], ["type", "text", "placeholder", "", "formControlName", "Price", "pInputText", "", 1, "form-control"], ["class", "pl-2 mt-2", 4, "ngIf"], ["name", "IsActive", "formControlName", "MarketPrice", 3, "binary", "click"], ["for", "city1", 1, "pl-3", "mt-0"], [1, "mt-2"], ["type", "text", "placeholder", "", "formControlName", "Reason", "pInputText", "", 1, "form-control"], ["formControlName", "SelltransactionDate", "inputId", "icon", "styleClass", "w-100", "disabled", "true", 1, "form-control", "p-0", "calendarIcon", 3, "showIcon"], ["formControlName", "StartDate", "inputId", "icon", "styleClass", "w-100", 1, "form-control", "p-0", "calendarIcon", 3, "showIcon", "maxDate"], [1, "pt-0"], ["value", "val1", "formControlName", "selectedValue4", 3, "click"], ["value", "val2", "formControlName", "selectedValue4", 3, "click"], ["type", "text", "placeholder", "", "formControlName", "Premium", "pInputText", "", 1, "form-control"], ["name", "IsActive", "formControlName", "activemodel", 3, "binary", "click"], ["for", "city1", 1, "pl-2", "mt-2"], ["formControlName", "TypeofDebt", "optionLabel", "name", 1, "form-control", "px-0", 3, "options"], ["type", "text", "formControlName", "StrikePrice", "placeholder", "", "pInputText", "", 1, "form-control"], ["type", "text", "placeholder", "", "formControlName", "BidPrice", "pInputText", "", "oninput", "this.value = this.value.replace(/[^0-9]/g, '')", 1, "form-control"], ["name", "IsActive", "formControlName", "activemodel1", 3, "binary", "click"], ["type", "text", "placeholder", "", "formControlName", "BidLotShares", "pInputText", "", 1, "form-control"], ["pButton", "", "pRipple", "", "type", "button", "label", "Add To List", 1, "btn", "btn-primary", "p-button-info", "p-button-sm", "mx-1", 3, "disabled", "click"], [1, "col-12"], ["styleClass", "p-datatable-sm p-datatable-gridlines", "dataKey", "id", "currentPageReportTemplate", "Showing {first} to {last} of {totalRecords} entries", 1, "bg-white", 3, "value", "rows", "paginator", "totalRecords", "tableStyle", "rowHover", "showCurrentPageReport"], ["dt", ""], ["pTemplate", "header"], ["pTemplate", "body"], [1, "center-content"], [1, "pi", "pi-trash", 3, "click"], ["name", "IsActive", "value", "1", 3, "ngModel", "ngModelChange", "onChange"], ["pButton", "", "pRipple", "", "type", "button", "label", "Submit", 1, "p-button-info", "p-button-sm", "mx-1", 3, "disabled", "click"], ["styleClass", "p-datatable-sm p-datatable-gridlines", 3, "value", "tableStyle"], ["pButton", "", "pRipple", "", "type", "button", "label", "Back", 1, "p-button-info", "p-button-sm", "mx-1", 3, "click"]],
   template: function InvestmentApprovalFormComponent_Template(rf, ctx) {
     if (rf & 1) {
       _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](0, "p-toast");
@@ -35689,7 +35699,7 @@ InvestmentApprovalFormComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPO
       });
       _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()()()();
       _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](16, "div", 11)(17, "div", 12)(18, "div", 13);
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](19, InvestmentApprovalFormComponent_div_19_Template, 57, 41, "div", 14);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](19, InvestmentApprovalFormComponent_div_19_Template, 62, 41, "div", 14);
       _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtemplate"](20, InvestmentApprovalFormComponent_div_20_Template, 7, 3, "div", 15);
       _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()()();
       _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](21, "div", 16)(22, "p-dialog", 17);
